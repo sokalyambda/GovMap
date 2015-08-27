@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GMPSearchWithAddressView">
+            <connections>
+                <outlet property="cityTextField" destination="dn4-Oe-xNg" id="cwN-wm-H6C"/>
+                <outlet property="containerView" destination="i5M-Pr-FkT" id="Zpi-eD-XEH"/>
+                <outlet property="homeTextField" destination="Vo7-8x-ue8" id="rRP-3K-0af"/>
+                <outlet property="streetTextField" destination="60e-YB-GDL" id="gre-Fh-gaq"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="City" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dn4-Oe-xNg" userLabel="City Text Field">
+                    <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                    <color key="textColor" white="0.40000000000000002" alpha="1" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Street" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="60e-YB-GDL" userLabel="Street Text Field">
+                    <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                    <color key="textColor" white="0.40000000000000002" alpha="1" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Home" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vo7-8x-ue8" userLabel="Home Text Field">
+                    <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                    <color key="textColor" white="0.40000000000000002" alpha="1" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pcr-GX-H6H" userLabel="Search Button">
+                    <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                    <color key="backgroundColor" red="0.0" green="0.23335991634583997" blue="0.61815419823232332" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="70" id="Rp6-Xf-MD2"/>
+                    </constraints>
+                    <state key="normal" title="Search">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="Rp6-Xf-MD2"/>
+                        </mask>
+                    </variation>
+                    <variation key="heightClass=regular-widthClass=compact">
+                        <mask key="constraints">
+                            <include reference="Rp6-Xf-MD2"/>
+                        </mask>
+                    </variation>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="centerX" secondItem="Vo7-8x-ue8" secondAttribute="centerX" id="2L4-uH-DSr"/>
+                <constraint firstAttribute="trailing" secondItem="60e-YB-GDL" secondAttribute="trailing" constant="20" id="8xt-pR-s24"/>
+                <constraint firstItem="60e-YB-GDL" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="BJr-e8-TVi"/>
+                <constraint firstItem="pcr-GX-H6H" firstAttribute="top" secondItem="Vo7-8x-ue8" secondAttribute="bottom" constant="80" id="BR1-5Y-kdj"/>
+                <constraint firstItem="Vo7-8x-ue8" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="BVP-CP-VhB"/>
+                <constraint firstItem="dn4-Oe-xNg" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="Kd7-86-Urb"/>
+                <constraint firstItem="pcr-GX-H6H" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="70" id="MMy-nl-MKR"/>
+                <constraint firstItem="Vo7-8x-ue8" firstAttribute="top" secondItem="60e-YB-GDL" secondAttribute="bottom" constant="50" id="NXf-MS-iom"/>
+                <constraint firstAttribute="centerX" secondItem="dn4-Oe-xNg" secondAttribute="centerX" id="XMV-6L-oYT"/>
+                <constraint firstAttribute="trailing" secondItem="dn4-Oe-xNg" secondAttribute="trailing" constant="20" id="XP5-vA-4qa"/>
+                <constraint firstAttribute="trailing" secondItem="Vo7-8x-ue8" secondAttribute="trailing" constant="20" id="lc0-i9-Qxz"/>
+                <constraint firstItem="60e-YB-GDL" firstAttribute="top" secondItem="dn4-Oe-xNg" secondAttribute="bottom" constant="50" id="mvE-Lc-3ZE"/>
+                <constraint firstAttribute="centerX" secondItem="60e-YB-GDL" secondAttribute="centerX" id="way-O5-Qus"/>
+                <constraint firstItem="dn4-Oe-xNg" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="180" id="wsH-OH-zP5"/>
+            </constraints>
+            <variation key="default">
+                <mask key="subviews">
+                    <exclude reference="dn4-Oe-xNg"/>
+                    <exclude reference="60e-YB-GDL"/>
+                    <exclude reference="Vo7-8x-ue8"/>
+                    <exclude reference="pcr-GX-H6H"/>
+                </mask>
+                <mask key="constraints">
+                    <exclude reference="8xt-pR-s24"/>
+                    <exclude reference="BJr-e8-TVi"/>
+                    <exclude reference="mvE-Lc-3ZE"/>
+                    <exclude reference="way-O5-Qus"/>
+                    <exclude reference="2L4-uH-DSr"/>
+                    <exclude reference="BVP-CP-VhB"/>
+                    <exclude reference="NXf-MS-iom"/>
+                    <exclude reference="lc0-i9-Qxz"/>
+                    <exclude reference="Kd7-86-Urb"/>
+                    <exclude reference="XMV-6L-oYT"/>
+                    <exclude reference="XP5-vA-4qa"/>
+                    <exclude reference="wsH-OH-zP5"/>
+                    <exclude reference="BR1-5Y-kdj"/>
+                    <exclude reference="MMy-nl-MKR"/>
+                </mask>
+            </variation>
+            <variation key="heightClass=regular-widthClass=compact">
+                <mask key="subviews">
+                    <include reference="dn4-Oe-xNg"/>
+                    <include reference="60e-YB-GDL"/>
+                    <include reference="Vo7-8x-ue8"/>
+                    <include reference="pcr-GX-H6H"/>
+                </mask>
+                <mask key="constraints">
+                    <include reference="8xt-pR-s24"/>
+                    <include reference="BJr-e8-TVi"/>
+                    <include reference="mvE-Lc-3ZE"/>
+                    <include reference="way-O5-Qus"/>
+                    <include reference="2L4-uH-DSr"/>
+                    <include reference="BVP-CP-VhB"/>
+                    <include reference="NXf-MS-iom"/>
+                    <include reference="lc0-i9-Qxz"/>
+                    <include reference="Kd7-86-Urb"/>
+                    <include reference="XMV-6L-oYT"/>
+                    <include reference="XP5-vA-4qa"/>
+                    <include reference="wsH-OH-zP5"/>
+                    <include reference="BR1-5Y-kdj"/>
+                    <include reference="MMy-nl-MKR"/>
+                </mask>
+            </variation>
+        </view>
+    </objects>
+</document>

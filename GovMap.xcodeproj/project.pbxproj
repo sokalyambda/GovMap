@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		041F851FE71D0E3A7C11613A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A3EC1D9E43C52520F2972EB0 /* libPods.a */; };
+		3E820AB51B8F3D6400EDEEA4 /* GMPSearchWithAddressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E820AB31B8F3D6400EDEEA4 /* GMPSearchWithAddressView.m */; };
+		3E820AB61B8F3D6400EDEEA4 /* GMPSearchWithAddressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E820AB41B8F3D6400EDEEA4 /* GMPSearchWithAddressView.xib */; };
 		58C1311A1B8EF5A60095045A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C131191B8EF5A60095045A /* main.m */; };
 		58C1311D1B8EF5A60095045A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C1311C1B8EF5A60095045A /* AppDelegate.m */; };
 		58C131231B8EF5A60095045A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58C131211B8EF5A60095045A /* Main.storyboard */; };
@@ -51,6 +53,9 @@
 /* Begin PBXFileReference section */
 		0062777DAD5A5BC2F5C8A757 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		1B6EBDB5D3D66E278DA2A0BA /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		3E820AB21B8F3D6400EDEEA4 /* GMPSearchWithAddressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GMPSearchWithAddressView.h; path = Classes/MVC/VIews/SearchWithAddressView/GMPSearchWithAddressView.h; sourceTree = "<group>"; };
+		3E820AB31B8F3D6400EDEEA4 /* GMPSearchWithAddressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GMPSearchWithAddressView.m; path = Classes/MVC/VIews/SearchWithAddressView/GMPSearchWithAddressView.m; sourceTree = "<group>"; };
+		3E820AB41B8F3D6400EDEEA4 /* GMPSearchWithAddressView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GMPSearchWithAddressView.xib; path = Classes/MVC/VIews/SearchWithAddressView/GMPSearchWithAddressView.xib; sourceTree = "<group>"; };
 		58C131141B8EF5A60095045A /* GovMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GovMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58C131181B8EF5A60095045A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		58C131191B8EF5A60095045A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -142,6 +147,16 @@
 				A3EC1D9E43C52520F2972EB0 /* libPods.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3E820AB11B8F3D3400EDEEA4 /* SearchWithAddressView */ = {
+			isa = PBXGroup;
+			children = (
+				3E820AB21B8F3D6400EDEEA4 /* GMPSearchWithAddressView.h */,
+				3E820AB31B8F3D6400EDEEA4 /* GMPSearchWithAddressView.m */,
+				3E820AB41B8F3D6400EDEEA4 /* GMPSearchWithAddressView.xib */,
+			);
+			name = SearchWithAddressView;
 			sourceTree = "<group>";
 		};
 		58C1310B1B8EF5A50095045A = {
@@ -308,6 +323,7 @@
 		58C131481B8EF7C20095045A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				3E820AB11B8F3D3400EDEEA4 /* SearchWithAddressView */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -630,6 +646,7 @@
 			files = (
 				58C131231B8EF5A60095045A /* Main.storyboard in Resources */,
 				58C131281B8EF5A60095045A /* LaunchScreen.xib in Resources */,
+				3E820AB61B8F3D6400EDEEA4 /* GMPSearchWithAddressView.xib in Resources */,
 				58C131251B8EF5A60095045A /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -683,6 +700,7 @@
 			files = (
 				58C131941B8F04920095045A /* GMPBaseViewController.m in Sources */,
 				58C1317D1B8F03920095045A /* NSString+JSONRepresentation.m in Sources */,
+				3E820AB51B8F3D6400EDEEA4 /* GMPSearchWithAddressView.m in Sources */,
 				58C131641B8F02CE0095045A /* UIView+Shaking.m in Sources */,
 				58C1311D1B8EF5A60095045A /* AppDelegate.m in Sources */,
 				58C1318F1B8F043B0095045A /* GMPLocationObserver.m in Sources */,
