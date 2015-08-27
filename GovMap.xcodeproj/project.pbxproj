@@ -36,6 +36,8 @@
 		58C131971B8F04FB0095045A /* GMPBaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C131961B8F04FB0095045A /* GMPBaseNavigationController.m */; };
 		58C1319B1B8F054A0095045A /* GMPMainMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C1319A1B8F054A0095045A /* GMPMainMenuController.m */; };
 		58C131A11B8F09C80095045A /* GMPSplashScreenController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C131A01B8F09C80095045A /* GMPSplashScreenController.m */; };
+		D3E5347B1B8F39FA00C9D87B /* GMPMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E5347A1B8F39FA00C9D87B /* GMPMenuView.m */; };
+		D3E5347D1B8F3A1500C9D87B /* GMPMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3E5347C1B8F3A1500C9D87B /* GMPMenuView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +107,9 @@
 		58C1319F1B8F09C80095045A /* GMPSplashScreenController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GMPSplashScreenController.h; path = Classes/MVC/Controllers/SplashScreenController/GMPSplashScreenController.h; sourceTree = "<group>"; };
 		58C131A01B8F09C80095045A /* GMPSplashScreenController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GMPSplashScreenController.m; path = Classes/MVC/Controllers/SplashScreenController/GMPSplashScreenController.m; sourceTree = "<group>"; };
 		A3EC1D9E43C52520F2972EB0 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		D3E534791B8F39FA00C9D87B /* GMPMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GMPMenuView.h; path = Classes/MVC/Views/MenuView/GMPMenuView.h; sourceTree = "<group>"; };
+		D3E5347A1B8F39FA00C9D87B /* GMPMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GMPMenuView.m; path = Classes/MVC/Views/MenuView/GMPMenuView.m; sourceTree = "<group>"; };
+		D3E5347C1B8F3A1500C9D87B /* GMPMenuView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GMPMenuView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -308,6 +313,7 @@
 		58C131481B8EF7C20095045A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D3E534721B8F1DE500C9D87B /* MenuView */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -545,6 +551,16 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		D3E534721B8F1DE500C9D87B /* MenuView */ = {
+			isa = PBXGroup;
+			children = (
+				D3E534791B8F39FA00C9D87B /* GMPMenuView.h */,
+				D3E5347A1B8F39FA00C9D87B /* GMPMenuView.m */,
+				D3E5347C1B8F3A1500C9D87B /* GMPMenuView.xib */,
+			);
+			name = MenuView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -629,6 +645,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				58C131231B8EF5A60095045A /* Main.storyboard in Resources */,
+				D3E5347D1B8F3A1500C9D87B /* GMPMenuView.xib in Resources */,
 				58C131281B8EF5A60095045A /* LaunchScreen.xib in Resources */,
 				58C131251B8EF5A60095045A /* Images.xcassets in Resources */,
 			);
@@ -693,6 +710,7 @@
 				58C131861B8F03C00095045A /* NSDictionary+JSONRepresentation.m in Sources */,
 				58C131891B8F04030095045A /* GMPSerialViewsConstructor.m in Sources */,
 				58C131671B8F02E10095045A /* UIView+ConfigureAnchorPoint.m in Sources */,
+				D3E5347B1B8F39FA00C9D87B /* GMPMenuView.m in Sources */,
 				58C1316D1B8F03030095045A /* UIImage+Base64Encoding.m in Sources */,
 				58C131801B8F03A10095045A /* NSString+Base64Decoding.m in Sources */,
 				58C131701B8F03130095045A /* UIFont+Styles.m in Sources */,
@@ -777,7 +795,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -814,7 +832,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -829,7 +847,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GovMap/GovMap-Prefix.pch";
 				INFOPLIST_FILE = GovMap/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -843,7 +861,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GovMap/GovMap-Prefix.pch";
 				INFOPLIST_FILE = GovMap/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
