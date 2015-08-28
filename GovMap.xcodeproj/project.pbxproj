@@ -10,6 +10,10 @@
 		041F851FE71D0E3A7C11613A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A3EC1D9E43C52520F2972EB0 /* libPods.a */; };
 		3E820AB51B8F3D6400EDEEA4 /* GMPSearchWithAddressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E820AB31B8F3D6400EDEEA4 /* GMPSearchWithAddressView.m */; };
 		3E820AB61B8F3D6400EDEEA4 /* GMPSearchWithAddressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E820AB41B8F3D6400EDEEA4 /* GMPSearchWithAddressView.xib */; };
+		3E820ABA1B9035DB00EDEEA4 /* GMPSearchWithAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E820AB91B9035DB00EDEEA4 /* GMPSearchWithAddressViewController.m */; };
+		3E820ABE1B90379600EDEEA4 /* GMPSearchWithGeoNumbersView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E820ABD1B90379600EDEEA4 /* GMPSearchWithGeoNumbersView.m */; };
+		3E820AC01B9039BA00EDEEA4 /* GMPSearchWithGeoNumbersView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E820ABF1B9039BA00EDEEA4 /* GMPSearchWithGeoNumbersView.xib */; };
+		3E820AC41B903FF700EDEEA4 /* GMPSearchWithGeoNumbersController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E820AC31B903FF700EDEEA4 /* GMPSearchWithGeoNumbersController.m */; };
 		58C1311A1B8EF5A60095045A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C131191B8EF5A60095045A /* main.m */; };
 		58C1311D1B8EF5A60095045A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C1311C1B8EF5A60095045A /* AppDelegate.m */; };
 		58C131231B8EF5A60095045A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58C131211B8EF5A60095045A /* Main.storyboard */; };
@@ -58,6 +62,13 @@
 		3E820AB21B8F3D6400EDEEA4 /* GMPSearchWithAddressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GMPSearchWithAddressView.h; path = Classes/MVC/VIews/SearchWithAddressView/GMPSearchWithAddressView.h; sourceTree = "<group>"; };
 		3E820AB31B8F3D6400EDEEA4 /* GMPSearchWithAddressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GMPSearchWithAddressView.m; path = Classes/MVC/VIews/SearchWithAddressView/GMPSearchWithAddressView.m; sourceTree = "<group>"; };
 		3E820AB41B8F3D6400EDEEA4 /* GMPSearchWithAddressView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GMPSearchWithAddressView.xib; path = Classes/MVC/VIews/SearchWithAddressView/GMPSearchWithAddressView.xib; sourceTree = "<group>"; };
+		3E820AB81B9035DB00EDEEA4 /* GMPSearchWithAddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GMPSearchWithAddressViewController.h; path = Classes/MVC/Controllers/SearchWithAddressController/GMPSearchWithAddressViewController.h; sourceTree = "<group>"; };
+		3E820AB91B9035DB00EDEEA4 /* GMPSearchWithAddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GMPSearchWithAddressViewController.m; path = Classes/MVC/Controllers/SearchWithAddressController/GMPSearchWithAddressViewController.m; sourceTree = "<group>"; };
+		3E820ABC1B90379600EDEEA4 /* GMPSearchWithGeoNumbersView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GMPSearchWithGeoNumbersView.h; path = Classes/MVC/VIews/SearchWithGeoNumbersView/GMPSearchWithGeoNumbersView.h; sourceTree = "<group>"; };
+		3E820ABD1B90379600EDEEA4 /* GMPSearchWithGeoNumbersView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GMPSearchWithGeoNumbersView.m; path = Classes/MVC/VIews/SearchWithGeoNumbersView/GMPSearchWithGeoNumbersView.m; sourceTree = "<group>"; };
+		3E820ABF1B9039BA00EDEEA4 /* GMPSearchWithGeoNumbersView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GMPSearchWithGeoNumbersView.xib; path = Classes/MVC/VIews/SearchWithGeoNumbersView/GMPSearchWithGeoNumbersView.xib; sourceTree = "<group>"; };
+		3E820AC21B903FF700EDEEA4 /* GMPSearchWithGeoNumbersController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GMPSearchWithGeoNumbersController.h; path = Classes/MVC/Controllers/SearchWithGeoNubersController/GMPSearchWithGeoNumbersController.h; sourceTree = "<group>"; };
+		3E820AC31B903FF700EDEEA4 /* GMPSearchWithGeoNumbersController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GMPSearchWithGeoNumbersController.m; path = Classes/MVC/Controllers/SearchWithGeoNubersController/GMPSearchWithGeoNumbersController.m; sourceTree = "<group>"; };
 		58C131141B8EF5A60095045A /* GovMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GovMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58C131181B8EF5A60095045A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		58C131191B8EF5A60095045A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -162,6 +173,34 @@
 				3E820AB41B8F3D6400EDEEA4 /* GMPSearchWithAddressView.xib */,
 			);
 			name = SearchWithAddressView;
+			sourceTree = "<group>";
+		};
+		3E820AB71B90358A00EDEEA4 /* SearchWithAddressController */ = {
+			isa = PBXGroup;
+			children = (
+				3E820AB81B9035DB00EDEEA4 /* GMPSearchWithAddressViewController.h */,
+				3E820AB91B9035DB00EDEEA4 /* GMPSearchWithAddressViewController.m */,
+			);
+			name = SearchWithAddressController;
+			sourceTree = "<group>";
+		};
+		3E820ABB1B90373700EDEEA4 /* SearchWithGeoNumbersView */ = {
+			isa = PBXGroup;
+			children = (
+				3E820ABC1B90379600EDEEA4 /* GMPSearchWithGeoNumbersView.h */,
+				3E820ABD1B90379600EDEEA4 /* GMPSearchWithGeoNumbersView.m */,
+				3E820ABF1B9039BA00EDEEA4 /* GMPSearchWithGeoNumbersView.xib */,
+			);
+			name = SearchWithGeoNumbersView;
+			sourceTree = "<group>";
+		};
+		3E820AC11B903F4000EDEEA4 /* SearchWithGeoNumbersController */ = {
+			isa = PBXGroup;
+			children = (
+				3E820AC21B903FF700EDEEA4 /* GMPSearchWithGeoNumbersController.h */,
+				3E820AC31B903FF700EDEEA4 /* GMPSearchWithGeoNumbersController.m */,
+			);
+			name = SearchWithGeoNumbersController;
 			sourceTree = "<group>";
 		};
 		58C1310B1B8EF5A50095045A = {
@@ -328,6 +367,7 @@
 		58C131481B8EF7C20095045A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				3E820ABB1B90373700EDEEA4 /* SearchWithGeoNumbersView */,
 				3E820AB11B8F3D3400EDEEA4 /* SearchWithAddressView */,
 				D3E534721B8F1DE500C9D87B /* MenuView */,
 			);
@@ -337,6 +377,8 @@
 		58C131491B8EF7C60095045A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				3E820AC11B903F4000EDEEA4 /* SearchWithGeoNumbersController */,
+				3E820AB71B90358A00EDEEA4 /* SearchWithAddressController */,
 				58C1319E1B8F097A0095045A /* SplashScreenController */,
 				58C131981B8F051B0095045A /* MainMenuController */,
 				58C131911B8F046A0095045A /* BaseNavigationController */,
@@ -662,6 +704,7 @@
 			files = (
 				58C131231B8EF5A60095045A /* Main.storyboard in Resources */,
 				D3E5347D1B8F3A1500C9D87B /* GMPMenuView.xib in Resources */,
+				3E820AC01B9039BA00EDEEA4 /* GMPSearchWithGeoNumbersView.xib in Resources */,
 				58C131281B8EF5A60095045A /* LaunchScreen.xib in Resources */,
 				3E820AB61B8F3D6400EDEEA4 /* GMPSearchWithAddressView.xib in Resources */,
 				58C131251B8EF5A60095045A /* Images.xcassets in Resources */,
@@ -726,9 +769,12 @@
 				58C1311A1B8EF5A60095045A /* main.m in Sources */,
 				58C131A11B8F09C80095045A /* GMPSplashScreenController.m in Sources */,
 				58C131861B8F03C00095045A /* NSDictionary+JSONRepresentation.m in Sources */,
+				3E820ABE1B90379600EDEEA4 /* GMPSearchWithGeoNumbersView.m in Sources */,
 				58C131891B8F04030095045A /* GMPSerialViewsConstructor.m in Sources */,
 				58C131671B8F02E10095045A /* UIView+ConfigureAnchorPoint.m in Sources */,
 				D3E5347B1B8F39FA00C9D87B /* GMPMenuView.m in Sources */,
+				3E820AC41B903FF700EDEEA4 /* GMPSearchWithGeoNumbersController.m in Sources */,
+				3E820ABA1B9035DB00EDEEA4 /* GMPSearchWithAddressViewController.m in Sources */,
 				58C1316D1B8F03030095045A /* UIImage+Base64Encoding.m in Sources */,
 				58C131801B8F03A10095045A /* NSString+Base64Decoding.m in Sources */,
 				58C131701B8F03130095045A /* UIFont+Styles.m in Sources */,
@@ -813,7 +859,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -850,7 +896,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -865,7 +911,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GovMap/GovMap-Prefix.pch";
 				INFOPLIST_FILE = GovMap/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -879,7 +925,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GovMap/GovMap-Prefix.pch";
 				INFOPLIST_FILE = GovMap/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

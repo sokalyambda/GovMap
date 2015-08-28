@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <objects>
@@ -39,7 +40,7 @@
                     <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                     <color key="backgroundColor" red="0.0" green="0.23335991634583997" blue="0.61815419823232332" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="70" id="Rp6-Xf-MD2"/>
+                        <constraint firstAttribute="width" constant="100" id="Rp6-Xf-MD2"/>
                     </constraints>
                     <state key="normal" title="Search">
                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -55,6 +56,9 @@
                             <include reference="Rp6-Xf-MD2"/>
                         </mask>
                     </variation>
+                    <connections>
+                        <action selector="searchButtonPress:" destination="-1" eventType="touchUpInside" id="ZYz-J6-rg9"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -62,11 +66,11 @@
                 <constraint firstAttribute="centerX" secondItem="Vo7-8x-ue8" secondAttribute="centerX" id="2L4-uH-DSr"/>
                 <constraint firstAttribute="trailing" secondItem="60e-YB-GDL" secondAttribute="trailing" constant="20" id="8xt-pR-s24"/>
                 <constraint firstItem="60e-YB-GDL" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="BJr-e8-TVi"/>
-                <constraint firstItem="pcr-GX-H6H" firstAttribute="top" secondItem="Vo7-8x-ue8" secondAttribute="bottom" constant="80" id="BR1-5Y-kdj"/>
+                <constraint firstItem="pcr-GX-H6H" firstAttribute="top" secondItem="Vo7-8x-ue8" secondAttribute="bottom" constant="75" id="BR1-5Y-kdj"/>
                 <constraint firstItem="Vo7-8x-ue8" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="BVP-CP-VhB"/>
                 <constraint firstItem="dn4-Oe-xNg" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="Kd7-86-Urb"/>
-                <constraint firstItem="pcr-GX-H6H" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="70" id="MMy-nl-MKR"/>
                 <constraint firstItem="Vo7-8x-ue8" firstAttribute="top" secondItem="60e-YB-GDL" secondAttribute="bottom" constant="50" id="NXf-MS-iom"/>
+                <constraint firstItem="Vo7-8x-ue8" firstAttribute="leading" secondItem="pcr-GX-H6H" secondAttribute="leading" id="TbJ-Q9-Q2K"/>
                 <constraint firstAttribute="centerX" secondItem="dn4-Oe-xNg" secondAttribute="centerX" id="XMV-6L-oYT"/>
                 <constraint firstAttribute="trailing" secondItem="dn4-Oe-xNg" secondAttribute="trailing" constant="20" id="XP5-vA-4qa"/>
                 <constraint firstAttribute="trailing" secondItem="Vo7-8x-ue8" secondAttribute="trailing" constant="20" id="lc0-i9-Qxz"/>
@@ -82,6 +86,10 @@
                     <exclude reference="pcr-GX-H6H"/>
                 </mask>
                 <mask key="constraints">
+                    <exclude reference="Kd7-86-Urb"/>
+                    <exclude reference="XMV-6L-oYT"/>
+                    <exclude reference="XP5-vA-4qa"/>
+                    <exclude reference="wsH-OH-zP5"/>
                     <exclude reference="8xt-pR-s24"/>
                     <exclude reference="BJr-e8-TVi"/>
                     <exclude reference="mvE-Lc-3ZE"/>
@@ -89,13 +97,9 @@
                     <exclude reference="2L4-uH-DSr"/>
                     <exclude reference="BVP-CP-VhB"/>
                     <exclude reference="NXf-MS-iom"/>
+                    <exclude reference="TbJ-Q9-Q2K"/>
                     <exclude reference="lc0-i9-Qxz"/>
-                    <exclude reference="Kd7-86-Urb"/>
-                    <exclude reference="XMV-6L-oYT"/>
-                    <exclude reference="XP5-vA-4qa"/>
-                    <exclude reference="wsH-OH-zP5"/>
                     <exclude reference="BR1-5Y-kdj"/>
-                    <exclude reference="MMy-nl-MKR"/>
                 </mask>
             </variation>
             <variation key="heightClass=regular-widthClass=compact">
@@ -106,6 +110,10 @@
                     <include reference="pcr-GX-H6H"/>
                 </mask>
                 <mask key="constraints">
+                    <include reference="Kd7-86-Urb"/>
+                    <include reference="XMV-6L-oYT"/>
+                    <include reference="XP5-vA-4qa"/>
+                    <include reference="wsH-OH-zP5"/>
                     <include reference="8xt-pR-s24"/>
                     <include reference="BJr-e8-TVi"/>
                     <include reference="mvE-Lc-3ZE"/>
@@ -113,13 +121,9 @@
                     <include reference="2L4-uH-DSr"/>
                     <include reference="BVP-CP-VhB"/>
                     <include reference="NXf-MS-iom"/>
+                    <include reference="TbJ-Q9-Q2K"/>
                     <include reference="lc0-i9-Qxz"/>
-                    <include reference="Kd7-86-Urb"/>
-                    <include reference="XMV-6L-oYT"/>
-                    <include reference="XP5-vA-4qa"/>
-                    <include reference="wsH-OH-zP5"/>
                     <include reference="BR1-5Y-kdj"/>
-                    <include reference="MMy-nl-MKR"/>
                 </mask>
             </variation>
         </view>

@@ -8,6 +8,7 @@
 
 #import "GMPSearchWithAddressView.h"
 #import "UIView+MakeFromXib.h"
+#import "UIView+Shaking.h"
 
 static NSString *const kDefaultCityTextFieldString = @"City";
 static NSString *const kDefaultStreetTextFieldString = @"Street";
@@ -15,13 +16,13 @@ static NSString *const kDefaultHomeTextFieldString = @"Home";
 
 @interface GMPSearchWithAddressView () <UITextFieldDelegate>
 
-@property (nonatomic, weak) IBOutlet UIView *containerView;
+@property (weak, nonatomic) IBOutlet UIView *containerView;
 
-@property (nonatomic, weak) IBOutlet UITextField *cityTextField;
-@property (nonatomic, weak) IBOutlet UITextField *streetTextField;
-@property (nonatomic, weak) IBOutlet UITextField *homeTextField;
+@property (weak, nonatomic) IBOutlet UITextField *cityTextField;
+@property (weak, nonatomic) IBOutlet UITextField *streetTextField;
+@property (weak, nonatomic) IBOutlet UITextField *homeTextField;
 
-@property (nonatomic, strong) UITapGestureRecognizer *tap;
+@property (strong, nonatomic) UITapGestureRecognizer *tap;
 
 @end
 
@@ -48,6 +49,12 @@ static NSString *const kDefaultHomeTextFieldString = @"Home";
 }
 
 #pragma mark - Text field delegate methods
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [self dismissKeyboard];
+    return YES;
+}
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
@@ -78,9 +85,31 @@ static NSString *const kDefaultHomeTextFieldString = @"Home";
 
 #pragma mark - Actions
 
-- (void)searchButtonClick
+- (IBAction)searchButtonPress:(id)sender
 {
+    BOOL areValuesValidated = YES;
     
+    if ([self.cityTextField.text isEqualToString:kDefaultCityTextFieldString]) {
+        [self.cityTextField shakeView];
+        areValuesValidated = NO;
+    }
+    if ([self.streetTextField.text isEqualToString:kDefaultStreetTextFieldString]) {
+        [self.streetTextField shakeView];
+        areValuesValidated = NO;
+    }
+    if ([self.homeTextField.text isEqualToString:kDefaultHomeTextFieldString]) {
+        [self.homeTextField shakeView];
+        areValuesValidated = NO;
+    }
+    
+    if (areValuesValidated) {
+        if ([self.delegate respondsToSelector:@selector(searchWithAddressView:didPressSearchButtonWithAddress:)]) {
+            [self.delegate searchWithAddressView:self
+                 didPressSearchButtonWithAddress:@{ @"city" : self.cityTextField.text,
+                                                    @"street" : self.streetTextField.text,
+                                                    @"home" : self.homeTextField.text }];
+        }
+    }
 }
 
 - (void)dismissKeyboard
