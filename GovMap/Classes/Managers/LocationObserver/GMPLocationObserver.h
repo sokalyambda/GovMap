@@ -8,11 +8,12 @@
 
 #import <CoreLocation/CoreLocation.h>
 
+typedef void(^ReverseGeocodingResult)(BOOL success, NSString *address);
+
 @interface GMPLocationObserver : NSObject
 
-@property (strong, nonatomic) CLLocation *updatedLocation;
+@property (strong, nonatomic) CLLocation *currentLocation;
 
 + (GMPLocationObserver *)sharedInstance;
-- (void)startUpdatingLocation;
-
+- (void)reverseGeocodingForCoordinate:(CLLocation *)location withResult: (ReverseGeocodingResult)result;
 @end

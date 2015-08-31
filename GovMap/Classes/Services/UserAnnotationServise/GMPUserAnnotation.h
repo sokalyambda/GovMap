@@ -11,9 +11,14 @@
 @interface GMPUserAnnotation: NSObject<MKAnnotation>
 {
     CLLocationCoordinate2D coordinate;
+    NSString *title;
+    NSString *subtitle;
 }
 
 @property (nonatomic, readonly) CLLocationCoordinate2D coordinate;
-- (id)initWithLocation:(CLLocationCoordinate2D)coord;
+@property (copy, nonatomic, readonly) NSString *title;
+@property (copy, nonatomic, readonly) NSString *subtitle;
+
+- (id)initWithLocation:(CLLocationCoordinate2D)paramCoordinate title:(NSString *)paramTitle;
 
 @end

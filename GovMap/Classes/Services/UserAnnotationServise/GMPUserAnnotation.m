@@ -11,12 +11,13 @@
 
 @implementation GMPUserAnnotation
 
-@synthesize coordinate;
+@synthesize coordinate, title, subtitle;
 
-- (id)initWithLocation:(CLLocationCoordinate2D)coord {
+- (id)initWithLocation:(CLLocationCoordinate2D)paramCoordinate title:(NSString *)paramTitle{
     self = [super init];
     if (self) {
-        coordinate = coord;
+        coordinate = paramCoordinate;
+        title      = paramTitle;
     }
     return self;
 }
