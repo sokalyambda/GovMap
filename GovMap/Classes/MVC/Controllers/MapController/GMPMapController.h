@@ -6,6 +6,8 @@
 //  Copyright (c) 2015 ThinkMobiles. All rights reserved.
 //
 
-@interface GMPMapController : UIViewController
+#import "GMPBaseViewController.h"
+
+@interface GMPMapController : GMPBaseViewController
 
 @end

@@ -6,20 +6,37 @@
 //  Copyright (c) 2015 ThinkMobiles. All rights reserved.
 //
 
-#import "GMPMapController.h"
 #import <MapKit/MapKit.h>
+
+#import "GMPMapController.h"
+
 #import "GMPLocationObserver.h"
+
 #import "GMPUserAnnotation.h"
+
+#import "GMPWazeNavigationService.h"
 
 @interface GMPMapController () <MKMapViewDelegate>
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *goToWazeButton;
+
 @property (strong, nonatomic) GMPLocationObserver *locationObserver;
-@property (strong, nonatomic) GMPUserAnnotation * annotation;
+@property (strong, nonatomic) GMPUserAnnotation *annotation;
 
 @end
 
 @implementation GMPMapController
+
+#pragma mark - Accessors
+
+- (GMPLocationObserver *)locationObserver
+{
+    if (!_locationObserver) {
+        _locationObserver = [GMPLocationObserver sharedInstance];
+    }
+    return _locationObserver;
+}
 
 #pragma mark - View Lifecycle
 
@@ -27,13 +44,12 @@
 {
     [super viewDidLoad];
     
-    self.locationObserver = [GMPLocationObserver sharedInstance];
-
+    [self customizeNavigationItem];
 }
 
-- (void)viewWillAppear:(BOOL)animated
+- (void)viewDidAppear:(BOOL)animated
 {
-    [super viewWillAppear:animated];
+    [super viewDidAppear:animated];
     [self setupMapAttributesForCoordinate:self.locationObserver.currentLocation.coordinate];
 }
 
@@ -67,22 +83,10 @@
     }
     return nil;
 }
-//- (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view
-//{
-//    GMPUserAnnotation *annotation = (GMPUserAnnotation *)view.annotation;
-//    CLLocation *location = [[CLLocation alloc]initWithLatitude:annotation.coordinate.latitude longitude:annotation.coordinate.longitude];
-//    
-//    [self.locationObserver reverseGeocodingForCoordinate:location withResult:^(BOOL success, NSString *address) {
-//        if (success) {
-//            [annotation setTitle:address];
-//        }
-//    }];
-//    
-//}
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view didChangeDragState:(MKAnnotationViewDragState)newState fromOldState:(MKAnnotationViewDragState)oldState
 {
-    if (newState == MKAnnotationViewDragStateEnding) {
+    if (newState == MKAnnotationViewDragStateDragging) {
         
         GMPUserAnnotation *annotation = (GMPUserAnnotation *)view.annotation;
         CLLocation *location = [[CLLocation alloc]initWithLatitude:annotation.coordinate.latitude longitude:annotation.coordinate.longitude];
@@ -93,10 +97,10 @@
         }];
     }
 }
+
 - (void)setupMapAttributesForCoordinate:(CLLocationCoordinate2D)coordinate
 {
     WEAK_SELF;
-    
     MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(coordinate, 800, 800);
     [self.mapView setRegion:[self.mapView regionThatFits:region] animated:YES];
     
@@ -107,7 +111,23 @@
             [weakSelf.mapView addAnnotation:self.annotation];
         }
     }];
-    
+}
+
+#pragma mark - Actions
+
+- (IBAction)goToWazeClick:(id)sender
+{
+    CLLocationCoordinate2D coord = self.annotation.coordinate;
+    [GMPWazeNavigationService navigateToWazeWithLatitude:coord.latitude longitude:coord.longitude];
+}
+
+/**
+ *  Customize current navigation item
+ */
+- (void)customizeNavigationItem
+{
+    self.goToWazeButton.title = LOCALIZED(@"Open Waze");
+    self.navigationItem.rightBarButtonItem = self.goToWazeButton;
 }
 
 @end

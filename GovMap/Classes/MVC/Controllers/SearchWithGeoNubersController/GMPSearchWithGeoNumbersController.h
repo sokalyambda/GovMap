@@ -6,6 +6,8 @@
 //  Copyright (c) 2015 ThinkMobiles. All rights reserved.
 //
 
-@interface GMPSearchWithGeoNumbersController : UIViewController
+#import "GMPBaseViewController.h"
+
+@interface GMPSearchWithGeoNumbersController : GMPBaseViewController
 
 @end
