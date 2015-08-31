@@ -29,16 +29,14 @@ NSString *const kHome = @"Home";
 
 @implementation GMPSearchWithAddressView
 
+#pragma mark - Lifecycle
+
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     if (self = [super initWithCoder:aDecoder]) {
         _containerView = [[self class] makeFromXibWithFileOwner:self];
         _containerView.frame = self.frame;
         [self addSubview:_containerView];
-        
-        _cityTextField.delegate = self;
-        _streetTextField.delegate = self;
-        _homeTextField.delegate = self;
         
         _tap = [[UITapGestureRecognizer alloc]
                initWithTarget:self
@@ -49,7 +47,7 @@ NSString *const kHome = @"Home";
     return self;
 }
 
-#pragma mark - Text field delegate methods
+#pragma mark - UITextFieldDelegate methods
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
@@ -61,17 +59,33 @@ NSString *const kHome = @"Home";
 
 - (IBAction)searchButtonPress:(id)sender
 {
+    [self performSearchAction];
+}
+
+/**
+ *  End view's editing
+ */
+- (void)dismissKeyboard
+{
+    [self endEditing:YES];
+}
+
+/**
+ *  Validate text fields and call the delegate method
+ */
+- (void)performSearchAction
+{
     BOOL areValuesValidated = YES;
     
-    if (self.cityTextField.text.length == 0) {
+    if (!self.cityTextField.text.length) {
         [self.cityTextField shakeView];
         areValuesValidated = NO;
     }
-    if (self.streetTextField.text.length == 0) {
+    if (!self.streetTextField.text.length) {
         [self.streetTextField shakeView];
         areValuesValidated = NO;
     }
-    if (self.homeTextField.text.length == 0) {
+    if (!self.homeTextField.text.length) {
         [self.homeTextField shakeView];
         areValuesValidated = NO;
     }
@@ -85,10 +99,17 @@ NSString *const kHome = @"Home";
         }
     }
 }
-
-- (void)dismissKeyboard
-{
-    [self endEditing:YES];
-}
+//
+//- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event
+//{
+//    if (![super pointInside:point withEvent:nil])
+//    {
+//        
+//        [self dismissKeyboard];
+//        return self;
+//    }
+//    
+//    return [super hitTest:point withEvent:event];
+//}
 
 @end

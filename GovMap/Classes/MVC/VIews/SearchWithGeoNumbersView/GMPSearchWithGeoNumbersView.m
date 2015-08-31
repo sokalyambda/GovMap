@@ -13,6 +13,7 @@
 
 NSString *const kLatitude = @"Latitude";
 NSString *const kLongitude = @"Longitude";
+
 static NSString *const kAcceptableCharacters = @"0123456789.";
 
 @interface GMPSearchWithGeoNumbersView () <UITextFieldDelegate>
@@ -27,6 +28,8 @@ static NSString *const kAcceptableCharacters = @"0123456789.";
 @end
 
 @implementation GMPSearchWithGeoNumbersView
+
+#pragma mark - Lifecycle
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
@@ -47,7 +50,7 @@ static NSString *const kAcceptableCharacters = @"0123456789.";
     return self;
 }
 
-#pragma mark - Responder
+#pragma mark - UIResponder
 
 - (BOOL)canPerformAction:(SEL)action withSender:(id)sender
 {
@@ -57,7 +60,7 @@ static NSString *const kAcceptableCharacters = @"0123456789.";
     return [super canPerformAction:action withSender:sender];
 }
 
-#pragma mark - Text field delegate methods
+#pragma mark - UITextFieldDelegate methods
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {

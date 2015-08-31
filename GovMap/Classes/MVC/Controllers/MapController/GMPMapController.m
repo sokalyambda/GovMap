@@ -43,8 +43,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    [self customizeNavigationItem];
 }
 
 - (void)viewDidAppear:(BOOL)animated

@@ -60,4 +60,11 @@ static NSString *const kSearchWithGeoNumbersControllerSegueIdentifier = @"search
     }
 }
 
+#pragma mark - Actions
+
+- (void)customizeNavigationItem
+{
+    self.navigationItem.title = LOCALIZED(@"Main Menu");
+}
+
 @end
