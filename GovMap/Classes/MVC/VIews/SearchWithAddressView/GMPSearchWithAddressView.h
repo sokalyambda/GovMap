@@ -7,16 +7,23 @@
 //
 
 @class GMPSearchWithAddressView;
+@protocol GMPSearchWithAdressDelegate;
+
+extern NSString *const kCity;
+extern NSString *const kStreet;
+extern NSString *const kHome;
+
+
+@interface GMPSearchWithAddressView : UIView
+
+@property(weak, nonatomic) id<GMPSearchWithAdressDelegate> delegate;
+
+@end
+
 
 @protocol GMPSearchWithAdressDelegate <NSObject>
 
 @optional
 - (void)searchWithAddressView:(GMPSearchWithAddressView *)searchView didPressSearchButtonWithAddress:(NSDictionary *)address;
-
-@end
-
-@interface GMPSearchWithAddressView : UIView
-
-@property(weak, nonatomic) id<GMPSearchWithAdressDelegate> delegate;
 
 @end

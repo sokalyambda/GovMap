@@ -7,11 +7,12 @@
 //
 
 #import "GMPSearchWithGeoNumbersView.h"
+
 #import "UIView+MakeFromXib.h"
 #import "UIView+Shaking.h"
 
-static NSString *const kDefaultLatitudeTextFieldString = @"Latitude";
-static NSString *const kDefaultLongitudeTextFieldString = @"Longitude";
+NSString *const kLatitude = @"Latitude";
+NSString *const kLongitude = @"Longitude";
 static NSString *const kAcceptableCharacters = @"0123456789.";
 
 @interface GMPSearchWithGeoNumbersView () <UITextFieldDelegate>
@@ -73,32 +74,6 @@ static NSString *const kAcceptableCharacters = @"0123456789.";
     return isEqual;
 }
 
-- (void)textFieldDidBeginEditing:(UITextField *)textField
-{
-    if ([textField.text isEqualToString:kDefaultLongitudeTextFieldString] ||
-        [textField.text isEqualToString:kDefaultLatitudeTextFieldString]) {
-        textField.text = @"";
-    }
-}
-
-- (void)textFieldDidEndEditing:(UITextField *)textField
-{
-    if ([textField.text isEqualToString:@""]) {
-        switch (textField.tag) {
-            case 0:
-                textField.text = kDefaultLongitudeTextFieldString;
-                break;
-                
-            case 1:
-                textField.text = kDefaultLatitudeTextFieldString;
-                break;
-                
-            default:
-                break;
-        }
-    }
-}
-
 #pragma mark - Actions
 
 - (IBAction)searchButtonPress:(id)sender
@@ -120,7 +95,7 @@ static NSString *const kAcceptableCharacters = @"0123456789.";
        
         if (areValuesValidated) {
             [self.delegate searchWithGeoNumbersView:self
-                 didPressSearchButtonWithGeoNumbers:@{@"latitude" : latitude, @"longitude" : longitude}];
+                 didPressSearchButtonWithGeoNumbers:@{ kLatitude : latitude, kLongitude : longitude }];
         }
     }
 }

@@ -7,16 +7,22 @@
 //
 
 @class GMPSearchWithGeoNumbersView;
+@protocol GMPSearchWithGeoNumbersDelegate;
+
+extern NSString *const kLatitude;
+extern NSString *const kLongitude;
+
+
+@interface GMPSearchWithGeoNumbersView : UIView
+
+@property(weak, nonatomic) id<GMPSearchWithGeoNumbersDelegate> delegate;
+
+@end
+
 
 @protocol GMPSearchWithGeoNumbersDelegate <NSObject>
 
 @optional
 - (void)searchWithGeoNumbersView:(GMPSearchWithGeoNumbersView *)searchView didPressSearchButtonWithGeoNumbers:(NSDictionary *)geoNumbers;
-
-@end
-
-@interface GMPSearchWithGeoNumbersView : UIView
-
-@property(weak, nonatomic) id<GMPSearchWithGeoNumbersDelegate> delegate;
 
 @end

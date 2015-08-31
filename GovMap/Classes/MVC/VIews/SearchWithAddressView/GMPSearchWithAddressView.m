@@ -7,12 +7,13 @@
 //
 
 #import "GMPSearchWithAddressView.h"
+
 #import "UIView+MakeFromXib.h"
 #import "UIView+Shaking.h"
 
-static NSString *const kDefaultCityTextFieldString = @"City";
-static NSString *const kDefaultStreetTextFieldString = @"Street";
-static NSString *const kDefaultHomeTextFieldString = @"Home";
+NSString *const kCity = @"City";
+NSString *const kStreet = @"Street";
+NSString *const kHome = @"Home";
 
 @interface GMPSearchWithAddressView () <UITextFieldDelegate>
 
@@ -56,48 +57,21 @@ static NSString *const kDefaultHomeTextFieldString = @"Home";
     return YES;
 }
 
-- (void)textFieldDidBeginEditing:(UITextField *)textField
-{
-    textField.text = @"";
-}
-
-- (void)textFieldDidEndEditing:(UITextField *)textField
-{
-    if ([textField.text isEqualToString:@""]) {
-        switch (textField.tag) {
-            case 0:
-                textField.text = kDefaultCityTextFieldString;
-                break;
-                
-            case 1:
-                textField.text = kDefaultStreetTextFieldString;
-                break;
-                
-            case 2:
-                textField.text = kDefaultHomeTextFieldString;
-                break;
-                
-            default:
-                break;
-        }
-    }
-}
-
 #pragma mark - Actions
 
 - (IBAction)searchButtonPress:(id)sender
 {
     BOOL areValuesValidated = YES;
     
-    if ([self.cityTextField.text isEqualToString:kDefaultCityTextFieldString]) {
+    if (self.cityTextField.text.length == 0) {
         [self.cityTextField shakeView];
         areValuesValidated = NO;
     }
-    if ([self.streetTextField.text isEqualToString:kDefaultStreetTextFieldString]) {
+    if (self.streetTextField.text.length == 0) {
         [self.streetTextField shakeView];
         areValuesValidated = NO;
     }
-    if ([self.homeTextField.text isEqualToString:kDefaultHomeTextFieldString]) {
+    if (self.homeTextField.text.length == 0) {
         [self.homeTextField shakeView];
         areValuesValidated = NO;
     }
@@ -105,9 +79,9 @@ static NSString *const kDefaultHomeTextFieldString = @"Home";
     if (areValuesValidated) {
         if ([self.delegate respondsToSelector:@selector(searchWithAddressView:didPressSearchButtonWithAddress:)]) {
             [self.delegate searchWithAddressView:self
-                 didPressSearchButtonWithAddress:@{ @"city" : self.cityTextField.text,
-                                                    @"street" : self.streetTextField.text,
-                                                    @"home" : self.homeTextField.text }];
+                 didPressSearchButtonWithAddress:@{ kCity : self.cityTextField.text,
+                                                    kStreet : self.streetTextField.text,
+                                                    kHome : self.homeTextField.text }];
         }
     }
 }

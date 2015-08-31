@@ -27,8 +27,7 @@
 
 - (void)searchWithGeoNumbersView:(GMPSearchWithGeoNumbersView *)searchView didPressSearchButtonWithGeoNumbers:(NSDictionary *)geoNumbers
 {
-    NSLog([NSString stringWithFormat:@"Latitute: %@ Longitude: %@",
-           geoNumbers[@"latitude"], geoNumbers[@"longitude"]]);
+    NSLog(@"Latitute: %@ Longitude: %@", geoNumbers[kLatitude], geoNumbers[kLongitude]);
 }
 
 @end

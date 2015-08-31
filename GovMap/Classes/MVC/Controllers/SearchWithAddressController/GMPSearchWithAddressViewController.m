@@ -26,8 +26,7 @@
 #pragma mark - GMPSearchWithAddressDelegate methods
 
 - (void)searchWithAddressView:(GMPSearchWithAddressView *)searchView didPressSearchButtonWithAddress:(NSDictionary *)address{
-    NSLog([NSString stringWithFormat:@"City: %@, street: %@, home: %@",
-           address[@"city"], address[@"street"], address[@"home"]]);
+    NSLog(@"City: %@, street: %@, home: %@", address[kCity], address[kStreet], address[kHome]);
 }
 
 @end

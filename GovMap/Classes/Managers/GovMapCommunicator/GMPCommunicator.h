@@ -9,20 +9,14 @@
 #import <Foundation/Foundation.h>
 #import <WebKit/WebKit.h>
 
-@interface GMPCadastre : NSObject
+@class GMPCadastre;
 
-@property (nonatomic, readwrite) int major;
-@property (nonatomic, readwrite) int minor;
-
-- (instancetype)initWithMajor:(int)major minor:(int)minor;
-+ (instancetype)cadastreWithMajor:(int)major minor:(int)minor;
-
-@end
+typedef void(^CommunicatorCompletionBlock)(GMPCadastre *, NSError *);
 
 @interface GMPCommunicator : NSObject
 
 + (instancetype)sharedInstance;
 - (void)requestCadastralNumbersWithAddress:(NSString *)address
-                           completionBlock:(void(^)(GMPCadastre *cadastralInfo, NSError *error))completionBlock;
+                           completionBlock:(CommunicatorCompletionBlock)completionBlock;
 
 @end

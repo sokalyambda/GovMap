@@ -14,6 +14,7 @@
 		3E820ABE1B90379600EDEEA4 /* GMPSearchWithGeoNumbersView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E820ABD1B90379600EDEEA4 /* GMPSearchWithGeoNumbersView.m */; };
 		3E820AC01B9039BA00EDEEA4 /* GMPSearchWithGeoNumbersView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E820ABF1B9039BA00EDEEA4 /* GMPSearchWithGeoNumbersView.xib */; };
 		3E820AC41B903FF700EDEEA4 /* GMPSearchWithGeoNumbersController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E820AC31B903FF700EDEEA4 /* GMPSearchWithGeoNumbersController.m */; };
+		3EC10CAF1B94444000EF2DF6 /* GMPCadastre.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC10CAE1B94444000EF2DF6 /* GMPCadastre.m */; };
 		3EFC40CC1B942FE700EEBC65 /* GMPCommunicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EFC40CB1B942FE700EEBC65 /* GMPCommunicator.m */; };
 		58C1311A1B8EF5A60095045A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C131191B8EF5A60095045A /* main.m */; };
 		58C1311D1B8EF5A60095045A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C1311C1B8EF5A60095045A /* AppDelegate.m */; };
@@ -72,6 +73,8 @@
 		3E820ABF1B9039BA00EDEEA4 /* GMPSearchWithGeoNumbersView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GMPSearchWithGeoNumbersView.xib; path = Classes/MVC/VIews/SearchWithGeoNumbersView/GMPSearchWithGeoNumbersView.xib; sourceTree = "<group>"; };
 		3E820AC21B903FF700EDEEA4 /* GMPSearchWithGeoNumbersController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GMPSearchWithGeoNumbersController.h; path = Classes/MVC/Controllers/SearchWithGeoNubersController/GMPSearchWithGeoNumbersController.h; sourceTree = "<group>"; };
 		3E820AC31B903FF700EDEEA4 /* GMPSearchWithGeoNumbersController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GMPSearchWithGeoNumbersController.m; path = Classes/MVC/Controllers/SearchWithGeoNubersController/GMPSearchWithGeoNumbersController.m; sourceTree = "<group>"; };
+		3EC10CAD1B94444000EF2DF6 /* GMPCadastre.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GMPCadastre.h; path = Classes/MVC/Models/Cadastre/GMPCadastre.h; sourceTree = "<group>"; };
+		3EC10CAE1B94444000EF2DF6 /* GMPCadastre.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GMPCadastre.m; path = Classes/MVC/Models/Cadastre/GMPCadastre.m; sourceTree = "<group>"; };
 		3EFC40CA1B942FE700EEBC65 /* GMPCommunicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GMPCommunicator.h; path = Classes/Managers/GovMapCommunicator/GMPCommunicator.h; sourceTree = "<group>"; };
 		3EFC40CB1B942FE700EEBC65 /* GMPCommunicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GMPCommunicator.m; path = Classes/Managers/GovMapCommunicator/GMPCommunicator.m; sourceTree = "<group>"; };
 		58C131141B8EF5A60095045A /* GovMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GovMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -210,6 +213,15 @@
 				3E820AC31B903FF700EDEEA4 /* GMPSearchWithGeoNumbersController.m */,
 			);
 			name = SearchWithGeoNumbersController;
+			sourceTree = "<group>";
+		};
+		3EC10CA91B94428400EF2DF6 /* Cadastre */ = {
+			isa = PBXGroup;
+			children = (
+				3EC10CAD1B94444000EF2DF6 /* GMPCadastre.h */,
+				3EC10CAE1B94444000EF2DF6 /* GMPCadastre.m */,
+			);
+			name = Cadastre;
 			sourceTree = "<group>";
 		};
 		3EFC40C61B942EE700EEBC65 /* GovMapCommunicator */ = {
@@ -380,6 +392,7 @@
 		58C131471B8EF79B0095045A /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				3EC10CA91B94428400EF2DF6 /* Cadastre */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -820,6 +833,7 @@
 				58C131701B8F03130095045A /* UIFont+Styles.m in Sources */,
 				D39029B41B9060B80097C4B6 /* GMPUserAnnotation.m in Sources */,
 				58C131611B8F02C10095045A /* UIView+SoftRemoving.m in Sources */,
+				3EC10CAF1B94444000EF2DF6 /* GMPCadastre.m in Sources */,
 				58C131831B8F03B00095045A /* NSString+ContainsString.m in Sources */,
 				3EFC40CC1B942FE700EEBC65 /* GMPCommunicator.m in Sources */,
 				58C1318C1B8F041F0095045A /* GMPAlertService.m in Sources */,

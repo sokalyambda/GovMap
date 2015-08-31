@@ -7,36 +7,19 @@
 //
 
 #import "GMPCommunicator.h"
-
-@implementation GMPCadastre
-
-- (instancetype)initWithMajor:(int)major minor:(int)minor
-{
-    if (self = [super init]) {
-        _major = major;
-        _minor = minor;
-    }
-    return self;
-}
-
-+ (instancetype)cadastreWithMajor:(int)major minor:(int)minor
-{
-    return [[self alloc] initWithMajor:major minor:minor];
-}
-
-@end
+#import "GMPCadastre.h"
 
 static NSString *const kURLString = @"http://www.govmap.gov.il";
-static int const kSearchHTMLFrameIndex = 13;
+static NSInteger const kSearchHTMLFrameIndex = 13;
 
 @interface GMPCommunicator () <UIWebViewDelegate>
 
 @property (strong, nonatomic) UIWebView *webView;
 @property (strong, nonatomic) NSURLRequest *loadGovMapRequest;
-@property (strong, nonatomic) void(^completionBlock)(GMPCadastre *, NSError*);
+@property (copy, nonatomic) CommunicatorCompletionBlock completionBlock;
 
-@property (readwrite, nonatomic) BOOL isGovMapContentLoaded;
-@property (readwrite, nonatomic) int loadedHTMLFramesCounter;
+@property (assign, readwrite, nonatomic) BOOL isGovMapContentLoaded;
+@property (assign, readwrite, nonatomic) NSInteger loadedHTMLFramesCounter;
 
 @end
 
@@ -76,7 +59,7 @@ static int const kSearchHTMLFrameIndex = 13;
 #pragma mark - Public
 
 - (void)requestCadastralNumbersWithAddress:(NSString *)address
-                           completionBlock:(void(^)(GMPCadastre *cadastralInfo, NSError *error))completionBlock
+                           completionBlock:(CommunicatorCompletionBlock)completionBlock
 {
 #ifdef DEBUG
     address = @"מבצע נחשון 3 ראשון לציון";
@@ -103,17 +86,21 @@ static int const kSearchHTMLFrameIndex = 13;
 
 - (void)checkInnerText
 {
+    if (!self.completionBlock) {
+        return;
+    }
+    
     NSString *cadastralData = [self.webView stringByEvaluatingJavaScriptFromString:
                                @"document.getElementById('divTableResultsFromLink').innerText"];
     
-    if (![cadastralData isEqualToString:@""]) {
+    if (cadastralData.length != 0) {
         NSArray *cadastalNumbersWithText = [cadastralData componentsSeparatedByString:@","];
         NSString *majorNumber = [[((NSString *)cadastalNumbersWithText[0]) componentsSeparatedByCharactersInSet:
                                   [[NSCharacterSet decimalDigitCharacterSet] invertedSet]] componentsJoinedByString:@""];
         NSString *minorNumber = [[((NSString *)cadastalNumbersWithText[1]) componentsSeparatedByCharactersInSet:
                                   [[NSCharacterSet decimalDigitCharacterSet] invertedSet]] componentsJoinedByString:@""];
         
-        self.completionBlock([GMPCadastre cadastreWithMajor:majorNumber.intValue minor:minorNumber.intValue], nil);
+        self.completionBlock([GMPCadastre cadastreWithMajor:majorNumber.integerValue minor:minorNumber.integerValue], nil);
     }
     else {
         NSLog(@"Empty cadastral data");
@@ -121,6 +108,9 @@ static int const kSearchHTMLFrameIndex = 13;
     }
 }
 
+/**
+ *  Reload all govmap.gov.il data
+ */
 - (void)reloadContent
 {
     self.isGovMapContentLoaded = NO;
