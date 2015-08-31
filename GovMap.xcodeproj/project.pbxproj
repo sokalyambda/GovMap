@@ -14,6 +14,7 @@
 		3E820ABE1B90379600EDEEA4 /* GMPSearchWithGeoNumbersView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E820ABD1B90379600EDEEA4 /* GMPSearchWithGeoNumbersView.m */; };
 		3E820AC01B9039BA00EDEEA4 /* GMPSearchWithGeoNumbersView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E820ABF1B9039BA00EDEEA4 /* GMPSearchWithGeoNumbersView.xib */; };
 		3E820AC41B903FF700EDEEA4 /* GMPSearchWithGeoNumbersController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E820AC31B903FF700EDEEA4 /* GMPSearchWithGeoNumbersController.m */; };
+		3EFC40CC1B942FE700EEBC65 /* GMPCommunicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EFC40CB1B942FE700EEBC65 /* GMPCommunicator.m */; };
 		58C1311A1B8EF5A60095045A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C131191B8EF5A60095045A /* main.m */; };
 		58C1311D1B8EF5A60095045A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C1311C1B8EF5A60095045A /* AppDelegate.m */; };
 		58C131231B8EF5A60095045A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58C131211B8EF5A60095045A /* Main.storyboard */; };
@@ -69,6 +70,8 @@
 		3E820ABF1B9039BA00EDEEA4 /* GMPSearchWithGeoNumbersView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GMPSearchWithGeoNumbersView.xib; path = Classes/MVC/VIews/SearchWithGeoNumbersView/GMPSearchWithGeoNumbersView.xib; sourceTree = "<group>"; };
 		3E820AC21B903FF700EDEEA4 /* GMPSearchWithGeoNumbersController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GMPSearchWithGeoNumbersController.h; path = Classes/MVC/Controllers/SearchWithGeoNubersController/GMPSearchWithGeoNumbersController.h; sourceTree = "<group>"; };
 		3E820AC31B903FF700EDEEA4 /* GMPSearchWithGeoNumbersController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GMPSearchWithGeoNumbersController.m; path = Classes/MVC/Controllers/SearchWithGeoNubersController/GMPSearchWithGeoNumbersController.m; sourceTree = "<group>"; };
+		3EFC40CA1B942FE700EEBC65 /* GMPCommunicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GMPCommunicator.h; path = Classes/Managers/GovMapCommunicator/GMPCommunicator.h; sourceTree = "<group>"; };
+		3EFC40CB1B942FE700EEBC65 /* GMPCommunicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GMPCommunicator.m; path = Classes/Managers/GovMapCommunicator/GMPCommunicator.m; sourceTree = "<group>"; };
 		58C131141B8EF5A60095045A /* GovMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GovMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58C131181B8EF5A60095045A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		58C131191B8EF5A60095045A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -203,6 +206,15 @@
 			name = SearchWithGeoNumbersController;
 			sourceTree = "<group>";
 		};
+		3EFC40C61B942EE700EEBC65 /* GovMapCommunicator */ = {
+			isa = PBXGroup;
+			children = (
+				3EFC40CA1B942FE700EEBC65 /* GMPCommunicator.h */,
+				3EFC40CB1B942FE700EEBC65 /* GMPCommunicator.m */,
+			);
+			name = GovMapCommunicator;
+			sourceTree = "<group>";
+		};
 		58C1310B1B8EF5A50095045A = {
 			isa = PBXGroup;
 			children = (
@@ -307,6 +319,7 @@
 		58C131411B8EF7760095045A /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				3EFC40C61B942EE700EEBC65 /* GovMapCommunicator */,
 				58C1314A1B8EF7DB0095045A /* LocationObserver */,
 			);
 			name = Managers;
@@ -780,6 +793,7 @@
 				58C131701B8F03130095045A /* UIFont+Styles.m in Sources */,
 				58C131611B8F02C10095045A /* UIView+SoftRemoving.m in Sources */,
 				58C131831B8F03B00095045A /* NSString+ContainsString.m in Sources */,
+				3EFC40CC1B942FE700EEBC65 /* GMPCommunicator.m in Sources */,
 				58C1318C1B8F041F0095045A /* GMPAlertService.m in Sources */,
 				58C131971B8F04FB0095045A /* GMPBaseNavigationController.m in Sources */,
 			);
