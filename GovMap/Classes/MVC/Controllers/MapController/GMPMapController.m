@@ -15,7 +15,7 @@
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (strong, nonatomic) GMPLocationObserver *locationObserver;
-@property (strong, nonatomic) GMPUserAnnotation * annotationView;
+@property (strong, nonatomic) GMPUserAnnotation * annotation;
 
 @end
 
@@ -28,21 +28,20 @@
     [super viewDidLoad];
     
     self.locationObserver = [GMPLocationObserver sharedInstance];
-    [self.locationObserver startUpdatingLocation];
 
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self setupMapAttributesForCoordinate:self.locationObserver.currentLocation.coordinate];
 }
 
 #pragma mark - MKMapViewDelegate
 
 -(void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
 {
-    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(userLocation.coordinate, 800, 800);
-    [self.mapView setRegion:[self.mapView regionThatFits:region] animated:YES];
-    
-    self.annotationView = [[GMPUserAnnotation alloc]initWithLocation:CLLocationCoordinate2DMake(userLocation.coordinate.latitude, userLocation.coordinate.longitude)];
-    [self.mapView addAnnotation:self.annotationView];
-    
-    
+    [self setupMapAttributesForCoordinate:userLocation.location.coordinate];
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
@@ -59,7 +58,7 @@
             pinView.pinColor = MKPinAnnotationColorRed;
             pinView.animatesDrop = YES;
             pinView.draggable = YES;
-          //  pinView.canShowCallout = YES;
+            pinView.canShowCallout = YES;
 
         } else {
             pinView.annotation = annotation;
@@ -67,6 +66,22 @@
         return pinView;
     }
     return nil;
+}
+
+- (void)setupMapAttributesForCoordinate:(CLLocationCoordinate2D)coordinate
+{
+    __weak typeof(self) weakSelf = self;
+    
+    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(coordinate, 800, 800);
+    [self.mapView setRegion:[self.mapView regionThatFits:region] animated:YES];
+    
+    CLLocation *location = [[CLLocation alloc]initWithLatitude:coordinate.latitude longitude:coordinate.longitude];
+    [self.locationObserver reverseGeocodingForCoordinate:location withResult:^(BOOL success, NSString *address) {
+        if (success) {
+            weakSelf.annotation = [[GMPUserAnnotation alloc]initWithLocation:coordinate title:address];
+            [weakSelf.mapView addAnnotation:self.annotation];
+        }
+    }];
 }
 
 @end

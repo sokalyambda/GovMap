@@ -342,7 +342,7 @@
 		58C131401B8EF76E0095045A /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				D39029B11B9060570097C4B6 /* UserAnnotatationService */,
+				D39029B11B9060570097C4B6 /* UserAnnotatation */,
 				58C1314C1B8EF8090095045A /* SerialViewsConstructor */,
 				58C1314B1B8EF7F50095045A /* AlertsService */,
 			);
@@ -667,13 +667,13 @@
 			name = MapViewController;
 			sourceTree = "<group>";
 		};
-		D39029B11B9060570097C4B6 /* UserAnnotatationService */ = {
+		D39029B11B9060570097C4B6 /* UserAnnotatation */ = {
 			isa = PBXGroup;
 			children = (
 				D39029B21B9060B80097C4B6 /* GMPUserAnnotation.h */,
 				D39029B31B9060B80097C4B6 /* GMPUserAnnotation.m */,
 			);
-			name = UserAnnotatationService;
+			name = UserAnnotatation;
 			sourceTree = "<group>";
 		};
 		D3E534721B8F1DE500C9D87B /* MenuView */ = {
