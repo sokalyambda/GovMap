@@ -18,7 +18,7 @@
 		58A841981B9479180032AEF0 /* GMPSearchWithGeoNumbersView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58A8419A1B9479180032AEF0 /* GMPSearchWithGeoNumbersView.xib */; };
 		58A8419F1B94792D0032AEF0 /* GMPSearchWithAddressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58A841A11B94792D0032AEF0 /* GMPSearchWithAddressView.xib */; };
 		58A841A61B9479410032AEF0 /* GMPMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58A841A81B9479410032AEF0 /* GMPMenuView.xib */; };
-		58A841AE1B9479570032AEF0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 58A841AD1B9479570032AEF0 /* Localizable.strings */; };
+		58A841AF1B947E270032AEF0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 58A841B11B947E270032AEF0 /* Localizable.strings */; };
 		58C1311A1B8EF5A60095045A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C131191B8EF5A60095045A /* main.m */; };
 		58C1311D1B8EF5A60095045A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C1311C1B8EF5A60095045A /* AppDelegate.m */; };
 		58C131231B8EF5A60095045A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58C131211B8EF5A60095045A /* Main.storyboard */; };
@@ -93,7 +93,8 @@
 		58A841A71B9479410032AEF0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/GMPMenuView.xib; sourceTree = "<group>"; };
 		58A841AA1B9479440032AEF0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/GMPMenuView.strings; sourceTree = "<group>"; };
 		58A841AC1B9479460032AEF0 /* he */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = he; path = he.lproj/GMPMenuView.strings; sourceTree = "<group>"; };
-		58A841AD1B9479570032AEF0 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		58A841B01B947E270032AEF0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		58A841B21B947E2B0032AEF0 /* he */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = he; path = he.lproj/Localizable.strings; sourceTree = "<group>"; };
 		58C131141B8EF5A60095045A /* GovMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GovMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58C131181B8EF5A60095045A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		58C131191B8EF5A60095045A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -347,7 +348,7 @@
 			isa = PBXGroup;
 			children = (
 				58C1319D1B8F05FC0095045A /* GovMap-Prefix.pch */,
-				58A841AD1B9479570032AEF0 /* Localizable.strings */,
+				58A841B11B947E270032AEF0 /* Localizable.strings */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -786,7 +787,7 @@
 				58C131231B8EF5A60095045A /* Main.storyboard in Resources */,
 				58A841A61B9479410032AEF0 /* GMPMenuView.xib in Resources */,
 				58A841981B9479180032AEF0 /* GMPSearchWithGeoNumbersView.xib in Resources */,
-				58A841AE1B9479570032AEF0 /* Localizable.strings in Resources */,
+				58A841AF1B947E270032AEF0 /* Localizable.strings in Resources */,
 				58C131281B8EF5A60095045A /* LaunchScreen.xib in Resources */,
 				58A8419F1B94792D0032AEF0 /* GMPSearchWithAddressView.xib in Resources */,
 				58C131251B8EF5A60095045A /* Images.xcassets in Resources */,
@@ -921,6 +922,15 @@
 				58A841AC1B9479460032AEF0 /* he */,
 			);
 			name = GMPMenuView.xib;
+			sourceTree = "<group>";
+		};
+		58A841B11B947E270032AEF0 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				58A841B01B947E270032AEF0 /* en */,
+				58A841B21B947E2B0032AEF0 /* he */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 		58C131211B8EF5A60095045A /* Main.storyboard */ = {
