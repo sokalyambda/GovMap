@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <objects>
@@ -117,6 +116,9 @@
                     <exclude reference="J38-mN-ZT8"/>
                 </mask>
                 <mask key="constraints">
+                    <exclude reference="8CH-Vr-Wrs"/>
+                    <exclude reference="h6C-1P-TtP"/>
+                    <exclude reference="xjS-mf-251"/>
                     <exclude reference="0gx-dT-5VV"/>
                     <exclude reference="4H6-SW-RgN"/>
                     <exclude reference="AU8-Ml-GZN"/>
@@ -124,9 +126,6 @@
                     <exclude reference="L5a-1T-aqn"/>
                     <exclude reference="UPw-sH-hpV"/>
                     <exclude reference="zKR-NL-oDo"/>
-                    <exclude reference="8CH-Vr-Wrs"/>
-                    <exclude reference="h6C-1P-TtP"/>
-                    <exclude reference="xjS-mf-251"/>
                 </mask>
             </variation>
             <variation key="heightClass=regular-widthClass=compact">
@@ -136,6 +135,9 @@
                     <include reference="J38-mN-ZT8"/>
                 </mask>
                 <mask key="constraints">
+                    <include reference="8CH-Vr-Wrs"/>
+                    <include reference="h6C-1P-TtP"/>
+                    <include reference="xjS-mf-251"/>
                     <include reference="0gx-dT-5VV"/>
                     <include reference="4H6-SW-RgN"/>
                     <include reference="AU8-Ml-GZN"/>
@@ -143,9 +145,6 @@
                     <include reference="L5a-1T-aqn"/>
                     <include reference="UPw-sH-hpV"/>
                     <include reference="zKR-NL-oDo"/>
-                    <include reference="8CH-Vr-Wrs"/>
-                    <include reference="h6C-1P-TtP"/>
-                    <include reference="xjS-mf-251"/>
                 </mask>
             </variation>
         </view>

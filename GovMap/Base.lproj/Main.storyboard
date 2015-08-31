@@ -20,11 +20,69 @@
                     <navigationItem key="navigationItem" id="OaV-2z-Ig1"/>
                     <connections>
                         <outlet property="menuView" destination="GhP-sx-kAC" id="xJE-vg-XF1"/>
+                        <segue destination="hbg-PG-zFK" kind="show" identifier="mapControllerSegue" id="w6O-0n-4cq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="udd-9X-EZe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1180.5" y="398.25"/>
+            <point key="canvasLocation" x="1069.5" y="398.25"/>
+        </scene>
+        <!--Map Controller-->
+        <scene sceneID="SVp-iz-2Jt">
+            <objects>
+                <viewController id="hbg-PG-zFK" customClass="GMPMapController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="RzA-sv-IHg"/>
+                        <viewControllerLayoutGuide type="bottom" id="g93-CV-VaB"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="qod-Hu-Sj4">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Cv-NS-JWU">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <connections>
+                                    <outlet property="delegate" destination="hbg-PG-zFK" id="hN9-e1-0Z3"/>
+                                </connections>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="g93-CV-VaB" firstAttribute="top" secondItem="4Cv-NS-JWU" secondAttribute="bottom" id="A0X-hT-c0w"/>
+                            <constraint firstItem="4Cv-NS-JWU" firstAttribute="top" secondItem="qod-Hu-Sj4" secondAttribute="top" id="XQR-aY-M0K"/>
+                            <constraint firstItem="4Cv-NS-JWU" firstAttribute="leading" secondItem="qod-Hu-Sj4" secondAttribute="leading" id="uAP-O2-Qhw"/>
+                            <constraint firstAttribute="trailing" secondItem="4Cv-NS-JWU" secondAttribute="trailing" id="xg2-Zn-3Vo"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="4Cv-NS-JWU"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="A0X-hT-c0w"/>
+                                <exclude reference="XQR-aY-M0K"/>
+                                <exclude reference="uAP-O2-Qhw"/>
+                                <exclude reference="xg2-Zn-3Vo"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="4Cv-NS-JWU"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="A0X-hT-c0w"/>
+                                <include reference="XQR-aY-M0K"/>
+                                <include reference="uAP-O2-Qhw"/>
+                                <include reference="xg2-Zn-3Vo"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="4Cv-NS-JWU" id="bKt-cb-Wy3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GmV-g7-uRa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1804.5" y="398.25"/>
         </scene>
         <!--Base Navigation Controller-->
         <scene sceneID="Ue7-h0-Mdz">

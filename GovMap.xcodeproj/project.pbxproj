@@ -38,6 +38,8 @@
 		58C131971B8F04FB0095045A /* GMPBaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C131961B8F04FB0095045A /* GMPBaseNavigationController.m */; };
 		58C1319B1B8F054A0095045A /* GMPMainMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C1319A1B8F054A0095045A /* GMPMainMenuController.m */; };
 		58C131A11B8F09C80095045A /* GMPSplashScreenController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C131A01B8F09C80095045A /* GMPSplashScreenController.m */; };
+		D39029AC1B9050A30097C4B6 /* GMPMapController.m in Sources */ = {isa = PBXBuildFile; fileRef = D39029AB1B9050A30097C4B6 /* GMPMapController.m */; };
+		D39029B41B9060B80097C4B6 /* GMPUserAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = D39029B31B9060B80097C4B6 /* GMPUserAnnotation.m */; };
 		D3E5347B1B8F39FA00C9D87B /* GMPMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E5347A1B8F39FA00C9D87B /* GMPMenuView.m */; };
 		D3E5347D1B8F3A1500C9D87B /* GMPMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3E5347C1B8F3A1500C9D87B /* GMPMenuView.xib */; };
 /* End PBXBuildFile section */
@@ -112,6 +114,10 @@
 		58C1319F1B8F09C80095045A /* GMPSplashScreenController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GMPSplashScreenController.h; path = Classes/MVC/Controllers/SplashScreenController/GMPSplashScreenController.h; sourceTree = "<group>"; };
 		58C131A01B8F09C80095045A /* GMPSplashScreenController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GMPSplashScreenController.m; path = Classes/MVC/Controllers/SplashScreenController/GMPSplashScreenController.m; sourceTree = "<group>"; };
 		A3EC1D9E43C52520F2972EB0 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		D39029AA1B9050A30097C4B6 /* GMPMapController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GMPMapController.h; path = Classes/MVC/Controllers/MapController/GMPMapController.h; sourceTree = "<group>"; };
+		D39029AB1B9050A30097C4B6 /* GMPMapController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GMPMapController.m; path = Classes/MVC/Controllers/MapController/GMPMapController.m; sourceTree = "<group>"; };
+		D39029B21B9060B80097C4B6 /* GMPUserAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GMPUserAnnotation.h; path = Classes/Services/UserAnnotationServise/GMPUserAnnotation.h; sourceTree = "<group>"; };
+		D39029B31B9060B80097C4B6 /* GMPUserAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GMPUserAnnotation.m; path = Classes/Services/UserAnnotationServise/GMPUserAnnotation.m; sourceTree = "<group>"; };
 		D3E534791B8F39FA00C9D87B /* GMPMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GMPMenuView.h; path = Classes/MVC/Views/MenuView/GMPMenuView.h; sourceTree = "<group>"; };
 		D3E5347A1B8F39FA00C9D87B /* GMPMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GMPMenuView.m; path = Classes/MVC/Views/MenuView/GMPMenuView.m; sourceTree = "<group>"; };
 		D3E5347C1B8F3A1500C9D87B /* GMPMenuView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GMPMenuView.xib; sourceTree = "<group>"; };
@@ -259,6 +265,7 @@
 		58C131401B8EF76E0095045A /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				D39029B11B9060570097C4B6 /* UserAnnotatationService */,
 				58C1314C1B8EF8090095045A /* SerialViewsConstructor */,
 				58C1314B1B8EF7F50095045A /* AlertsService */,
 			);
@@ -337,6 +344,7 @@
 		58C131491B8EF7C60095045A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				D39029A91B90504D0097C4B6 /* MapViewController */,
 				58C1319E1B8F097A0095045A /* SplashScreenController */,
 				58C131981B8F051B0095045A /* MainMenuController */,
 				58C131911B8F046A0095045A /* BaseNavigationController */,
@@ -567,6 +575,24 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		D39029A91B90504D0097C4B6 /* MapViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D39029AA1B9050A30097C4B6 /* GMPMapController.h */,
+				D39029AB1B9050A30097C4B6 /* GMPMapController.m */,
+			);
+			name = MapViewController;
+			sourceTree = "<group>";
+		};
+		D39029B11B9060570097C4B6 /* UserAnnotatationService */ = {
+			isa = PBXGroup;
+			children = (
+				D39029B21B9060B80097C4B6 /* GMPUserAnnotation.h */,
+				D39029B31B9060B80097C4B6 /* GMPUserAnnotation.m */,
+			);
+			name = UserAnnotatationService;
+			sourceTree = "<group>";
+		};
 		D3E534721B8F1DE500C9D87B /* MenuView */ = {
 			isa = PBXGroup;
 			children = (
@@ -722,6 +748,7 @@
 				58C1311D1B8EF5A60095045A /* AppDelegate.m in Sources */,
 				58C1318F1B8F043B0095045A /* GMPLocationObserver.m in Sources */,
 				58C1316A1B8F02F00095045A /* UIView+MakeFromXib.m in Sources */,
+				D39029AC1B9050A30097C4B6 /* GMPMapController.m in Sources */,
 				58C1319B1B8F054A0095045A /* GMPMainMenuController.m in Sources */,
 				58C1311A1B8EF5A60095045A /* main.m in Sources */,
 				58C131A11B8F09C80095045A /* GMPSplashScreenController.m in Sources */,
@@ -732,6 +759,7 @@
 				58C1316D1B8F03030095045A /* UIImage+Base64Encoding.m in Sources */,
 				58C131801B8F03A10095045A /* NSString+Base64Decoding.m in Sources */,
 				58C131701B8F03130095045A /* UIFont+Styles.m in Sources */,
+				D39029B41B9060B80097C4B6 /* GMPUserAnnotation.m in Sources */,
 				58C131611B8F02C10095045A /* UIView+SoftRemoving.m in Sources */,
 				58C131831B8F03B00095045A /* NSString+ContainsString.m in Sources */,
 				58C1318C1B8F041F0095045A /* GMPAlertService.m in Sources */,
@@ -813,7 +841,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -850,7 +878,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -865,7 +893,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GovMap/GovMap-Prefix.pch";
 				INFOPLIST_FILE = GovMap/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -879,7 +907,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GovMap/GovMap-Prefix.pch";
 				INFOPLIST_FILE = GovMap/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
