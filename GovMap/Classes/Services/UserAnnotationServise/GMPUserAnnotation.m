@@ -27,4 +27,8 @@
     coordinate = newCoordinate;
 }
 
+- (void)setTitle:(NSString *)newTitle{
+    title = newTitle;
+}
+
 @end
