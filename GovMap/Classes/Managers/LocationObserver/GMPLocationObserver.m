@@ -72,10 +72,14 @@
          if (!error && placemarks.count > 0) {
              CLPlacemark *placemark = [placemarks objectAtIndex:0];
              NSString  *addres = [NSString stringWithFormat:@"%@ %@", placemark.locality, placemark.thoroughfare];
-             result(YES, addres);
+             if (result) {
+                result(YES, addres);
+             }
              
          } else {
-             result(NO, nil);
+             if (result) {
+                 result(NO, nil);
+             }
          }
      }];
 }
