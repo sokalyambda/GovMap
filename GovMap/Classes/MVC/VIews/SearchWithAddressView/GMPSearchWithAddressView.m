@@ -7,6 +7,7 @@
 //
 
 #import "GMPSearchWithAddressView.h"
+#import "GMPSearchTextField.h"
 
 #import "UIView+MakeFromXib.h"
 #import "UIView+Shaking.h"
@@ -19,9 +20,9 @@ NSString *const kHome = @"Home";
 
 @property (weak, nonatomic) IBOutlet UIView *containerView;
 
-@property (weak, nonatomic) IBOutlet UITextField *cityTextField;
-@property (weak, nonatomic) IBOutlet UITextField *streetTextField;
-@property (weak, nonatomic) IBOutlet UITextField *homeTextField;
+@property (weak, nonatomic) IBOutlet GMPSearchTextField *cityTextField;
+@property (weak, nonatomic) IBOutlet GMPSearchTextField *streetTextField;
+@property (weak, nonatomic) IBOutlet GMPSearchTextField *homeTextField;
 
 @property (strong, nonatomic) UITapGestureRecognizer *tap;
 
@@ -37,12 +38,6 @@ NSString *const kHome = @"Home";
         _containerView = [[self class] makeFromXibWithFileOwner:self];
         _containerView.frame = self.frame;
         [self addSubview:_containerView];
-        
-        _tap = [[UITapGestureRecognizer alloc]
-               initWithTarget:self
-               action:@selector(dismissKeyboard)];
-        
-        [self addGestureRecognizer:_tap];
     }
     return self;
 }
@@ -51,7 +46,13 @@ NSString *const kHome = @"Home";
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    [self dismissKeyboard];
+    if ([self.cityTextField isFirstResponder]) {
+        [self.streetTextField becomeFirstResponder];
+    } else if ([self.streetTextField isFirstResponder]) {
+        [self.homeTextField becomeFirstResponder];
+    } else if ([self.homeTextField isFirstResponder]) {
+        [self.homeTextField resignFirstResponder];
+    }
     return YES;
 }
 
@@ -60,14 +61,6 @@ NSString *const kHome = @"Home";
 - (IBAction)searchButtonPress:(id)sender
 {
     [self performSearchAction];
-}
-
-/**
- *  End view's editing
- */
-- (void)dismissKeyboard
-{
-    [self endEditing:YES];
 }
 
 /**
@@ -99,17 +92,5 @@ NSString *const kHome = @"Home";
         }
     }
 }
-//
-//- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event
-//{
-//    if (![super pointInside:point withEvent:nil])
-//    {
-//        
-//        [self dismissKeyboard];
-//        return self;
-//    }
-//    
-//    return [super hitTest:point withEvent:event];
-//}
 
 @end
