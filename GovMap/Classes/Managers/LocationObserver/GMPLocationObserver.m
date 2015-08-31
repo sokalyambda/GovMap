@@ -11,8 +11,8 @@
 
 @interface GMPLocationObserver ()<CLLocationManagerDelegate>
 
-@property(strong, nonatomic) CLLocationManager *locationManager;
-
+@property (strong, nonatomic) CLLocationManager *locationManager;
+@property (strong, nonatomic) CLGeocoder *geocoder;
 
 @end
 
@@ -34,14 +34,15 @@
     self = [super init];
     if (self) {
         _locationManager = [[CLLocationManager alloc] init];
+        _geocoder = [[CLGeocoder alloc] init];
         
         _locationManager.delegate           = self;
         _locationManager.distanceFilter     = kCLDistanceFilterNone;
         _locationManager.desiredAccuracy    = kCLLocationAccuracyKilometer;
-        _updatedLocation = nil;
+        _currentLocation = nil;
         
         [_locationManager requestWhenInUseAuthorization];
-        [_locationManager startUpdatingLocation];
+        [self startUpdatingLocation];
         
     }
     return self;
@@ -51,7 +52,7 @@
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
 {
-    self.updatedLocation = manager.location;
+    self.currentLocation = manager.location;
 }
 
 #pragma mark - Public methods
@@ -59,6 +60,24 @@
 - (void)startUpdatingLocation
 {
     [self.locationManager startUpdatingLocation];
+    self.currentLocation = self.locationManager.location;
+
+}
+
+- (void)reverseGeocodingForCoordinate:(CLLocation *)location withResult: (ReverseGeocodingResult)result;
+{
+    [self.geocoder reverseGeocodeLocation:location completionHandler:
+     ^(NSArray *placemarks, NSError *error) {
+         
+         if (!error && placemarks.count > 0) {
+             CLPlacemark *placemark = [placemarks objectAtIndex:0];
+             NSString  *addres = [NSString stringWithFormat:@"%@ %@", placemark.locality, placemark.thoroughfare];
+             result(YES, addres);
+             
+         } else {
+             result(NO, nil);
+         }
+     }];
 }
 
 @end
