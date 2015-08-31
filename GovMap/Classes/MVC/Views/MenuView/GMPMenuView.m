@@ -11,7 +11,7 @@
 
 @interface GMPMenuView ()
 
-@property(weak, nonatomic) IBOutlet UIView *containerView;
+@property (weak, nonatomic) IBOutlet UIView *containerView;
 
 @end
 

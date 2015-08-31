@@ -7,7 +7,11 @@
 //
 
 #import "GMPMainMenuController.h"
+#import "GMPLocationObserver.h"
 #import "GMPMenuView.h"
+
+
+static NSString *const kMapControllerSegueIdentifier = @"mapControllerSegue";
 
 @interface GMPMainMenuController ()<GMPMenuViewDelegate>
 
@@ -23,7 +27,7 @@
 {
     [super viewDidLoad];
     self.menuView.delegate = self;
-    
+   
 }
 
 #pragma mark - GMPMenuViewDelegate methods
@@ -35,7 +39,7 @@
 
 - (void)menuViewDidPressSecondButton:(GMPMenuView *)menuView
 {
-    NSLog(@"secondButtonDidPressed");
+    [self performSegueWithIdentifier:kMapControllerSegueIdentifier sender:self];
 }
 
 - (void)menuViewDidPressThirdButton:(GMPMenuView *)menuView
