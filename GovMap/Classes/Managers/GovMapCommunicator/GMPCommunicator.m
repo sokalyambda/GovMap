@@ -8,6 +8,7 @@
 
 #import "GMPCommunicator.h"
 #import "GMPCadastre.h"
+#import "GMPCommunicatorDelegate.h"
 
 static NSString *const kURLString = @"http://www.govmap.gov.il";
 static NSInteger const kSearchHTMLFrameIndex = 13;
@@ -18,7 +19,7 @@ static NSInteger const kSearchHTMLFrameIndex = 13;
 @property (strong, nonatomic) NSURLRequest *loadGovMapRequest;
 @property (copy, nonatomic) CommunicatorCompletionBlock completionBlock;
 
-@property (assign, readwrite, nonatomic) BOOL isGovMapContentLoaded;
+@property (assign, readwrite, nonatomic) BOOL isReadyForRequests;
 @property (assign, readwrite, nonatomic) NSInteger loadedHTMLFramesCounter;
 
 @end
@@ -43,7 +44,7 @@ static NSInteger const kSearchHTMLFrameIndex = 13;
 - (instancetype)init
 {
     if (self = [super init]) {
-        _isGovMapContentLoaded = NO;
+        _isReadyForRequests = NO;
         _loadedHTMLFramesCounter = 0;
         
         NSURL *url = [NSURL URLWithString:kURLString];
@@ -69,17 +70,27 @@ static NSInteger const kSearchHTMLFrameIndex = 13;
     
     NSString *jsSetTextFieldValue = [NSString stringWithFormat:
                                      @"document.getElementById('tbSearchWord').value = '%@'", address];
-    [self.webView stringByEvaluatingJavaScriptFromString:jsSetTextFieldValue];
-    [self.webView stringByEvaluatingJavaScriptFromString:@"FS_Search()"];
+    NSLog([self.webView stringByEvaluatingJavaScriptFromString:jsSetTextFieldValue]);
+    NSLog([self.webView stringByEvaluatingJavaScriptFromString:@"FS_Search()"]);
     [self performSelector:@selector(fillTextField) withObject:self afterDelay:1.0];
+}
+
+/**
+ *  Reload all govmap.gov.il data
+ */
+- (void)reloadContent
+{
+    self.loadedHTMLFramesCounter = 0;
+    self.isReadyForRequests = NO;
+    [self.webView loadRequest:self.loadGovMapRequest];
 }
 
 #pragma mark - Private
 
 - (void)fillTextField
 {
-    [self.webView stringByEvaluatingJavaScriptFromString:
-     @"document.getElementById('lnkFindBlockByAddress').click()"];
+    NSLog([self.webView stringByEvaluatingJavaScriptFromString:
+     @"document.getElementById('lnkFindBlockByAddress').click()"]);
     
     [self performSelector:@selector(checkInnerText) withObject:self afterDelay:1.0];
 }
@@ -108,21 +119,23 @@ static NSInteger const kSearchHTMLFrameIndex = 13;
     }
 }
 
-/**
- *  Reload all govmap.gov.il data
- */
-- (void)reloadContent
-{
-    self.isGovMapContentLoaded = NO;
-    [self.webView loadRequest:self.loadGovMapRequest];
-}
-
 #pragma mark - UIWebViewDelegate methods
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
     if (++self.loadedHTMLFramesCounter >= kSearchHTMLFrameIndex) {
-        self.isGovMapContentLoaded = YES;
+        self.isReadyForRequests = YES;
+    }
+}
+
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
+{
+    ++self.loadedHTMLFramesCounter;
+    
+    if ([self.delegate respondsToSelector:@selector(communicator:didFailToLoadContentWithFrameNumber:error:)]) {
+        [self.delegate communicator:self
+didFailToLoadContentWithFrameNumber:self.loadedHTMLFramesCounter
+                              error:error];
     }
 }
 

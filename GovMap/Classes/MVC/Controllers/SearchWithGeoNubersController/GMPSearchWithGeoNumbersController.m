@@ -9,6 +9,8 @@
 #import "GMPSearchWithGeoNumbersController.h"
 #import "GMPSearchWithGeoNumbersView.h"
 
+static NSString *const kMapControllerSegueIdentifier = @"mapControllerSegue";
+
 @interface GMPSearchWithGeoNumbersController () <GMPSearchWithGeoNumbersDelegate>
 
 @property (weak, nonatomic) IBOutlet GMPSearchWithGeoNumbersView *searchWithGeoNumbersView;
@@ -28,6 +30,7 @@
 - (void)searchWithGeoNumbersView:(GMPSearchWithGeoNumbersView *)searchView didPressSearchButtonWithGeoNumbers:(NSDictionary *)geoNumbers
 {
     NSLog(@"Latitute: %@ Longitude: %@", geoNumbers[kLatitude], geoNumbers[kLongitude]);
+    [self performSegueWithIdentifier:kMapControllerSegueIdentifier sender:self];
 }
 
 @end

@@ -12,8 +12,10 @@
 
 
 static NSString *const kMapControllerSegueIdentifier = @"mapControllerSegue";
+static NSString *const kSearchWithAddressControllerSegueIdentifier = @"searchWithAddressControllerSegue";
+static NSString *const kSearchWithGeoNumbersControllerSegueIdentifier = @"searchWithGeoNumbersControllerSegue";
 
-@interface GMPMainMenuController ()<GMPMenuViewDelegate>
+@interface GMPMainMenuController() <GMPMenuViewDelegate>
 
 @property (weak, nonatomic) IBOutlet GMPMenuView *menuView;
 
@@ -27,14 +29,13 @@ static NSString *const kMapControllerSegueIdentifier = @"mapControllerSegue";
 {
     [super viewDidLoad];
     self.menuView.delegate = self;
-   
 }
 
 #pragma mark - GMPMenuViewDelegate methods
 
 - (void)menuViewDidPressFirstButton:(GMPMenuView *)menuView
 {
-    NSLog(@"firstButtonDidPressed");
+    [self performSegueWithIdentifier:kSearchWithAddressControllerSegueIdentifier sender:self];
 }
 
 - (void)menuViewDidPressSecondButton:(GMPMenuView *)menuView
@@ -44,7 +45,7 @@ static NSString *const kMapControllerSegueIdentifier = @"mapControllerSegue";
 
 - (void)menuViewDidPressThirdButton:(GMPMenuView *)menuView
 {
-    NSLog(@"thirdButtonDidPressed");
+    [self performSegueWithIdentifier:kSearchWithGeoNumbersControllerSegueIdentifier sender:self];
 }
 
 @end

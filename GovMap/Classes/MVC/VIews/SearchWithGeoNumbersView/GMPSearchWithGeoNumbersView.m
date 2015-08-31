@@ -78,22 +78,22 @@ static NSString *const kAcceptableCharacters = @"0123456789.";
 
 - (IBAction)searchButtonPress:(id)sender
 {
-    if ([self.delegate respondsToSelector:@selector(searchWithGeoNumbersView:didPressSearchButtonWithGeoNumbers:)]) {
-        NSDecimalNumber *latitude = [NSDecimalNumber decimalNumberWithString:self.latitudeTextField.text];
-        NSDecimalNumber *longitude = [NSDecimalNumber decimalNumberWithString:self.longitudeTextField.text];
-        
-        BOOL areValuesValidated = YES;
-        
-        if ([latitude isEqualToNumber:[NSDecimalNumber notANumber]]) {
-            [self.latitudeTextField shakeView];
-            areValuesValidated = NO;
-        }
-        if ([longitude isEqualToNumber:[NSDecimalNumber notANumber]]) {
-            [self.longitudeTextField shakeView];
-            areValuesValidated = NO;
-        }
-       
-        if (areValuesValidated) {
+    NSDecimalNumber *latitude = [NSDecimalNumber decimalNumberWithString:self.latitudeTextField.text];
+    NSDecimalNumber *longitude = [NSDecimalNumber decimalNumberWithString:self.longitudeTextField.text];
+    
+    BOOL areValuesValidated = YES;
+    
+    if ([latitude isEqualToNumber:[NSDecimalNumber notANumber]]) {
+        [self.latitudeTextField shakeView];
+        areValuesValidated = NO;
+    }
+    if ([longitude isEqualToNumber:[NSDecimalNumber notANumber]]) {
+        [self.longitudeTextField shakeView];
+        areValuesValidated = NO;
+    }
+    
+    if (areValuesValidated) {
+        if ([self.delegate respondsToSelector:@selector(searchWithGeoNumbersView:didPressSearchButtonWithGeoNumbers:)]) {
             [self.delegate searchWithGeoNumbersView:self
                  didPressSearchButtonWithGeoNumbers:@{ kLatitude : latitude, kLongitude : longitude }];
         }
