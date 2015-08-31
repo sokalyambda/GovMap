@@ -7,6 +7,8 @@
 //
 
 #import "GMPSearchWithGeoNumbersController.h"
+#import "GMPMapController.h"
+
 #import "GMPSearchWithGeoNumbersView.h"
 
 static NSString *const kMapControllerSegueIdentifier = @"mapControllerSegue";
@@ -19,9 +21,11 @@ static NSString *const kMapControllerSegueIdentifier = @"mapControllerSegue";
 
 @implementation GMPSearchWithGeoNumbersController
 
-- (void)viewDidLoad {
+#pragma mark - View Lifecycle
+
+- (void)viewDidLoad
+{
     [super viewDidLoad];
-    
     self.searchWithGeoNumbersView.delegate = self;
 }
 
@@ -31,6 +35,16 @@ static NSString *const kMapControllerSegueIdentifier = @"mapControllerSegue";
 {
     NSLog(@"Latitute: %@ Longitude: %@", geoNumbers[kLatitude], geoNumbers[kLongitude]);
     [self performSegueWithIdentifier:kMapControllerSegueIdentifier sender:self];
+}
+
+#pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:kMapControllerSegueIdentifier]) {
+        GMPMapController *controller = (GMPMapController *)segue.destinationViewController;
+        controller.currentSearchType = GMPSearchTypeGeonumbers;
+    }
 }
 
 @end

@@ -7,6 +7,8 @@
 //
 
 #import "GMPSearchWithAddressViewController.h"
+#import "GMPMapController.h"
+
 #import "GMPSearchWithAddressView.h"
 
 static NSString *const kMapControllerSegueIdentifier = @"mapControllerSegue";
@@ -19,17 +21,30 @@ static NSString *const kMapControllerSegueIdentifier = @"mapControllerSegue";
 
 @implementation GMPSearchWithAddressViewController
 
-- (void)viewDidLoad {
+#pragma mark - View Lifecycle
+
+- (void)viewDidLoad
+{
     [super viewDidLoad];
-    
     self.searchWithAddressView.delegate = self;
 }
 
 #pragma mark - GMPSearchWithAddressDelegate methods
 
-- (void)searchWithAddressView:(GMPSearchWithAddressView *)searchView didPressSearchButtonWithAddress:(NSDictionary *)address {
+- (void)searchWithAddressView:(GMPSearchWithAddressView *)searchView didPressSearchButtonWithAddress:(NSDictionary *)address
+{
     NSLog(@"City: %@, street: %@, home: %@", address[kCity], address[kStreet], address[kHome]);
     [self performSegueWithIdentifier:kMapControllerSegueIdentifier sender:self];
+}
+
+#pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:kMapControllerSegueIdentifier]) {
+        GMPMapController *controller = (GMPMapController *)segue.destinationViewController;
+        controller.currentSearchType = GMPSearchTypeAddress;
+    }
 }
 
 @end

@@ -70,8 +70,8 @@ static NSInteger const kSearchHTMLFrameIndex = 13;
     
     NSString *jsSetTextFieldValue = [NSString stringWithFormat:
                                      @"document.getElementById('tbSearchWord').value = '%@'", address];
-    NSLog([self.webView stringByEvaluatingJavaScriptFromString:jsSetTextFieldValue]);
-    NSLog([self.webView stringByEvaluatingJavaScriptFromString:@"FS_Search()"]);
+    NSLog(@"%@", [self.webView stringByEvaluatingJavaScriptFromString:jsSetTextFieldValue]);
+    NSLog(@"%@", [self.webView stringByEvaluatingJavaScriptFromString:@"FS_Search()"]);
     [self performSelector:@selector(fillTextField) withObject:self afterDelay:1.0];
 }
 
@@ -89,7 +89,7 @@ static NSInteger const kSearchHTMLFrameIndex = 13;
 
 - (void)fillTextField
 {
-    NSLog([self.webView stringByEvaluatingJavaScriptFromString:
+    NSLog(@"%@", [self.webView stringByEvaluatingJavaScriptFromString:
      @"document.getElementById('lnkFindBlockByAddress').click()"]);
     
     [self performSelector:@selector(checkInnerText) withObject:self afterDelay:1.0];
