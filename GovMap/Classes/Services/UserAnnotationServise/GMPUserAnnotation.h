@@ -21,4 +21,6 @@
 
 - (id)initWithLocation:(CLLocationCoordinate2D)paramCoordinate title:(NSString *)paramTitle;
 
+- (id)initWithLocation:(CLLocationCoordinate2D)paramCoordinate title:(NSString *)paramTitle;
+- (void)setTitle:(NSString *)newTitle;
 @end
