@@ -110,20 +110,4 @@
     
 }
 
-- (void)setupMapAttributesForCoordinate:(CLLocationCoordinate2D)coordinate
-{
-    __weak typeof(self) weakSelf = self;
-    
-    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(coordinate, 800, 800);
-    [self.mapView setRegion:[self.mapView regionThatFits:region] animated:YES];
-    
-    CLLocation *location = [[CLLocation alloc]initWithLatitude:coordinate.latitude longitude:coordinate.longitude];
-    [self.locationObserver reverseGeocodingForCoordinate:location withResult:^(BOOL success, NSString *address) {
-        if (success) {
-            weakSelf.annotation = [[GMPUserAnnotation alloc]initWithLocation:coordinate title:address];
-            [weakSelf.mapView addAnnotation:self.annotation];
-        }
-    }];
-}
-
 @end
