@@ -224,6 +224,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GmV-g7-uRa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <barButtonItem title="Item" id="FGc-lM-jsg"/>
             </objects>
             <point key="canvasLocation" x="2908.5" y="398.25"/>
         </scene>
