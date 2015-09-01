@@ -11,10 +11,13 @@
 #import "GMPMapController.h"
 
 #import "GMPLocationObserver.h"
+#import "GMPCommunicator.h"
 
 #import "GMPUserAnnotation.h"
 
 #import "GMPWazeNavigationService.h"
+
+#import "GMPCadastre.h"
 
 static NSInteger const kBarButtonsFixedSpace = 10.f;
 
@@ -27,12 +30,21 @@ static NSInteger const kBarButtonsFixedSpace = 10.f;
 @property (strong, nonatomic) GMPLocationObserver *locationObserver;
 @property (strong, nonatomic) GMPUserAnnotation *annotation;
 @property (assign, nonatomic) CLLocationCoordinate2D previousCoordinate;
+@property (strong, nonatomic) GMPCommunicator *communicator;
 
 @end
 
 @implementation GMPMapController
 
 #pragma mark - Accessors
+
+- (GMPCommunicator *)communicator
+{
+    if (!_communicator) {
+        _communicator = [GMPCommunicator sharedInstance];
+    }
+    return _communicator;
+}
 
 - (GMPLocationObserver *)locationObserver
 {
@@ -75,7 +87,7 @@ static NSInteger const kBarButtonsFixedSpace = 10.f;
                                                       reuseIdentifier:NSStringFromClass([GMPUserAnnotation class])];
             pinView.pinColor = MKPinAnnotationColorRed;
             pinView.animatesDrop = YES;
-            pinView.draggable = YES;
+            pinView.draggable = self.currentSearchType != GMPSearchTypeCurrentPlacing;
             pinView.canShowCallout = YES;
         } else {
             pinView.annotation = annotation;
@@ -118,20 +130,26 @@ static NSInteger const kBarButtonsFixedSpace = 10.f;
     [self.locationObserver reverseGeocodingForCoordinate:location withResult:^(BOOL success, NSString *address) {
         if (success) {
             weakSelf.annotation = [[GMPUserAnnotation alloc] initWithLocation:coordinate title:address];
-            [weakSelf.annotation setSubtitle:@"Subtitle"];
             [weakSelf.mapView addAnnotation:self.annotation];
         }
     }];
 }
 
+/**
+ *  Setup first map's appearance
+ */
 - (void)setupMapAppearing
 {
     switch (self.currentSearchType) {
         case GMPSearchTypeAddress: {
-            
-            [self.locationObserver geocodingForAddress:self.locationAddress withResult:^(BOOL success, CLLocation *location) {
+            [self.locationObserver geocodingForAddress:self.currentAddress withResult:^(BOOL success, CLLocation *location) {
                 if(success) {
                     [self setupMapAttributesForCoordinate:location.coordinate];
+                } else {
+                    WEAK_SELF;
+                    [GMPAlertService showInfoAlertControllerWithTitle:@"" andMessage:LOCALIZED(@"This address can not be found") forController:self withCompletion:^{
+                        [weakSelf.navigationController popViewControllerAnimated:YES];
+                    }];
                 }
             }];
             break;
@@ -147,6 +165,36 @@ static NSInteger const kBarButtonsFixedSpace = 10.f;
 
 }
 
+- (void)searchCurrentGeodata
+{
+    WEAK_SELF;
+    switch (self.currentSearchType) {
+        case GMPSearchTypeAddress: {
+            [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            [self.communicator requestCadastralNumbersWithAddress:[NSString stringWithFormat:@"%@ %@ %@", self.currentAddress.cityName, self.currentAddress.streetName, self.currentAddress.homeName] completionBlock:^(GMPCadastre *cadastralInfo) {
+                [MBProgressHUD hideAllHUDsForView:weakSelf.view animated:YES];
+                
+                if (cadastralInfo) {
+                   [weakSelf.annotation setSubtitle:[NSString localizedStringWithFormat:@"%@ %d, %@ %d", LOCALIZED(@"Major:"), cadastralInfo.major, LOCALIZED(@"Minor:"), cadastralInfo.minor]];
+                } else {
+                    [GMPAlertService showInfoAlertControllerWithTitle:@"" andMessage:LOCALIZED(@"Something wrong, try again") forController:weakSelf withCompletion:nil];
+                }
+                
+            }];
+           break;
+        }
+        case GMPSearchTypeCurrentPlacing: {
+            break;
+        }
+        case GMPSearchTypeGeonumbers: {
+            break;
+        }
+            
+        default:
+            break;
+    }
+}
+
 #pragma mark - Actions
 
 - (IBAction)goToWazeClick:(id)sender
@@ -157,7 +205,7 @@ static NSInteger const kBarButtonsFixedSpace = 10.f;
 
 - (IBAction)searchGeoDataClick:(id)sender
 {
-    
+    [self searchCurrentGeodata];
 }
 
 /**

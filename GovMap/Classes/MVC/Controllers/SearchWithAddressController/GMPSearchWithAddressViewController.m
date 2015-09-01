@@ -46,7 +46,7 @@ static NSString *const kMapControllerSegueIdentifier = @"mapControllerSegue";
     if ([segue.identifier isEqualToString:kMapControllerSegueIdentifier]) {
         GMPMapController *controller = (GMPMapController *)segue.destinationViewController;
         controller.currentSearchType = GMPSearchTypeAddress;
-        controller.locationAddress = self.locationAddress;
+        controller.currentAddress = self.locationAddress;
     }
 }
 

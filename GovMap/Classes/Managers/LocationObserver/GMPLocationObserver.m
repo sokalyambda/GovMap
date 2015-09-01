@@ -11,7 +11,7 @@
 
 //#import <CoreLocation/CoreLocation.h>
 
-static NSString *const kCountryKey = @"USA";
+static NSString *const kCountryKey = @"IL";
 
 @interface GMPLocationObserver ()<CLLocationManagerDelegate>
 
