@@ -16,14 +16,34 @@ static NSString *const kWazeAppStoreURL = @"http://itunes.apple.com/us/app/id323
 + (void)navigateToWazeWithLatitude:(double)latitude
                   longitude:(double)longitude
 {
-    if ([[UIApplication sharedApplication]
-         canOpenURL:[NSURL URLWithString:kWazeURLPrefix]]) {
+    if ([self applicaionCanOpenWaze]) {
         // Waze is installed. Launch Waze and start navigation
         NSString *urlStr = [NSString stringWithFormat:@"%@?ll=%f,%f&navigate=yes", kWazeURLPrefix, latitude, longitude];
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlStr]];
     } else {
         // Waze is not installed. Launch AppStore to install Waze app
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:kWazeAppStoreURL]];
+    }
+}
+
++ (void)navigateToWazeWithAddress:(NSString *)address
+{
+    if ([self applicaionCanOpenWaze]) {
+        // Waze is installed. Launch Waze and start navigation
+        NSString *urlStr = [NSString stringWithFormat:@"%@?q=<%@>", kWazeURLPrefix, address];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlStr]];
+    } else {
+        // Waze is not installed. Launch AppStore to install Waze app
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:kWazeAppStoreURL]];
+    }
+}
+
++ (BOOL)applicaionCanOpenWaze
+{
+    if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:kWazeURLPrefix]]) {
+        return YES;
+    } else {
+        return NO;
     }
 }
 
