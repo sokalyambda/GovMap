@@ -7,7 +7,11 @@
 //
 
 #import "GMPLocationObserver.h"
+#import <AddressBook/AddressBook.h>
+
 //#import <CoreLocation/CoreLocation.h>
+
+static NSString *const kCountryKey = @"USA";
 
 @interface GMPLocationObserver ()<CLLocationManagerDelegate>
 
@@ -72,7 +76,7 @@
      ^(NSArray *placemarks, NSError *error) {
          if (!error && placemarks.count) {
              CLPlacemark *placemark = [placemarks firstObject];
-
+             
              NSArray *adressArray = placemark.addressDictionary[@"FormattedAddressLines"];
              NSString *address = [NSString string];
              for (int i = 0; i < adressArray.count; i++) {
@@ -82,7 +86,7 @@
              
              NSLog(@"%@", placemark.addressDictionary);
              if (result) {
-                result(YES, address);
+                 result(YES, address);
              }
          } else {
              if (result) {
@@ -92,9 +96,15 @@
      }];
 }
 
-- (void)geocodingForAddress:(NSString *)address withResult:(GeocodingResult)result
+- (void)geocodingForAddress:(GMPLocationAddress *)address withResult:(GeocodingResult)result
 {
-    [self.geocoder geocodeAddressString:address completionHandler:^(NSArray *placemarks, NSError *error) {
+    NSString *street = [NSString stringWithFormat:@"%@ %@", address.homeName, address.streetName];
+    NSDictionary *locationDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+                                        address.cityName, kABPersonAddressCityKey,
+                                        kCountryKey, kABPersonAddressCountryKey,
+                                        street, kABPersonAddressStreetKey,
+                                        nil];
+    [self.geocoder geocodeAddressDictionary:locationDictionary completionHandler:^(NSArray *placemarks, NSError *error) {
         if (!error && placemarks.count) {
             CLPlacemark *placemark = [placemarks firstObject];
             
@@ -107,6 +117,7 @@
             }
         }
     }];
+    
 }
 
 @end

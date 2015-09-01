@@ -7,6 +7,7 @@
 //
 
 #import <CoreLocation/CoreLocation.h>
+#import "GMPLocationAddress.h"
 
 typedef void(^ReverseGeocodingResult)(BOOL success, NSString *address);
 typedef void(^GeocodingResult)(BOOL success, CLLocation *location);
@@ -18,6 +19,6 @@ typedef void(^GeocodingResult)(BOOL success, CLLocation *location);
 + (GMPLocationObserver *)sharedInstance;
 
 - (void)reverseGeocodingForCoordinate:(CLLocation *)location withResult: (ReverseGeocodingResult)result;
-- (void)geocodingForAddress:(NSString *)address withResult:(GeocodingResult)result;
+- (void)geocodingForAddress:(GMPLocationAddress *)address withResult:(GeocodingResult)result;
 
 @end

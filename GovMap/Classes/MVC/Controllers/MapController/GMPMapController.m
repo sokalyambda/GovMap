@@ -27,7 +27,6 @@ static NSInteger const kBarButtonsFixedSpace = 10.f;
 @property (strong, nonatomic) GMPLocationObserver *locationObserver;
 @property (strong, nonatomic) GMPUserAnnotation *annotation;
 @property (assign, nonatomic) CLLocationCoordinate2D previousCoordinate;
-@property (copy, nonatomic) NSString *userAddress;
 
 @end
 
@@ -130,7 +129,7 @@ static NSInteger const kBarButtonsFixedSpace = 10.f;
     switch (self.currentSearchType) {
         case GMPSearchTypeAddress: {
             
-            [self.locationObserver geocodingForAddress:@"1005 Gravenstein Highway North, Sebastopol, USA" withResult:^(BOOL success, CLLocation *location) {
+            [self.locationObserver geocodingForAddress:self.locationAddress withResult:^(BOOL success, CLLocation *location) {
                 if(success) {
                     [self setupMapAttributesForCoordinate:location.coordinate];
                 }
