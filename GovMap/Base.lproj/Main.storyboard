@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Gu8-cS-c9G">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Gu8-cS-c9G">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -104,7 +104,7 @@
         <!--Search With Address View Controller-->
         <scene sceneID="F92-df-dwT">
             <objects>
-                <viewController id="e0K-Ie-V5C" customClass="GMPSearchWithAddressViewController" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="e0K-Ie-V5C" customClass="GMPSearchWithAddressViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ulb-JY-hiA"/>
                         <viewControllerLayoutGuide type="bottom" id="XZf-Ur-rdC"/>
@@ -151,7 +151,7 @@
         <!--Search With Geo Numbers Controller-->
         <scene sceneID="x1O-uq-90n">
             <objects>
-                <viewController id="Gjx-M7-NZI" customClass="GMPSearchWithGeoNumbersController" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="Gjx-M7-NZI" customClass="GMPSearchWithGeoNumbersController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Qc0-gK-lfC"/>
                         <viewControllerLayoutGuide type="bottom" id="Ccf-gr-KE8"/>
