@@ -26,6 +26,8 @@ static NSInteger const kBarButtonsFixedSpace = 10.f;
 
 @property (strong, nonatomic) GMPLocationObserver *locationObserver;
 @property (strong, nonatomic) GMPUserAnnotation *annotation;
+@property (assign, nonatomic) CLLocationCoordinate2D previousCoordinate;
+@property (copy, nonatomic) NSString *userAddress;
 
 @end
 
@@ -51,7 +53,7 @@ static NSInteger const kBarButtonsFixedSpace = 10.f;
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [self setupMapAttributesForCoordinate:self.locationObserver.currentLocation.coordinate];
+    [self setupMapAppearing];
 }
 
 #pragma mark - MKMapViewDelegate
@@ -92,15 +94,24 @@ static NSInteger const kBarButtonsFixedSpace = 10.f;
         CLLocation *location = [[CLLocation alloc]initWithLatitude:annotation.coordinate.latitude longitude:annotation.coordinate.longitude];
         [self.locationObserver reverseGeocodingForCoordinate:location withResult:^(BOOL success, NSString *address) {
             if (success) {
+                if (self.previousCoordinate.latitude != annotation.coordinate.latitude ||
+                    self.previousCoordinate.longitude != annotation.coordinate.longitude) {
+                    
+                    [annotation setSubtitle:@""];
+                }
                 [annotation setTitle:address];
             }
         }];
     }
 }
 
+#pragma mark - Private Methods
+
 - (void)setupMapAttributesForCoordinate:(CLLocationCoordinate2D)coordinate
 {
     WEAK_SELF;
+    self.previousCoordinate = coordinate;
+    
     MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(coordinate, 800, 800);
     [self.mapView setRegion:[self.mapView regionThatFits:region] animated:YES];
     
@@ -108,9 +119,33 @@ static NSInteger const kBarButtonsFixedSpace = 10.f;
     [self.locationObserver reverseGeocodingForCoordinate:location withResult:^(BOOL success, NSString *address) {
         if (success) {
             weakSelf.annotation = [[GMPUserAnnotation alloc] initWithLocation:coordinate title:address];
+            [weakSelf.annotation setSubtitle:@"Subtitle"];
             [weakSelf.mapView addAnnotation:self.annotation];
         }
     }];
+}
+
+- (void)setupMapAppearing
+{
+    switch (self.currentSearchType) {
+        case GMPSearchTypeAddress: {
+            
+            [self.locationObserver geocodingForAddress:@"1005 Gravenstein Highway North, Sebastopol, USA" withResult:^(BOOL success, CLLocation *location) {
+                if(success) {
+                    [self setupMapAttributesForCoordinate:location.coordinate];
+                }
+            }];
+            break;
+        }
+        case GMPSearchTypeCurrentPlacing: {
+            [self setupMapAttributesForCoordinate:self.locationObserver.currentLocation.coordinate];
+            break;
+        }
+            
+        default:
+            break;
+    }
+
 }
 
 #pragma mark - Actions

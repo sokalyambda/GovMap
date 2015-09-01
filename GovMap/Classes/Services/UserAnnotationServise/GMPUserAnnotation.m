@@ -19,11 +19,6 @@
     _coordinate = newCoordinate;
 }
 
-- (void)setTitle:(NSString *)newTitle
-{
-    _title = newTitle;
-}
-
 #pragma mark - Lifecycle
 
 - (id)initWithLocation:(CLLocationCoordinate2D)paramCoordinate title:(NSString *)paramTitle{
