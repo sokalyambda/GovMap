@@ -112,7 +112,7 @@
                         </view>
                     </subviews>
                     <constraints>
-                        <constraint firstAttribute="bottom" secondItem="KXL-B7-BSD" secondAttribute="bottom" constant="8" id="A5Y-ED-p6S"/>
+                        <constraint firstAttribute="bottom" secondItem="KXL-B7-BSD" secondAttribute="bottom" id="A5Y-ED-p6S"/>
                         <constraint firstAttribute="width" secondItem="KXL-B7-BSD" secondAttribute="width" id="EAq-BS-VhF"/>
                         <constraint firstItem="KXL-B7-BSD" firstAttribute="leading" secondItem="H5j-Ib-rPv" secondAttribute="leading" id="EeQ-0v-cSS"/>
                         <constraint firstItem="KXL-B7-BSD" firstAttribute="top" secondItem="H5j-Ib-rPv" secondAttribute="top" id="iAc-1E-jNT"/>

@@ -26,6 +26,7 @@
 {
     if (self = [super initWithCoder:aDecoder]) {
         _additionalOffset = self.bounds.size.height / 15;
+        
     }
     return self;
 }
@@ -50,7 +51,7 @@
 #pragma mark - Notificaion handlers
 
 - (void)keyboardWillShow:(NSNotification*)notification
-{
+{    
     NSDictionary* info = [notification userInfo];
     CGRect keyBoardFrame = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
     
