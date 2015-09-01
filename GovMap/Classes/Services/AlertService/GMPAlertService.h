@@ -8,4 +8,6 @@
 
 @interface GMPAlertService : NSObject
 
++ (void)showInfoAlertControllerWithTitle:(NSString *)title andMessage:(NSString *)message forController:(UIViewController *)controller withCompletion:(void(^)())completion;
+
 @end

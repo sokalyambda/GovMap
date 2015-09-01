@@ -10,5 +10,6 @@
 
 + (void)navigateToWazeWithLatitude:(double)latitude
                          longitude:(double)longitude;
++ (void)navigateToWazeWithAddress:(NSString *)address;
 
 @end
