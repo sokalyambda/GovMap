@@ -7,7 +7,9 @@
 //
 
 #import "GMPCommunicator.h"
+
 #import "GMPCadastre.h"
+
 #import "GMPCommunicatorDelegate.h"
 
 static NSString *const kURLString = @"http://www.govmap.gov.il";
@@ -73,6 +75,7 @@ static NSInteger const kSearchHTMLFrameIndex = 13;
     NSLog(@"%@", [self.webView stringByEvaluatingJavaScriptFromString:jsSetTextFieldValue]);
     NSLog(@"%@", [self.webView stringByEvaluatingJavaScriptFromString:@"FS_Search()"]);
     [self performSelector:@selector(fillTextField) withObject:self afterDelay:1.0];
+
 }
 
 /**

@@ -6,8 +6,6 @@
 //  Copyright (c) 2015 ThinkMobiles. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-
 @interface GMPCadastre : NSObject
 
 @property (assign, readwrite, nonatomic) NSInteger major;
