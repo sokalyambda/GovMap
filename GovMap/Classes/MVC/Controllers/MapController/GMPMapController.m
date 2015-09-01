@@ -161,7 +161,7 @@ static NSInteger const kBarButtonsFixedSpace = 10.f;
             
         case GMPSearchTypeGeonumbers: {
             [self.communicator requestAddressWithCadastralNumbers:self.currentCadastre completionBlock:^(NSString *address) {
-                // hardcodet address
+#warning Hardcodet address. Request dosent work
                 address = @"רחוב: מבצע נחשון, בית: 3, עיר: ראשון לציון";
                 if (address) {
                     NSArray *addressObjects = [address componentsSeparatedByString:@", "];
