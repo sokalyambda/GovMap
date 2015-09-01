@@ -16,10 +16,13 @@
 
 #import "GMPWazeNavigationService.h"
 
+static NSInteger const kBarButtonsFixedSpace = 10.f;
+
 @interface GMPMapController () <MKMapViewDelegate>
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *goToWazeButton;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *searchGeoDataButton;
 
 @property (strong, nonatomic) GMPLocationObserver *locationObserver;
 @property (strong, nonatomic) GMPUserAnnotation *annotation;
@@ -53,7 +56,7 @@
 
 #pragma mark - MKMapViewDelegate
 
--(void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
+- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
 {
     [self setupMapAttributesForCoordinate:userLocation.location.coordinate];
 }
@@ -64,7 +67,7 @@
         return nil;
     }
     if ([annotation isKindOfClass:[GMPUserAnnotation class]]) {
-        MKPinAnnotationView* pinView = (MKPinAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier: NSStringFromClass([GMPUserAnnotation class])];
+        MKPinAnnotationView* pinView = (MKPinAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:NSStringFromClass([GMPUserAnnotation class])];
         
         if (!pinView) {
             pinView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation
@@ -73,7 +76,6 @@
             pinView.animatesDrop = YES;
             pinView.draggable = YES;
             pinView.canShowCallout = YES;
-
         } else {
             pinView.annotation = annotation;
         }        
@@ -102,10 +104,10 @@
     MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(coordinate, 800, 800);
     [self.mapView setRegion:[self.mapView regionThatFits:region] animated:YES];
     
-    CLLocation *location = [[CLLocation alloc]initWithLatitude:coordinate.latitude longitude:coordinate.longitude];
+    CLLocation *location = [[CLLocation alloc] initWithLatitude:coordinate.latitude longitude:coordinate.longitude];
     [self.locationObserver reverseGeocodingForCoordinate:location withResult:^(BOOL success, NSString *address) {
         if (success) {
-            weakSelf.annotation = [[GMPUserAnnotation alloc]initWithLocation:coordinate title:address];
+            weakSelf.annotation = [[GMPUserAnnotation alloc] initWithLocation:coordinate title:address];
             [weakSelf.mapView addAnnotation:self.annotation];
         }
     }];
@@ -119,13 +121,21 @@
     [GMPWazeNavigationService navigateToWazeWithLatitude:coord.latitude longitude:coord.longitude];
 }
 
+- (IBAction)searchGeoDataClick:(id)sender
+{
+    
+}
+
 /**
  *  Customize current navigation item
  */
 - (void)customizeNavigationItem
 {
     self.goToWazeButton.title = LOCALIZED(@"Open Waze");
-    self.navigationItem.rightBarButtonItem = self.goToWazeButton;
+    self.searchGeoDataButton.title = LOCALIZED(@"Search Geo Data");
+    UIBarButtonItem *fixedSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:self action:nil];
+    fixedSpace.width = kBarButtonsFixedSpace;
+    self.navigationItem.rightBarButtonItems = @[self.goToWazeButton, fixedSpace, self.searchGeoDataButton];
 }
 
 @end
