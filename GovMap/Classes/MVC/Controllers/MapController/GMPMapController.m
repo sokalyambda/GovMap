@@ -110,7 +110,7 @@ static NSInteger const kBarButtonsFixedSpace = 10.f;
                     
                     [annotation setSubtitle:@""];
                 }
-                [annotation setTitle:address];
+                [annotation setTitle:LOCALIZED(address)];
             }
         }];
     }
@@ -159,8 +159,27 @@ static NSInteger const kBarButtonsFixedSpace = 10.f;
             break;
         }
             
-        default:
+        case GMPSearchTypeGeonumbers: {
+            [self.communicator requestAddressWithCadastralNumbers:self.currentCadastre completionBlock:^(NSString *address) {
+                // hardcodet address
+                address = @"רחוב: מבצע נחשון, בית: 3, עיר: ראשון לציון";
+                if (address) {
+                    NSArray *addressObjects = [address componentsSeparatedByString:@", "];
+                    NSString *street = [[addressObjects[0] componentsSeparatedByString:@": "] lastObject];
+                    NSString *home = [[addressObjects[1] componentsSeparatedByString:@": "] lastObject];
+                    NSString *city = [[addressObjects[2] componentsSeparatedByString:@": "] lastObject];
+                    
+                    GMPLocationAddress *locAddress = [GMPLocationAddress locationAddressWithCityName:city andStreetName:street andHomeName:home];
+                    [self.locationObserver geocodingForAddress:locAddress withResult:^(BOOL success, CLLocation *location) {
+                        if (success) {
+                            [self setupMapAttributesForCoordinate:location.coordinate];
+                        }
+                    }];
+                    
+                }
+            }];
             break;
+        }
     }
 
 }
@@ -175,7 +194,7 @@ static NSInteger const kBarButtonsFixedSpace = 10.f;
                 [MBProgressHUD hideAllHUDsForView:weakSelf.view animated:YES];
                 
                 if (cadastralInfo) {
-                   [weakSelf.annotation setSubtitle:[NSString localizedStringWithFormat:@"%@ %d, %@ %d", LOCALIZED(@"Major:"), cadastralInfo.major, LOCALIZED(@"Minor:"), cadastralInfo.minor]];
+                   [weakSelf.annotation setSubtitle:[NSString localizedStringWithFormat:@"%@ %ld, %@ %ld", LOCALIZED(@"Major:"), (long)cadastralInfo.major, LOCALIZED(@"Minor:"), (long)cadastralInfo.minor]];
                 } else {
                     [GMPAlertService showInfoAlertControllerWithTitle:@"" andMessage:LOCALIZED(@"Something wrong, try again") forController:weakSelf withCompletion:nil];
                 }
