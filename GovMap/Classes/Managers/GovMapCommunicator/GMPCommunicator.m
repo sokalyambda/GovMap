@@ -13,7 +13,8 @@
 #import "GMPCommunicatorDelegate.h"
 
 static NSString *const kURLString = @"http://www.govmap.gov.il";
-static NSInteger const kSearchHTMLFrameIndex = 12;
+static NSInteger const kSearchHTMLFrameIndex = 13;
+static NSInteger const kAttemtsAmountForDataRetrieving = 20;
 
 @interface GMPCommunicator () <UIWebViewDelegate, GMPCommunicatorDelegate>
 
@@ -28,22 +29,20 @@ static NSInteger const kSearchHTMLFrameIndex = 12;
 
 @implementation GMPCommunicator
 
-#pragma mark - Public Static
+#pragma mark - Lifecycle
 
-+ (instancetype)sharedInstance:(UIWebView *)wv
++ (instancetype)sharedInstance
 {
     static GMPCommunicator *sharedCommunicator = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        sharedCommunicator = [[GMPCommunicator alloc] initWithWV:wv];
+        sharedCommunicator = [[GMPCommunicator alloc] init];
     });
     
     return sharedCommunicator;
 }
 
-#pragma mark - Lifecycle
-
-- (instancetype)initWithWV:(UIWebView *)wv
+- (instancetype)init
 {
     if (self = [super init]) {
         _isReadyForRequests = NO;
@@ -52,8 +51,7 @@ static NSInteger const kSearchHTMLFrameIndex = 12;
         NSURL *url = [NSURL URLWithString:kURLString];
         _loadGovMapRequest = [NSURLRequest requestWithURL:url];
         
-        //_webView = [[UIWebView alloc] init];
-        _webView = wv;
+        _webView = [[UIWebView alloc] init];
         _webView.delegate = self;
         [_webView loadRequest:_loadGovMapRequest];
         
@@ -72,6 +70,19 @@ static NSInteger const kSearchHTMLFrameIndex = 12;
     self.loadedHTMLFramesCounter = 0;
     _isReadyForRequests = NO;
     [self.webView loadRequest:self.loadGovMapRequest];
+}
+
+#pragma mark - Private
+
+/**
+ *  Clear data so the next request wont get info from the previous one
+ */
+- (void)clearTableResultsFromLink
+{
+    [self.webView stringByEvaluatingJavaScriptFromString:
+     @"document.getElementById('divTableResultsFromLink').innerText = ''"];
+    [self.webView stringByEvaluatingJavaScriptFromString:
+     @"document.getElementById('tdFSTableResultsFromLink').innerText = ''"];
 }
 
 #pragma mark - Requesting data with address
@@ -100,29 +111,31 @@ static NSInteger const kSearchHTMLFrameIndex = 12;
                                      @"document.getElementById('tbSearchWord').value = '%@'", address];
     [self.webView stringByEvaluatingJavaScriptFromString:jsSetTextFieldValue];
     [self.webView stringByEvaluatingJavaScriptFromString:@"FS_Search()"];
-    NSLog(@"%@", [self.webView stringByEvaluatingJavaScriptFromString:jsSetTextFieldValue]);
-    NSLog(@"%@", [self.webView stringByEvaluatingJavaScriptFromString:@"FS_Search()"]);
-    [self performSelector:@selector(fillTextField) withObject:self afterDelay:1.0];
+    [self performSelector:@selector(fillTextFieldWithAddress) withObject:self afterDelay:0.5];
 
 }
 
 #pragma mark - Private
 
-- (void)fillTextField
+- (void)fillTextFieldWithAddress
 {
     [self.webView stringByEvaluatingJavaScriptFromString:@"document.getElementById('lnkFindBlockByAddress').click()"];
-    NSLog(@"%@", [self.webView stringByEvaluatingJavaScriptFromString:
-     @"document.getElementById('lnkFindBlockByAddress').click()"]);
-    
-    [self performSelector:@selector(checkInnerText) withObject:self afterDelay:1.0];
+    [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(checkInnerTextForCadastre:) userInfo:@0 repeats:YES];
 }
 
-- (void)checkInnerText
+- (void)checkInnerTextForCadastre:(NSTimer *)timer
 {
+    static NSInteger timerFireCounter = 0;
+    
     NSString *cadastralData = [self.webView stringByEvaluatingJavaScriptFromString:
                                @"document.getElementById('divTableResultsFromLink').innerText"];
     
-    if (!cadastralData.length) {
+    if (cadastralData.length) {
+        // We're done
+        [timer invalidate];
+        _isReadyForRequests = YES;
+        timerFireCounter = 0;
+        
         NSArray *cadastalNumbersWithText = [cadastralData componentsSeparatedByString:@","];
         NSString *majorNumber = [[((NSString *)cadastalNumbersWithText[0]) componentsSeparatedByCharactersInSet:
                                   [[NSCharacterSet decimalDigitCharacterSet] invertedSet]] componentsJoinedByString:@""];
@@ -131,12 +144,22 @@ static NSInteger const kSearchHTMLFrameIndex = 12;
         
         self.requestCadasterCompletionBlock([GMPCadastre cadastreWithMajor:majorNumber.integerValue minor:minorNumber.integerValue]);
         
-        [self.webView stringByEvaluatingJavaScriptFromString:
-         @"document.getElementById('divTableResultsFromLink').innerText = ''"];
+        [self clearTableResultsFromLink];
     }
     else {
-        NSLog(@"Empty cadastral data");
-        self.requestCadasterCompletionBlock(nil);
+        NSLog(@"Unsuccessful attempt to retrieve cadastral numbers :( Trying again...");
+        
+        if (timerFireCounter++ == kAttemtsAmountForDataRetrieving) {
+            [timer invalidate];
+            _isReadyForRequests = YES;
+            timerFireCounter = 0;
+            
+            if ([self.delegate respondsToSelector:@selector(communicatorDidFailToRetrieveCadastralNumbers:)]) {
+                [self.delegate communicatorDidFailToRetrieveCadastralNumbers:self];
+            }
+            
+            self.requestCadasterCompletionBlock(nil);
+        }
     }
     
     _isReadyForRequests = YES;
@@ -166,7 +189,7 @@ static NSInteger const kSearchHTMLFrameIndex = 12;
                                      @"document.getElementById('tbSearchWord').value = '%@'", cadastralString];
     [self.webView stringByEvaluatingJavaScriptFromString:jsSetTextFieldValue];
     [self.webView stringByEvaluatingJavaScriptFromString:@"FS_Search()"];
-    [self performSelector:@selector(fillTextFieldWithCadastralString) withObject:self afterDelay:0.1];
+    [self performSelector:@selector(fillTextFieldWithCadastralString) withObject:self afterDelay:0.5];
 }
 
 #pragma mark - Private
@@ -179,19 +202,35 @@ static NSInteger const kSearchHTMLFrameIndex = 12;
 
 - (void)checkInnerTextForAddress:(NSTimer *)timer
 {
+    static NSInteger timerFireCounter = 0;
+    
     NSString *address = [self.webView stringByEvaluatingJavaScriptFromString:
                                @"document.getElementById('tdFSTableResultsFromLink').innerText"];
     NSArray *characters = [address componentsSeparatedByString:@"\n"];
     
     if (![characters.firstObject isEqualToString:@""]) {
-        self.requestAddressCompletionBlock(address);
-        
+        // We're done here
         _isReadyForRequests = YES;
         [timer invalidate];
-        return;
+        
+        self.requestAddressCompletionBlock(address);
+        
+        [self clearTableResultsFromLink];
     }
     else {
-        self.requestAddressCompletionBlock(@"Empty address");
+        NSLog(@"Unsuccessful attempt to retrieve address :( Trying again...");
+        
+        if (timerFireCounter++ == kAttemtsAmountForDataRetrieving) {
+            [timer invalidate];
+            _isReadyForRequests = YES;
+            timerFireCounter = 0;
+            
+            if ([self.delegate respondsToSelector:@selector(communicatorDidFailToRetrieveAddress:)]) {
+                [self.delegate communicatorDidFailToRetrieveAddress:self];
+            }
+            
+            self.requestAddressCompletionBlock(@"Empty address");
+        }
     }
 }
 
@@ -236,6 +275,16 @@ static NSInteger const kSearchHTMLFrameIndex = 12;
 - (void)communicatorWasNotReadyForRequest:(GMPCommunicator *)communicator
 {
     NSLog(@"Communicator was not ready for requests");
+}
+
+- (void)communicatorDidFailToRetrieveCadastralNumbers:(GMPCommunicator *)communicator
+{
+    NSLog(@"Failed attempt to retrieve cadastral numbers");
+}
+
+- (void)communicatorDidFailToRetrieveAddress:(GMPCommunicator *)communicator
+{
+    NSLog(@"Failed attempt to retrieve address");
 }
 
 @end

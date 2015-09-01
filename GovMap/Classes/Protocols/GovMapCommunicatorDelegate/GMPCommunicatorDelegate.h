@@ -35,4 +35,18 @@
  */
 - (void)communicatorWasNotReadyForRequest:(GMPCommunicator *)communicator;
 
+/**
+ *  Tells the delegate the communicator failed to retrieve address information
+ *
+ *  @param communicator Communiactor object informing the delegate
+ */
+- (void)communicatorDidFailToRetrieveAddress:(GMPCommunicator *)communicator;
+
+/**
+ *  Tells the delegate the communicator failed to retrieve cadastral numbers
+ *
+ *  @param communicator Communiactor object informing the delegate
+ */
+- (void)communicatorDidFailToRetrieveCadastralNumbers:(GMPCommunicator *)communicator;
+
 @end

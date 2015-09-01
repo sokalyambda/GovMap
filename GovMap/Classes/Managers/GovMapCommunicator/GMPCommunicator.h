@@ -20,7 +20,7 @@ typedef void(^RequestAddressCompletionBlock)(NSString *address);
 @property (strong, nonatomic) id<GMPCommunicatorDelegate> delegate;
 @property (assign, readonly, nonatomic) BOOL isReadyForRequests;
 
-+ (instancetype)sharedInstance:(UIWebView *)wv;
++ (instancetype)sharedInstance;
 - (void)reloadContent;
 - (void)requestCadastralNumbersWithAddress:(NSString *)address
                            completionBlock:(RequestCadasterCompletionBlock)completionBlock;
