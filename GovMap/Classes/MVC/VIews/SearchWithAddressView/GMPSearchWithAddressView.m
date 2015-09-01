@@ -26,8 +26,6 @@ NSString *const kHome = @"Home";
 @property (weak, nonatomic) IBOutlet UITextField *streetTextField;
 @property (weak, nonatomic) IBOutlet UITextField *homeTextField;
 
-@property (strong, nonatomic) UITapGestureRecognizer *tap;
-
 @end
 
 @implementation GMPSearchWithAddressView

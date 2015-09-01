@@ -13,6 +13,7 @@
 @interface GMPBaseSearchView ()
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (strong, nonatomic) UITapGestureRecognizer *tap;
 
 @property (assign, readwrite, nonatomic) CGFloat additionalOffset;
 
@@ -26,7 +27,8 @@
 {
     if (self = [super initWithCoder:aDecoder]) {
         _additionalOffset = self.bounds.size.height / 15;
-        
+        _tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGestureRecognized:)];
+        [self addGestureRecognizer:_tap];
     }
     return self;
 }
@@ -48,6 +50,12 @@
 }
 
 #pragma mark - Private
+
+- (void)dismissKeyboard
+{
+    [[UIResponder currentFirstResponder] resignFirstResponder];
+}
+
 #pragma mark - Notificaion handlers
 
 - (void)keyboardWillShow:(NSNotification*)notification
@@ -77,6 +85,13 @@
     self.scrollView.contentInset = contentInsets;
     self.scrollView.scrollIndicatorInsets = contentInsets;
     self.scrollView.contentOffset = CGPointZero;
+}
+
+#pragma mark - Gesture recognizers
+
+- (void)tapGestureRecognized:(UITapGestureRecognizer *)tap
+{
+    [self dismissKeyboard];
 }
 
 @end

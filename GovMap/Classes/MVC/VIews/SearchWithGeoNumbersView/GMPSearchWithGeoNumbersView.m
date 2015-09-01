@@ -26,8 +26,6 @@ static NSString *const kAcceptableCharacters = @"0123456789";
 @property (weak, nonatomic) IBOutlet UITextField *blockTextField;
 @property (weak, nonatomic) IBOutlet UITextField *subblockTextField;
 
-@property (strong, nonatomic) UITapGestureRecognizer *tap;
-
 @end
 
 @implementation GMPSearchWithGeoNumbersView
