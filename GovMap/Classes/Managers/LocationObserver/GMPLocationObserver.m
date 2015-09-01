@@ -72,7 +72,15 @@
      ^(NSArray *placemarks, NSError *error) {
          if (!error && placemarks.count) {
              CLPlacemark *placemark = [placemarks firstObject];
-             NSString *address = [NSString stringWithFormat:@"%@, %@", placemark.locality, placemark.thoroughfare];
+
+             NSArray *adressArray = placemark.addressDictionary[@"FormattedAddressLines"];
+             NSString *address = [NSString string];
+             for (int i = 0; i < adressArray.count; i++) {
+                 NSString *s = [NSString stringWithFormat:@"%@ ", adressArray[i]];
+                 address = [address stringByAppendingString:s];
+             }
+             
+             NSLog(@"%@", placemark.addressDictionary);
              if (result) {
                 result(YES, address);
              }
@@ -82,6 +90,23 @@
              }
          }
      }];
+}
+
+- (void)geocodingForAddress:(NSString *)address withResult:(GeocodingResult)result
+{
+    [self.geocoder geocodeAddressString:address completionHandler:^(NSArray *placemarks, NSError *error) {
+        if (!error && placemarks.count) {
+            CLPlacemark *placemark = [placemarks firstObject];
+            
+            if (result) {
+                result(YES, placemark.location);
+            }
+        } else {
+            if (result) {
+                result(NO, nil);
+            }
+        }
+    }];
 }
 
 @end

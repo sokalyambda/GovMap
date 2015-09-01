@@ -16,6 +16,7 @@ static NSString *const kMapControllerSegueIdentifier = @"mapControllerSegue";
 @interface GMPSearchWithAddressViewController () <GMPSearchWithAdressDelegate>
 
 @property (weak, nonatomic) IBOutlet GMPSearchWithAddressView *searchWithAddressView;
+@property (copy, nonatomic) NSString *inputAddress;
 
 @end
 
@@ -34,6 +35,7 @@ static NSString *const kMapControllerSegueIdentifier = @"mapControllerSegue";
 - (void)searchWithAddressView:(GMPSearchWithAddressView *)searchView didPressSearchButtonWithAddress:(NSDictionary *)address
 {
     NSLog(@"City: %@, street: %@, home: %@", address[kCity], address[kStreet], address[kHome]);
+    self.inputAddress = [NSString stringWithFormat:@"%@ %@, %@",address[kHome], address[kStreet], address[kCity]];
     [self performSegueWithIdentifier:kMapControllerSegueIdentifier sender:self];
 }
 
