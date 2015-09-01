@@ -10,6 +10,13 @@
 
 @implementation GMPLocationAddress
 
+#pragma mark - Accessors
+
+-(NSString *)fullStreetName
+{
+    return [NSString stringWithFormat:@"%@ %@", self.homeName, self.streetName];
+}
+
 #pragma mark - Lifecycle
 
 - (instancetype)initWithCityName:(NSString *)cityName andSreetName:(NSString *)streetName andHomeName:(NSString *)homeName

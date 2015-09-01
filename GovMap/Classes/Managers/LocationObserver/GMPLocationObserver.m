@@ -11,7 +11,7 @@
 
 //#import <CoreLocation/CoreLocation.h>
 
-static NSString *const kCountryKey = @"USA";
+static NSString *const kCountryKey = @"Israel";
 
 @interface GMPLocationObserver ()<CLLocationManagerDelegate>
 
@@ -82,6 +82,9 @@ static NSString *const kCountryKey = @"USA";
              for (int i = 0; i < adressArray.count; i++) {
                  NSString *s = [NSString stringWithFormat:@"%@ ", adressArray[i]];
                  address = [address stringByAppendingString:s];
+                 if (i == 1) {
+                     break;
+                 }
              }
              
              NSLog(@"%@", placemark.addressDictionary);
@@ -98,11 +101,11 @@ static NSString *const kCountryKey = @"USA";
 
 - (void)geocodingForAddress:(GMPLocationAddress *)address withResult:(GeocodingResult)result
 {
-    NSString *street = [NSString stringWithFormat:@"%@ %@", address.homeName, address.streetName];
+
     NSDictionary *locationDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
                                         address.cityName, kABPersonAddressCityKey,
                                         kCountryKey, kABPersonAddressCountryKey,
-                                        street, kABPersonAddressStreetKey,
+                                        address.fullStreetName, kABPersonAddressStreetKey,
                                         nil];
     [self.geocoder geocodeAddressDictionary:locationDictionary completionHandler:^(NSArray *placemarks, NSError *error) {
         if (!error && placemarks.count) {
