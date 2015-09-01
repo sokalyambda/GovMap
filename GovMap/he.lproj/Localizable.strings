@@ -6,5 +6,7 @@
   Copyright (c) 2015 ThinkMobiles. All rights reserved.
 */
 
-"Open Waze" = "Waze הפתוח";
+//navigation item titles
 "Main Menu" = "תפריט ראשי";
+"Open Waze" = "Waze הפתוח";
+"Search Geo Data" = "חיפוש גיאוגרפי נתונים";

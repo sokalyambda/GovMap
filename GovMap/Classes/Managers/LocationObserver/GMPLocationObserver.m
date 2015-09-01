@@ -7,7 +7,7 @@
 //
 
 #import "GMPLocationObserver.h"
-#import <CoreLocation/CoreLocation.h>
+//#import <CoreLocation/CoreLocation.h>
 
 @interface GMPLocationObserver ()<CLLocationManagerDelegate>
 
@@ -17,6 +17,8 @@
 @end
 
 @implementation GMPLocationObserver
+
+#pragma mark - Lifecycle
 
 + (GMPLocationObserver *)sharedInstance
 {
@@ -30,7 +32,6 @@
 
 - (instancetype)init
 {
-    
     self = [super init];
     if (self) {
         _locationManager = [[CLLocationManager alloc] init];
@@ -55,27 +56,26 @@
     self.currentLocation = manager.location;
 }
 
-#pragma mark - Public methods
+#pragma mark - Private methods
 
 - (void)startUpdatingLocation
 {
     [self.locationManager startUpdatingLocation];
     self.currentLocation = self.locationManager.location;
-
 }
+
+#pragma mark - Public methods
 
 - (void)reverseGeocodingForCoordinate:(CLLocation *)location withResult: (ReverseGeocodingResult)result;
 {
     [self.geocoder reverseGeocodeLocation:location completionHandler:
      ^(NSArray *placemarks, NSError *error) {
-         
-         if (!error && placemarks.count > 0) {
-             CLPlacemark *placemark = [placemarks objectAtIndex:0];
-             NSString  *addres = [NSString stringWithFormat:@"%@ %@", placemark.locality, placemark.thoroughfare];
+         if (!error && placemarks.count) {
+             CLPlacemark *placemark = [placemarks firstObject];
+             NSString *address = [NSString stringWithFormat:@"%@, %@", placemark.locality, placemark.thoroughfare];
              if (result) {
-                result(YES, addres);
+                result(YES, address);
              }
-             
          } else {
              if (result) {
                  result(NO, nil);

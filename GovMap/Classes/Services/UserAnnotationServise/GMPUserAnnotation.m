@@ -7,28 +7,32 @@
 //
 
 #import "GMPUserAnnotation.h"
+
 #import <MapKit/MapKit.h>
 
 @implementation GMPUserAnnotation
 
-@synthesize coordinate, title, subtitle;
+#pragma mark - Accessors
+
+- (void)setCoordinate:(CLLocationCoordinate2D)newCoordinate
+{
+    _coordinate = newCoordinate;
+}
+
+- (void)setTitle:(NSString *)newTitle
+{
+    _title = newTitle;
+}
+
+#pragma mark - Lifecycle
 
 - (id)initWithLocation:(CLLocationCoordinate2D)paramCoordinate title:(NSString *)paramTitle{
     self = [super init];
     if (self) {
-        coordinate = paramCoordinate;
-        title      = paramTitle;
+        _coordinate = paramCoordinate;
+        _title      = paramTitle;
     }
     return self;
-}
-
-- (void)setCoordinate:(CLLocationCoordinate2D)newCoordinate
-{
-    coordinate = newCoordinate;
-}
-
-- (void)setTitle:(NSString *)newTitle{
-    title = newTitle;
 }
 
 @end

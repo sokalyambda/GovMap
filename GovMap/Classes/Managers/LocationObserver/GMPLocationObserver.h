@@ -15,5 +15,7 @@ typedef void(^ReverseGeocodingResult)(BOOL success, NSString *address);
 @property (strong, nonatomic) CLLocation *currentLocation;
 
 + (GMPLocationObserver *)sharedInstance;
+
 - (void)reverseGeocodingForCoordinate:(CLLocation *)location withResult: (ReverseGeocodingResult)result;
+
 @end
