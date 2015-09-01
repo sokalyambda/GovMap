@@ -14,8 +14,13 @@ typedef enum : NSUInteger {
 
 #import "GMPBaseViewController.h"
 
+@class GMPLocationAddress, GMPCadastre;
+
 @interface GMPMapController : GMPBaseViewController
 
 @property (assign, nonatomic) GMPSearchType currentSearchType;
+
+@property (strong, nonatomic) GMPLocationAddress *currentAddress;
+@property (strong, nonatomic) GMPCadastre *currentCadastre;
 
 @end

@@ -11,11 +11,15 @@
 
 #import "GMPSearchWithGeoNumbersView.h"
 
+#import "GMPCadastre.h"
+
 static NSString *const kMapControllerSegueIdentifier = @"mapControllerSegue";
 
 @interface GMPSearchWithGeoNumbersController () <GMPSearchWithGeoNumbersDelegate>
 
 @property (weak, nonatomic) IBOutlet GMPSearchWithGeoNumbersView *searchWithGeoNumbersView;
+
+@property (strong, nonatomic) GMPCadastre *currentCadastre;
 
 @end
 
@@ -45,7 +49,7 @@ static NSString *const kMapControllerSegueIdentifier = @"mapControllerSegue";
 
 - (void)searchWithGeoNumbersView:(GMPSearchWithGeoNumbersView *)searchView didPressSearchButtonWithGeoNumbers:(NSDictionary *)geoNumbers
 {
-    NSLog(@"Latitute: %@ Longitude: %@", geoNumbers[kBlock], geoNumbers[kSubblock]);
+    self.currentCadastre = [GMPCadastre cadastreWithMajor:[geoNumbers[kBlock] integerValue] minor:[geoNumbers[kSubblock] integerValue]];
     [self performSegueWithIdentifier:kMapControllerSegueIdentifier sender:self];
 }
 
@@ -56,6 +60,7 @@ static NSString *const kMapControllerSegueIdentifier = @"mapControllerSegue";
     if ([segue.identifier isEqualToString:kMapControllerSegueIdentifier]) {
         GMPMapController *controller = (GMPMapController *)segue.destinationViewController;
         controller.currentSearchType = GMPSearchTypeGeonumbers;
+        controller.currentCadastre = self.currentCadastre;
     }
 }
 

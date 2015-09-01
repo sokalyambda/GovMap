@@ -51,6 +51,8 @@
 		58C131971B8F04FB0095045A /* GMPBaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C131961B8F04FB0095045A /* GMPBaseNavigationController.m */; };
 		58C1319B1B8F054A0095045A /* GMPMainMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C1319A1B8F054A0095045A /* GMPMainMenuController.m */; };
 		58C131A11B8F09C80095045A /* GMPSplashScreenController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C131A01B8F09C80095045A /* GMPSplashScreenController.m */; };
+		58C8E8291B95A3A7002F8F61 /* GMPLocationAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C8E8281B95A3A7002F8F61 /* GMPLocationAddress.m */; };
+		D36C847B1B95C54600193073 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D36C847A1B95C54600193073 /* AddressBook.framework */; };
 		D39029AC1B9050A30097C4B6 /* GMPMapController.m in Sources */ = {isa = PBXBuildFile; fileRef = D39029AB1B9050A30097C4B6 /* GMPMapController.m */; };
 		D39029B41B9060B80097C4B6 /* GMPUserAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = D39029B31B9060B80097C4B6 /* GMPUserAnnotation.m */; };
 		D3E5347B1B8F39FA00C9D87B /* GMPMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E5347A1B8F39FA00C9D87B /* GMPMenuView.m */; };
@@ -160,7 +162,10 @@
 		58C1319D1B8F05FC0095045A /* GovMap-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GovMap-Prefix.pch"; sourceTree = "<group>"; };
 		58C1319F1B8F09C80095045A /* GMPSplashScreenController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GMPSplashScreenController.h; path = Classes/MVC/Controllers/SplashScreenController/GMPSplashScreenController.h; sourceTree = "<group>"; };
 		58C131A01B8F09C80095045A /* GMPSplashScreenController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GMPSplashScreenController.m; path = Classes/MVC/Controllers/SplashScreenController/GMPSplashScreenController.m; sourceTree = "<group>"; };
+		58C8E8271B95A3A7002F8F61 /* GMPLocationAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GMPLocationAddress.h; path = Classes/MVC/Models/LocationAddress/GMPLocationAddress.h; sourceTree = "<group>"; };
+		58C8E8281B95A3A7002F8F61 /* GMPLocationAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GMPLocationAddress.m; path = Classes/MVC/Models/LocationAddress/GMPLocationAddress.m; sourceTree = "<group>"; };
 		A3EC1D9E43C52520F2972EB0 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		D36C847A1B95C54600193073 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		D39029AA1B9050A30097C4B6 /* GMPMapController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GMPMapController.h; path = Classes/MVC/Controllers/MapController/GMPMapController.h; sourceTree = "<group>"; };
 		D39029AB1B9050A30097C4B6 /* GMPMapController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GMPMapController.m; path = Classes/MVC/Controllers/MapController/GMPMapController.m; sourceTree = "<group>"; };
 		D39029B21B9060B80097C4B6 /* GMPUserAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GMPUserAnnotation.h; path = Classes/Services/UserAnnotationServise/GMPUserAnnotation.h; sourceTree = "<group>"; };
@@ -174,6 +179,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D36C847B1B95C54600193073 /* AddressBook.framework in Frameworks */,
 				58C1317A1B8F036A0095045A /* MapKit.framework in Frameworks */,
 				58C131781B8F03650095045A /* CoreLocation.framework in Frameworks */,
 				58C131761B8F035F0095045A /* CoreGraphics.framework in Frameworks */,
@@ -196,6 +202,7 @@
 		20C06A8EAE4527031BE42BC0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D36C847A1B95C54600193073 /* AddressBook.framework */,
 				58C131791B8F036A0095045A /* MapKit.framework */,
 				58C131771B8F03650095045A /* CoreLocation.framework */,
 				58C131751B8F035F0095045A /* CoreGraphics.framework */,
@@ -479,6 +486,7 @@
 		58C131471B8EF79B0095045A /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				58C8E8261B95A384002F8F61 /* Address */,
 				3EC10CA91B94428400EF2DF6 /* Cadastre */,
 			);
 			name = Models;
@@ -723,6 +731,15 @@
 			name = SplashScreenController;
 			sourceTree = "<group>";
 		};
+		58C8E8261B95A384002F8F61 /* Address */ = {
+			isa = PBXGroup;
+			children = (
+				58C8E8271B95A3A7002F8F61 /* GMPLocationAddress.h */,
+				58C8E8281B95A3A7002F8F61 /* GMPLocationAddress.m */,
+			);
+			name = Address;
+			sourceTree = "<group>";
+		};
 		AF955FFAC164DEF1D65EAD82 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -919,6 +936,7 @@
 				58C131891B8F04030095045A /* GMPSerialViewsConstructor.m in Sources */,
 				58C131671B8F02E10095045A /* UIView+ConfigureAnchorPoint.m in Sources */,
 				D3E5347B1B8F39FA00C9D87B /* GMPMenuView.m in Sources */,
+				58C8E8291B95A3A7002F8F61 /* GMPLocationAddress.m in Sources */,
 				3E820AC41B903FF700EDEEA4 /* GMPSearchWithGeoNumbersController.m in Sources */,
 				3E820ABA1B9035DB00EDEEA4 /* GMPSearchWithAddressViewController.m in Sources */,
 				58C1316D1B8F03030095045A /* UIImage+Base64Encoding.m in Sources */,

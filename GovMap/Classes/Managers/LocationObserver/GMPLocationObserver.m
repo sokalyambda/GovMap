@@ -7,7 +7,11 @@
 //
 
 #import "GMPLocationObserver.h"
+#import <AddressBook/AddressBook.h>
+
 //#import <CoreLocation/CoreLocation.h>
+
+static NSString *const kCountryKey = @"IL";
 
 @interface GMPLocationObserver ()<CLLocationManagerDelegate>
 
@@ -72,9 +76,20 @@
      ^(NSArray *placemarks, NSError *error) {
          if (!error && placemarks.count) {
              CLPlacemark *placemark = [placemarks firstObject];
-             NSString *address = [NSString stringWithFormat:@"%@, %@", placemark.locality, placemark.thoroughfare];
+             
+             NSArray *adressArray = placemark.addressDictionary[@"FormattedAddressLines"];
+             NSString *address = [NSString string];
+             for (int i = 0; i < adressArray.count; i++) {
+                 NSString *s = [NSString stringWithFormat:@"%@ ", adressArray[i]];
+                 address = [address stringByAppendingString:s];
+                 if (i == 1) {
+                     break;
+                 }
+             }
+             
+             NSLog(@"%@", placemark.addressDictionary);
              if (result) {
-                result(YES, address);
+                 result(YES, address);
              }
          } else {
              if (result) {
@@ -82,6 +97,30 @@
              }
          }
      }];
+}
+
+- (void)geocodingForAddress:(GMPLocationAddress *)address withResult:(GeocodingResult)result
+{
+
+    NSDictionary *locationDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+                                        address.cityName, kABPersonAddressCityKey,
+                                        kCountryKey, kABPersonAddressCountryKey,
+                                        address.fullStreetName, kABPersonAddressStreetKey,
+                                        nil];
+    [self.geocoder geocodeAddressDictionary:locationDictionary completionHandler:^(NSArray *placemarks, NSError *error) {
+        if (!error && placemarks.count) {
+            CLPlacemark *placemark = [placemarks firstObject];
+            
+            if (result) {
+                result(YES, placemark.location);
+            }
+        } else {
+            if (result) {
+                result(NO, nil);
+            }
+        }
+    }];
+    
 }
 
 @end
