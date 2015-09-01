@@ -12,17 +12,17 @@
 #import "UIView+MakeFromXib.h"
 #import "UIView+Shaking.h"
 
-NSString *const kLatitude = @"Latitude";
-NSString *const kLongitude = @"Longitude";
+NSString *const kBlock = @"Block";
+NSString *const kSubblock = @"Subblock";
 
-static NSString *const kAcceptableCharacters = @"0123456789.";
+static NSString *const kAcceptableCharacters = @"0123456789";
 
 @interface GMPSearchWithGeoNumbersView () <UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *containerView;
 
-@property (weak, nonatomic) IBOutlet GMPSearchTextField *latitudeTextField;
-@property (weak, nonatomic) IBOutlet GMPSearchTextField *longitudeTextField;
+@property (weak, nonatomic) IBOutlet UITextField *blockTextField;
+@property (weak, nonatomic) IBOutlet UITextField *subblockTextField;
 
 @property (strong, nonatomic) UITapGestureRecognizer *tap;
 
@@ -56,10 +56,10 @@ static NSString *const kAcceptableCharacters = @"0123456789.";
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    if ([self.longitudeTextField isFirstResponder]) {
-        [self.latitudeTextField becomeFirstResponder];
-    } else if ([self.latitudeTextField isFirstResponder]) {
-        [self.latitudeTextField resignFirstResponder];
+    if ([self.blockTextField isFirstResponder]) {
+        [self.subblockTextField becomeFirstResponder];
+    } else if ([self.subblockTextField isFirstResponder]) {
+        [self.subblockTextField resignFirstResponder];
     }
     return YES;
 }
@@ -85,24 +85,24 @@ static NSString *const kAcceptableCharacters = @"0123456789.";
  */
 - (void)performSearchAction
 {
-    NSDecimalNumber *latitude = [NSDecimalNumber decimalNumberWithString:self.latitudeTextField.text];
-    NSDecimalNumber *longitude = [NSDecimalNumber decimalNumberWithString:self.longitudeTextField.text];
+    NSDecimalNumber *block = [NSDecimalNumber decimalNumberWithString:self.blockTextField.text];
+    NSDecimalNumber *subblock = [NSDecimalNumber decimalNumberWithString:self.subblockTextField.text];
     
     BOOL areValuesValidated = YES;
     
-    if ([latitude isEqualToNumber:[NSDecimalNumber notANumber]]) {
-        [self.latitudeTextField shakeView];
+    if ([block isEqualToNumber:[NSDecimalNumber notANumber]]) {
+        [self.blockTextField shakeView];
         areValuesValidated = NO;
     }
-    if ([longitude isEqualToNumber:[NSDecimalNumber notANumber]]) {
-        [self.longitudeTextField shakeView];
+    if ([subblock isEqualToNumber:[NSDecimalNumber notANumber]]) {
+        [self.subblockTextField shakeView];
         areValuesValidated = NO;
     }
     
     if (areValuesValidated) {
         if ([self.delegate respondsToSelector:@selector(searchWithGeoNumbersView:didPressSearchButtonWithGeoNumbers:)]) {
             [self.delegate searchWithGeoNumbersView:self
-                 didPressSearchButtonWithGeoNumbers:@{ kLatitude : latitude, kLongitude : longitude }];
+                 didPressSearchButtonWithGeoNumbers:@{ kBlock : block, kSubblock : subblock }];
         }
     }
 }

@@ -29,11 +29,23 @@ static NSString *const kMapControllerSegueIdentifier = @"mapControllerSegue";
     self.searchWithGeoNumbersView.delegate = self;
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.searchWithGeoNumbersView subscribeForNotifications];
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    [self.searchWithGeoNumbersView unsubscribeFromNotifications];
+}
+
 #pragma mark - GMPSearchWithGeoNumbersDelegate methods
 
 - (void)searchWithGeoNumbersView:(GMPSearchWithGeoNumbersView *)searchView didPressSearchButtonWithGeoNumbers:(NSDictionary *)geoNumbers
 {
-    NSLog(@"Latitute: %@ Longitude: %@", geoNumbers[kLatitude], geoNumbers[kLongitude]);
+    NSLog(@"Latitute: %@ Longitude: %@", geoNumbers[kBlock], geoNumbers[kSubblock]);
     [self performSegueWithIdentifier:kMapControllerSegueIdentifier sender:self];
 }
 

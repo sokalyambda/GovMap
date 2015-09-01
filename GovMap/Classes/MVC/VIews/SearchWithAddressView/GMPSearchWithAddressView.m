@@ -20,9 +20,9 @@ NSString *const kHome = @"Home";
 
 @property (weak, nonatomic) IBOutlet UIView *containerView;
 
-@property (weak, nonatomic) IBOutlet GMPSearchTextField *cityTextField;
-@property (weak, nonatomic) IBOutlet GMPSearchTextField *streetTextField;
-@property (weak, nonatomic) IBOutlet GMPSearchTextField *homeTextField;
+@property (weak, nonatomic) IBOutlet UITextField *cityTextField;
+@property (weak, nonatomic) IBOutlet UITextField *streetTextField;
+@property (weak, nonatomic) IBOutlet UITextField *homeTextField;
 
 @property (strong, nonatomic) UITapGestureRecognizer *tap;
 

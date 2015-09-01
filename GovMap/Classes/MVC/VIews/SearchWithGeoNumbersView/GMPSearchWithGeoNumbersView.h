@@ -6,14 +6,16 @@
 //  Copyright (c) 2015 ThinkMobiles. All rights reserved.
 //
 
+#import "GMPBaseSearchView.h"
+
 @class GMPSearchWithGeoNumbersView;
 @protocol GMPSearchWithGeoNumbersDelegate;
 
-extern NSString *const kLatitude;
-extern NSString *const kLongitude;
+extern NSString *const kBlock;
+extern NSString *const kSubblock;
 
 
-@interface GMPSearchWithGeoNumbersView : UIView
+@interface GMPSearchWithGeoNumbersView : GMPBaseSearchView
 
 @property(weak, nonatomic) id<GMPSearchWithGeoNumbersDelegate> delegate;
 

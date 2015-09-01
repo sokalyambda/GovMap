@@ -21,7 +21,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.communicator = [GMPCommunicator sharedInstance:self.webView];
+    self.communicator = [GMPCommunicator sharedInstance];
 }
 
 - (IBAction)loadButtonPressed:(id)sender

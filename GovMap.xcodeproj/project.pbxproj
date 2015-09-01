@@ -12,6 +12,8 @@
 		3E820ABA1B9035DB00EDEEA4 /* GMPSearchWithAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E820AB91B9035DB00EDEEA4 /* GMPSearchWithAddressViewController.m */; };
 		3E820ABE1B90379600EDEEA4 /* GMPSearchWithGeoNumbersView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E820ABD1B90379600EDEEA4 /* GMPSearchWithGeoNumbersView.m */; };
 		3E820AC41B903FF700EDEEA4 /* GMPSearchWithGeoNumbersController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E820AC31B903FF700EDEEA4 /* GMPSearchWithGeoNumbersController.m */; };
+		3E8F917C1B95AA8A00CDBF6F /* GMPBaseSearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E8F917B1B95AA8A00CDBF6F /* GMPBaseSearchView.m */; };
+		3E8F91811B95CCE300CDBF6F /* UIResponder+FirstResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E8F91801B95CCE300CDBF6F /* UIResponder+FirstResponder.m */; };
 		3EC10CAF1B94444000EF2DF6 /* GMPCadastre.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC10CAE1B94444000EF2DF6 /* GMPCadastre.m */; };
 		3EC10CB21B944FD700EF2DF6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC10CB11B944FD700EF2DF6 /* ViewController.m */; };
 		3EFC40CC1B942FE700EEBC65 /* GMPCommunicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EFC40CB1B942FE700EEBC65 /* GMPCommunicator.m */; };
@@ -75,6 +77,10 @@
 		3E820ABD1B90379600EDEEA4 /* GMPSearchWithGeoNumbersView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GMPSearchWithGeoNumbersView.m; path = Classes/MVC/VIews/SearchWithGeoNumbersView/GMPSearchWithGeoNumbersView.m; sourceTree = "<group>"; };
 		3E820AC21B903FF700EDEEA4 /* GMPSearchWithGeoNumbersController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GMPSearchWithGeoNumbersController.h; path = Classes/MVC/Controllers/SearchWithGeoNubersController/GMPSearchWithGeoNumbersController.h; sourceTree = "<group>"; };
 		3E820AC31B903FF700EDEEA4 /* GMPSearchWithGeoNumbersController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GMPSearchWithGeoNumbersController.m; path = Classes/MVC/Controllers/SearchWithGeoNubersController/GMPSearchWithGeoNumbersController.m; sourceTree = "<group>"; };
+		3E8F917A1B95AA8A00CDBF6F /* GMPBaseSearchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GMPBaseSearchView.h; path = Classes/MVC/VIews/BaseSearchView/GMPBaseSearchView.h; sourceTree = "<group>"; };
+		3E8F917B1B95AA8A00CDBF6F /* GMPBaseSearchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GMPBaseSearchView.m; path = Classes/MVC/VIews/BaseSearchView/GMPBaseSearchView.m; sourceTree = "<group>"; };
+		3E8F917F1B95CCE300CDBF6F /* UIResponder+FirstResponder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIResponder+FirstResponder.h"; path = "Classes/Categories/UIResponder/UIResponder+FirstResponder/UIResponder+FirstResponder.h"; sourceTree = "<group>"; };
+		3E8F91801B95CCE300CDBF6F /* UIResponder+FirstResponder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIResponder+FirstResponder.m"; path = "Classes/Categories/UIResponder/UIResponder+FirstResponder/UIResponder+FirstResponder.m"; sourceTree = "<group>"; };
 		3EC10CAD1B94444000EF2DF6 /* GMPCadastre.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GMPCadastre.h; path = Classes/MVC/Models/Cadastre/GMPCadastre.h; sourceTree = "<group>"; };
 		3EC10CAE1B94444000EF2DF6 /* GMPCadastre.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GMPCadastre.m; path = Classes/MVC/Models/Cadastre/GMPCadastre.m; sourceTree = "<group>"; };
 		3EC10CB01B944FD700EF2DF6 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
@@ -236,6 +242,32 @@
 				3E820AC31B903FF700EDEEA4 /* GMPSearchWithGeoNumbersController.m */,
 			);
 			name = SearchWithGeoNumbersController;
+			sourceTree = "<group>";
+		};
+		3E8F91791B95AA4700CDBF6F /* BaseSearchView */ = {
+			isa = PBXGroup;
+			children = (
+				3E8F917A1B95AA8A00CDBF6F /* GMPBaseSearchView.h */,
+				3E8F917B1B95AA8A00CDBF6F /* GMPBaseSearchView.m */,
+			);
+			name = BaseSearchView;
+			sourceTree = "<group>";
+		};
+		3E8F917D1B95CC5E00CDBF6F /* UIResponder */ = {
+			isa = PBXGroup;
+			children = (
+				3E8F917E1B95CC6700CDBF6F /* UIResponder+FirstResponder */,
+			);
+			name = UIResponder;
+			sourceTree = "<group>";
+		};
+		3E8F917E1B95CC6700CDBF6F /* UIResponder+FirstResponder */ = {
+			isa = PBXGroup;
+			children = (
+				3E8F917F1B95CCE300CDBF6F /* UIResponder+FirstResponder.h */,
+				3E8F91801B95CCE300CDBF6F /* UIResponder+FirstResponder.m */,
+			);
+			name = "UIResponder+FirstResponder";
 			sourceTree = "<group>";
 		};
 		3EC10CA91B94428400EF2DF6 /* Cadastre */ = {
@@ -408,6 +440,7 @@
 		58C131431B8EF7800095045A /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				3E8F917D1B95CC5E00CDBF6F /* UIResponder */,
 				58C131541B8EFF530095045A /* UIViewController */,
 				58C131531B8EFF4E0095045A /* UIView */,
 				58C131521B8EFF420095045A /* UIImage */,
@@ -454,6 +487,7 @@
 		58C131481B8EF7C20095045A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				3E8F91791B95AA4700CDBF6F /* BaseSearchView */,
 				58A841B71B94B3A10032AEF0 /* SearchTextField */,
 				3E820ABB1B90373700EDEEA4 /* SearchWithGeoNumbersView */,
 				3E820AB11B8F3D3400EDEEA4 /* SearchWithAddressView */,
@@ -897,7 +931,9 @@
 				3EFC40CC1B942FE700EEBC65 /* GMPCommunicator.m in Sources */,
 				58C1318C1B8F041F0095045A /* GMPAlertService.m in Sources */,
 				58C131971B8F04FB0095045A /* GMPBaseNavigationController.m in Sources */,
+				3E8F917C1B95AA8A00CDBF6F /* GMPBaseSearchView.m in Sources */,
 				58A841BA1B94B3BC0032AEF0 /* GMPSearchTextField.m in Sources */,
+				3E8F91811B95CCE300CDBF6F /* UIResponder+FirstResponder.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

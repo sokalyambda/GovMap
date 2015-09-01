@@ -29,6 +29,18 @@ static NSString *const kMapControllerSegueIdentifier = @"mapControllerSegue";
     self.searchWithAddressView.delegate = self;
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.searchWithAddressView subscribeForNotifications];
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    [self.searchWithAddressView unsubscribeFromNotifications];
+}
+
 #pragma mark - GMPSearchWithAddressDelegate methods
 
 - (void)searchWithAddressView:(GMPSearchWithAddressView *)searchView didPressSearchButtonWithAddress:(NSDictionary *)address

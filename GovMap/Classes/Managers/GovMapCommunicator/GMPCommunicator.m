@@ -53,7 +53,6 @@ static NSInteger const kAttemtsAmountForDataRetrieving = 20;
         
         _webView = [[UIWebView alloc] init];
         _webView.delegate = self;
-        [_webView loadRequest:_loadGovMapRequest];
         
         self.delegate = self;
     }
@@ -63,9 +62,9 @@ static NSInteger const kAttemtsAmountForDataRetrieving = 20;
 #pragma mark - Public
 
 /**
- *  Reload all govmap.gov.il data
+ *  Load all govmap.gov.il data
  */
-- (void)reloadContent
+- (void)loadContent
 {
     self.loadedHTMLFramesCounter = 0;
     _isReadyForRequests = NO;
@@ -264,7 +263,7 @@ static NSInteger const kAttemtsAmountForDataRetrieving = 20;
 - (void)communicator:(GMPCommunicator *)communicator didFailLoadingContentWithFrameNumber:(NSInteger)frameNumber error:(NSError *)error
 {
     NSLog(@"Failed to load data. Trying again...");
-    [self reloadContent];
+    [self loadContent];
 }
 
 - (void)communicatorDidFinishLoadingContent:(GMPCommunicator *)communicator

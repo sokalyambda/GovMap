@@ -21,7 +21,7 @@ typedef void(^RequestAddressCompletionBlock)(NSString *address);
 @property (assign, readonly, nonatomic) BOOL isReadyForRequests;
 
 + (instancetype)sharedInstance;
-- (void)reloadContent;
+- (void)loadContent;
 - (void)requestCadastralNumbersWithAddress:(NSString *)address
                            completionBlock:(RequestCadasterCompletionBlock)completionBlock;
 - (void)requestAddressWithCadastralNumbers:(GMPCadastre *)cadastralInfo

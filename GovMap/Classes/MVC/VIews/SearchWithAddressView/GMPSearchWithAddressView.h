@@ -6,6 +6,8 @@
 //  Copyright (c) 2015 ThinkMobiles. All rights reserved.
 //
 
+#import "GMPBaseSearchView.h"
+
 @class GMPSearchWithAddressView;
 @protocol GMPSearchWithAdressDelegate;
 
@@ -14,7 +16,7 @@ extern NSString *const kStreet;
 extern NSString *const kHome;
 
 
-@interface GMPSearchWithAddressView : UIView
+@interface GMPSearchWithAddressView : GMPBaseSearchView
 
 @property(weak, nonatomic) id<GMPSearchWithAdressDelegate> delegate;
 
