@@ -12,15 +12,19 @@
 @class GMPCadastre;
 @protocol GMPCommunicatorDelegate;
 
-typedef void(^CommunicatorCompletionBlock)(GMPCadastre *cadastralInfo, NSError *error);
+typedef void(^RequestCadasterCompletionBlock)(GMPCadastre *cadastralInfo);
+typedef void(^RequestAddressCompletionBlock)(NSString *address);
 
 @interface GMPCommunicator : NSObject
 
 @property (strong, nonatomic) id<GMPCommunicatorDelegate> delegate;
+@property (assign, readonly, nonatomic) BOOL isReadyForRequests;
 
-+ (instancetype)sharedInstance;
++ (instancetype)sharedInstance:(UIWebView *)wv;
 - (void)reloadContent;
 - (void)requestCadastralNumbersWithAddress:(NSString *)address
-                           completionBlock:(CommunicatorCompletionBlock)completionBlock;
+                           completionBlock:(RequestCadasterCompletionBlock)completionBlock;
+- (void)requestAddressWithCadastralNumbers:(GMPCadastre *)cadastralInfo
+                           completionBlock:(RequestAddressCompletionBlock)completionBlock;
 
 @end

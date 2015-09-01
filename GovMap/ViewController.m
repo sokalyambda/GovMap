@@ -21,13 +21,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.communicator = [GMPCommunicator sharedInstance];
+    self.communicator = [GMPCommunicator sharedInstance:self.webView];
 }
 
 - (IBAction)loadButtonPressed:(id)sender
 {
-    [self.communicator requestCadastralNumbersWithAddress:nil completionBlock:^(GMPCadastre *cadastralInfo, NSError *error) {
-        self.label.text = [NSString stringWithFormat:@"Major: %ld, minor: %ld", (long)cadastralInfo.major, (long)cadastralInfo.minor];
+    [self.communicator requestCadastralNumbersWithAddress:nil completionBlock:^(GMPCadastre *cadastralInfo) {
+        NSLog(@"Major: %ld, minor: %ld", (long)cadastralInfo.major, (long)cadastralInfo.minor);
+    }];
+}
+
+- (IBAction)otherButtonPressed:(id)sender
+{
+    [self.communicator requestAddressWithCadastralNumbers:[GMPCadastre cadastreWithMajor:2302 minor:02] completionBlock:^(NSString *address) {
+        NSLog(address);
     }];
 }
 
