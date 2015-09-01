@@ -11,6 +11,7 @@
 @property (strong, nonatomic) NSString *cityName;
 @property (strong, nonatomic) NSString *streetName;
 @property (strong, nonatomic) NSString *homeName;
+@property (strong, nonatomic, readonly) NSString *fullStreetName;
 
 + (instancetype)locationAddressWithCityName:(NSString *)cityName andStreetName:(NSString *)streetName andHomeName:(NSString *)homeName;
 
