@@ -220,10 +220,16 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="goToWazeButton" destination="FGc-lM-jsg" id="LjI-NE-Hyu"/>
                         <outlet property="mapView" destination="4Cv-NS-JWU" id="bKt-cb-Wy3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GmV-g7-uRa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <barButtonItem title="Item" id="FGc-lM-jsg">
+                    <connections>
+                        <action selector="goToWazeClick:" destination="hbg-PG-zFK" id="io5-0s-B1F"/>
+                    </connections>
+                </barButtonItem>
             </objects>
             <point key="canvasLocation" x="2908.5" y="398.25"/>
         </scene>

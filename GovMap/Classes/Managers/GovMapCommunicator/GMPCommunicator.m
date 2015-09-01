@@ -7,7 +7,9 @@
 //
 
 #import "GMPCommunicator.h"
+
 #import "GMPCadastre.h"
+
 #import "GMPCommunicatorDelegate.h"
 
 static NSString *const kURLString = @"http://www.govmap.gov.il";
@@ -98,7 +100,10 @@ static NSInteger const kSearchHTMLFrameIndex = 12;
                                      @"document.getElementById('tbSearchWord').value = '%@'", address];
     [self.webView stringByEvaluatingJavaScriptFromString:jsSetTextFieldValue];
     [self.webView stringByEvaluatingJavaScriptFromString:@"FS_Search()"];
+    NSLog(@"%@", [self.webView stringByEvaluatingJavaScriptFromString:jsSetTextFieldValue]);
+    NSLog(@"%@", [self.webView stringByEvaluatingJavaScriptFromString:@"FS_Search()"]);
     [self performSelector:@selector(fillTextField) withObject:self afterDelay:1.0];
+
 }
 
 #pragma mark - Private
@@ -106,6 +111,9 @@ static NSInteger const kSearchHTMLFrameIndex = 12;
 - (void)fillTextField
 {
     [self.webView stringByEvaluatingJavaScriptFromString:@"document.getElementById('lnkFindBlockByAddress').click()"];
+    NSLog(@"%@", [self.webView stringByEvaluatingJavaScriptFromString:
+     @"document.getElementById('lnkFindBlockByAddress').click()"]);
+    
     [self performSelector:@selector(checkInnerText) withObject:self afterDelay:1.0];
 }
 

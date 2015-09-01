@@ -7,6 +7,7 @@
 //
 
 #import "GMPSearchWithAddressView.h"
+#import "GMPSearchTextField.h"
 
 #import "UIView+MakeFromXib.h"
 #import "UIView+Shaking.h"
@@ -19,9 +20,9 @@ NSString *const kHome = @"Home";
 
 @property (weak, nonatomic) IBOutlet UIView *containerView;
 
-@property (weak, nonatomic) IBOutlet UITextField *cityTextField;
-@property (weak, nonatomic) IBOutlet UITextField *streetTextField;
-@property (weak, nonatomic) IBOutlet UITextField *homeTextField;
+@property (weak, nonatomic) IBOutlet GMPSearchTextField *cityTextField;
+@property (weak, nonatomic) IBOutlet GMPSearchTextField *streetTextField;
+@property (weak, nonatomic) IBOutlet GMPSearchTextField *homeTextField;
 
 @property (strong, nonatomic) UITapGestureRecognizer *tap;
 
@@ -29,31 +30,29 @@ NSString *const kHome = @"Home";
 
 @implementation GMPSearchWithAddressView
 
+#pragma mark - Lifecycle
+
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     if (self = [super initWithCoder:aDecoder]) {
         _containerView = [[self class] makeFromXibWithFileOwner:self];
         _containerView.frame = self.frame;
         [self addSubview:_containerView];
-        
-        _cityTextField.delegate = self;
-        _streetTextField.delegate = self;
-        _homeTextField.delegate = self;
-        
-        _tap = [[UITapGestureRecognizer alloc]
-               initWithTarget:self
-               action:@selector(dismissKeyboard)];
-        
-        [self addGestureRecognizer:_tap];
     }
     return self;
 }
 
-#pragma mark - Text field delegate methods
+#pragma mark - UITextFieldDelegate methods
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    [self dismissKeyboard];
+    if ([self.cityTextField isFirstResponder]) {
+        [self.streetTextField becomeFirstResponder];
+    } else if ([self.streetTextField isFirstResponder]) {
+        [self.homeTextField becomeFirstResponder];
+    } else if ([self.homeTextField isFirstResponder]) {
+        [self.homeTextField resignFirstResponder];
+    }
     return YES;
 }
 
@@ -61,17 +60,25 @@ NSString *const kHome = @"Home";
 
 - (IBAction)searchButtonPress:(id)sender
 {
+    [self performSearchAction];
+}
+
+/**
+ *  Validate text fields and call the delegate method
+ */
+- (void)performSearchAction
+{
     BOOL areValuesValidated = YES;
     
-    if (self.cityTextField.text.length == 0) {
+    if (!self.cityTextField.text.length) {
         [self.cityTextField shakeView];
         areValuesValidated = NO;
     }
-    if (self.streetTextField.text.length == 0) {
+    if (!self.streetTextField.text.length) {
         [self.streetTextField shakeView];
         areValuesValidated = NO;
     }
-    if (self.homeTextField.text.length == 0) {
+    if (!self.homeTextField.text.length) {
         [self.homeTextField shakeView];
         areValuesValidated = NO;
     }
@@ -84,11 +91,6 @@ NSString *const kHome = @"Home";
                                                     kHome : self.homeTextField.text }];
         }
     }
-}
-
-- (void)dismissKeyboard
-{
-    [self endEditing:YES];
 }
 
 @end

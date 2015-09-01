@@ -19,6 +19,8 @@
 		58A8419F1B94792D0032AEF0 /* GMPSearchWithAddressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58A841A11B94792D0032AEF0 /* GMPSearchWithAddressView.xib */; };
 		58A841A61B9479410032AEF0 /* GMPMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58A841A81B9479410032AEF0 /* GMPMenuView.xib */; };
 		58A841AF1B947E270032AEF0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 58A841B11B947E270032AEF0 /* Localizable.strings */; };
+		58A841B61B949E0D0032AEF0 /* GMPWazeNavigationService.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A841B51B949E0C0032AEF0 /* GMPWazeNavigationService.m */; };
+		58A841BA1B94B3BC0032AEF0 /* GMPSearchTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A841B91B94B3BC0032AEF0 /* GMPSearchTextField.m */; };
 		58C1311A1B8EF5A60095045A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C131191B8EF5A60095045A /* main.m */; };
 		58C1311D1B8EF5A60095045A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C1311C1B8EF5A60095045A /* AppDelegate.m */; };
 		58C131231B8EF5A60095045A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58C131211B8EF5A60095045A /* Main.storyboard */; };
@@ -95,6 +97,10 @@
 		58A841AC1B9479460032AEF0 /* he */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = he; path = he.lproj/GMPMenuView.strings; sourceTree = "<group>"; };
 		58A841B01B947E270032AEF0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		58A841B21B947E2B0032AEF0 /* he */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = he; path = he.lproj/Localizable.strings; sourceTree = "<group>"; };
+		58A841B41B949E0C0032AEF0 /* GMPWazeNavigationService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GMPWazeNavigationService.h; path = Classes/Services/WazeNavigationService/GMPWazeNavigationService.h; sourceTree = "<group>"; };
+		58A841B51B949E0C0032AEF0 /* GMPWazeNavigationService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GMPWazeNavigationService.m; path = Classes/Services/WazeNavigationService/GMPWazeNavigationService.m; sourceTree = "<group>"; };
+		58A841B81B94B3BC0032AEF0 /* GMPSearchTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GMPSearchTextField.h; path = Classes/MVC/Views/SearchTextField/GMPSearchTextField.h; sourceTree = "<group>"; };
+		58A841B91B94B3BC0032AEF0 /* GMPSearchTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GMPSearchTextField.m; path = Classes/MVC/Views/SearchTextField/GMPSearchTextField.m; sourceTree = "<group>"; };
 		58C131141B8EF5A60095045A /* GovMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GovMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58C131181B8EF5A60095045A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		58C131191B8EF5A60095045A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -258,6 +264,24 @@
 			name = GovMapCommunicator;
 			sourceTree = "<group>";
 		};
+		58A841B31B949DF00032AEF0 /* WazeNavigationService */ = {
+			isa = PBXGroup;
+			children = (
+				58A841B41B949E0C0032AEF0 /* GMPWazeNavigationService.h */,
+				58A841B51B949E0C0032AEF0 /* GMPWazeNavigationService.m */,
+			);
+			name = WazeNavigationService;
+			sourceTree = "<group>";
+		};
+		58A841B71B94B3A10032AEF0 /* SearchTextField */ = {
+			isa = PBXGroup;
+			children = (
+				58A841B81B94B3BC0032AEF0 /* GMPSearchTextField.h */,
+				58A841B91B94B3BC0032AEF0 /* GMPSearchTextField.m */,
+			);
+			name = SearchTextField;
+			sourceTree = "<group>";
+		};
 		58C1310B1B8EF5A50095045A = {
 			isa = PBXGroup;
 			children = (
@@ -356,6 +380,7 @@
 		58C131401B8EF76E0095045A /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				58A841B31B949DF00032AEF0 /* WazeNavigationService */,
 				D39029B11B9060570097C4B6 /* UserAnnotatation */,
 				58C1314C1B8EF8090095045A /* SerialViewsConstructor */,
 				58C1314B1B8EF7F50095045A /* AlertsService */,
@@ -429,6 +454,7 @@
 		58C131481B8EF7C20095045A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				58A841B71B94B3A10032AEF0 /* SearchTextField */,
 				3E820ABB1B90373700EDEEA4 /* SearchWithGeoNumbersView */,
 				3E820AB11B8F3D3400EDEEA4 /* SearchWithAddressView */,
 				D3E534721B8F1DE500C9D87B /* MenuView */,
@@ -846,6 +872,7 @@
 				58C1317D1B8F03920095045A /* NSString+JSONRepresentation.m in Sources */,
 				3E820AB51B8F3D6400EDEEA4 /* GMPSearchWithAddressView.m in Sources */,
 				58C131641B8F02CE0095045A /* UIView+Shaking.m in Sources */,
+				58A841B61B949E0D0032AEF0 /* GMPWazeNavigationService.m in Sources */,
 				58C1311D1B8EF5A60095045A /* AppDelegate.m in Sources */,
 				58C1318F1B8F043B0095045A /* GMPLocationObserver.m in Sources */,
 				58C1316A1B8F02F00095045A /* UIView+MakeFromXib.m in Sources */,
@@ -870,6 +897,7 @@
 				3EFC40CC1B942FE700EEBC65 /* GMPCommunicator.m in Sources */,
 				58C1318C1B8F041F0095045A /* GMPAlertService.m in Sources */,
 				58C131971B8F04FB0095045A /* GMPBaseNavigationController.m in Sources */,
+				58A841BA1B94B3BC0032AEF0 /* GMPSearchTextField.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

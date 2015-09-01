@@ -6,6 +6,8 @@
 //  Copyright (c) 2015 ThinkMobiles. All rights reserved.
 //
 
-@interface GMPSearchWithAddressViewController : UIViewController
+#import "GMPBaseViewController.h"
+
+@interface GMPSearchWithAddressViewController : GMPBaseViewController
 
 @end

@@ -6,6 +6,16 @@
 //  Copyright (c) 2015 ThinkMobiles. All rights reserved.
 //
 
-@interface GMPMapController : UIViewController
+typedef enum : NSUInteger {
+    GMPSearchTypeAddress,
+    GMPSearchTypeCurrentPlacing,
+    GMPSearchTypeGeonumbers,
+} GMPSearchType;
+
+#import "GMPBaseViewController.h"
+
+@interface GMPMapController : GMPBaseViewController
+
+@property (assign, nonatomic) GMPSearchType currentSearchType;
 
 @end

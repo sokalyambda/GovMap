@@ -19,6 +19,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self customizeNavigationItem];
+}
+
+#pragma mark - Actions
+
+- (void)customizeNavigationItem
+{
+    return;
 }
 
 @end

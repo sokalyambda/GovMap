@@ -7,9 +7,11 @@
 //
 
 #import "GMPMainMenuController.h"
-#import "GMPLocationObserver.h"
-#import "GMPMenuView.h"
+#import "GMPMapController.h"
 
+#import "GMPLocationObserver.h"
+
+#import "GMPMenuView.h"
 
 static NSString *const kMapControllerSegueIdentifier = @"mapControllerSegue";
 static NSString *const kSearchWithAddressControllerSegueIdentifier = @"searchWithAddressControllerSegue";
@@ -46,6 +48,23 @@ static NSString *const kSearchWithGeoNumbersControllerSegueIdentifier = @"search
 - (void)menuViewDidPressThirdButton:(GMPMenuView *)menuView
 {
     [self performSegueWithIdentifier:kSearchWithGeoNumbersControllerSegueIdentifier sender:self];
+}
+
+#pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:kMapControllerSegueIdentifier]) {
+        GMPMapController *controller = (GMPMapController *)segue.destinationViewController;
+        controller.currentSearchType = GMPSearchTypeCurrentPlacing;
+    }
+}
+
+#pragma mark - Actions
+
+- (void)customizeNavigationItem
+{
+    self.navigationItem.title = LOCALIZED(@"Main Menu");
 }
 
 @end
