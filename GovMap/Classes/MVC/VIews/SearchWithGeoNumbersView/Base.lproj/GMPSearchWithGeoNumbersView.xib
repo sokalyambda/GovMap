@@ -7,7 +7,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GMPSearchWithGeoNumbersView">
             <connections>
                 <outlet property="blockTextField" destination="HUc-CP-dgb" id="9mt-tt-Wyz"/>
-                <outlet property="containerView" destination="iN0-l3-epB" id="uVE-Ka-S55"/>
+                <outlet property="containerView" destination="iN0-l3-epB" id="z2i-h5-pvQ"/>
                 <outlet property="scrollView" destination="H5j-Ib-rPv" id="WSV-By-raH"/>
                 <outlet property="subblockTextField" destination="gwC-Aa-lCC" id="xp6-tl-qYc"/>
             </connections>
@@ -50,12 +50,18 @@
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Block" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HUc-CP-dgb" userLabel="Block Text Field">
                                     <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits"/>
+                                    <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="-1" id="oql-dw-dxk"/>
+                                    </connections>
                                 </textField>
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Subblock" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gwC-Aa-lCC" userLabel="Subblock Text Field">
                                     <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits"/>
+                                    <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="-1" id="6Df-VN-17I"/>
+                                    </connections>
                                 </textField>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

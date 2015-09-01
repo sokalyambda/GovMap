@@ -9,6 +9,8 @@
 #import "GMPSearchWithGeoNumbersView.h"
 #import "GMPSearchTextField.h"
 
+#import "GMPCadastre.h"
+
 #import "UIView+MakeFromXib.h"
 #import "UIView+Shaking.h"
 
@@ -100,9 +102,11 @@ static NSString *const kAcceptableCharacters = @"0123456789";
     }
     
     if (areValuesValidated) {
-        if ([self.delegate respondsToSelector:@selector(searchWithGeoNumbersView:didPressSearchButtonWithGeoNumbers:)]) {
+        
+        if ([self.delegate respondsToSelector:@selector(searchWithGeoNumbersView: didPressSearchButtonWithCadactralNumbers:)]) {
+            
             [self.delegate searchWithGeoNumbersView:self
-                 didPressSearchButtonWithGeoNumbers:@{ kBlock : block, kSubblock : subblock }];
+           didPressSearchButtonWithCadactralNumbers:[GMPCadastre cadastreWithMajor:[block integerValue] minor:[subblock integerValue]]];
         }
     }
 }

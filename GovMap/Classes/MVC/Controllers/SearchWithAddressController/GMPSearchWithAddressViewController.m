@@ -45,9 +45,9 @@ static NSString *const kMapControllerSegueIdentifier = @"mapControllerSegue";
 
 #pragma mark - GMPSearchWithAddressDelegate methods
 
-- (void)searchWithAddressView:(GMPSearchWithAddressView *)searchView didPressSearchButtonWithAddress:(NSDictionary *)address
+- (void)searchWithAddressView:(GMPSearchWithAddressView *)searchView didPressSearchButtonWithAddress:(GMPLocationAddress *)address
 {
-    self.locationAddress = [GMPLocationAddress locationAddressWithCityName:address[kCity] andStreetName:address[kStreet] andHomeName:address[kHome]];
+    self.locationAddress = address;
     [self performSegueWithIdentifier:kMapControllerSegueIdentifier sender:self];
 }
 

@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "GMPCommunicator.h"
 
 @interface AppDelegate ()
 
@@ -16,6 +17,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [[GMPCommunicator sharedInstance] loadContent];
+    
     return YES;
 }
 

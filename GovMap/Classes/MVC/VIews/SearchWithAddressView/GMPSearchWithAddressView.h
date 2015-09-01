@@ -8,7 +8,9 @@
 
 #import "GMPBaseSearchView.h"
 
+@class GMPLocationAddress;
 @class GMPSearchWithAddressView;
+
 @protocol GMPSearchWithAdressDelegate;
 
 extern NSString *const kCity;
@@ -26,6 +28,6 @@ extern NSString *const kHome;
 @protocol GMPSearchWithAdressDelegate <NSObject>
 
 @optional
-- (void)searchWithAddressView:(GMPSearchWithAddressView *)searchView didPressSearchButtonWithAddress:(NSDictionary *)address;
+- (void)searchWithAddressView:(GMPSearchWithAddressView *)searchView didPressSearchButtonWithAddress:(GMPLocationAddress *)address;
 
 @end

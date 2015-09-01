@@ -8,7 +8,9 @@
 
 #import "GMPBaseSearchView.h"
 
+@class GMPCadastre;
 @class GMPSearchWithGeoNumbersView;
+
 @protocol GMPSearchWithGeoNumbersDelegate;
 
 extern NSString *const kBlock;
@@ -25,6 +27,6 @@ extern NSString *const kSubblock;
 @protocol GMPSearchWithGeoNumbersDelegate <NSObject>
 
 @optional
-- (void)searchWithGeoNumbersView:(GMPSearchWithGeoNumbersView *)searchView didPressSearchButtonWithGeoNumbers:(NSDictionary *)geoNumbers;
+- (void)searchWithGeoNumbersView:(GMPSearchWithGeoNumbersView *)searchView didPressSearchButtonWithCadactralNumbers:(GMPCadastre *)geoNumbers;
 
 @end

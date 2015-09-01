@@ -47,9 +47,9 @@ static NSString *const kMapControllerSegueIdentifier = @"mapControllerSegue";
 
 #pragma mark - GMPSearchWithGeoNumbersDelegate methods
 
-- (void)searchWithGeoNumbersView:(GMPSearchWithGeoNumbersView *)searchView didPressSearchButtonWithGeoNumbers:(NSDictionary *)geoNumbers
+- (void)searchWithGeoNumbersView:(GMPSearchWithGeoNumbersView *)searchView didPressSearchButtonWithCadactralNumbers:(GMPCadastre *)geoNumbers
 {
-    self.currentCadastre = [GMPCadastre cadastreWithMajor:[geoNumbers[kBlock] integerValue] minor:[geoNumbers[kSubblock] integerValue]];
+    self.currentCadastre = geoNumbers;
     [self performSegueWithIdentifier:kMapControllerSegueIdentifier sender:self];
 }
 

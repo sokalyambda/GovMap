@@ -9,6 +9,8 @@
 #import "GMPSearchWithAddressView.h"
 #import "GMPSearchTextField.h"
 
+#import "GMPLocationAddress.h"
+
 #import "UIView+MakeFromXib.h"
 #import "UIView+Shaking.h"
 
@@ -86,9 +88,9 @@ NSString *const kHome = @"Home";
     if (areValuesValidated) {
         if ([self.delegate respondsToSelector:@selector(searchWithAddressView:didPressSearchButtonWithAddress:)]) {
             [self.delegate searchWithAddressView:self
-                 didPressSearchButtonWithAddress:@{ kCity : self.cityTextField.text,
-                                                    kStreet : self.streetTextField.text,
-                                                    kHome : self.homeTextField.text }];
+                 didPressSearchButtonWithAddress:[GMPLocationAddress locationAddressWithCityName:self.cityTextField.text
+                                                                                   andStreetName:self.streetTextField.text
+                                                                                     andHomeName:self.homeTextField.text]];
         }
     }
 }
