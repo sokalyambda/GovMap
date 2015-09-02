@@ -11,7 +11,7 @@
 
 @implementation GMPLocationAddressParser
 
-+ (GMPLocationAddress *)locationAddressWithString:(NSString *)address
++ (GMPLocationAddress *)locationAddressWithGovMapAddress:(NSString *)address
 {
     NSArray *addressObjects = [address componentsSeparatedByString:@", "];
     NSString *street = [[addressObjects[0] componentsSeparatedByString:@": "] lastObject];
@@ -19,8 +19,15 @@
     NSString *city   = [[addressObjects[2] componentsSeparatedByString:@": "] lastObject];
     
     GMPLocationAddress *locationAddress = [GMPLocationAddress locationAddressWithCityName:city
-                                                                       andStreetName:street
-                                                                         andHomeName:home];
+                                                                            andStreetName:street
+                                                                              andHomeName:home];
+    return locationAddress;
+}
+
++ (GMPLocationAddress *)locationAddressWithCurrentAddress:(NSString *)address
+{
+    NSArray *addressObjects = [address componentsSeparatedByString:@" "];
+    GMPLocationAddress *locationAddress = [GMPLocationAddress locationAddressWithCityName:addressObjects[2] andStreetName:addressObjects[0] andHomeName:addressObjects[1]];
     return locationAddress;
 }
 

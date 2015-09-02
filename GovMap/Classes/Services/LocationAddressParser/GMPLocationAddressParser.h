@@ -10,6 +10,7 @@
 
 @interface GMPLocationAddressParser : NSObject
 
-+ (GMPLocationAddress *)locationAddressWithString:(NSString *)address;
++ (GMPLocationAddress *)locationAddressWithGovMapAddress:(NSString *)address;
++ (GMPLocationAddress *)locationAddressWithCurrentAddress:(NSString *)address;
 
 @end

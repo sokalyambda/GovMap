@@ -21,19 +21,18 @@
 
 #import "GMPCadastre.h"
 
-static NSInteger const kBarButtonsFixedSpace = 10.f;
 static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתאימות";
 
 @interface GMPMapController () <MKMapViewDelegate>
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *goToWazeButton;
-@property (strong, nonatomic) IBOutlet UIBarButtonItem *searchGeoDataButton;
 
 @property (strong, nonatomic) GMPLocationObserver *locationObserver;
 @property (strong, nonatomic) GMPUserAnnotation *annotation;
-@property (assign, nonatomic) CLLocationCoordinate2D previousCoordinate;
 @property (strong, nonatomic) GMPCommunicator *communicator;
+
+@property (assign, nonatomic) CLLocationCoordinate2D previousCoordinate;
 
 @end
 
@@ -110,14 +109,17 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
         [self.locationObserver reverseGeocodingForCoordinate:location withResult:^(BOOL success, NSString *address) {
             if (success) {
                 [annotation setTitle:LOCALIZED(address)];
+                self.currentAddress = [GMPLocationAddressParser locationAddressWithCurrentAddress:address];
             }
         }];
     } else if (newState == MKAnnotationViewDragStateEnding) {
-        if (self.previousCoordinate.latitude != annotation.coordinate.latitude ||
-            self.previousCoordinate.longitude != annotation.coordinate.longitude) {
-            
-            [annotation setSubtitle:@""];
-        }
+        
+        [self searchCurrentGeodata];
+//        if (self.previousCoordinate.latitude != annotation.coordinate.latitude ||
+//            self.previousCoordinate.longitude != annotation.coordinate.longitude) {
+//            
+//            [annotation setSubtitle:@""];
+//        }
     }
 }
 
@@ -136,6 +138,14 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
         if (success) {
             weakSelf.annotation = [[GMPUserAnnotation alloc] initWithLocation:coordinate title:address];
             [weakSelf.mapView addAnnotation:self.annotation];
+            
+// setup self.currentAddress if search type is GMPSearchTypeCurrentPlacing
+            if (!self.currentAddress) {
+                self.currentAddress = [GMPLocationAddressParser locationAddressWithCurrentAddress:address];
+            }
+            
+           [self searchCurrentGeodata];
+
         }
     }];
 }
@@ -169,9 +179,9 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
                 
                 NSString *addressData = [address stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
                 
-                if (![addressData isEqual:kAddressNotFound]) {
+                if (addressData && ![addressData isEqual:kAddressNotFound]) {
+                    GMPLocationAddress *locAddress = [GMPLocationAddressParser locationAddressWithGovMapAddress:address];
                     
-                    GMPLocationAddress *locAddress = [GMPLocationAddressParser locationAddressWithString:address];
                     [self.locationObserver geocodingForAddress:locAddress withResult:^(BOOL success, CLLocation *location) {
                         if (success) {
                             [self setupMapAttributesForCoordinate:location.coordinate];
@@ -189,31 +199,20 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
 
 - (void)searchCurrentGeodata
 {
-    WEAK_SELF;
-    switch (self.currentSearchType) {
-        case GMPSearchTypeAddress: {
-            [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-            [self.communicator requestCadastralNumbersWithAddress:[NSString stringWithFormat:@"%@ %@ %@", self.currentAddress.cityName, self.currentAddress.streetName, self.currentAddress.homeName] completionBlock:^(GMPCadastre *cadastralInfo) {
-                [MBProgressHUD hideAllHUDsForView:weakSelf.view animated:YES];
-                
-                if (cadastralInfo) {
-                   [weakSelf.annotation setSubtitle:[NSString localizedStringWithFormat:@"%@ %ld, %@ %ld", LOCALIZED(@"Major:"), (long)cadastralInfo.major, LOCALIZED(@"Minor:"), (long)cadastralInfo.minor]];
-                } else {
-                    [GMPAlertService showInfoAlertControllerWithTitle:@"" andMessage:LOCALIZED(@"Something wrong, try again") forController:weakSelf withCompletion:nil];
-                }
-                
-            }];
-           break;
-        }
-        case GMPSearchTypeCurrentPlacing: {
-            break;
-        }
-        case GMPSearchTypeGeonumbers: {
-            break;
-        }
+    if (self.currentSearchType != GMPSearchTypeGeonumbers) {
+        
+        WEAK_SELF;
+        [self.communicator requestCadastralNumbersWithAddress:[NSString stringWithFormat:@"%@ %@ %@", self.currentAddress.cityName, self.currentAddress.streetName, self.currentAddress.homeName] completionBlock:^(GMPCadastre *cadastralInfo) {
             
-        default:
-            break;
+            if (cadastralInfo) {
+                [weakSelf.annotation setSubtitle:[NSString localizedStringWithFormat:@"%@ %ld, %@ %ld", LOCALIZED(@"Major:"), (long)cadastralInfo.major, LOCALIZED(@"Minor:"), (long)cadastralInfo.minor]];
+            } else {
+                [weakSelf.annotation setSubtitle:@""];
+//                [GMPAlertService showInfoAlertControllerWithTitle:@"" andMessage:LOCALIZED(@"Something wrong, try again") forController:weakSelf withCompletion:nil];
+                
+            }
+            
+        }];
     }
 }
 
@@ -225,21 +224,13 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
     [GMPWazeNavigationService navigateToWazeWithLatitude:coord.latitude longitude:coord.longitude];
 }
 
-- (IBAction)searchGeoDataClick:(id)sender
-{
-    [self searchCurrentGeodata];
-}
-
 /**
  *  Customize current navigation item
  */
 - (void)customizeNavigationItem
 {
     self.goToWazeButton.title = LOCALIZED(@"Open Waze");
-    self.searchGeoDataButton.title = LOCALIZED(@"Search Geo Data");
-    UIBarButtonItem *fixedSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:self action:nil];
-    fixedSpace.width = kBarButtonsFixedSpace;
-    self.navigationItem.rightBarButtonItems = @[self.goToWazeButton, fixedSpace, self.searchGeoDataButton];
+    self.navigationItem.rightBarButtonItems = @[self.goToWazeButton];
 }
 
 @end

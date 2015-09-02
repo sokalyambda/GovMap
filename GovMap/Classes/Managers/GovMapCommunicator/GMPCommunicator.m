@@ -89,11 +89,7 @@ static NSInteger const kAttemtsAmountForDataRetrieving = 20;
 
 - (void)requestCadastralNumbersWithAddress:(NSString *)address
                            completionBlock:(RequestCadasterCompletionBlock)completionBlock
-{
-#ifdef DEBUG
-    address = @"מבצע נחשון 3 ראשון לציון";
-#endif
-    
+{    
     if (!completionBlock) {
         return;
     }
@@ -228,7 +224,7 @@ static NSInteger const kAttemtsAmountForDataRetrieving = 20;
                 [self.delegate communicatorDidFailToRetrieveAddress:self];
             }
             
-            self.requestAddressCompletionBlock(@"Empty address");
+            self.requestAddressCompletionBlock(nil);
         }
     }
 }

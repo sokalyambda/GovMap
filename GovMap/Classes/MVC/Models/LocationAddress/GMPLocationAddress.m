@@ -12,7 +12,7 @@
 
 #pragma mark - Accessors
 
--(NSString *)fullStreetName
+- (NSString *)fullStreetName
 {
     return [NSString stringWithFormat:@"%@ %@", self.homeName, self.streetName];
 }
