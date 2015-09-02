@@ -55,6 +55,7 @@
 		D36C847B1B95C54600193073 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D36C847A1B95C54600193073 /* AddressBook.framework */; };
 		D39029AC1B9050A30097C4B6 /* GMPMapController.m in Sources */ = {isa = PBXBuildFile; fileRef = D39029AB1B9050A30097C4B6 /* GMPMapController.m */; };
 		D39029B41B9060B80097C4B6 /* GMPUserAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = D39029B31B9060B80097C4B6 /* GMPUserAnnotation.m */; };
+		D3E2897F1B96E9B600F7C177 /* GMPLocationAddressParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E2897E1B96E9B600F7C177 /* GMPLocationAddressParser.m */; };
 		D3E5347B1B8F39FA00C9D87B /* GMPMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E5347A1B8F39FA00C9D87B /* GMPMenuView.m */; };
 /* End PBXBuildFile section */
 
@@ -170,6 +171,8 @@
 		D39029AB1B9050A30097C4B6 /* GMPMapController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GMPMapController.m; path = Classes/MVC/Controllers/MapController/GMPMapController.m; sourceTree = "<group>"; };
 		D39029B21B9060B80097C4B6 /* GMPUserAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GMPUserAnnotation.h; path = Classes/Services/UserAnnotationServise/GMPUserAnnotation.h; sourceTree = "<group>"; };
 		D39029B31B9060B80097C4B6 /* GMPUserAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GMPUserAnnotation.m; path = Classes/Services/UserAnnotationServise/GMPUserAnnotation.m; sourceTree = "<group>"; };
+		D3E2897D1B96E9B600F7C177 /* GMPLocationAddressParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GMPLocationAddressParser.h; path = Classes/Services/LocationAddressParser/GMPLocationAddressParser.h; sourceTree = "<group>"; };
+		D3E2897E1B96E9B600F7C177 /* GMPLocationAddressParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GMPLocationAddressParser.m; path = Classes/Services/LocationAddressParser/GMPLocationAddressParser.m; sourceTree = "<group>"; };
 		D3E534791B8F39FA00C9D87B /* GMPMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GMPMenuView.h; path = Classes/MVC/Views/MenuView/GMPMenuView.h; sourceTree = "<group>"; };
 		D3E5347A1B8F39FA00C9D87B /* GMPMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GMPMenuView.m; path = Classes/MVC/Views/MenuView/GMPMenuView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -419,6 +422,7 @@
 		58C131401B8EF76E0095045A /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				D3E2897B1B96E96900F7C177 /* ModelServices */,
 				58A841B31B949DF00032AEF0 /* WazeNavigationService */,
 				D39029B11B9060570097C4B6 /* UserAnnotatation */,
 				58C1314C1B8EF8090095045A /* SerialViewsConstructor */,
@@ -767,6 +771,23 @@
 			name = UserAnnotatation;
 			sourceTree = "<group>";
 		};
+		D3E2897B1B96E96900F7C177 /* ModelServices */ = {
+			isa = PBXGroup;
+			children = (
+				D3E2897C1B96E97900F7C177 /* LocationAddressParser */,
+			);
+			name = ModelServices;
+			sourceTree = "<group>";
+		};
+		D3E2897C1B96E97900F7C177 /* LocationAddressParser */ = {
+			isa = PBXGroup;
+			children = (
+				D3E2897D1B96E9B600F7C177 /* GMPLocationAddressParser.h */,
+				D3E2897E1B96E9B600F7C177 /* GMPLocationAddressParser.m */,
+			);
+			name = LocationAddressParser;
+			sourceTree = "<group>";
+		};
 		D3E534721B8F1DE500C9D87B /* MenuView */ = {
 			isa = PBXGroup;
 			children = (
@@ -950,6 +971,7 @@
 				58C1318C1B8F041F0095045A /* GMPAlertService.m in Sources */,
 				58C131971B8F04FB0095045A /* GMPBaseNavigationController.m in Sources */,
 				3E8F917C1B95AA8A00CDBF6F /* GMPBaseSearchView.m in Sources */,
+				D3E2897F1B96E9B600F7C177 /* GMPLocationAddressParser.m in Sources */,
 				58A841BA1B94B3BC0032AEF0 /* GMPSearchTextField.m in Sources */,
 				3E8F91811B95CCE300CDBF6F /* UIResponder+FirstResponder.m in Sources */,
 			);

@@ -17,9 +17,12 @@
 
 #import "GMPWazeNavigationService.h"
 
+#import "GMPLocationAddressParser.h"
+
 #import "GMPCadastre.h"
 
 static NSInteger const kBarButtonsFixedSpace = 10.f;
+static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתאימות";
 
 @interface GMPMapController () <MKMapViewDelegate>
 
@@ -99,20 +102,22 @@ static NSInteger const kBarButtonsFixedSpace = 10.f;
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view didChangeDragState:(MKAnnotationViewDragState)newState fromOldState:(MKAnnotationViewDragState)oldState
 {
+    GMPUserAnnotation *annotation = (GMPUserAnnotation *)view.annotation;
+
     if (newState == MKAnnotationViewDragStateDragging) {
         
-        GMPUserAnnotation *annotation = (GMPUserAnnotation *)view.annotation;
         CLLocation *location = [[CLLocation alloc]initWithLatitude:annotation.coordinate.latitude longitude:annotation.coordinate.longitude];
         [self.locationObserver reverseGeocodingForCoordinate:location withResult:^(BOOL success, NSString *address) {
             if (success) {
-                if (self.previousCoordinate.latitude != annotation.coordinate.latitude ||
-                    self.previousCoordinate.longitude != annotation.coordinate.longitude) {
-                    
-                    [annotation setSubtitle:@""];
-                }
                 [annotation setTitle:LOCALIZED(address)];
             }
         }];
+    } else if (newState == MKAnnotationViewDragStateEnding) {
+        if (self.previousCoordinate.latitude != annotation.coordinate.latitude ||
+            self.previousCoordinate.longitude != annotation.coordinate.longitude) {
+            
+            [annotation setSubtitle:@""];
+        }
     }
 }
 
@@ -140,13 +145,13 @@ static NSInteger const kBarButtonsFixedSpace = 10.f;
  */
 - (void)setupMapAppearing
 {
+    WEAK_SELF;
     switch (self.currentSearchType) {
         case GMPSearchTypeAddress: {
             [self.locationObserver geocodingForAddress:self.currentAddress withResult:^(BOOL success, CLLocation *location) {
                 if(success) {
                     [self setupMapAttributesForCoordinate:location.coordinate];
                 } else {
-                    WEAK_SELF;
                     [GMPAlertService showInfoAlertControllerWithTitle:@"" andMessage:LOCALIZED(@"This address can not be found") forController:self withCompletion:^{
                         [weakSelf.navigationController popViewControllerAnimated:YES];
                     }];
@@ -161,27 +166,25 @@ static NSInteger const kBarButtonsFixedSpace = 10.f;
             
         case GMPSearchTypeGeonumbers: {
             [self.communicator requestAddressWithCadastralNumbers:self.currentCadastre completionBlock:^(NSString *address) {
-#warning Hardcodet address. Request dosent work
-                address = @"רחוב: מבצע נחשון, בית: 3, עיר: ראשון לציון";
-                if (address) {
-                    NSArray *addressObjects = [address componentsSeparatedByString:@", "];
-                    NSString *street = [[addressObjects[0] componentsSeparatedByString:@": "] lastObject];
-                    NSString *home = [[addressObjects[1] componentsSeparatedByString:@": "] lastObject];
-                    NSString *city = [[addressObjects[2] componentsSeparatedByString:@": "] lastObject];
+                
+                NSString *addressData = [address stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+                
+                if (![addressData isEqual:kAddressNotFound]) {
                     
-                    GMPLocationAddress *locAddress = [GMPLocationAddress locationAddressWithCityName:city andStreetName:street andHomeName:home];
+                    GMPLocationAddress *locAddress = [GMPLocationAddressParser locationAddressWithString:address];
                     [self.locationObserver geocodingForAddress:locAddress withResult:^(BOOL success, CLLocation *location) {
                         if (success) {
                             [self setupMapAttributesForCoordinate:location.coordinate];
                         }
                     }];
                     
+                } else {
+                    [GMPAlertService showInfoAlertControllerWithTitle:@"" andMessage:LOCALIZED(kAddressNotFound) forController:weakSelf withCompletion:nil];
                 }
             }];
             break;
         }
     }
-
 }
 
 - (void)searchCurrentGeodata
