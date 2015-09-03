@@ -52,6 +52,7 @@
 		58C1319B1B8F054A0095045A /* GMPMainMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C1319A1B8F054A0095045A /* GMPMainMenuController.m */; };
 		58C131A11B8F09C80095045A /* GMPSplashScreenController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C131A01B8F09C80095045A /* GMPSplashScreenController.m */; };
 		58C8E8291B95A3A7002F8F61 /* GMPLocationAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C8E8281B95A3A7002F8F61 /* GMPLocationAddress.m */; };
+		D363CE711B981BB4001836F5 /* Block45Smooth5384.gpx in Resources */ = {isa = PBXBuildFile; fileRef = D363CE6F1B981BB4001836F5 /* Block45Smooth5384.gpx */; };
 		D36C847B1B95C54600193073 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D36C847A1B95C54600193073 /* AddressBook.framework */; };
 		D39029AC1B9050A30097C4B6 /* GMPMapController.m in Sources */ = {isa = PBXBuildFile; fileRef = D39029AB1B9050A30097C4B6 /* GMPMapController.m */; };
 		D39029B41B9060B80097C4B6 /* GMPUserAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = D39029B31B9060B80097C4B6 /* GMPUserAnnotation.m */; };
@@ -166,6 +167,7 @@
 		58C8E8271B95A3A7002F8F61 /* GMPLocationAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GMPLocationAddress.h; path = Classes/MVC/Models/LocationAddress/GMPLocationAddress.h; sourceTree = "<group>"; };
 		58C8E8281B95A3A7002F8F61 /* GMPLocationAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GMPLocationAddress.m; path = Classes/MVC/Models/LocationAddress/GMPLocationAddress.m; sourceTree = "<group>"; };
 		A3EC1D9E43C52520F2972EB0 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		D363CE6F1B981BB4001836F5 /* Block45Smooth5384.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = Block45Smooth5384.gpx; path = LocationFiles/Block45Smooth5384.gpx; sourceTree = "<group>"; };
 		D36C847A1B95C54600193073 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		D39029AA1B9050A30097C4B6 /* GMPMapController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GMPMapController.h; path = Classes/MVC/Controllers/MapController/GMPMapController.h; sourceTree = "<group>"; };
 		D39029AB1B9050A30097C4B6 /* GMPMapController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GMPMapController.m; path = Classes/MVC/Controllers/MapController/GMPMapController.m; sourceTree = "<group>"; };
@@ -363,6 +365,7 @@
 		58C131171B8EF5A60095045A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D363CE691B981839001836F5 /* IsraelLocations */,
 				58C1313F1B8EF7170095045A /* Resources */,
 				58C1313E1B8EF7110095045A /* Macros */,
 				58C131181B8EF5A60095045A /* Info.plist */,
@@ -753,6 +756,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		D363CE691B981839001836F5 /* IsraelLocations */ = {
+			isa = PBXGroup;
+			children = (
+				D363CE6F1B981BB4001836F5 /* Block45Smooth5384.gpx */,
+			);
+			name = IsraelLocations;
+			sourceTree = "<group>";
+		};
 		D39029A91B90504D0097C4B6 /* MapViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -886,6 +897,7 @@
 				58A841A61B9479410032AEF0 /* GMPMenuView.xib in Resources */,
 				58A841981B9479180032AEF0 /* GMPSearchWithGeoNumbersView.xib in Resources */,
 				58A841AF1B947E270032AEF0 /* Localizable.strings in Resources */,
+				D363CE711B981BB4001836F5 /* Block45Smooth5384.gpx in Resources */,
 				58C131281B8EF5A60095045A /* LaunchScreen.xib in Resources */,
 				58A8419F1B94792D0032AEF0 /* GMPSearchWithAddressView.xib in Resources */,
 				58C131251B8EF5A60095045A /* Images.xcassets in Resources */,

@@ -12,6 +12,7 @@
 //#import <CoreLocation/CoreLocation.h>
 
 static NSString *const kCountryKey = @"IL";
+static NSString *const kAddressDictionaryKey = @"FormattedAddressLines";
 
 @interface GMPLocationObserver ()<CLLocationManagerDelegate>
 
@@ -77,7 +78,7 @@ static NSString *const kCountryKey = @"IL";
          if (!error && placemarks.count) {
              CLPlacemark *placemark = [placemarks firstObject];
              
-             NSArray *adressArray = placemark.addressDictionary[@"FormattedAddressLines"];
+             NSArray *adressArray = placemark.addressDictionary[kAddressDictionaryKey];
              NSString *address = [NSString string];
              for (int i = 0; i < adressArray.count; i++) {
                  NSString *s = [NSString stringWithFormat:@"%@ ", adressArray[i]];
@@ -86,8 +87,6 @@ static NSString *const kCountryKey = @"IL";
                      break;
                  }
              }
-             
-             NSLog(@"%@", placemark.addressDictionary);
              if (result) {
                  result(YES, address);
              }
