@@ -101,15 +101,15 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view didChangeDragState:(MKAnnotationViewDragState)newState fromOldState:(MKAnnotationViewDragState)oldState
 {
+    WEAK_SELF;
     GMPUserAnnotation *annotation = (GMPUserAnnotation *)view.annotation;
-    
     if (newState == MKAnnotationViewDragStateDragging) {
-        
         CLLocation *location = [[CLLocation alloc]initWithLatitude:annotation.coordinate.latitude longitude:annotation.coordinate.longitude];
+        self.annotation.subtitle = @"";
         [self.locationObserver mapKitReverseGeocodingForCoordinate:location withResult:^(BOOL success, GMPLocationAddress *address) {
             if (success) {
                 [annotation setTitle:LOCALIZED(address.fullAddress)];
-                self.currentAddress = address;
+                weakSelf.currentAddress = address;
             }
         }];
         //        [self.locationObserver reverseGeocodingForCoordinate:location withResult:^(BOOL success, GMPLocationAddress *address) {
@@ -119,9 +119,7 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
         //            }
         //        }];
     } else if (newState == MKAnnotationViewDragStateEnding) {
-        
         [self searchCurrentGeodata];
-        
     }
 }
 
@@ -176,15 +174,16 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
         case GMPSearchTypeAddress: {
             [self.locationObserver geocodingForAddress:self.currentAddress withResult:^(BOOL success, CLLocation *location) {
                 if(success) {
-                    [self setupMapAttributesForCoordinate:location.coordinate];
+                    [weakSelf setupMapAttributesForCoordinate:location.coordinate];
                 } else {
-                    [GMPAlertService showInfoAlertControllerWithTitle:@"" andMessage:LOCALIZED(@"This address can not be found") forController:self withCompletion:^{
+                    [GMPAlertService showInfoAlertControllerWithTitle:@"" andMessage:LOCALIZED(@"This address can not be found") forController:weakSelf withCompletion:^{
                         [weakSelf.navigationController popViewControllerAnimated:YES];
                     }];
                 }
             }];
             break;
         }
+            
         case GMPSearchTypeCurrentPlacing: {
             [self setupMapAttributesForCoordinate:self.locationObserver.currentLocation.coordinate];
             break;
@@ -198,9 +197,9 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
                 if (addressData && ![addressData isEqualToString:kAddressNotFound]) {
                     GMPLocationAddress *locAddress = [GMPLocationAddressParser locationAddressWithGovMapAddress:address];
                     
-                    [self.locationObserver geocodingForAddress:locAddress withResult:^(BOOL success, CLLocation *location) {
+                    [weakSelf.locationObserver geocodingForAddress:locAddress withResult:^(BOOL success, CLLocation *location) {
                         if (success) {
-                            [self setupMapAttributesForCoordinate:location.coordinate];
+                            [weakSelf setupMapAttributesForCoordinate:location.coordinate];
                         }
                     }];
                     
@@ -215,17 +214,16 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
 
 - (void)searchCurrentGeodata
 {
-    
     WEAK_SELF;
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [self.communicator requestCadastralNumbersWithAddress:self.currentAddress.fullAddress completionBlock:^(GMPCadastre *cadastralInfo) {
-        
+        [MBProgressHUD hideAllHUDsForView:weakSelf.view animated:YES];
+        [weakSelf.mapView selectAnnotation:weakSelf.annotation animated:YES];
         if (cadastralInfo) {
             [weakSelf.annotation setSubtitle:[NSString localizedStringWithFormat:@"%@ %ld, %@ %ld", LOCALIZED(@"Major:"), (long)cadastralInfo.major, LOCALIZED(@"Minor:"), (long)cadastralInfo.minor]];
         } else {
             [weakSelf.annotation setSubtitle:@""];
-            
         }
-        
     }];
 }
 
