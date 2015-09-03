@@ -17,10 +17,6 @@
     return [NSString stringWithFormat:@"%@ %@ %@", self.cityName, self.homeName, self.streetName];
 }
 
-- (void)setFullAddress:(NSString *)fullAddress{
-    
-}
-
 - (NSString *)cityName {
     if (!_cityName) {
         _cityName = @"";

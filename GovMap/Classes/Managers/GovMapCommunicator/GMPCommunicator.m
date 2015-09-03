@@ -235,8 +235,14 @@ static NSInteger const kAttemtsAmountForDataRetrieving = 30;
 
 #pragma mark - UIWebViewDelegate methods
 
+- (void)webViewDidStartLoad:(UIWebView *)webView
+{
+    [MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].keyWindow animated:YES];
+}
+
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
+    [MBProgressHUD hideAllHUDsForView:[UIApplication sharedApplication].keyWindow animated:YES];
     if (self.loadedHTMLFramesCounter++ == kSearchHTMLFrameIndex) {
         _isReadyForRequests = YES;
         
@@ -248,6 +254,7 @@ static NSInteger const kAttemtsAmountForDataRetrieving = 30;
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
 {
+    [MBProgressHUD hideAllHUDsForView:[UIApplication sharedApplication].keyWindow animated:YES];
     if (self.loadedHTMLFramesCounter++ < kSearchHTMLFrameIndex) {
         _isReadyForRequests = NO;
         [self.webView stopLoading];

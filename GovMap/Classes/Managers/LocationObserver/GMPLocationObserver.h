@@ -22,4 +22,6 @@ typedef void(^GeocodingResult)(BOOL success, CLLocation *location);
 - (void)reverseGeocodingForCoordinate:(CLLocation *)location withResult: (ReverseGeocodingResult)result;
 - (void)geocodingForAddress:(GMPLocationAddress *)address withResult:(GeocodingResult)result;
 
+- (void)mapKitReverseGeocodingForCoordinate:(CLLocation *)location withResult: (ReverseGeocodingResult)result;
+
 @end
