@@ -93,7 +93,7 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
             pinView.canShowCallout = YES;
         } else {
             pinView.annotation = annotation;
-        }        
+        }
         return pinView;
     }
     return nil;
@@ -102,24 +102,20 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view didChangeDragState:(MKAnnotationViewDragState)newState fromOldState:(MKAnnotationViewDragState)oldState
 {
     GMPUserAnnotation *annotation = (GMPUserAnnotation *)view.annotation;
-
+    
     if (newState == MKAnnotationViewDragStateDragging) {
         
         CLLocation *location = [[CLLocation alloc]initWithLatitude:annotation.coordinate.latitude longitude:annotation.coordinate.longitude];
-        [self.locationObserver reverseGeocodingForCoordinate:location withResult:^(BOOL success, NSString *address) {
+        [self.locationObserver reverseGeocodingForCoordinate:location withResult:^(BOOL success, GMPLocationAddress *address) {
             if (success) {
-                [annotation setTitle:LOCALIZED(address)];
-                self.currentAddress = [GMPLocationAddressParser locationAddressWithCurrentAddress:address];
+                [annotation setTitle:LOCALIZED(address.fullAddress)];
+                self.currentAddress = address;
             }
         }];
     } else if (newState == MKAnnotationViewDragStateEnding) {
         
         [self searchCurrentGeodata];
-//        if (self.previousCoordinate.latitude != annotation.coordinate.latitude ||
-//            self.previousCoordinate.longitude != annotation.coordinate.longitude) {
-//            
-//            [annotation setSubtitle:@""];
-//        }
+
     }
 }
 
@@ -134,18 +130,17 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
     [self.mapView setRegion:[self.mapView regionThatFits:region] animated:YES];
     
     CLLocation *location = [[CLLocation alloc] initWithLatitude:coordinate.latitude longitude:coordinate.longitude];
-    [self.locationObserver reverseGeocodingForCoordinate:location withResult:^(BOOL success, NSString *address) {
+    [self.locationObserver reverseGeocodingForCoordinate:location withResult:^(BOOL success, GMPLocationAddress *address) {
         if (success) {
-            weakSelf.annotation = [[GMPUserAnnotation alloc] initWithLocation:coordinate title:address];
+            weakSelf.annotation = [[GMPUserAnnotation alloc] initWithLocation:coordinate title:address.fullAddress];
             [weakSelf.mapView addAnnotation:self.annotation];
             
-// setup self.currentAddress if search type is GMPSearchTypeCurrentPlacing
             if (!self.currentAddress) {
-                self.currentAddress = [GMPLocationAddressParser locationAddressWithCurrentAddress:address];
+                self.currentAddress = address;
             }
             
-           [self searchCurrentGeodata];
-
+            [self searchCurrentGeodata];
+            
         }
     }];
 }
@@ -199,21 +194,18 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
 
 - (void)searchCurrentGeodata
 {
-//    if (self.currentSearchType != GMPSearchTypeGeonumbers) {
     
-        WEAK_SELF;
-        [self.communicator requestCadastralNumbersWithAddress:[NSString stringWithFormat:@"%@ %@ %@", self.currentAddress.cityName, self.currentAddress.streetName, self.currentAddress.homeName] completionBlock:^(GMPCadastre *cadastralInfo) {
+    WEAK_SELF;
+    [self.communicator requestCadastralNumbersWithAddress:self.currentAddress.fullAddress completionBlock:^(GMPCadastre *cadastralInfo) {
+        
+        if (cadastralInfo) {
+            [weakSelf.annotation setSubtitle:[NSString localizedStringWithFormat:@"%@ %ld, %@ %ld", LOCALIZED(@"Major:"), (long)cadastralInfo.major, LOCALIZED(@"Minor:"), (long)cadastralInfo.minor]];
+        } else {
+            [weakSelf.annotation setSubtitle:@""];
             
-            if (cadastralInfo) {
-                [weakSelf.annotation setSubtitle:[NSString localizedStringWithFormat:@"%@ %ld, %@ %ld", LOCALIZED(@"Major:"), (long)cadastralInfo.major, LOCALIZED(@"Minor:"), (long)cadastralInfo.minor]];
-            } else {
-                [weakSelf.annotation setSubtitle:@""];
-//                [GMPAlertService showInfoAlertControllerWithTitle:@"" andMessage:LOCALIZED(@"Something wrong, try again") forController:weakSelf withCompletion:nil];
-                
-            }
-            
-        }];
-//    }
+        }
+        
+    }];
 }
 
 #pragma mark - Actions

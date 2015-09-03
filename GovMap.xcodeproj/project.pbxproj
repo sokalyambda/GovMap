@@ -15,7 +15,6 @@
 		3E8F917C1B95AA8A00CDBF6F /* GMPBaseSearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E8F917B1B95AA8A00CDBF6F /* GMPBaseSearchView.m */; };
 		3E8F91811B95CCE300CDBF6F /* UIResponder+FirstResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E8F91801B95CCE300CDBF6F /* UIResponder+FirstResponder.m */; };
 		3EC10CAF1B94444000EF2DF6 /* GMPCadastre.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC10CAE1B94444000EF2DF6 /* GMPCadastre.m */; };
-		3EC10CB21B944FD700EF2DF6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC10CB11B944FD700EF2DF6 /* ViewController.m */; };
 		3EFC40CC1B942FE700EEBC65 /* GMPCommunicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EFC40CB1B942FE700EEBC65 /* GMPCommunicator.m */; };
 		58A841981B9479180032AEF0 /* GMPSearchWithGeoNumbersView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58A8419A1B9479180032AEF0 /* GMPSearchWithGeoNumbersView.xib */; };
 		58A8419F1B94792D0032AEF0 /* GMPSearchWithAddressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58A841A11B94792D0032AEF0 /* GMPSearchWithAddressView.xib */; };
@@ -87,8 +86,6 @@
 		3E8F91801B95CCE300CDBF6F /* UIResponder+FirstResponder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIResponder+FirstResponder.m"; path = "Classes/Categories/UIResponder/UIResponder+FirstResponder/UIResponder+FirstResponder.m"; sourceTree = "<group>"; };
 		3EC10CAD1B94444000EF2DF6 /* GMPCadastre.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GMPCadastre.h; path = Classes/MVC/Models/Cadastre/GMPCadastre.h; sourceTree = "<group>"; };
 		3EC10CAE1B94444000EF2DF6 /* GMPCadastre.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GMPCadastre.m; path = Classes/MVC/Models/Cadastre/GMPCadastre.m; sourceTree = "<group>"; };
-		3EC10CB01B944FD700EF2DF6 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		3EC10CB11B944FD700EF2DF6 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		3EC10CB41B94574C00EF2DF6 /* GMPCommunicatorDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GMPCommunicatorDelegate.h; path = Classes/Protocols/GovMapCommunicatorDelegate/GMPCommunicatorDelegate.h; sourceTree = "<group>"; };
 		3EFC40CA1B942FE700EEBC65 /* GMPCommunicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GMPCommunicator.h; path = Classes/Managers/GovMapCommunicator/GMPCommunicator.h; sourceTree = "<group>"; };
 		3EFC40CB1B942FE700EEBC65 /* GMPCommunicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GMPCommunicator.m; path = Classes/Managers/GovMapCommunicator/GMPCommunicator.m; sourceTree = "<group>"; };
@@ -352,8 +349,6 @@
 				58C1313D1B8EF6CC0095045A /* Classes */,
 				58C1311B1B8EF5A60095045A /* AppDelegate.h */,
 				58C1311C1B8EF5A60095045A /* AppDelegate.m */,
-				3EC10CB01B944FD700EF2DF6 /* ViewController.h */,
-				3EC10CB11B944FD700EF2DF6 /* ViewController.m */,
 				58C131211B8EF5A60095045A /* Main.storyboard */,
 				58C131241B8EF5A60095045A /* Images.xcassets */,
 				58C131261B8EF5A60095045A /* LaunchScreen.xib */,
@@ -952,7 +947,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				58C131941B8F04920095045A /* GMPBaseViewController.m in Sources */,
-				3EC10CB21B944FD700EF2DF6 /* ViewController.m in Sources */,
 				58C1317D1B8F03920095045A /* NSString+JSONRepresentation.m in Sources */,
 				3E820AB51B8F3D6400EDEEA4 /* GMPSearchWithAddressView.m in Sources */,
 				58C131641B8F02CE0095045A /* UIView+Shaking.m in Sources */,

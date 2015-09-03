@@ -24,11 +24,4 @@
     return locationAddress;
 }
 
-+ (GMPLocationAddress *)locationAddressWithCurrentAddress:(NSString *)address
-{
-    NSArray *addressObjects = [address componentsSeparatedByString:@" "];
-    GMPLocationAddress *locationAddress = [GMPLocationAddress locationAddressWithCityName:addressObjects[2] andStreetName:addressObjects[0] andHomeName:addressObjects[1]];
-    return locationAddress;
-}
-
 @end
