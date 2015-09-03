@@ -206,6 +206,7 @@ static NSInteger const kAttemtsAmountForDataRetrieving = 20;
     if (![characters.firstObject isEqualToString:@""]) {
         // We're done here
         _isReadyForRequests = YES;
+        timerFireCounter = 0;
         [timer invalidate];
         
         self.requestAddressCompletionBlock(address);
