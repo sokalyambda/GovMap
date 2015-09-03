@@ -179,7 +179,7 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
                 
                 NSString *addressData = [address stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
                 
-                if (addressData && ![addressData isEqual:kAddressNotFound]) {
+                if (addressData && ![addressData isEqualToString:kAddressNotFound]) {
                     GMPLocationAddress *locAddress = [GMPLocationAddressParser locationAddressWithGovMapAddress:address];
                     
                     [self.locationObserver geocodingForAddress:locAddress withResult:^(BOOL success, CLLocation *location) {
