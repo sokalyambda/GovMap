@@ -14,7 +14,7 @@
 
 - (NSString *)fullStreetName
 {
-    return [NSString stringWithFormat:@"%@ %@", self.homeName, self.streetName];
+    return [NSString stringWithFormat:@"%@ %@", self.streetName, self.cityName];
 }
 
 #pragma mark - Lifecycle
@@ -30,9 +30,24 @@
     return self;
 }
 
+- (instancetype)initWithGMSAddress:(GMSAddress *)address
+{
+    self = [super init];
+    if (self) {
+        _cityName = address.locality;
+        _streetName = address.thoroughfare;
+    }
+    return self;
+}
+
 + (instancetype)locationAddressWithCityName:(NSString *)cityName andStreetName:(NSString *)streetName andHomeName:(NSString *)homeName
 {
     return [[self alloc] initWithCityName:cityName andSreetName:streetName andHomeName:homeName];
+}
+
++ (instancetype)locationAddressWithGMSAddress:(GMSAddress *)address
+{
+    return [[self alloc] initWithGMSAddress:address];
 }
 
 @end

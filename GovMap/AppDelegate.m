@@ -7,7 +7,12 @@
 //
 
 #import "AppDelegate.h"
+
 #import "GMPCommunicator.h"
+
+static NSString *const kGoogleMapsAPIKey = @"AIzaSyCe5NsemBVFbuMYSUoxzi0qao7cKqiEECc";
+
+@import GoogleMaps;
 
 @interface AppDelegate ()
 
@@ -18,6 +23,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [[GMPCommunicator sharedInstance] loadContent];
+    [GMSServices provideAPIKey:kGoogleMapsAPIKey];
     
     return YES;
 }

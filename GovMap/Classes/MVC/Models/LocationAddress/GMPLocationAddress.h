@@ -13,6 +13,9 @@
 @property (strong, nonatomic) NSString *homeName;
 @property (strong, nonatomic, readonly) NSString *fullStreetName;
 
+@property (assign, nonatomic) CLLocationCoordinate2D coordinate;
+
 + (instancetype)locationAddressWithCityName:(NSString *)cityName andStreetName:(NSString *)streetName andHomeName:(NSString *)homeName;
++ (instancetype)locationAddressWithGMSAddress:(GMSAddress *)address;
 
 @end

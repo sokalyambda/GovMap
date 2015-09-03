@@ -199,8 +199,8 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
 
 - (void)searchCurrentGeodata
 {
-    if (self.currentSearchType != GMPSearchTypeGeonumbers) {
-        
+//    if (self.currentSearchType != GMPSearchTypeGeonumbers) {
+    
         WEAK_SELF;
         [self.communicator requestCadastralNumbersWithAddress:[NSString stringWithFormat:@"%@ %@ %@", self.currentAddress.cityName, self.currentAddress.streetName, self.currentAddress.homeName] completionBlock:^(GMPCadastre *cadastralInfo) {
             
@@ -213,7 +213,7 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
             }
             
         }];
-    }
+//    }
 }
 
 #pragma mark - Actions
