@@ -11,7 +11,7 @@
 @property (strong, nonatomic) NSString *cityName;
 @property (strong, nonatomic) NSString *streetName;
 @property (strong, nonatomic) NSString *homeName;
-@property (strong, nonatomic, readonly) NSString *fullStreetName;
+@property (strong, nonatomic) NSString *fullAddress;
 
 @property (assign, nonatomic) CLLocationCoordinate2D coordinate;
 

@@ -11,6 +11,5 @@
 @interface GMPLocationAddressParser : NSObject
 
 + (GMPLocationAddress *)locationAddressWithGovMapAddress:(NSString *)address;
-+ (GMPLocationAddress *)locationAddressWithCurrentAddress:(NSString *)address;
 
 @end

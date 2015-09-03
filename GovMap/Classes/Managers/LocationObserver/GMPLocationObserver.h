@@ -10,7 +10,7 @@
 
 #import "GMPLocationAddress.h"
 
-typedef void(^ReverseGeocodingResult)(BOOL success, NSString *address);
+typedef void(^ReverseGeocodingResult)(BOOL success, GMPLocationAddress *address);
 typedef void(^GeocodingResult)(BOOL success, CLLocation *location);
 
 @interface GMPLocationObserver : NSObject

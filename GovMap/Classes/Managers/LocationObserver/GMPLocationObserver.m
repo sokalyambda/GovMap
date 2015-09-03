@@ -79,7 +79,7 @@ static NSString *const kAddressDictionaryKey = @"FormattedAddressLines";
             GMPLocationAddress *address = [GMPLocationAddress locationAddressWithGMSAddress:response.firstResult];
             NSLog(@"address %@", address);
             if (result) {
-                result(YES, address.fullStreetName);
+                result(YES, address);
             }
         } else {
             if (result) {
@@ -88,34 +88,9 @@ static NSString *const kAddressDictionaryKey = @"FormattedAddressLines";
         }
         NSLog(@"result %@", response);
     }];
+
 }
 
-//- (void)reverseGeocodingForCoordinate:(CLLocation *)location withResult: (ReverseGeocodingResult)result;
-//{
-//    [self.geocoder reverseGeocodeLocation:location completionHandler:
-//     ^(NSArray *placemarks, NSError *error) {
-//         if (!error && placemarks.count) {
-//             CLPlacemark *placemark = [placemarks firstObject];
-//             
-//             NSArray *adressArray = placemark.addressDictionary[kAddressDictionaryKey];
-//             NSString *address = [NSString string];
-//             for (int i = 0; i < adressArray.count; i++) {
-//                 NSString *s = [NSString stringWithFormat:@"%@ ", adressArray[i]];
-//                 address = [address stringByAppendingString:s];
-//                 if (i == 1) {
-//                     break;
-//                 }
-//             }
-//             if (result) {
-//                 result(YES, address);
-//             }
-//         } else {
-//             if (result) {
-//                 result(NO, nil);
-//             }
-//         }
-//     }];
-//}
 
 - (void)geocodingForAddress:(GMPLocationAddress *)address withResult:(GeocodingResult)result
 {
@@ -123,7 +98,7 @@ static NSString *const kAddressDictionaryKey = @"FormattedAddressLines";
     NSDictionary *locationDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
                                         address.cityName, kABPersonAddressCityKey,
                                         kCountryKey, kABPersonAddressCountryKey,
-                                        address.fullStreetName, kABPersonAddressStreetKey,
+                                        address.streetName, kABPersonAddressStreetKey,
                                         nil];
     [self.geocoder geocodeAddressDictionary:locationDictionary completionHandler:^(NSArray *placemarks, NSError *error) {
         if (!error && placemarks.count) {
@@ -137,8 +112,7 @@ static NSString *const kAddressDictionaryKey = @"FormattedAddressLines";
                 result(NO, nil);
             }
         }
-    }];
-    
+    }];    
 }
 
 @end
