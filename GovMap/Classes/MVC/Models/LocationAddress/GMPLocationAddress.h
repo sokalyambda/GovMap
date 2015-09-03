@@ -15,6 +15,8 @@
 
 @property (assign, nonatomic) CLLocationCoordinate2D coordinate;
 
+- (instancetype)initWithCityName:(NSString *)cityName andFullSreetName:(NSString *)fullStreetName;
+
 + (instancetype)locationAddressWithCityName:(NSString *)cityName andStreetName:(NSString *)streetName andHomeName:(NSString *)homeName;
 + (instancetype)locationAddressWithGMSAddress:(GMSAddress *)address;
 

@@ -106,16 +106,22 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
     if (newState == MKAnnotationViewDragStateDragging) {
         
         CLLocation *location = [[CLLocation alloc]initWithLatitude:annotation.coordinate.latitude longitude:annotation.coordinate.longitude];
-        [self.locationObserver reverseGeocodingForCoordinate:location withResult:^(BOOL success, GMPLocationAddress *address) {
+        [self.locationObserver mapKitReverseGeocodingForCoordinate:location withResult:^(BOOL success, GMPLocationAddress *address) {
             if (success) {
                 [annotation setTitle:LOCALIZED(address.fullAddress)];
                 self.currentAddress = address;
             }
         }];
+        //        [self.locationObserver reverseGeocodingForCoordinate:location withResult:^(BOOL success, GMPLocationAddress *address) {
+        //            if (success) {
+        //                [annotation setTitle:LOCALIZED(address.fullAddress)];
+        //                self.currentAddress = address;
+        //            }
+        //        }];
     } else if (newState == MKAnnotationViewDragStateEnding) {
         
         [self searchCurrentGeodata];
-
+        
     }
 }
 
@@ -130,7 +136,7 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
     [self.mapView setRegion:[self.mapView regionThatFits:region] animated:YES];
     
     CLLocation *location = [[CLLocation alloc] initWithLatitude:coordinate.latitude longitude:coordinate.longitude];
-    [self.locationObserver reverseGeocodingForCoordinate:location withResult:^(BOOL success, GMPLocationAddress *address) {
+    [self.locationObserver mapKitReverseGeocodingForCoordinate:location withResult:^(BOOL success, GMPLocationAddress *address) {
         if (success) {
             weakSelf.annotation = [[GMPUserAnnotation alloc] initWithLocation:coordinate title:address.fullAddress];
             [weakSelf.mapView addAnnotation:self.annotation];
@@ -143,6 +149,21 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
             
         }
     }];
+    
+    
+    //    [self.locationObserver reverseGeocodingForCoordinate:location withResult:^(BOOL success, GMPLocationAddress *address) {
+    //        if (success) {
+    //            weakSelf.annotation = [[GMPUserAnnotation alloc] initWithLocation:coordinate title:address.fullAddress];
+    //            [weakSelf.mapView addAnnotation:self.annotation];
+    //
+    //            if (!self.currentAddress) {
+    //                self.currentAddress = address;
+    //            }
+    //
+    //            [self searchCurrentGeodata];
+    //
+    //        }
+    //    }];
 }
 
 /**

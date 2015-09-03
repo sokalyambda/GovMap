@@ -88,13 +88,13 @@ static NSString *const kAddressDictionaryKey = @"FormattedAddressLines";
         }
         NSLog(@"result %@", response);
     }];
-
+    
 }
 
 
 - (void)geocodingForAddress:(GMPLocationAddress *)address withResult:(GeocodingResult)result
 {
-
+    
     NSDictionary *locationDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
                                         address.cityName, kABPersonAddressCityKey,
                                         kCountryKey, kABPersonAddressCountryKey,
@@ -112,7 +112,29 @@ static NSString *const kAddressDictionaryKey = @"FormattedAddressLines";
                 result(NO, nil);
             }
         }
-    }];    
+    }];
 }
 
+- (void)mapKitReverseGeocodingForCoordinate:(CLLocation *)location withResult: (ReverseGeocodingResult)result;
+{
+    
+    [self.geocoder reverseGeocodeLocation:location completionHandler:
+     ^(NSArray *placemarks, NSError *error) {
+         if (!error && placemarks.count) {
+             CLPlacemark *placemark = [placemarks firstObject];
+             
+             NSArray *adressArray = placemark.addressDictionary[kAddressDictionaryKey];
+             GMPLocationAddress *address = [[GMPLocationAddress alloc] initWithCityName:adressArray[1] andFullSreetName:adressArray[0]];
+                         
+             if (result) {
+                 result(YES, address);
+             }
+         } else {
+             if (result) {
+                 result(NO, nil);
+             }
+         }
+     }];
+    
+}
 @end
