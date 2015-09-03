@@ -21,6 +21,8 @@
 
 #import "GMPCadastre.h"
 
+#import "GMSGeocoder+GeocodeLocation.h"
+
 static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתאימות";
 
 @interface GMPMapController () <MKMapViewDelegate>
@@ -104,18 +106,27 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
     GMPUserAnnotation *annotation = (GMPUserAnnotation *)view.annotation;
     
     if (newState == MKAnnotationViewDragStateDragging) {
+//        
+//        CLLocation *location = [[CLLocation alloc]initWithLatitude:annotation.coordinate.latitude longitude:annotation.coordinate.longitude];
+//        [self.locationObserver reverseGeocodingForCoordinate:location withResult:^(BOOL success, GMPLocationAddress *address) {
+//            if (success) {
+//                [annotation setTitle:LOCALIZED(address.fullAddress)];
+//                self.currentAddress = address;
+//            }
+//        }];
         
-        CLLocation *location = [[CLLocation alloc]initWithLatitude:annotation.coordinate.latitude longitude:annotation.coordinate.longitude];
-        [self.locationObserver reverseGeocodingForCoordinate:location withResult:^(BOOL success, GMPLocationAddress *address) {
-            if (success) {
-                [annotation setTitle:LOCALIZED(address.fullAddress)];
-                self.currentAddress = address;
-            }
-        }];
+        WEAK_SELF;
+        [[GMSGeocoder geocoder] geocodeLocation:[[CLLocation alloc]initWithLatitude:annotation.coordinate.latitude longitude:annotation.coordinate.longitude]
+                              completionHandler:^(GMPLocationAddress *address, NSError *error) {
+                                  if (!error) {
+                                      [annotation setTitle:LOCALIZED(address.fullAddress)];
+                                      weakSelf.currentAddress = address;
+                                  }
+                              }];
+        
     } else if (newState == MKAnnotationViewDragStateEnding) {
-        
+       
         [self searchCurrentGeodata];
-
     }
 }
 
@@ -140,7 +151,6 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
             }
             
             [self searchCurrentGeodata];
-            
         }
     }];
 }

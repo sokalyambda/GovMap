@@ -8,7 +8,7 @@
 
 @import GoogleMaps;
 
-typedef void(^GMSGeocodeCallback)(CLLocation *location, NSError *error);
+typedef void(^GMSGeocodeAddressCallback)(CLLocation *location, NSError *error);
 
 @interface GMSGeocoder (GeocodeAddress)
 
@@ -20,6 +20,6 @@ typedef void(^GMSGeocodeCallback)(CLLocation *location, NSError *error);
  *        The callback will be invoked asynchronously from the main thread.
  */
 - (void)geocodeAddress:(NSString *)address
-            completionHandler:(GMSGeocodeCallback)handler;
+            completionHandler:(GMSGeocodeAddressCallback)handler;
 
 @end

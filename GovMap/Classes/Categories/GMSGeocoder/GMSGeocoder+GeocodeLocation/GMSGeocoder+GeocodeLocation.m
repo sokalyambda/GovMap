@@ -1,22 +1,28 @@
 //
-//  GMSGeocoder+GeocodeAddress.m
+//  GMSGeocoder+GeocodeLocation.m
 //  GovMap
 //
 //  Created by Pavlo on 9/3/15.
 //  Copyright (c) 2015 ThinkMobiles. All rights reserved.
 //
 
-#import "GMSGeocoder+GeocodeAddress.h"
+#import "GMPLocationAddress.h"
 
-static NSString *const kBaseURLString = @"https://maps.google.com/maps/api/geocode/json?address=";
+#import "GMSGeocoder+GeocodeLocation.h"
+
+static NSString *const kBaseURLString = @"https://maps.googleapis.com/maps/api/geocode/json?latlng=";
 static NSString *const kKey = @"";//@"&key=AIzaSyCe5NsemBVFbuMYSUoxzi0qao7cKqiEECc";
 
-@implementation GMSGeocoder (GeocodeAddress)
+@implementation GMSGeocoder (GeocodeLocation)
 
-- (void)geocodeAddress:(NSString *)address completionHandler:(GMSGeocodeAddressCallback)handler
+- (void)geocodeLocation:(CLLocation *)location completionHandler:(GMSGeocodeLocationCallback)handler
 {
-    NSString *fullURLString = [NSString stringWithFormat:@"%@%@%@", kBaseURLString, address, kKey];
-    fullURLString = [fullURLString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSString *fullURLString = [NSString stringWithFormat:@"%@%f,%f%@",
+                               kBaseURLString,
+                               location.coordinate.latitude,
+                               location.coordinate.longitude,
+                               kKey];
+    
     NSURL *url = [NSURL URLWithString:fullURLString];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     NSURLSession *session = [NSURLSession sharedSession];
@@ -39,7 +45,7 @@ static NSString *const kKey = @"";//@"&key=AIzaSyCe5NsemBVFbuMYSUoxzi0qao7cKqiEE
             handler(nil, JSONExtractionError);
             return;
         }
-            
+        
         // Handle denied request by Google
         if (![JSONObject[@"status"] isEqualToString:@"OK"]) {
             NSError *googleError = [NSError errorWithDomain:JSONObject[@"status"] code:-1 userInfo:nil];
@@ -48,15 +54,15 @@ static NSString *const kKey = @"";//@"&key=AIzaSyCe5NsemBVFbuMYSUoxzi0qao7cKqiEE
         }
         
         NSArray *results = JSONObject[@"results"];
-        NSDictionary *geometry = results[0][@"geometry"];
-        NSDictionary *location = geometry[@"location"];
-        NSNumber *latitude = location[@"lat"];
-        NSNumber *longitude = location[@"lng"];
+        NSArray *addressComponents = results[0][@"address_components"];
         
-        CLLocationDegrees lat = latitude.doubleValue;
-        CLLocationDegrees lng = longitude.doubleValue;
+        NSString *home = addressComponents[0][@"long_name"];
+        NSString *street = addressComponents[1][@"long_name"];
+        NSString *city = addressComponents[2][@"long_name"];
         
-        handler([[CLLocation alloc] initWithLatitude:lat longitude:lng], nil);
+        NSArray *homes = [home componentsSeparatedByString:@"-"];
+        
+        handler([GMPLocationAddress locationAddressWithCityName:city andStreetName:street andHomeName:homes.firstObject], nil);
     }];
     
     [task resume];

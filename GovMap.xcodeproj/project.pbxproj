@@ -15,6 +15,7 @@
 		3E8F917C1B95AA8A00CDBF6F /* GMPBaseSearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E8F917B1B95AA8A00CDBF6F /* GMPBaseSearchView.m */; };
 		3E8F91811B95CCE300CDBF6F /* UIResponder+FirstResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E8F91801B95CCE300CDBF6F /* UIResponder+FirstResponder.m */; };
 		3EAA7F591B985EC200A090EA /* GMSGeocoder+GeocodeAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EAA7F581B985EC200A090EA /* GMSGeocoder+GeocodeAddress.m */; };
+		3EAA7F5C1B988BEF00A090EA /* GMSGeocoder+GeocodeLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EAA7F5B1B988BEF00A090EA /* GMSGeocoder+GeocodeLocation.m */; };
 		3EC10CAF1B94444000EF2DF6 /* GMPCadastre.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC10CAE1B94444000EF2DF6 /* GMPCadastre.m */; };
 		3EFC40CC1B942FE700EEBC65 /* GMPCommunicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EFC40CB1B942FE700EEBC65 /* GMPCommunicator.m */; };
 		58A841981B9479180032AEF0 /* GMPSearchWithGeoNumbersView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58A8419A1B9479180032AEF0 /* GMPSearchWithGeoNumbersView.xib */; };
@@ -87,6 +88,8 @@
 		3E8F91801B95CCE300CDBF6F /* UIResponder+FirstResponder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIResponder+FirstResponder.m"; path = "Classes/Categories/UIResponder/UIResponder+FirstResponder/UIResponder+FirstResponder.m"; sourceTree = "<group>"; };
 		3EAA7F571B985EC200A090EA /* GMSGeocoder+GeocodeAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "GMSGeocoder+GeocodeAddress.h"; path = "Classes/Categories/GMSGeocoder/GMSGeocoder+GeocodeAddress/GMSGeocoder+GeocodeAddress.h"; sourceTree = "<group>"; };
 		3EAA7F581B985EC200A090EA /* GMSGeocoder+GeocodeAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "GMSGeocoder+GeocodeAddress.m"; path = "Classes/Categories/GMSGeocoder/GMSGeocoder+GeocodeAddress/GMSGeocoder+GeocodeAddress.m"; sourceTree = "<group>"; };
+		3EAA7F5A1B988BEF00A090EA /* GMSGeocoder+GeocodeLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "GMSGeocoder+GeocodeLocation.h"; path = "Classes/Categories/GMSGeocoder/GMSGeocoder+GeocodeLocation/GMSGeocoder+GeocodeLocation.h"; sourceTree = "<group>"; };
+		3EAA7F5B1B988BEF00A090EA /* GMSGeocoder+GeocodeLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "GMSGeocoder+GeocodeLocation.m"; path = "Classes/Categories/GMSGeocoder/GMSGeocoder+GeocodeLocation/GMSGeocoder+GeocodeLocation.m"; sourceTree = "<group>"; };
 		3EC10CAD1B94444000EF2DF6 /* GMPCadastre.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GMPCadastre.h; path = Classes/MVC/Models/Cadastre/GMPCadastre.h; sourceTree = "<group>"; };
 		3EC10CAE1B94444000EF2DF6 /* GMPCadastre.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GMPCadastre.m; path = Classes/MVC/Models/Cadastre/GMPCadastre.m; sourceTree = "<group>"; };
 		3EC10CB41B94574C00EF2DF6 /* GMPCommunicatorDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GMPCommunicatorDelegate.h; path = Classes/Protocols/GovMapCommunicatorDelegate/GMPCommunicatorDelegate.h; sourceTree = "<group>"; };
@@ -285,6 +288,7 @@
 		3EAA7F551B985E5400A090EA /* GMSGeocoder */ = {
 			isa = PBXGroup;
 			children = (
+				3EAA7F5D1B988BF500A090EA /* GMSGeocoder+GeocodeLocation */,
 				3EAA7F561B985E5E00A090EA /* GMSGeocoder+GeocodeAddress */,
 			);
 			name = GMSGeocoder;
@@ -297,6 +301,15 @@
 				3EAA7F581B985EC200A090EA /* GMSGeocoder+GeocodeAddress.m */,
 			);
 			name = "GMSGeocoder+GeocodeAddress";
+			sourceTree = "<group>";
+		};
+		3EAA7F5D1B988BF500A090EA /* GMSGeocoder+GeocodeLocation */ = {
+			isa = PBXGroup;
+			children = (
+				3EAA7F5A1B988BEF00A090EA /* GMSGeocoder+GeocodeLocation.h */,
+				3EAA7F5B1B988BEF00A090EA /* GMSGeocoder+GeocodeLocation.m */,
+			);
+			name = "GMSGeocoder+GeocodeLocation";
 			sourceTree = "<group>";
 		};
 		3EC10CA91B94428400EF2DF6 /* Cadastre */ = {
@@ -969,7 +982,6 @@
 			files = (
 				58C131941B8F04920095045A /* GMPBaseViewController.m in Sources */,
 				3EAA7F591B985EC200A090EA /* GMSGeocoder+GeocodeAddress.m in Sources */,
-				3EC10CB21B944FD700EF2DF6 /* ViewController.m in Sources */,
 				58C1317D1B8F03920095045A /* NSString+JSONRepresentation.m in Sources */,
 				3E820AB51B8F3D6400EDEEA4 /* GMPSearchWithAddressView.m in Sources */,
 				58C131641B8F02CE0095045A /* UIView+Shaking.m in Sources */,
@@ -997,6 +1009,7 @@
 				3EC10CAF1B94444000EF2DF6 /* GMPCadastre.m in Sources */,
 				58C131831B8F03B00095045A /* NSString+ContainsString.m in Sources */,
 				3EFC40CC1B942FE700EEBC65 /* GMPCommunicator.m in Sources */,
+				3EAA7F5C1B988BEF00A090EA /* GMSGeocoder+GeocodeLocation.m in Sources */,
 				58C1318C1B8F041F0095045A /* GMPAlertService.m in Sources */,
 				58C131971B8F04FB0095045A /* GMPBaseNavigationController.m in Sources */,
 				3E8F917C1B95AA8A00CDBF6F /* GMPBaseSearchView.m in Sources */,
