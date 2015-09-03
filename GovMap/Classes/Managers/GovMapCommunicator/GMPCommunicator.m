@@ -89,7 +89,7 @@ static NSInteger const kAttemtsAmountForDataRetrieving = 30;
 
 - (void)requestCadastralNumbersWithAddress:(NSString *)address
                            completionBlock:(RequestCadasterCompletionBlock)completionBlock
-{    
+{
     if (!completionBlock) {
         return;
     }
@@ -116,6 +116,7 @@ static NSInteger const kAttemtsAmountForDataRetrieving = 30;
 - (void)fillTextFieldWithAddress
 {
     [self.webView stringByEvaluatingJavaScriptFromString:@"document.getElementById('lnkFindBlockByAddress').click()"];
+    //[self.webView stringByEvaluatingJavaScriptFromString:@"FSS_FindBlockForAddress()"];
     [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(checkInnerTextForCadastre:) userInfo:@0 repeats:YES];
 }
 
@@ -192,7 +193,8 @@ static NSInteger const kAttemtsAmountForDataRetrieving = 30;
 
 - (void)fillTextFieldWithCadastralString
 {
-    [self.webView stringByEvaluatingJavaScriptFromString:@"document.getElementById('lnkFindAddressByBlock').click()"];
+    //[self.webView stringByEvaluatingJavaScriptFromString:@"document.getElementById('lnkFindAddressByBlock').click()"];
+    [self.webView stringByEvaluatingJavaScriptFromString:@"FSS_FindAddressForBlock()"];
     [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(checkInnerTextForAddress:) userInfo:@0 repeats:YES];
 }
 
