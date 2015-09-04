@@ -19,9 +19,4 @@ typedef void(^GeocodingResult)(BOOL success, CLLocation *location);
 
 + (GMPLocationObserver *)sharedInstance;
 
-- (void)reverseGeocodingForCoordinate:(CLLocation *)location withResult: (ReverseGeocodingResult)result;
-- (void)geocodingForAddress:(GMPLocationAddress *)address withResult:(GeocodingResult)result;
-
-- (void)mapKitReverseGeocodingForCoordinate:(CLLocation *)location withResult: (ReverseGeocodingResult)result;
-
 @end
