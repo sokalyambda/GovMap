@@ -76,9 +76,9 @@ static NSString *const kAPIKey = @"";//@"&key=AIzaSyCe5NsemBVFbuMYSUoxzi0qao7cKq
         NSString *street = addressComponents[1][@"long_name"];
         NSString *city = addressComponents[2][@"long_name"];
         
-//        NSArray *homes = [home componentsSeparatedByString:@"-"];
+        NSArray *homes = [home componentsSeparatedByString:@"-"];
         
-        handler([GMPLocationAddress locationAddressWithCityName:city andStreetName:street andHomeName:home], nil);
+        handler([GMPLocationAddress locationAddressWithCityName:city andStreetName:street andHomeName:homes.firstObject], nil);
     }];
     
     [task resume];
