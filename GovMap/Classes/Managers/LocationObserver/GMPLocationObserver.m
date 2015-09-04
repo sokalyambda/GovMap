@@ -117,22 +117,25 @@ static NSString *const kAddressDictionaryKey = @"FormattedAddressLines";
 
 - (void)mapKitReverseGeocodingForCoordinate:(CLLocation *)location withResult: (ReverseGeocodingResult)result;
 {
-    
     [self.geocoder reverseGeocodeLocation:location completionHandler:
      ^(NSArray *placemarks, NSError *error) {
-         if (!error && placemarks.count) {
+         if (!error && placemarks.count > 0) {
              CLPlacemark *placemark = [placemarks firstObject];
-             
              NSArray *adressArray = placemark.addressDictionary[kAddressDictionaryKey];
-             GMPLocationAddress *address = [[GMPLocationAddress alloc] initWithCityName:adressArray[1] andFullSreetName:adressArray[0]];
-                         
-             if (result) {
-                 result(YES, address);
+             // first & second elements of address array returns city & street
+             if (adressArray.count > 1) {
+                 GMPLocationAddress *address = [[GMPLocationAddress alloc] initWithCityName:adressArray[1] andFullSreetName:adressArray[0]];
+                 
+                 if (result) {
+                     result(YES, address);
+                 }
              }
-         } else {
-             if (result) {
+             else if (result) {
                  result(NO, nil);
              }
+             
+         } else if (result) {
+             result(NO, nil);
          }
      }];
     

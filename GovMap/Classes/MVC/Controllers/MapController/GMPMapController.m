@@ -12,6 +12,7 @@
 
 #import "GMPLocationObserver.h"
 #import "GMPCommunicator.h"
+#import "GMPGoogleGeocoder.h"
 
 #import "GMPUserAnnotation.h"
 
@@ -20,8 +21,6 @@
 #import "GMPLocationAddressParser.h"
 
 #import "GMPCadastre.h"
-
-#import "GMSGeocoder+GeocodeLocation.h"
 
 static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתאימות";
 
@@ -115,7 +114,7 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
 //        }];
         
         WEAK_SELF;
-        [[GMSGeocoder geocoder] geocodeLocation:[[CLLocation alloc]initWithLatitude:annotation.coordinate.latitude longitude:annotation.coordinate.longitude]
+        [[GMPGoogleGeocoder sharedInstance] geocodeLocation:[[CLLocation alloc]initWithLatitude:annotation.coordinate.latitude longitude:annotation.coordinate.longitude]
                               completionHandler:^(GMPLocationAddress *address, NSError *error) {
                                   if (!error) {
                                       [annotation setTitle:LOCALIZED(address.fullAddress)];
@@ -198,10 +197,17 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
                 NSString *addressData = [address stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
                 
                 if (addressData && ![addressData isEqualToString:kAddressNotFound]) {
-                    GMPLocationAddress *locAddress = [GMPLocationAddressParser locationAddressWithGovMapAddress:address];
+//                    GMPLocationAddress *locAddress = [GMPLocationAddressParser locationAddressWithGovMapAddress:address];
+//                    
+//                    [weakSelf.locationObserver geocodingForAddress:locAddress withResult:^(BOOL success, CLLocation *location) {
+//                        if (success) {
+//                            [weakSelf setupMapAttributesForCoordinate:location.coordinate];
+//                        }
+//                    }];
                     
-                    [weakSelf.locationObserver geocodingForAddress:locAddress withResult:^(BOOL success, CLLocation *location) {
-                        if (success) {
+                    GMPLocationAddress *locAddress = [GMPLocationAddressParser locationAddressWithGovMapAddress:address];
+                    [[GMPGoogleGeocoder sharedInstance] reverseGeocodeAddress:locAddress completionHandler:^(CLLocation *location, NSError *error) {
+                        if (!error) {
                             [weakSelf setupMapAttributesForCoordinate:location.coordinate];
                         }
                     }];
