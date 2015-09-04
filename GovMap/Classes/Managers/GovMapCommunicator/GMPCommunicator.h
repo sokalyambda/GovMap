@@ -6,7 +6,6 @@
 //  Copyright (c) 2015 Pavlo. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import <WebKit/WebKit.h>
 
 @class GMPCadastre;

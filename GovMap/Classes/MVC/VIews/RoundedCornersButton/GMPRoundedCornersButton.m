@@ -10,6 +10,8 @@
 
 @implementation GMPRoundedCornersButton
 
+#pragma mark - Lifecycle
+
 - (instancetype)initWithCoder:(NSCoder *)coder
 {
     self = [super initWithCoder:coder];
@@ -32,6 +34,8 @@
 {
     [self commonInit];
 }
+
+#pragma mark - Actions
 
 - (void)commonInit
 {

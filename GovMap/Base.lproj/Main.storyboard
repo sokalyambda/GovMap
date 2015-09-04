@@ -2,12 +2,13 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Gu8-cS-c9G">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Search With Address View Controller-->
         <scene sceneID="F92-df-dwT">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="e0K-Ie-V5C" customClass="GMPSearchWithAddressViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GMPSearchWithAddressViewController" automaticallyAdjustsScrollViewInsets="NO" id="e0K-Ie-V5C" customClass="GMPSearchWithAddressViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ulb-JY-hiA"/>
                         <viewControllerLayoutGuide type="bottom" id="XZf-Ur-rdC"/>
@@ -26,10 +27,63 @@
             </objects>
             <point key="canvasLocation" x="1840.5" y="49.5"/>
         </scene>
+        <!--Splash Screen Controller-->
+        <scene sceneID="bQK-lu-UnZ">
+            <objects>
+                <viewController storyboardIdentifier="GMPSplashScreenController" id="V5Y-59-UCg" customClass="GMPSplashScreenController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="uqq-YD-jAO"/>
+                        <viewControllerLayoutGuide type="bottom" id="kh3-hK-9uS"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="27w-g6-27k">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Relocate" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="idO-v7-KTd">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="42"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="idO-v7-KTd" firstAttribute="top" secondItem="27w-g6-27k" secondAttribute="topMargin" constant="100" id="Th9-HS-qvd"/>
+                            <constraint firstAttribute="centerX" secondItem="idO-v7-KTd" secondAttribute="centerX" id="Wxq-j4-0kO"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="idO-v7-KTd"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="Th9-HS-qvd"/>
+                                <exclude reference="Wxq-j4-0kO"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="idO-v7-KTd"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="Th9-HS-qvd"/>
+                                <include reference="Wxq-j4-0kO"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" id="QYL-bw-PQm"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <segue destination="8Lx-vq-RKX" kind="show" identifier="mainMenuSegueIdentifier" id="jFH-jN-NFs"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qeM-Yx-ZBx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="390" y="398.25"/>
+        </scene>
         <!--Main Menu Controller-->
         <scene sceneID="byC-e8-qs1">
             <objects>
-                <viewController id="8Lx-vq-RKX" customClass="GMPMainMenuController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GMPMainMenuController" id="8Lx-vq-RKX" customClass="GMPMainMenuController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="VE9-sI-53D"/>
                         <viewControllerLayoutGuide type="bottom" id="bnw-As-SYx"/>
@@ -54,7 +108,7 @@
         <!--Search With Geo Numbers Controller-->
         <scene sceneID="x1O-uq-90n">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="Gjx-M7-NZI" customClass="GMPSearchWithGeoNumbersController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GMPSearchWithGeoNumbersController" automaticallyAdjustsScrollViewInsets="NO" id="Gjx-M7-NZI" customClass="GMPSearchWithGeoNumbersController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Qc0-gK-lfC"/>
                         <viewControllerLayoutGuide type="bottom" id="Ccf-gr-KE8"/>
@@ -75,7 +129,7 @@
         <!--Map Controller-->
         <scene sceneID="SVp-iz-2Jt">
             <objects>
-                <viewController id="hbg-PG-zFK" customClass="GMPMapController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GMPMapController" id="hbg-PG-zFK" customClass="GMPMapController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="RzA-sv-IHg"/>
                         <viewControllerLayoutGuide type="bottom" id="g93-CV-VaB"/>
@@ -138,7 +192,7 @@
         <!--Base Navigation Controller-->
         <scene sceneID="Ue7-h0-Mdz">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Gu8-cS-c9G" customClass="GMPBaseNavigationController" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="GMPBaseNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="Gu8-cS-c9G" customClass="GMPBaseNavigationController" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="iiv-Bo-9Wp">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -146,15 +200,15 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="8Lx-vq-RKX" kind="relationship" relationship="rootViewController" id="idm-He-4RW"/>
+                        <segue destination="V5Y-59-UCg" kind="relationship" relationship="rootViewController" id="L6k-pw-R1H"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SQU-Kf-eHj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="262.5" y="398.25"/>
+            <point key="canvasLocation" x="-292.5" y="398.25"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="aK4-SJ-f31"/>
+        <segue reference="w6O-0n-4cq"/>
     </inferredMetricsTieBreakers>
 </document>
