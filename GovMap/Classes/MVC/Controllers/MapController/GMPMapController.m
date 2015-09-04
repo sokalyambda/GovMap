@@ -22,6 +22,7 @@
 #import "GMPCadastre.h"
 
 #import "GMSGeocoder+GeocodeLocation.h"
+#import "GMSGeocoder+GeocodeAddress.h"
 
 static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתאימות";
 
@@ -198,10 +199,16 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
                 NSString *addressData = [address stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
                 
                 if (addressData && ![addressData isEqualToString:kAddressNotFound]) {
-                    GMPLocationAddress *locAddress = [GMPLocationAddressParser locationAddressWithGovMapAddress:address];
+//                    GMPLocationAddress *locAddress = [GMPLocationAddressParser locationAddressWithGovMapAddress:address];
+//                    
+//                    [weakSelf.locationObserver geocodingForAddress:locAddress withResult:^(BOOL success, CLLocation *location) {
+//                        if (success) {
+//                            [weakSelf setupMapAttributesForCoordinate:location.coordinate];
+//                        }
+//                    }];
                     
-                    [weakSelf.locationObserver geocodingForAddress:locAddress withResult:^(BOOL success, CLLocation *location) {
-                        if (success) {
+                    [[GMSGeocoder geocoder] geocodeAddress:address completionHandler:^(CLLocation *location, NSError *error) {
+                        if (!error) {
                             [weakSelf setupMapAttributesForCoordinate:location.coordinate];
                         }
                     }];
