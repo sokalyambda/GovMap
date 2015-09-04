@@ -1,12 +1,12 @@
 
 /* Class = "UITextField"; placeholder = "Street"; ObjectID = "60e-YB-GDL"; */
-"60e-YB-GDL.placeholder" = "Street";
+"60e-YB-GDL.placeholder" = "רחוב";
 
 /* Class = "UITextField"; placeholder = "Home"; ObjectID = "Vo7-8x-ue8"; */
-"Vo7-8x-ue8.placeholder" = "Home";
+"Vo7-8x-ue8.placeholder" = "בית";
 
 /* Class = "UITextField"; placeholder = "City"; ObjectID = "dn4-Oe-xNg"; */
-"dn4-Oe-xNg.placeholder" = "City";
+"dn4-Oe-xNg.placeholder" = "עיר";
 
 /* Class = "UIButton"; normalTitle = "Search"; ObjectID = "pcr-GX-H6H"; */
-"pcr-GX-H6H.normalTitle" = "Search";
+"pcr-GX-H6H.normalTitle" = "חפש";

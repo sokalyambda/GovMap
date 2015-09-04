@@ -1,9 +1,9 @@
 
 /* Class = "UIButton"; normalTitle = "Search"; ObjectID = "1my-8B-ggS"; */
-"1my-8B-ggS.normalTitle" = "Search";
+"1my-8B-ggS.normalTitle" = "חפש";
 
 /* Class = "UITextField"; placeholder = "Longitude"; ObjectID = "atI-Ah-G2G"; */
-"atI-Ah-G2G.placeholder" = "Longitude";
+"HUc-CP-dgb.placeholder" = "גוש";
 
 /* Class = "UITextField"; placeholder = "Latitude"; ObjectID = "vdX-76-BBD"; */
-"vdX-76-BBD.placeholder" = "Latitude";
+"gwC-Aa-lCC.placeholder" = "חלקה";

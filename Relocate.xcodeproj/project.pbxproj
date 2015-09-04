@@ -111,7 +111,7 @@
 		58A841B51B949E0C0032AEF0 /* GMPWazeNavigationService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GMPWazeNavigationService.m; path = Classes/Services/WazeNavigationService/GMPWazeNavigationService.m; sourceTree = "<group>"; };
 		58A841B81B94B3BC0032AEF0 /* GMPSearchTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GMPSearchTextField.h; path = Classes/MVC/Views/SearchTextField/GMPSearchTextField.h; sourceTree = "<group>"; };
 		58A841B91B94B3BC0032AEF0 /* GMPSearchTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GMPSearchTextField.m; path = Classes/MVC/Views/SearchTextField/GMPSearchTextField.m; sourceTree = "<group>"; };
-		58C131141B8EF5A60095045A /* GovMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GovMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		58C131141B8EF5A60095045A /* Relocate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Relocate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58C131181B8EF5A60095045A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		58C131191B8EF5A60095045A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		58C1311B1B8EF5A60095045A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -119,7 +119,7 @@
 		58C131221B8EF5A60095045A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		58C131241B8EF5A60095045A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		58C131271B8EF5A60095045A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		58C1312D1B8EF5A60095045A /* GovMapTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GovMapTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		58C1312D1B8EF5A60095045A /* RelocateTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RelocateTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		58C131321B8EF5A60095045A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		58C131331B8EF5A60095045A /* GovMapTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GovMapTests.m; sourceTree = "<group>"; };
 		58C1314E1B8EFEE50095045A /* GMPGlobalConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GMPGlobalConstants.h; path = Classes/Utilities/GlobalConstants/GMPGlobalConstants.h; sourceTree = "<group>"; };
@@ -161,7 +161,7 @@
 		58C131991B8F054A0095045A /* GMPMainMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GMPMainMenuController.h; path = Classes/MVC/Controllers/MainMenuController/GMPMainMenuController.h; sourceTree = "<group>"; };
 		58C1319A1B8F054A0095045A /* GMPMainMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GMPMainMenuController.m; path = Classes/MVC/Controllers/MainMenuController/GMPMainMenuController.m; sourceTree = "<group>"; };
 		58C1319C1B8F05A60095045A /* GMPMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GMPMacros.h; path = Macros/GMPMacros.h; sourceTree = "<group>"; };
-		58C1319D1B8F05FC0095045A /* GovMap-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GovMap-Prefix.pch"; sourceTree = "<group>"; };
+		58C1319D1B8F05FC0095045A /* Relocate-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Relocate-Prefix.pch"; sourceTree = "<group>"; };
 		58C1319F1B8F09C80095045A /* GMPSplashScreenController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GMPSplashScreenController.h; path = Classes/MVC/Controllers/SplashScreenController/GMPSplashScreenController.h; sourceTree = "<group>"; };
 		58C131A01B8F09C80095045A /* GMPSplashScreenController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GMPSplashScreenController.m; path = Classes/MVC/Controllers/SplashScreenController/GMPSplashScreenController.m; sourceTree = "<group>"; };
 		58C8E8271B95A3A7002F8F61 /* GMPLocationAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GMPLocationAddress.h; path = Classes/MVC/Models/LocationAddress/GMPLocationAddress.h; sourceTree = "<group>"; };
@@ -349,8 +349,8 @@
 		58C131151B8EF5A60095045A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				58C131141B8EF5A60095045A /* GovMap.app */,
-				58C1312D1B8EF5A60095045A /* GovMapTests.xctest */,
+				58C131141B8EF5A60095045A /* Relocate.app */,
+				58C1312D1B8EF5A60095045A /* RelocateTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -423,7 +423,7 @@
 		58C1313F1B8EF7170095045A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				58C1319D1B8F05FC0095045A /* GovMap-Prefix.pch */,
+				58C1319D1B8F05FC0095045A /* Relocate-Prefix.pch */,
 				58A841B11B947E270032AEF0 /* Localizable.strings */,
 			);
 			name = Resources;
@@ -820,9 +820,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		58C131131B8EF5A60095045A /* GovMap */ = {
+		58C131131B8EF5A60095045A /* Relocate */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 58C131371B8EF5A60095045A /* Build configuration list for PBXNativeTarget "GovMap" */;
+			buildConfigurationList = 58C131371B8EF5A60095045A /* Build configuration list for PBXNativeTarget "Relocate" */;
 			buildPhases = (
 				D012271E9894AA32EA456102 /* Check Pods Manifest.lock */,
 				58C131101B8EF5A60095045A /* Sources */,
@@ -834,14 +834,14 @@
 			);
 			dependencies = (
 			);
-			name = GovMap;
+			name = Relocate;
 			productName = GovMap;
-			productReference = 58C131141B8EF5A60095045A /* GovMap.app */;
+			productReference = 58C131141B8EF5A60095045A /* Relocate.app */;
 			productType = "com.apple.product-type.application";
 		};
-		58C1312C1B8EF5A60095045A /* GovMapTests */ = {
+		58C1312C1B8EF5A60095045A /* RelocateTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 58C1313A1B8EF5A60095045A /* Build configuration list for PBXNativeTarget "GovMapTests" */;
+			buildConfigurationList = 58C1313A1B8EF5A60095045A /* Build configuration list for PBXNativeTarget "RelocateTests" */;
 			buildPhases = (
 				58C131291B8EF5A60095045A /* Sources */,
 				58C1312A1B8EF5A60095045A /* Frameworks */,
@@ -852,9 +852,9 @@
 			dependencies = (
 				58C1312F1B8EF5A60095045A /* PBXTargetDependency */,
 			);
-			name = GovMapTests;
+			name = RelocateTests;
 			productName = GovMapTests;
-			productReference = 58C1312D1B8EF5A60095045A /* GovMapTests.xctest */;
+			productReference = 58C1312D1B8EF5A60095045A /* RelocateTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -876,7 +876,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 58C1310F1B8EF5A50095045A /* Build configuration list for PBXProject "GovMap" */;
+			buildConfigurationList = 58C1310F1B8EF5A50095045A /* Build configuration list for PBXProject "Relocate" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -890,8 +890,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				58C131131B8EF5A60095045A /* GovMap */,
-				58C1312C1B8EF5A60095045A /* GovMapTests */,
+				58C131131B8EF5A60095045A /* Relocate */,
+				58C1312C1B8EF5A60095045A /* RelocateTests */,
 			);
 		};
 /* End PBXProject section */
@@ -1010,7 +1010,7 @@
 /* Begin PBXTargetDependency section */
 		58C1312F1B8EF5A60095045A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 58C131131B8EF5A60095045A /* GovMap */;
+			target = 58C131131B8EF5A60095045A /* Relocate */;
 			targetProxy = 58C1312E1B8EF5A60095045A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -1166,11 +1166,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "GovMap/GovMap-Prefix.pch";
+				GCC_PREFIX_HEADER = "GovMap/Relocate-Prefix.pch";
 				INFOPLIST_FILE = GovMap/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Relocate;
 			};
 			name = Debug;
 		};
@@ -1180,11 +1180,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "GovMap/GovMap-Prefix.pch";
+				GCC_PREFIX_HEADER = "GovMap/Relocate-Prefix.pch";
 				INFOPLIST_FILE = GovMap/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Relocate;
 			};
 			name = Release;
 		};
@@ -1202,7 +1202,7 @@
 				);
 				INFOPLIST_FILE = GovMapTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = RelocateTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GovMap.app/GovMap";
 			};
 			name = Debug;
@@ -1217,7 +1217,7 @@
 				);
 				INFOPLIST_FILE = GovMapTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = RelocateTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GovMap.app/GovMap";
 			};
 			name = Release;
@@ -1225,7 +1225,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		58C1310F1B8EF5A50095045A /* Build configuration list for PBXProject "GovMap" */ = {
+		58C1310F1B8EF5A50095045A /* Build configuration list for PBXProject "Relocate" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				58C131351B8EF5A60095045A /* Debug */,
@@ -1234,7 +1234,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		58C131371B8EF5A60095045A /* Build configuration list for PBXNativeTarget "GovMap" */ = {
+		58C131371B8EF5A60095045A /* Build configuration list for PBXNativeTarget "Relocate" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				58C131381B8EF5A60095045A /* Debug */,
@@ -1243,7 +1243,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		58C1313A1B8EF5A60095045A /* Build configuration list for PBXNativeTarget "GovMapTests" */ = {
+		58C1313A1B8EF5A60095045A /* Build configuration list for PBXNativeTarget "RelocateTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				58C1313B1B8EF5A60095045A /* Debug */,
