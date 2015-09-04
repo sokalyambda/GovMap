@@ -20,6 +20,8 @@
 #import "GMPAlertService.h"
 #import "GMPGlobalConstants.h"
 
+#import "GMPReachabilityService.h"
+
 #import <GoogleMaps/GoogleMaps.h>
 
 #endif

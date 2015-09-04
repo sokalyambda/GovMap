@@ -51,6 +51,9 @@
 		58C131971B8F04FB0095045A /* GMPBaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C131961B8F04FB0095045A /* GMPBaseNavigationController.m */; };
 		58C1319B1B8F054A0095045A /* GMPMainMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C1319A1B8F054A0095045A /* GMPMainMenuController.m */; };
 		58C131A11B8F09C80095045A /* GMPSplashScreenController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C131A01B8F09C80095045A /* GMPSplashScreenController.m */; };
+		58C7F3D41B999B6100BD6C64 /* GMPReachabilityService.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C7F3D31B999B6100BD6C64 /* GMPReachabilityService.m */; };
+		58C7F3DC1B999D0600BD6C64 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58C7F3DB1B999D0600BD6C64 /* SystemConfiguration.framework */; };
+		58C7F3DF1B999E7F00BD6C64 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C7F3DE1B999E7F00BD6C64 /* Reachability.m */; };
 		58C8E8291B95A3A7002F8F61 /* GMPLocationAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C8E8281B95A3A7002F8F61 /* GMPLocationAddress.m */; };
 		58D7C82F1B997B3C00965EF2 /* GMPRoundedCornersButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D7C82E1B997B3C00965EF2 /* GMPRoundedCornersButton.m */; };
 		D363CE711B981BB4001836F5 /* Block45Smooth5384.gpx in Resources */ = {isa = PBXBuildFile; fileRef = D363CE6F1B981BB4001836F5 /* Block45Smooth5384.gpx */; };
@@ -165,6 +168,11 @@
 		58C1319D1B8F05FC0095045A /* Relocate-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Relocate-Prefix.pch"; sourceTree = "<group>"; };
 		58C1319F1B8F09C80095045A /* GMPSplashScreenController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GMPSplashScreenController.h; path = Classes/MVC/Controllers/SplashScreenController/GMPSplashScreenController.h; sourceTree = "<group>"; };
 		58C131A01B8F09C80095045A /* GMPSplashScreenController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GMPSplashScreenController.m; path = Classes/MVC/Controllers/SplashScreenController/GMPSplashScreenController.m; sourceTree = "<group>"; };
+		58C7F3D21B999B6100BD6C64 /* GMPReachabilityService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GMPReachabilityService.h; path = Classes/Services/ReachabilityService/GMPReachabilityService.h; sourceTree = "<group>"; };
+		58C7F3D31B999B6100BD6C64 /* GMPReachabilityService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GMPReachabilityService.m; path = Classes/Services/ReachabilityService/GMPReachabilityService.m; sourceTree = "<group>"; };
+		58C7F3DB1B999D0600BD6C64 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		58C7F3DD1B999E7F00BD6C64 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		58C7F3DE1B999E7F00BD6C64 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		58C8E8271B95A3A7002F8F61 /* GMPLocationAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GMPLocationAddress.h; path = Classes/MVC/Models/LocationAddress/GMPLocationAddress.h; sourceTree = "<group>"; };
 		58C8E8281B95A3A7002F8F61 /* GMPLocationAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GMPLocationAddress.m; path = Classes/MVC/Models/LocationAddress/GMPLocationAddress.m; sourceTree = "<group>"; };
 		58D7C82D1B997B3C00965EF2 /* GMPRoundedCornersButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GMPRoundedCornersButton.h; path = Classes/MVC/Views/RoundedCornersButton/GMPRoundedCornersButton.h; sourceTree = "<group>"; };
@@ -187,6 +195,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58C7F3DC1B999D0600BD6C64 /* SystemConfiguration.framework in Frameworks */,
 				D36C847B1B95C54600193073 /* AddressBook.framework in Frameworks */,
 				58C1317A1B8F036A0095045A /* MapKit.framework in Frameworks */,
 				58C131781B8F03650095045A /* CoreLocation.framework in Frameworks */,
@@ -210,6 +219,7 @@
 		20C06A8EAE4527031BE42BC0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				58C7F3DB1B999D0600BD6C64 /* SystemConfiguration.framework */,
 				D36C847A1B95C54600193073 /* AddressBook.framework */,
 				58C131791B8F036A0095045A /* MapKit.framework */,
 				58C131771B8F03650095045A /* CoreLocation.framework */,
@@ -406,6 +416,7 @@
 		58C1313D1B8EF6CC0095045A /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				58C7F3D51B999BAB00BD6C64 /* Libraries */,
 				58C131461B8EF7960095045A /* MVC */,
 				58C131451B8EF7920095045A /* Cells */,
 				58C131441B8EF78C0095045A /* Utilities */,
@@ -437,6 +448,7 @@
 		58C131401B8EF76E0095045A /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				58C7F3D11B999B3900BD6C64 /* ReachabilityService */,
 				D3E2897B1B96E96900F7C177 /* ModelServices */,
 				58A841B31B949DF00032AEF0 /* WazeNavigationService */,
 				D39029B11B9060570097C4B6 /* UserAnnotatation */,
@@ -752,6 +764,32 @@
 			name = SplashScreenController;
 			sourceTree = "<group>";
 		};
+		58C7F3D11B999B3900BD6C64 /* ReachabilityService */ = {
+			isa = PBXGroup;
+			children = (
+				58C7F3D21B999B6100BD6C64 /* GMPReachabilityService.h */,
+				58C7F3D31B999B6100BD6C64 /* GMPReachabilityService.m */,
+			);
+			name = ReachabilityService;
+			sourceTree = "<group>";
+		};
+		58C7F3D51B999BAB00BD6C64 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				58C7F3D61B999BC900BD6C64 /* Reachability */,
+			);
+			name = Libraries;
+			sourceTree = "<group>";
+		};
+		58C7F3D61B999BC900BD6C64 /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				58C7F3DD1B999E7F00BD6C64 /* Reachability.h */,
+				58C7F3DE1B999E7F00BD6C64 /* Reachability.m */,
+			);
+			name = Reachability;
+			sourceTree = "<group>";
+		};
 		58C8E8261B95A384002F8F61 /* Address */ = {
 			isa = PBXGroup;
 			children = (
@@ -980,7 +1018,9 @@
 				58C1311D1B8EF5A60095045A /* AppDelegate.m in Sources */,
 				58C1318F1B8F043B0095045A /* GMPLocationObserver.m in Sources */,
 				58C1316A1B8F02F00095045A /* UIView+MakeFromXib.m in Sources */,
+				58C7F3D41B999B6100BD6C64 /* GMPReachabilityService.m in Sources */,
 				D39029AC1B9050A30097C4B6 /* GMPMapController.m in Sources */,
+				58C7F3DF1B999E7F00BD6C64 /* Reachability.m in Sources */,
 				58C1319B1B8F054A0095045A /* GMPMainMenuController.m in Sources */,
 				58C1311A1B8EF5A60095045A /* main.m in Sources */,
 				58C131A11B8F09C80095045A /* GMPSplashScreenController.m in Sources */,
