@@ -1,9 +1,11 @@
 
 /* Class = "UIButton"; normalTitle = "Find the geo number using address "; ObjectID = "FQ2-gj-dWA"; */
-"FQ2-gj-dWA.normalTitle" = "Find the geo number using address ";
+"FQ2-gj-dWA.normalTitle" = "Geo numbers using address";
 
 /* Class = "UIButton"; normalTitle = "Find the address using geo number "; ObjectID = "J38-mN-ZT8"; */
-"J38-mN-ZT8.normalTitle" = "Find the address using geo number ";
+"J38-mN-ZT8.normalTitle" = "Address using geo numbers";
 
 /* Class = "UIButton"; normalTitle = "Find the geo number using current placing "; ObjectID = "Kd5-ta-RxF"; */
-"Kd5-ta-RxF.normalTitle" = "Find the geo number using current placing ";
+"Kd5-ta-RxF.normalTitle" = "Geo numbers using current placing";
+
+"oaq-jK-ERs.text" = "What do you want to find?";

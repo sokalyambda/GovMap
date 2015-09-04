@@ -41,7 +41,7 @@
  */
 - (void)customizeNavigationBar
 {
-    [self.navigationBar setBarTintColor:UIColorFromRGB(0xFF7619)];
+    [self.navigationBar setBarTintColor:UIColorFromRGB(0xF5A928)];
     [self.navigationBar setTintColor:[UIColor whiteColor]];
     [self.navigationBar setTitleTextAttributes:@{NSFontAttributeName : [UIFont fontWithName:@"HelveticaNeue-Light" size:20.f], NSForegroundColorAttributeName : [UIColor whiteColor]}];
     self.navigationBar.translucent = NO;
