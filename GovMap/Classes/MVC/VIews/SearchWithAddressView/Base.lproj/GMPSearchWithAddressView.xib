@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GMPSearchWithAddressView">
@@ -81,12 +81,12 @@
                             <constraints>
                                 <constraint firstItem="Vo7-8x-ue8" firstAttribute="trailing" secondItem="60e-YB-GDL" secondAttribute="trailing" id="4X3-d0-yar"/>
                                 <constraint firstItem="60e-YB-GDL" firstAttribute="top" secondItem="dn4-Oe-xNg" secondAttribute="bottom" constant="40" id="6ge-kR-cDD"/>
+                                <constraint firstItem="Vo7-8x-ue8" firstAttribute="trailing" secondItem="pcr-GX-H6H" secondAttribute="trailing" id="8nk-Ub-nNo"/>
                                 <constraint firstItem="dn4-Oe-xNg" firstAttribute="leading" secondItem="60e-YB-GDL" secondAttribute="leading" id="I2S-e9-S71"/>
                                 <constraint firstItem="Vo7-8x-ue8" firstAttribute="top" secondItem="60e-YB-GDL" secondAttribute="bottom" constant="40" id="WT8-Lj-GkM"/>
                                 <constraint firstAttribute="centerY" secondItem="60e-YB-GDL" secondAttribute="centerY" id="bg8-1N-5KT"/>
                                 <constraint firstItem="dn4-Oe-xNg" firstAttribute="leading" secondItem="KLb-dH-jeV" secondAttribute="leading" constant="20" id="cZz-Mh-PbQ"/>
                                 <constraint firstItem="Vo7-8x-ue8" firstAttribute="leading" secondItem="60e-YB-GDL" secondAttribute="leading" id="gAE-Ks-EPE"/>
-                                <constraint firstItem="Vo7-8x-ue8" firstAttribute="leading" secondItem="pcr-GX-H6H" secondAttribute="leading" id="lzv-py-1L2"/>
                                 <constraint firstItem="pcr-GX-H6H" firstAttribute="top" secondItem="Vo7-8x-ue8" secondAttribute="bottom" constant="62" id="ofu-XU-5sZ"/>
                                 <constraint firstItem="dn4-Oe-xNg" firstAttribute="trailing" secondItem="60e-YB-GDL" secondAttribute="trailing" id="rIv-Yh-zcM"/>
                                 <constraint firstAttribute="trailing" secondItem="dn4-Oe-xNg" secondAttribute="trailing" constant="20" id="wtB-UD-L6y"/>
@@ -99,16 +99,16 @@
                                     <exclude reference="Vo7-8x-ue8"/>
                                 </mask>
                                 <mask key="constraints">
-                                    <exclude reference="6ge-kR-cDD"/>
-                                    <exclude reference="bg8-1N-5KT"/>
-                                    <exclude reference="4X3-d0-yar"/>
-                                    <exclude reference="WT8-Lj-GkM"/>
-                                    <exclude reference="gAE-Ks-EPE"/>
-                                    <exclude reference="lzv-py-1L2"/>
                                     <exclude reference="I2S-e9-S71"/>
                                     <exclude reference="cZz-Mh-PbQ"/>
                                     <exclude reference="rIv-Yh-zcM"/>
                                     <exclude reference="wtB-UD-L6y"/>
+                                    <exclude reference="6ge-kR-cDD"/>
+                                    <exclude reference="bg8-1N-5KT"/>
+                                    <exclude reference="4X3-d0-yar"/>
+                                    <exclude reference="8nk-Ub-nNo"/>
+                                    <exclude reference="WT8-Lj-GkM"/>
+                                    <exclude reference="gAE-Ks-EPE"/>
                                     <exclude reference="ofu-XU-5sZ"/>
                                 </mask>
                             </variation>
@@ -120,16 +120,16 @@
                                     <include reference="Vo7-8x-ue8"/>
                                 </mask>
                                 <mask key="constraints">
-                                    <include reference="6ge-kR-cDD"/>
-                                    <include reference="bg8-1N-5KT"/>
-                                    <include reference="4X3-d0-yar"/>
-                                    <include reference="WT8-Lj-GkM"/>
-                                    <include reference="gAE-Ks-EPE"/>
-                                    <include reference="lzv-py-1L2"/>
                                     <include reference="I2S-e9-S71"/>
                                     <include reference="cZz-Mh-PbQ"/>
                                     <include reference="rIv-Yh-zcM"/>
                                     <include reference="wtB-UD-L6y"/>
+                                    <include reference="6ge-kR-cDD"/>
+                                    <include reference="bg8-1N-5KT"/>
+                                    <include reference="4X3-d0-yar"/>
+                                    <include reference="8nk-Ub-nNo"/>
+                                    <include reference="WT8-Lj-GkM"/>
+                                    <include reference="gAE-Ks-EPE"/>
                                     <include reference="ofu-XU-5sZ"/>
                                 </mask>
                             </variation>

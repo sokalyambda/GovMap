@@ -99,24 +99,30 @@ static NSInteger const kAttemtsAmountForDataRetrieving = 30;
         return;
     }
     
-    [self clearTableResultsFromLink];
-    
-    _isReadyForRequests = NO;
-    self.requestCadasterCompletionBlock = completionBlock;
-    
-    NSString *jsSetTextFieldValue = [NSString stringWithFormat:
-                                     @"document.getElementById('tbSearchWord').value = '%@'", address];
-    [self.webView stringByEvaluatingJavaScriptFromString:jsSetTextFieldValue];
-    [self.webView stringByEvaluatingJavaScriptFromString:@"FS_Search()"];
-    [self performSelector:@selector(fillTextFieldWithAddress) withObject:self afterDelay:0.5];
+    // Asynch dispatch to prevent crash when making this request from block (not a main thread)
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        [self clearTableResultsFromLink];
+        
+        _isReadyForRequests = NO;
+        self.requestCadasterCompletionBlock = completionBlock;
+        
+        NSString *jsSetTextFieldValue = [NSString stringWithFormat:
+                                         @"document.getElementById('tbSearchWord').value = '%@'", address];
+        
+        
+        [self.webView stringByEvaluatingJavaScriptFromString:jsSetTextFieldValue];
+        [self.webView stringByEvaluatingJavaScriptFromString:@"FS_Search()"];
+        [self performSelector:@selector(fillTextFieldWithAddress) withObject:self afterDelay:0.5];
+    });
 }
 
 #pragma mark - Private
 
 - (void)fillTextFieldWithAddress
 {
-    [self.webView stringByEvaluatingJavaScriptFromString:@"document.getElementById('lnkFindBlockByAddress').click()"];
-    //[self.webView stringByEvaluatingJavaScriptFromString:@"FSS_FindBlockForAddress()"];
+    //[self.webView stringByEvaluatingJavaScriptFromString:@"document.getElementById('lnkFindBlockByAddress').click()"];
+    [self.webView stringByEvaluatingJavaScriptFromString:@"FSS_FindBlockForAddress()"];
     [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(checkInnerTextForCadastre:) userInfo:@0 repeats:YES];
 }
 
@@ -175,18 +181,22 @@ static NSInteger const kAttemtsAmountForDataRetrieving = 30;
         return;
     }
     
-    [self clearTableResultsFromLink];
-
-    NSString *cadastralString = [NSString stringWithFormat:@"גוש %ld, חלקה %ld", cadastralInfo.major, cadastralInfo.minor];
-    
-    _isReadyForRequests = NO;
-    self.requestAddressCompletionBlock = completionBlock;
-    
-    NSString *jsSetTextFieldValue = [NSString stringWithFormat:
-                                     @"document.getElementById('tbSearchWord').value = '%@'", cadastralString];
-    [self.webView stringByEvaluatingJavaScriptFromString:jsSetTextFieldValue];
-    [self.webView stringByEvaluatingJavaScriptFromString:@"FS_Search()"];
-    [self performSelector:@selector(fillTextFieldWithCadastralString) withObject:self afterDelay:1.0];
+    // Asynch dispatch to prevent crash when making this request from block (not a main thread)
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        [self clearTableResultsFromLink];
+        
+        NSString *cadastralString = [NSString stringWithFormat:@"גוש %ld, חלקה %ld", cadastralInfo.major, cadastralInfo.minor];
+        
+        _isReadyForRequests = NO;
+        self.requestAddressCompletionBlock = completionBlock;
+        
+        NSString *jsSetTextFieldValue = [NSString stringWithFormat:
+                                         @"document.getElementById('tbSearchWord').value = '%@'", cadastralString];
+        [self.webView stringByEvaluatingJavaScriptFromString:jsSetTextFieldValue];
+        [self.webView stringByEvaluatingJavaScriptFromString:@"FS_Search()"];
+        [self performSelector:@selector(fillTextFieldWithCadastralString) withObject:self afterDelay:0.5];
+    });
 }
 
 #pragma mark - Private

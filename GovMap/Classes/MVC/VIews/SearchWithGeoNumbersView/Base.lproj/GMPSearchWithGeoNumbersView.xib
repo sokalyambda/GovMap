@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GMPSearchWithGeoNumbersView">
@@ -23,6 +23,22 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KXL-B7-BSD" userLabel="Container View">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             <subviews>
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Block" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HUc-CP-dgb" userLabel="Block Text Field">
+                                    <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="-1" id="oql-dw-dxk"/>
+                                    </connections>
+                                </textField>
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Subblock" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gwC-Aa-lCC" userLabel="Subblock Text Field">
+                                    <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="-1" id="6Df-VN-17I"/>
+                                    </connections>
+                                </textField>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1my-8B-ggS" userLabel="Search Button" customClass="GMPRoundedCornersButton">
                                     <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                     <color key="backgroundColor" red="0.078431372550000003" green="0.73386323689999999" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -48,22 +64,6 @@
                                         <action selector="searchButtonPress:" destination="-1" eventType="touchUpInside" id="4kG-OB-jaF"/>
                                     </connections>
                                 </button>
-                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Block" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HUc-CP-dgb" userLabel="Block Text Field">
-                                    <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
-                                    <connections>
-                                        <outlet property="delegate" destination="-1" id="oql-dw-dxk"/>
-                                    </connections>
-                                </textField>
-                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Subblock" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gwC-Aa-lCC" userLabel="Subblock Text Field">
-                                    <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
-                                    <connections>
-                                        <outlet property="delegate" destination="-1" id="6Df-VN-17I"/>
-                                    </connections>
-                                </textField>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
@@ -71,16 +71,16 @@
                                 <constraint firstAttribute="centerY" secondItem="HUc-CP-dgb" secondAttribute="centerY" constant="75" id="Hy1-sh-PMd"/>
                                 <constraint firstItem="1my-8B-ggS" firstAttribute="top" secondItem="gwC-Aa-lCC" secondAttribute="bottom" constant="65" id="O5i-rR-Dyh"/>
                                 <constraint firstItem="gwC-Aa-lCC" firstAttribute="leading" secondItem="HUc-CP-dgb" secondAttribute="leading" id="Sjd-As-hof"/>
-                                <constraint firstItem="gwC-Aa-lCC" firstAttribute="leading" secondItem="1my-8B-ggS" secondAttribute="leading" id="VJB-Dk-lUI"/>
                                 <constraint firstAttribute="trailing" secondItem="HUc-CP-dgb" secondAttribute="trailing" constant="20" id="dCC-8h-sOT"/>
                                 <constraint firstItem="HUc-CP-dgb" firstAttribute="leading" secondItem="KXL-B7-BSD" secondAttribute="leading" constant="20" id="g2h-IF-5lV"/>
+                                <constraint firstItem="1my-8B-ggS" firstAttribute="trailing" secondItem="gwC-Aa-lCC" secondAttribute="trailing" id="tPS-VC-7ro"/>
                                 <constraint firstItem="gwC-Aa-lCC" firstAttribute="trailing" secondItem="HUc-CP-dgb" secondAttribute="trailing" id="vBI-ih-qEw"/>
                             </constraints>
                             <variation key="default">
                                 <mask key="subviews">
-                                    <exclude reference="1my-8B-ggS"/>
                                     <exclude reference="HUc-CP-dgb"/>
                                     <exclude reference="gwC-Aa-lCC"/>
+                                    <exclude reference="1my-8B-ggS"/>
                                 </mask>
                                 <mask key="constraints">
                                     <exclude reference="Hy1-sh-PMd"/>
@@ -88,16 +88,16 @@
                                     <exclude reference="g2h-IF-5lV"/>
                                     <exclude reference="Fty-Es-vcw"/>
                                     <exclude reference="Sjd-As-hof"/>
-                                    <exclude reference="VJB-Dk-lUI"/>
                                     <exclude reference="vBI-ih-qEw"/>
                                     <exclude reference="O5i-rR-Dyh"/>
+                                    <exclude reference="tPS-VC-7ro"/>
                                 </mask>
                             </variation>
                             <variation key="heightClass=regular-widthClass=compact">
                                 <mask key="subviews">
-                                    <include reference="1my-8B-ggS"/>
                                     <include reference="HUc-CP-dgb"/>
                                     <include reference="gwC-Aa-lCC"/>
+                                    <include reference="1my-8B-ggS"/>
                                 </mask>
                                 <mask key="constraints">
                                     <include reference="Hy1-sh-PMd"/>
@@ -105,9 +105,9 @@
                                     <include reference="g2h-IF-5lV"/>
                                     <include reference="Fty-Es-vcw"/>
                                     <include reference="Sjd-As-hof"/>
-                                    <include reference="VJB-Dk-lUI"/>
                                     <include reference="vBI-ih-qEw"/>
                                     <include reference="O5i-rR-Dyh"/>
+                                    <include reference="tPS-VC-7ro"/>
                                 </mask>
                             </variation>
                         </view>

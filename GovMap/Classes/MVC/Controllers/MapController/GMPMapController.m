@@ -138,19 +138,21 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
     [self.mapView setRegion:[self.mapView regionThatFits:region] animated:YES];
     
     CLLocation *location = [[CLLocation alloc] initWithLatitude:coordinate.latitude longitude:coordinate.longitude];
-    [self.locationObserver mapKitReverseGeocodingForCoordinate:location withResult:^(BOOL success, GMPLocationAddress *address) {
-        if (success) {
+    
+    // GOOGLE Manager
+    [[GMPGoogleGeocoder sharedInstance] geocodeLocation:location
+                                      completionHandler:^(GMPLocationAddress *address, NSError *error) {
+        if (!error) {
             weakSelf.annotation = [[GMPUserAnnotation alloc] initWithLocation:coordinate title:address.fullAddress];
-            [weakSelf.mapView addAnnotation:self.annotation];
+            [weakSelf.mapView addAnnotation:weakSelf.annotation];
             
-            if (!self.currentAddress) {
-                self.currentAddress = address;
+            if (!weakSelf.currentAddress) {
+                weakSelf.currentAddress = address;
             }
             
-            [self searchCurrentGeodata];
+            [weakSelf searchCurrentGeodata];
         }
     }];
-    
     
     //    [self.locationObserver reverseGeocodingForCoordinate:location withResult:^(BOOL success, GMPLocationAddress *address) {
     //        if (success) {
@@ -175,8 +177,11 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
     WEAK_SELF;
     switch (self.currentSearchType) {
         case GMPSearchTypeAddress: {
-            [self.locationObserver geocodingForAddress:self.currentAddress withResult:^(BOOL success, CLLocation *location) {
-                if(success) {
+            
+            // GOOGLE Manager
+            [[GMPGoogleGeocoder sharedInstance] reverseGeocodeAddress:self.currentAddress completionHandler:^(CLLocation *location, NSError *error) {
+                
+                if (!error) {
                     [weakSelf setupMapAttributesForCoordinate:location.coordinate];
                 } else {
                     [GMPAlertService showInfoAlertControllerWithTitle:@"" andMessage:LOCALIZED(@"Address not found") forController:weakSelf withCompletion:^{
@@ -184,6 +189,16 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
                     }];
                 }
             }];
+            
+//            [self.locationObserver geocodingForAddress:self.currentAddress withResult:^(BOOL success, CLLocation *location) {
+//                if(success) {
+//                    [weakSelf setupMapAttributesForCoordinate:location.coordinate];
+//                } else {
+//                    [GMPAlertService showInfoAlertControllerWithTitle:@"" andMessage:LOCALIZED(@"Address not found") forController:weakSelf withCompletion:^{
+//                        [weakSelf.navigationController popViewControllerAnimated:YES];
+//                    }];
+//                }
+//            }];
             break;
         }
             
@@ -206,6 +221,7 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
                     //                        }
                     //                    }];
                     
+                    // GOOGLE Manager
                     GMPLocationAddress *locAddress = [GMPLocationAddressParser locationAddressWithGovMapAddress:address];
                     [[GMPGoogleGeocoder sharedInstance] reverseGeocodeAddress:locAddress completionHandler:^(CLLocation *location, NSError *error) {
                         if (!error) {
