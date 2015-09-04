@@ -103,26 +103,29 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view didChangeDragState:(MKAnnotationViewDragState)newState fromOldState:(MKAnnotationViewDragState)oldState
 {
     GMPUserAnnotation *annotation = (GMPUserAnnotation *)view.annotation;
-    if (newState == MKAnnotationViewDragStateDragging) {
-//
-//        CLLocation *location = [[CLLocation alloc]initWithLatitude:annotation.coordinate.latitude longitude:annotation.coordinate.longitude];
-//        [self.locationObserver reverseGeocodingForCoordinate:location withResult:^(BOOL success, GMPLocationAddress *address) {
-//            if (success) {
-//                [annotation setTitle:LOCALIZED(address.fullAddress)];
-//                self.currentAddress = address;
-//            }
-//        }];
-        
-        WEAK_SELF;
-        [[GMPGoogleGeocoder sharedInstance] geocodeLocation:[[CLLocation alloc]initWithLatitude:annotation.coordinate.latitude longitude:annotation.coordinate.longitude]
-                              completionHandler:^(GMPLocationAddress *address, NSError *error) {
-                                  if (!error) {
-                                      [annotation setTitle:LOCALIZED(address.fullAddress)];
-                                      weakSelf.currentAddress = address;
-                                  }
-                              }];
-    } else if (newState == MKAnnotationViewDragStateEnding) {
-        [self searchCurrentGeodata];
+    switch (newState) {
+        case MKAnnotationViewDragStateStarting: {
+            [annotation setSubtitle:@""];
+            break;
+        }
+        case MKAnnotationViewDragStateDragging: {
+            WEAK_SELF;
+            [[GMPGoogleGeocoder sharedInstance] geocodeLocation:[[CLLocation alloc]initWithLatitude:annotation.coordinate.latitude longitude:annotation.coordinate.longitude]
+                                              completionHandler:^(GMPLocationAddress *address, NSError *error) {
+                                                  if (!error) {
+                                                      [annotation setTitle:LOCALIZED(address.fullAddress)];
+                                                      weakSelf.currentAddress = address;
+                                                  }
+                                              }];
+            break;
+        }
+        case MKAnnotationViewDragStateEnding: {
+            [self searchCurrentGeodata];
+            break;
+        }
+            
+        default:
+            break;
     }
 }
 
@@ -178,7 +181,7 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
                 if(success) {
                     [weakSelf setupMapAttributesForCoordinate:location.coordinate];
                 } else {
-                    [GMPAlertService showInfoAlertControllerWithTitle:@"" andMessage:LOCALIZED(@"This address can not be found") forController:weakSelf withCompletion:^{
+                    [GMPAlertService showInfoAlertControllerWithTitle:@"" andMessage:LOCALIZED(@"Address not found") forController:weakSelf withCompletion:^{
                         [weakSelf.navigationController popViewControllerAnimated:YES];
                     }];
                 }
@@ -197,13 +200,13 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
                 NSString *addressData = [address stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
                 
                 if (addressData && ![addressData isEqualToString:kAddressNotFound]) {
-//                    GMPLocationAddress *locAddress = [GMPLocationAddressParser locationAddressWithGovMapAddress:address];
-//                    
-//                    [weakSelf.locationObserver geocodingForAddress:locAddress withResult:^(BOOL success, CLLocation *location) {
-//                        if (success) {
-//                            [weakSelf setupMapAttributesForCoordinate:location.coordinate];
-//                        }
-//                    }];
+                    //                    GMPLocationAddress *locAddress = [GMPLocationAddressParser locationAddressWithGovMapAddress:address];
+                    //
+                    //                    [weakSelf.locationObserver geocodingForAddress:locAddress withResult:^(BOOL success, CLLocation *location) {
+                    //                        if (success) {
+                    //                            [weakSelf setupMapAttributesForCoordinate:location.coordinate];
+                    //                        }
+                    //                    }];
                     
                     GMPLocationAddress *locAddress = [GMPLocationAddressParser locationAddressWithGovMapAddress:address];
                     [[GMPGoogleGeocoder sharedInstance] reverseGeocodeAddress:locAddress completionHandler:^(CLLocation *location, NSError *error) {
@@ -213,7 +216,7 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
                     }];
                     
                 } else {
-                    [GMPAlertService showInfoAlertControllerWithTitle:@"" andMessage:LOCALIZED(kAddressNotFound) forController:weakSelf withCompletion:nil];
+                    [GMPAlertService showInfoAlertControllerWithTitle:@"" andMessage:LOCALIZED(@"Address not found") forController:weakSelf withCompletion:nil];
                 }
             }];
             break;
@@ -229,9 +232,7 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
         [MBProgressHUD hideAllHUDsForView:weakSelf.view animated:YES];
         [weakSelf.mapView selectAnnotation:weakSelf.annotation animated:YES];
         if (cadastralInfo) {
-            [weakSelf.annotation setSubtitle:[NSString localizedStringWithFormat:@"%@ %ld, %@ %ld", LOCALIZED(@"Major:"), (long)cadastralInfo.major, LOCALIZED(@"Minor:"), (long)cadastralInfo.minor]];
-        } else {
-            [weakSelf.annotation setSubtitle:@""];
+            [weakSelf.annotation setSubtitle:[NSString localizedStringWithFormat:@"%@ %ld, %@ %ld", LOCALIZED(@"Block "), (long)cadastralInfo.major, LOCALIZED(@"Smooth "), (long)cadastralInfo.minor]];
         }
     }];
 }
