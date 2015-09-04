@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GMPSearchWithAddressView">
@@ -27,19 +27,10 @@
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="City" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dn4-Oe-xNg" userLabel="City Text Field">
                                     <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
                                     <color key="textColor" white="0.40000000000000002" alpha="1" colorSpace="calibratedWhite"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits"/>
+                                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
+                                    <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" keyboardType="namePhonePad" returnKeyType="next"/>
                                     <connections>
                                         <outlet property="delegate" destination="-1" id="btO-tp-buk"/>
-                                    </connections>
-                                </textField>
-                                <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Street" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="60e-YB-GDL" userLabel="Street Text Field">
-                                    <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
-                                    <color key="textColor" white="0.40000000000000002" alpha="1" colorSpace="calibratedWhite"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits"/>
-                                    <connections>
-                                        <outlet property="delegate" destination="-1" id="6aS-bZ-eyQ"/>
                                     </connections>
                                 </textField>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pcr-GX-H6H" userLabel="Search Button" customClass="GMPRoundedCornersButton">
@@ -70,10 +61,19 @@
                                 <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Home" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vo7-8x-ue8" userLabel="Home Text Field">
                                     <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
                                     <color key="textColor" white="0.40000000000000002" alpha="1" colorSpace="calibratedWhite"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits"/>
+                                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
+                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numbersAndPunctuation" returnKeyType="done"/>
                                     <connections>
                                         <outlet property="delegate" destination="-1" id="z4y-jN-ab2"/>
+                                    </connections>
+                                </textField>
+                                <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Street" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="60e-YB-GDL" userLabel="Street Text Field">
+                                    <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                    <color key="textColor" white="0.40000000000000002" alpha="1" colorSpace="calibratedWhite"/>
+                                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
+                                    <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" keyboardType="namePhonePad" returnKeyType="next"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="-1" id="6aS-bZ-eyQ"/>
                                     </connections>
                                 </textField>
                             </subviews>
@@ -94,42 +94,42 @@
                             <variation key="default">
                                 <mask key="subviews">
                                     <exclude reference="dn4-Oe-xNg"/>
-                                    <exclude reference="60e-YB-GDL"/>
                                     <exclude reference="pcr-GX-H6H"/>
                                     <exclude reference="Vo7-8x-ue8"/>
+                                    <exclude reference="60e-YB-GDL"/>
                                 </mask>
                                 <mask key="constraints">
-                                    <exclude reference="I2S-e9-S71"/>
-                                    <exclude reference="cZz-Mh-PbQ"/>
-                                    <exclude reference="rIv-Yh-zcM"/>
-                                    <exclude reference="wtB-UD-L6y"/>
                                     <exclude reference="6ge-kR-cDD"/>
                                     <exclude reference="bg8-1N-5KT"/>
                                     <exclude reference="4X3-d0-yar"/>
                                     <exclude reference="8nk-Ub-nNo"/>
                                     <exclude reference="WT8-Lj-GkM"/>
                                     <exclude reference="gAE-Ks-EPE"/>
+                                    <exclude reference="I2S-e9-S71"/>
+                                    <exclude reference="cZz-Mh-PbQ"/>
+                                    <exclude reference="rIv-Yh-zcM"/>
+                                    <exclude reference="wtB-UD-L6y"/>
                                     <exclude reference="ofu-XU-5sZ"/>
                                 </mask>
                             </variation>
                             <variation key="heightClass=regular-widthClass=compact">
                                 <mask key="subviews">
                                     <include reference="dn4-Oe-xNg"/>
-                                    <include reference="60e-YB-GDL"/>
                                     <include reference="pcr-GX-H6H"/>
                                     <include reference="Vo7-8x-ue8"/>
+                                    <include reference="60e-YB-GDL"/>
                                 </mask>
                                 <mask key="constraints">
-                                    <include reference="I2S-e9-S71"/>
-                                    <include reference="cZz-Mh-PbQ"/>
-                                    <include reference="rIv-Yh-zcM"/>
-                                    <include reference="wtB-UD-L6y"/>
                                     <include reference="6ge-kR-cDD"/>
                                     <include reference="bg8-1N-5KT"/>
                                     <include reference="4X3-d0-yar"/>
                                     <include reference="8nk-Ub-nNo"/>
                                     <include reference="WT8-Lj-GkM"/>
                                     <include reference="gAE-Ks-EPE"/>
+                                    <include reference="I2S-e9-S71"/>
+                                    <include reference="cZz-Mh-PbQ"/>
+                                    <include reference="rIv-Yh-zcM"/>
+                                    <include reference="wtB-UD-L6y"/>
                                     <include reference="ofu-XU-5sZ"/>
                                 </mask>
                             </variation>

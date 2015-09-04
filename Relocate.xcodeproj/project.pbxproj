@@ -283,8 +283,6 @@
 			children = (
 				3E8F917A1B95AA8A00CDBF6F /* GMPBaseSearchView.h */,
 				3E8F917B1B95AA8A00CDBF6F /* GMPBaseSearchView.m */,
-				58D7C82D1B997B3C00965EF2 /* GMPRoundedCornersButton.h */,
-				58D7C82E1B997B3C00965EF2 /* GMPRoundedCornersButton.m */,
 			);
 			name = BaseSearchView;
 			sourceTree = "<group>";
@@ -802,6 +800,8 @@
 		58D7C82C1B997B1200965EF2 /* RoundedCornersButton */ = {
 			isa = PBXGroup;
 			children = (
+				58D7C82D1B997B3C00965EF2 /* GMPRoundedCornersButton.h */,
+				58D7C82E1B997B3C00965EF2 /* GMPRoundedCornersButton.m */,
 			);
 			name = RoundedCornersButton;
 			sourceTree = "<group>";
