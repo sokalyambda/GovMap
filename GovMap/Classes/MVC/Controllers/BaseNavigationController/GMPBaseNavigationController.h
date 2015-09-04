@@ -8,4 +8,6 @@
 
 @interface GMPBaseNavigationController : UINavigationController
 
+@property (strong, nonatomic) UIBarButtonItem *customBackButton;
+
 @end

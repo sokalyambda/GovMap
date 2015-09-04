@@ -1,9 +1,10 @@
-
 /* Class = "UIButton"; normalTitle = "Find the geo number using address "; ObjectID = "FQ2-gj-dWA"; */
-"FQ2-gj-dWA.normalTitle" = "געפֿינען די געאָ נומער ניצן אַדרעס";
+"FQ2-gj-dWA.normalTitle" = "מספרים גיאוגרפיים באמצעות כתובת";
 
 /* Class = "UIButton"; normalTitle = "Find the address using geo number "; ObjectID = "J38-mN-ZT8"; */
-"J38-mN-ZT8.normalTitle" = "געפֿינען די אַדרעס ניצן געאָ נומער";
+"J38-mN-ZT8.normalTitle" = "כתובת באמצעות מספרים הגיאו";
 
 /* Class = "UIButton"; normalTitle = "Find the geo number using current placing "; ObjectID = "Kd5-ta-RxF"; */
-"Kd5-ta-RxF.normalTitle" = "געפֿינען די געאָ נומער ניצן איצטיקן פּלייסינג";
+"Kd5-ta-RxF.normalTitle" = "מספרים גיאוגרפיים באמצעות הצבה נוכחית";
+
+"oaq-jK-ERs.text" = "מה אתה רוצה למצוא ?";
