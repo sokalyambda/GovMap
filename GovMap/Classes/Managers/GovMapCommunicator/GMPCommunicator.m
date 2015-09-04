@@ -94,7 +94,7 @@ static NSInteger const kAttemtsAmountForDataRetrieving = 30;
         return;
     }
     
-    if (!self.isReadyForRequests) {
+    if (!self.isReadyForRequests && [self.delegate respondsToSelector:@selector(communicatorWasNotReadyForRequest:)]) {
         [self.delegate communicatorWasNotReadyForRequest:self];
         return;
     }
