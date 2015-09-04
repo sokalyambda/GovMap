@@ -14,6 +14,15 @@ static NSString *const kLocationBaseURLString = @"https://maps.googleapis.com/ma
 static NSString *const kAddressBaseURLString = @"https://maps.google.com/maps/api/geocode/json?address=";
 static NSString *const kAPIKey = @"";//@"&key=AIzaSyCe5NsemBVFbuMYSUoxzi0qao7cKqiEECc";
 
+static NSString *const kResults = @"results";
+static NSString *const kStatus = @"status";
+static NSString *const kGeometry = @"geometry";
+static NSString *const kLocation = @"location";
+static NSString *const kLatitude = @"lat";
+static NSString *const kLongitude = @"lng";
+static NSString *const kAddressComponents = @"address_components";
+static NSString *const kLongName = @"long_name";
+
 @implementation GMPGoogleGeocoder
 
 #pragma mark - Lifecycle
@@ -63,18 +72,18 @@ static NSString *const kAPIKey = @"";//@"&key=AIzaSyCe5NsemBVFbuMYSUoxzi0qao7cKq
         }
         
         // Handle denied request by Google
-        if (![JSONObject[@"status"] isEqualToString:@"OK"]) {
-            NSError *googleError = [NSError errorWithDomain:JSONObject[@"status"] code:-1 userInfo:nil];
+        if (![JSONObject[kStatus] isEqualToString:@"OK"]) {
+            NSError *googleError = [NSError errorWithDomain:JSONObject[kStatus] code:-1 userInfo:nil];
             handler(nil, googleError);
             return;
         }
         
-        NSArray *results = JSONObject[@"results"];
-        NSArray *addressComponents = results[0][@"address_components"];
+        NSArray *results = JSONObject[kResults];
+        NSArray *addressComponents = results[0][kAddressComponents];
         
-        NSString *home = addressComponents[0][@"long_name"];
-        NSString *street = addressComponents[1][@"long_name"];
-        NSString *city = addressComponents[2][@"long_name"];
+        NSString *home = addressComponents[0][kLongName];
+        NSString *street = addressComponents[1][kLongName];
+        NSString *city = addressComponents[2][kLongName];
         
         NSArray *homes = [home componentsSeparatedByString:@"-"];
         
@@ -112,17 +121,17 @@ static NSString *const kAPIKey = @"";//@"&key=AIzaSyCe5NsemBVFbuMYSUoxzi0qao7cKq
         }
         
         // Handle denied request by Google
-        if (![JSONObject[@"status"] isEqualToString:@"OK"]) {
-            NSError *googleError = [NSError errorWithDomain:JSONObject[@"status"] code:-1 userInfo:nil];
+        if (![JSONObject[kStatus] isEqualToString:@"OK"]) {
+            NSError *googleError = [NSError errorWithDomain:JSONObject[kStatus] code:-1 userInfo:nil];
             handler(nil, googleError);
             return;
         }
         
-        NSArray *results = JSONObject[@"results"];
-        NSDictionary *geometry = results[0][@"geometry"];
-        NSDictionary *location = geometry[@"location"];
-        NSNumber *latitude = location[@"lat"];
-        NSNumber *longitude = location[@"lng"];
+        NSArray *results = JSONObject[kResults];
+        NSDictionary *geometry = results[0][kGeometry];
+        NSDictionary *location = geometry[kLocation];
+        NSNumber *latitude = location[kLatitude];
+        NSNumber *longitude = location[kLongitude];
         
         CLLocationDegrees lat = latitude.doubleValue;
         CLLocationDegrees lng = longitude.doubleValue;
