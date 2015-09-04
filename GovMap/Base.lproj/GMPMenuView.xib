@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GMPMenuView">
@@ -14,15 +14,15 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FQ2-gj-dWA">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FQ2-gj-dWA" customClass="GMPRoundedCornersButton">
                     <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                    <color key="backgroundColor" name="selectedTextBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    <color key="backgroundColor" red="0.078431372550000003" green="0.65491586850000005" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="55" id="RvC-XC-ptc"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
-                    <state key="normal" title="Find the geo number using address ">
-                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                    <state key="normal" title="Geo numbers using address ">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <variation key="default">
@@ -39,17 +39,17 @@
                         <action selector="findGeoNumerByAddressPress:" destination="-1" eventType="touchUpInside" id="jVe-1c-EdL"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kd5-ta-RxF">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kd5-ta-RxF" customClass="GMPRoundedCornersButton">
                     <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                    <color key="backgroundColor" name="selectedTextBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    <color key="backgroundColor" red="0.078431372550000003" green="0.65491586850000005" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="61" id="t7F-RO-WSz">
                             <variation key="heightClass=regular-widthClass=compact" constant="55"/>
                         </constraint>
                     </constraints>
-                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
-                    <state key="normal" title="Find the geo number using current placing ">
-                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                    <state key="normal" title="Geo numbers using current placing ">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <variation key="default">
@@ -66,15 +66,15 @@
                         <action selector="findGeoNumberByPlacingPress:" destination="-1" eventType="touchUpInside" id="3hG-2p-g4Q"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J38-mN-ZT8">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J38-mN-ZT8" customClass="GMPRoundedCornersButton">
                     <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                    <color key="backgroundColor" name="selectedTextBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    <color key="backgroundColor" red="0.078431372549019607" green="0.65491586848555206" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="55" id="qbJ-Qb-hz5"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
-                    <state key="normal" title="Find the address using geo number ">
-                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                    <state key="normal" title="Address using geo numbers">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <variation key="default">
@@ -91,6 +91,25 @@
                         <action selector="findAddressByGeoNumberPress:" destination="-1" eventType="touchUpInside" id="02B-My-XHR"/>
                     </connections>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What do you want to find?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oaq-jK-ERs">
+                    <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="rzc-fw-cdc"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="19"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="rzc-fw-cdc"/>
+                        </mask>
+                    </variation>
+                    <variation key="heightClass=regular-widthClass=compact">
+                        <mask key="constraints">
+                            <include reference="rzc-fw-cdc"/>
+                        </mask>
+                    </variation>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
@@ -104,8 +123,12 @@
                     <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
                 </constraint>
                 <constraint firstAttribute="centerX" secondItem="Kd5-ta-RxF" secondAttribute="centerX" id="L5a-1T-aqn"/>
+                <constraint firstItem="FQ2-gj-dWA" firstAttribute="centerX" secondItem="oaq-jK-ERs" secondAttribute="centerX" id="TY6-1a-Z9O"/>
                 <constraint firstItem="Kd5-ta-RxF" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="UPw-sH-hpV"/>
+                <constraint firstItem="FQ2-gj-dWA" firstAttribute="trailing" secondItem="oaq-jK-ERs" secondAttribute="trailing" id="eNe-lA-9HJ"/>
+                <constraint firstItem="FQ2-gj-dWA" firstAttribute="top" secondItem="oaq-jK-ERs" secondAttribute="bottom" constant="8" id="goL-pZ-QFf"/>
                 <constraint firstItem="J38-mN-ZT8" firstAttribute="trailing" secondItem="Kd5-ta-RxF" secondAttribute="trailing" id="h6C-1P-TtP"/>
+                <constraint firstItem="FQ2-gj-dWA" firstAttribute="leading" secondItem="oaq-jK-ERs" secondAttribute="leading" id="s1p-tB-Wnm"/>
                 <constraint firstItem="J38-mN-ZT8" firstAttribute="leading" secondItem="Kd5-ta-RxF" secondAttribute="leading" id="xjS-mf-251"/>
                 <constraint firstAttribute="centerY" secondItem="Kd5-ta-RxF" secondAttribute="centerY" id="zKR-NL-oDo"/>
             </constraints>
@@ -114,11 +137,13 @@
                     <exclude reference="FQ2-gj-dWA"/>
                     <exclude reference="Kd5-ta-RxF"/>
                     <exclude reference="J38-mN-ZT8"/>
+                    <exclude reference="oaq-jK-ERs"/>
                 </mask>
                 <mask key="constraints">
-                    <exclude reference="8CH-Vr-Wrs"/>
-                    <exclude reference="h6C-1P-TtP"/>
-                    <exclude reference="xjS-mf-251"/>
+                    <exclude reference="TY6-1a-Z9O"/>
+                    <exclude reference="eNe-lA-9HJ"/>
+                    <exclude reference="goL-pZ-QFf"/>
+                    <exclude reference="s1p-tB-Wnm"/>
                     <exclude reference="0gx-dT-5VV"/>
                     <exclude reference="4H6-SW-RgN"/>
                     <exclude reference="AU8-Ml-GZN"/>
@@ -126,6 +151,9 @@
                     <exclude reference="L5a-1T-aqn"/>
                     <exclude reference="UPw-sH-hpV"/>
                     <exclude reference="zKR-NL-oDo"/>
+                    <exclude reference="8CH-Vr-Wrs"/>
+                    <exclude reference="h6C-1P-TtP"/>
+                    <exclude reference="xjS-mf-251"/>
                 </mask>
             </variation>
             <variation key="heightClass=regular-widthClass=compact">
@@ -133,11 +161,13 @@
                     <include reference="FQ2-gj-dWA"/>
                     <include reference="Kd5-ta-RxF"/>
                     <include reference="J38-mN-ZT8"/>
+                    <include reference="oaq-jK-ERs"/>
                 </mask>
                 <mask key="constraints">
-                    <include reference="8CH-Vr-Wrs"/>
-                    <include reference="h6C-1P-TtP"/>
-                    <include reference="xjS-mf-251"/>
+                    <include reference="TY6-1a-Z9O"/>
+                    <include reference="eNe-lA-9HJ"/>
+                    <include reference="goL-pZ-QFf"/>
+                    <include reference="s1p-tB-Wnm"/>
                     <include reference="0gx-dT-5VV"/>
                     <include reference="4H6-SW-RgN"/>
                     <include reference="AU8-Ml-GZN"/>
@@ -145,6 +175,9 @@
                     <include reference="L5a-1T-aqn"/>
                     <include reference="UPw-sH-hpV"/>
                     <include reference="zKR-NL-oDo"/>
+                    <include reference="8CH-Vr-Wrs"/>
+                    <include reference="h6C-1P-TtP"/>
+                    <include reference="xjS-mf-251"/>
                 </mask>
             </variation>
         </view>

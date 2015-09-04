@@ -65,6 +65,10 @@ static NSString *const kSearchWithGeoNumbersControllerSegueIdentifier = @"search
 - (void)customizeNavigationItem
 {
     self.navigationItem.title = LOCALIZED(@"Main Menu");
+    
+    //remove back button (custom and system)
+    self.navigationItem.leftBarButtonItem = nil;
+    self.navigationItem.hidesBackButton = YES;
 }
 
 @end

@@ -8,4 +8,6 @@
 
 @interface GMPSerialViewsConstructor : NSObject
 
++ (UIBarButtonItem *)backButtonForController:(UIViewController *)controller withAction:(SEL)action;
+
 @end

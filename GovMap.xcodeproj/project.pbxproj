@@ -53,6 +53,7 @@
 		58C1319B1B8F054A0095045A /* GMPMainMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C1319A1B8F054A0095045A /* GMPMainMenuController.m */; };
 		58C131A11B8F09C80095045A /* GMPSplashScreenController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C131A01B8F09C80095045A /* GMPSplashScreenController.m */; };
 		58C8E8291B95A3A7002F8F61 /* GMPLocationAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C8E8281B95A3A7002F8F61 /* GMPLocationAddress.m */; };
+		58D7C82F1B997B3C00965EF2 /* GMPRoundedCornersButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D7C82E1B997B3C00965EF2 /* GMPRoundedCornersButton.m */; };
 		D363CE711B981BB4001836F5 /* Block45Smooth5384.gpx in Resources */ = {isa = PBXBuildFile; fileRef = D363CE6F1B981BB4001836F5 /* Block45Smooth5384.gpx */; };
 		D36C847B1B95C54600193073 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D36C847A1B95C54600193073 /* AddressBook.framework */; };
 		D39029AC1B9050A30097C4B6 /* GMPMapController.m in Sources */ = {isa = PBXBuildFile; fileRef = D39029AB1B9050A30097C4B6 /* GMPMapController.m */; };
@@ -169,6 +170,8 @@
 		58C131A01B8F09C80095045A /* GMPSplashScreenController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GMPSplashScreenController.m; path = Classes/MVC/Controllers/SplashScreenController/GMPSplashScreenController.m; sourceTree = "<group>"; };
 		58C8E8271B95A3A7002F8F61 /* GMPLocationAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GMPLocationAddress.h; path = Classes/MVC/Models/LocationAddress/GMPLocationAddress.h; sourceTree = "<group>"; };
 		58C8E8281B95A3A7002F8F61 /* GMPLocationAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GMPLocationAddress.m; path = Classes/MVC/Models/LocationAddress/GMPLocationAddress.m; sourceTree = "<group>"; };
+		58D7C82D1B997B3C00965EF2 /* GMPRoundedCornersButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GMPRoundedCornersButton.h; path = Classes/MVC/Views/RoundedCornersButton/GMPRoundedCornersButton.h; sourceTree = "<group>"; };
+		58D7C82E1B997B3C00965EF2 /* GMPRoundedCornersButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GMPRoundedCornersButton.m; path = Classes/MVC/Views/RoundedCornersButton/GMPRoundedCornersButton.m; sourceTree = "<group>"; };
 		A3EC1D9E43C52520F2972EB0 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D363CE6F1B981BB4001836F5 /* Block45Smooth5384.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = Block45Smooth5384.gpx; path = LocationFiles/Block45Smooth5384.gpx; sourceTree = "<group>"; };
 		D36C847A1B95C54600193073 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
@@ -264,6 +267,8 @@
 			children = (
 				3E8F917A1B95AA8A00CDBF6F /* GMPBaseSearchView.h */,
 				3E8F917B1B95AA8A00CDBF6F /* GMPBaseSearchView.m */,
+				58D7C82D1B997B3C00965EF2 /* GMPRoundedCornersButton.h */,
+				58D7C82E1B997B3C00965EF2 /* GMPRoundedCornersButton.m */,
 			);
 			name = BaseSearchView;
 			sourceTree = "<group>";
@@ -531,6 +536,7 @@
 		58C131481B8EF7C20095045A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				58D7C82C1B997B1200965EF2 /* RoundedCornersButton */,
 				3E8F91791B95AA4700CDBF6F /* BaseSearchView */,
 				58A841B71B94B3A10032AEF0 /* SearchTextField */,
 				3E820ABB1B90373700EDEEA4 /* SearchWithGeoNumbersView */,
@@ -776,6 +782,13 @@
 			name = Address;
 			sourceTree = "<group>";
 		};
+		58D7C82C1B997B1200965EF2 /* RoundedCornersButton */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = RoundedCornersButton;
+			sourceTree = "<group>";
+		};
 		AF955FFAC164DEF1D65EAD82 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -999,6 +1012,7 @@
 				58C131671B8F02E10095045A /* UIView+ConfigureAnchorPoint.m in Sources */,
 				D3E5347B1B8F39FA00C9D87B /* GMPMenuView.m in Sources */,
 				58C8E8291B95A3A7002F8F61 /* GMPLocationAddress.m in Sources */,
+				58D7C82F1B997B3C00965EF2 /* GMPRoundedCornersButton.m in Sources */,
 				3E820AC41B903FF700EDEEA4 /* GMPSearchWithGeoNumbersController.m in Sources */,
 				3E820ABA1B9035DB00EDEEA4 /* GMPSearchWithAddressViewController.m in Sources */,
 				58C1316D1B8F03030095045A /* UIImage+Base64Encoding.m in Sources */,
