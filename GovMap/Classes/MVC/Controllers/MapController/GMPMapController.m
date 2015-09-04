@@ -12,6 +12,7 @@
 
 #import "GMPLocationObserver.h"
 #import "GMPCommunicator.h"
+#import "GMPGoogleGeocoder.h"
 
 #import "GMPUserAnnotation.h"
 
@@ -20,9 +21,6 @@
 #import "GMPLocationAddressParser.h"
 
 #import "GMPCadastre.h"
-
-#import "GMSGeocoder+GeocodeLocation.h"
-#import "GMSGeocoder+GeocodeAddress.h"
 
 static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתאימות";
 
@@ -116,7 +114,7 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
 //        }];
         
         WEAK_SELF;
-        [[GMSGeocoder geocoder] geocodeLocation:[[CLLocation alloc]initWithLatitude:annotation.coordinate.latitude longitude:annotation.coordinate.longitude]
+        [[GMPGoogleGeocoder sharedInstance] geocodeLocation:[[CLLocation alloc]initWithLatitude:annotation.coordinate.latitude longitude:annotation.coordinate.longitude]
                               completionHandler:^(GMPLocationAddress *address, NSError *error) {
                                   if (!error) {
                                       [annotation setTitle:LOCALIZED(address.fullAddress)];
@@ -207,7 +205,8 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
 //                        }
 //                    }];
                     
-                    [[GMSGeocoder geocoder] geocodeAddress:address completionHandler:^(CLLocation *location, NSError *error) {
+                    GMPLocationAddress *locAddress = [GMPLocationAddressParser locationAddressWithGovMapAddress:address];
+                    [[GMPGoogleGeocoder sharedInstance] reverseGeocodeAddress:locAddress completionHandler:^(CLLocation *location, NSError *error) {
                         if (!error) {
                             [weakSelf setupMapAttributesForCoordinate:location.coordinate];
                         }
