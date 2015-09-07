@@ -10,6 +10,8 @@
 
 #import "GMPCommunicator.h"
 
+#import "GMPLocationObserver.h"
+
 static NSString *const kGoogleMapsAPIKey = @"AIzaSyCe5NsemBVFbuMYSUoxzi0qao7cKqiEECc";
 
 @import GoogleMaps;
@@ -22,6 +24,8 @@ static NSString *const kGoogleMapsAPIKey = @"AIzaSyCe5NsemBVFbuMYSUoxzi0qao7cKqi
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [GMPLocationObserver sharedInstance];
+    
     [GMPReachabilityService setupReachabilityObserver];
     
     [[GMPCommunicator sharedInstance] loadContent];

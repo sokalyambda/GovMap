@@ -13,3 +13,7 @@
 "Address not found" = "Address not found";
 "Block " = "Block ";
 "Smooth " = "Smooth ";
+
+"Search By Geonumbers" = "Search By Geonumbers";
+"Search By Address" = "Search By Address";
+"Can't find Block & Smooth" = "Can't find Block & Smooth";

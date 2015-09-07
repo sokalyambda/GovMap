@@ -151,7 +151,6 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
             if (!weakSelf.currentAddress) {
                 weakSelf.currentAddress = address;
             }
-            
             [weakSelf searchCurrentGeodata];
         }
     }];
@@ -236,6 +235,8 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
         [weakSelf.mapView selectAnnotation:weakSelf.annotation animated:YES];
         if (cadastralInfo) {
             [weakSelf.annotation setSubtitle:[NSString localizedStringWithFormat:@"%@ %ld, %@ %ld", LOCALIZED(@"Block "), (long)cadastralInfo.major, LOCALIZED(@"Smooth "), (long)cadastralInfo.minor]];
+        } else {
+            [weakSelf.annotation setSubtitle:[NSString localizedStringWithFormat:@"%@", LOCALIZED(@"Can't find Block & Smooth")]];
         }
     }];
 }

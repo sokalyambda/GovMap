@@ -10,6 +10,8 @@
 
 #import "UIResponder+FirstResponder.h"
 
+static NSInteger const kAdditionalOffset = 15.f;
+
 @interface GMPBaseSearchView ()
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
@@ -26,7 +28,7 @@
 - (instancetype)initWithCoder:(NSCoder *)aDecoder
 {
     if (self = [super initWithCoder:aDecoder]) {
-        _additionalOffset = self.bounds.size.height / 15;
+        _additionalOffset = CGRectGetHeight(self.bounds)/ kAdditionalOffset;
         _tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGestureRecognized:)];
         [self addGestureRecognizer:_tap];
     }

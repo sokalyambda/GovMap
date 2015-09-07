@@ -9,6 +9,7 @@
 #import "GMPLocationObserver.h"
 
 #import <AddressBook/AddressBook.h>
+#import <MapKit/MapKit.h>
 
 @import GoogleMaps;
 
@@ -50,16 +51,34 @@ static NSString *const kAddressDictionaryKey = @"FormattedAddressLines";
         
         [_locationManager requestWhenInUseAuthorization];
         [self startUpdatingLocation];
-        
     }
     return self;
     
 }
+
 #pragma mark - CLLocationManagerDelegate
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
 {
     self.currentLocation = manager.location;
+}
+
+- (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status
+{
+    BOOL isGeolocationEnable = NO;
+    BOOL isGeolocationStatusDetermine = YES;
+    
+    if (status == kCLAuthorizationStatusAuthorizedAlways) {
+        isGeolocationEnable = YES;
+    } else if (status == kCLAuthorizationStatusDenied) {
+        isGeolocationEnable = NO;
+    } else if (status == kCLAuthorizationStatusNotDetermined) {
+        isGeolocationStatusDetermine = NO;
+    }
+    
+    if (isGeolocationStatusDetermine) {
+        [self startUpdatingLocation];
+    }
 }
 
 #pragma mark - Private methods

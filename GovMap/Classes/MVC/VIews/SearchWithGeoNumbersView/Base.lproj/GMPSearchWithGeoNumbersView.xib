@@ -23,25 +23,30 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KXL-B7-BSD" userLabel="Container View">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             <subviews>
-                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Block" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HUc-CP-dgb" userLabel="Block Text Field">
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Block" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HUc-CP-dgb" userLabel="Block Text Field" customClass="GMPBorderedTextField">
                                     <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="50" id="IUh-2E-DB1"/>
+                                    </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
+                                    <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" returnKeyType="next"/>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="IUh-2E-DB1"/>
+                                        </mask>
+                                    </variation>
+                                    <variation key="heightClass=regular-widthClass=compact">
+                                        <mask key="constraints">
+                                            <include reference="IUh-2E-DB1"/>
+                                        </mask>
+                                    </variation>
                                     <connections>
                                         <outlet property="delegate" destination="-1" id="oql-dw-dxk"/>
                                     </connections>
                                 </textField>
-                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Subblock" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gwC-Aa-lCC" userLabel="Subblock Text Field">
-                                    <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
-                                    <connections>
-                                        <outlet property="delegate" destination="-1" id="6Df-VN-17I"/>
-                                    </connections>
-                                </textField>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1my-8B-ggS" userLabel="Search Button" customClass="GMPRoundedCornersButton">
                                     <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                    <color key="backgroundColor" red="0.078431372550000003" green="0.73386323689999999" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="backgroundColor" red="0.10250745044572566" green="0.6791208371247266" blue="0.93486064672470093" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="100" id="XjF-fW-I9U"/>
                                     </constraints>
@@ -64,6 +69,27 @@
                                         <action selector="searchButtonPress:" destination="-1" eventType="touchUpInside" id="4kG-OB-jaF"/>
                                     </connections>
                                 </button>
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Subblock" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gwC-Aa-lCC" userLabel="Subblock Text Field" customClass="GMPBorderedTextField">
+                                    <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="50" id="Jir-QR-42e"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" returnKeyType="done"/>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="Jir-QR-42e"/>
+                                        </mask>
+                                    </variation>
+                                    <variation key="heightClass=regular-widthClass=compact">
+                                        <mask key="constraints">
+                                            <include reference="Jir-QR-42e"/>
+                                        </mask>
+                                    </variation>
+                                    <connections>
+                                        <outlet property="delegate" destination="-1" id="6Df-VN-17I"/>
+                                    </connections>
+                                </textField>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
@@ -79,8 +105,8 @@
                             <variation key="default">
                                 <mask key="subviews">
                                     <exclude reference="HUc-CP-dgb"/>
-                                    <exclude reference="gwC-Aa-lCC"/>
                                     <exclude reference="1my-8B-ggS"/>
+                                    <exclude reference="gwC-Aa-lCC"/>
                                 </mask>
                                 <mask key="constraints">
                                     <exclude reference="Hy1-sh-PMd"/>
@@ -96,8 +122,8 @@
                             <variation key="heightClass=regular-widthClass=compact">
                                 <mask key="subviews">
                                     <include reference="HUc-CP-dgb"/>
-                                    <include reference="gwC-Aa-lCC"/>
                                     <include reference="1my-8B-ggS"/>
+                                    <include reference="gwC-Aa-lCC"/>
                                 </mask>
                                 <mask key="constraints">
                                     <include reference="Hy1-sh-PMd"/>

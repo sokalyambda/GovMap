@@ -44,7 +44,6 @@
 {
     self = [super init];
     if (self) {
-        
         _cityName = address.locality;
         _streetName = address.thoroughfare;
         
@@ -72,6 +71,7 @@
     }
     return self;
 }
+
 - (instancetype)initWithCityName:(NSString *)cityName andFullSreetName:(NSString *)fullStreetName
 {
     self = [super init];
