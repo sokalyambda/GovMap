@@ -22,9 +22,11 @@
 
 #import "GMPCadastre.h"
 
+#import "GMPCommunicatorDelegate.h"
+
 static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתאימות";
 
-@interface GMPMapController () <MKMapViewDelegate>
+@interface GMPMapController () <MKMapViewDelegate, GMPCommunicatorDelegate>
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *goToWazeButton;
@@ -159,6 +161,8 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
  */
 - (void)setupMapAppearing
 {
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
     WEAK_SELF;
     switch (self.currentSearchType) {
         case GMPSearchTypeAddress: {
@@ -169,9 +173,16 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
                 if (!error) {
                     [weakSelf setupMapAttributesForCoordinate:location.coordinate];
                 } else {
-                    [GMPAlertService showInfoAlertControllerWithTitle:@"" andMessage:LOCALIZED(@"Address not found") forController:weakSelf withCompletion:^{
-                        [weakSelf.navigationController popViewControllerAnimated:YES];
-                    }];
+                    
+                    [GMPAlertService showDialogAlertWithTitle:LOCALIZED(@"")
+                                                   andMessage:LOCALIZED(@"Address not found")
+                                                forController:self
+                                        withSuccessCompletion:^{
+                                            [weakSelf setupMapAppearing];
+                                        }
+                                            andFailCompletion:^{
+                                                [weakSelf.navigationController popViewControllerAnimated:YES];
+                                            }];
                 }
             }];
             
@@ -199,7 +210,16 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
                     }];
                     
                 } else {
-                    [GMPAlertService showInfoAlertControllerWithTitle:@"" andMessage:LOCALIZED(@"Address not found") forController:weakSelf withCompletion:nil];
+                    WEAK_SELF;
+                    [GMPAlertService showDialogAlertWithTitle:LOCALIZED(@"")
+                                                   andMessage:LOCALIZED(@"Address not found")
+                                                forController:self
+                                        withSuccessCompletion:^{
+                                            [weakSelf setupMapAppearing];
+                                        }
+                                            andFailCompletion:^{
+                                                [weakSelf.navigationController popViewControllerAnimated:YES];
+                                            }];
                 }
             }];
             break;
@@ -210,7 +230,6 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
 - (void)searchCurrentGeodata
 {
     WEAK_SELF;
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [self.communicator requestCadastralNumbersWithAddress:self.currentAddress.fullAddress completionBlock:^(GMPCadastre *cadastralInfo) {
         [MBProgressHUD hideAllHUDsForView:weakSelf.view animated:YES];
         [weakSelf.mapView selectAnnotation:weakSelf.annotation animated:YES];
