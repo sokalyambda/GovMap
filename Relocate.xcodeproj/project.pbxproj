@@ -62,6 +62,7 @@
 		D39029B41B9060B80097C4B6 /* GMPUserAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = D39029B31B9060B80097C4B6 /* GMPUserAnnotation.m */; };
 		D3E2897F1B96E9B600F7C177 /* GMPLocationAddressParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E2897E1B96E9B600F7C177 /* GMPLocationAddressParser.m */; };
 		D3E5347B1B8F39FA00C9D87B /* GMPMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E5347A1B8F39FA00C9D87B /* GMPMenuView.m */; };
+		D3E7D2F91B9D91A700609406 /* GMPBorderedTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E7D2F81B9D91A700609406 /* GMPBorderedTextField.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -188,6 +189,8 @@
 		D3E2897E1B96E9B600F7C177 /* GMPLocationAddressParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GMPLocationAddressParser.m; path = Classes/Services/LocationAddressParser/GMPLocationAddressParser.m; sourceTree = "<group>"; };
 		D3E534791B8F39FA00C9D87B /* GMPMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GMPMenuView.h; path = Classes/MVC/Views/MenuView/GMPMenuView.h; sourceTree = "<group>"; };
 		D3E5347A1B8F39FA00C9D87B /* GMPMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GMPMenuView.m; path = Classes/MVC/Views/MenuView/GMPMenuView.m; sourceTree = "<group>"; };
+		D3E7D2F71B9D91A700609406 /* GMPBorderedTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMPBorderedTextField.h; sourceTree = "<group>"; };
+		D3E7D2F81B9D91A700609406 /* GMPBorderedTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMPBorderedTextField.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -872,6 +875,8 @@
 		D3E7D2EF1B9D796500609406 /* BorderdTextField */ = {
 			isa = PBXGroup;
 			children = (
+				D3E7D2F71B9D91A700609406 /* GMPBorderedTextField.h */,
+				D3E7D2F81B9D91A700609406 /* GMPBorderedTextField.m */,
 			);
 			name = BorderdTextField;
 			sourceTree = "<group>";
@@ -1037,6 +1042,7 @@
 				3E820ABE1B90379600EDEEA4 /* GMPSearchWithGeoNumbersView.m in Sources */,
 				58C131891B8F04030095045A /* GMPSerialViewsConstructor.m in Sources */,
 				58C131671B8F02E10095045A /* UIView+ConfigureAnchorPoint.m in Sources */,
+				D3E7D2F91B9D91A700609406 /* GMPBorderedTextField.m in Sources */,
 				D3E5347B1B8F39FA00C9D87B /* GMPMenuView.m in Sources */,
 				58C8E8291B95A3A7002F8F61 /* GMPLocationAddress.m in Sources */,
 				58D7C82F1B997B3C00965EF2 /* GMPRoundedCornersButton.m in Sources */,
