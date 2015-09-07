@@ -25,6 +25,9 @@ static NSInteger const kAttemtsAmountForDataRetrieving = 30;
 
 @property (assign, readwrite, nonatomic) NSInteger loadedHTMLFramesCounter;
 
+@property (copy, nonatomic) NSString *address;
+@property (strong, nonatomic) GMPCadastre *cadastralInfo;
+
 @end
 
 @implementation GMPCommunicator
@@ -47,6 +50,7 @@ static NSInteger const kAttemtsAmountForDataRetrieving = 30;
     if (self = [super init]) {
         _isReadyForRequests = NO;
         _loadedHTMLFramesCounter = 0;
+        _address = @"";
         
         NSURL *url = [NSURL URLWithString:kURLString];
         _loadGovMapRequest = [NSURLRequest requestWithURL:url];
@@ -90,7 +94,7 @@ static NSInteger const kAttemtsAmountForDataRetrieving = 30;
 - (void)requestCadastralNumbersWithAddress:(NSString *)address
                            completionBlock:(RequestCadasterCompletionBlock)completionBlock
 {
-    if (!completionBlock) {
+    if (!completionBlock || !address) {
         return;
     }
     
@@ -106,6 +110,7 @@ static NSInteger const kAttemtsAmountForDataRetrieving = 30;
         
         _isReadyForRequests = NO;
         self.requestCadasterCompletionBlock = completionBlock;
+        self.address = address;
         
         NSString *jsSetTextFieldValue = [NSString stringWithFormat:
                                          @"document.getElementById('tbSearchWord').value = '%@'", address];
@@ -155,8 +160,8 @@ static NSInteger const kAttemtsAmountForDataRetrieving = 30;
             _isReadyForRequests = YES;
             timerFireCounter = 0;
             
-            if ([self.delegate respondsToSelector:@selector(communicatorDidFailToRetrieveCadastralNumbers:)]) {
-                [self.delegate communicatorDidFailToRetrieveCadastralNumbers:self];
+            if ([self.delegate respondsToSelector:@selector(communicator:didFailToRetrieveCadastralNumbersWithAddress:)]) {
+                [self.delegate communicator:self didFailToRetrieveCadastralNumbersWithAddress:self.address];
             }
             
             self.requestCadasterCompletionBlock(nil);
@@ -172,7 +177,7 @@ static NSInteger const kAttemtsAmountForDataRetrieving = 30;
 - (void)requestAddressWithCadastralNumbers:(GMPCadastre *)cadastralInfo
                            completionBlock:(RequestAddressCompletionBlock)completionBlock
 {
-    if (!completionBlock) {
+    if (!completionBlock || !cadastralInfo) {
         return;
     }
     
@@ -183,6 +188,8 @@ static NSInteger const kAttemtsAmountForDataRetrieving = 30;
     
     // Asynch dispatch to prevent crash when making this request from block (not a main thread)
     dispatch_async(dispatch_get_main_queue(), ^{
+        
+        self.cadastralInfo = cadastralInfo;
         
         [self clearTableResultsFromLink];
         
@@ -234,8 +241,8 @@ static NSInteger const kAttemtsAmountForDataRetrieving = 30;
             _isReadyForRequests = YES;
             timerFireCounter = 0;
             
-            if ([self.delegate respondsToSelector:@selector(communicatorDidFailToRetrieveAddress:)]) {
-                [self.delegate communicatorDidFailToRetrieveAddress:self];
+            if ([self.delegate respondsToSelector:@selector(communicator:didFailToRetrieveAddressWithCadastre:)]) {
+                [self.delegate communicator:self didFailToRetrieveAddressWithCadastre:self.cadastralInfo];
             }
             
             self.requestAddressCompletionBlock(nil);
@@ -283,6 +290,16 @@ static NSInteger const kAttemtsAmountForDataRetrieving = 30;
     [self loadContent];
 }
 
+- (void)communicator:(GMPCommunicator *)communicator didFailToRetrieveAddressWithCadastre:(GMPCadastre *)cadastre
+{
+    NSLog(@"Failed to retrieve address");
+}
+
+- (void)communicator:(GMPCommunicator *)communicator didFailToRetrieveCadastralNumbersWithAddress:(NSString *)address
+{
+    NSLog(@"Failed to retrive cadastral numbers");
+}
+
 - (void)communicatorDidFinishLoadingContent:(GMPCommunicator *)communicator
 {
     NSLog(@"Finished loading valuable data");
@@ -291,16 +308,6 @@ static NSInteger const kAttemtsAmountForDataRetrieving = 30;
 - (void)communicatorWasNotReadyForRequest:(GMPCommunicator *)communicator
 {
     NSLog(@"Communicator was not ready for requests");
-}
-
-- (void)communicatorDidFailToRetrieveCadastralNumbers:(GMPCommunicator *)communicator
-{
-    NSLog(@"Failed attempt to retrieve cadastral numbers");
-}
-
-- (void)communicatorDidFailToRetrieveAddress:(GMPCommunicator *)communicator
-{
-    NSLog(@"Failed attempt to retrieve address");
 }
 
 @end

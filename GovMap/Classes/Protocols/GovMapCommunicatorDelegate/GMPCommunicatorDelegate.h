@@ -7,6 +7,7 @@
 //
 
 @class GMPCommunicator;
+@class GMPLocationAddress;
 
 @protocol GMPCommunicatorDelegate <NSObject>
 
@@ -39,14 +40,15 @@
  *  Tells the delegate the communicator failed to retrieve address information
  *
  *  @param communicator Communiactor object informing the delegate
+ *  @param cadastre Object that represents cadastral information
  */
-- (void)communicatorDidFailToRetrieveAddress:(GMPCommunicator *)communicator;
+- (void)communicator:(GMPCommunicator *)communicator didFailToRetrieveAddressWithCadastre:(GMPCadastre *)cadastre;
 
 /**
  *  Tells the delegate the communicator failed to retrieve cadastral numbers
  *
  *  @param communicator Communiactor object informing the delegate
  */
-- (void)communicatorDidFailToRetrieveCadastralNumbers:(GMPCommunicator *)communicator;
+- (void)communicator:(GMPCommunicator *)communicator didFailToRetrieveCadastralNumbersWithAddress:(NSString *)address;
 
 @end

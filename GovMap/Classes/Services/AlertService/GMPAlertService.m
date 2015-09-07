@@ -25,4 +25,34 @@
     [controller presentViewController:alertController animated:YES completion:nil];
 }
 
++ (void)showDialogAlertWithTitle:(NSString *)title andMessage:(NSString *)message forController:(UIViewController *)controller withSuccessCompletion:(void(^)())successCompletion andFailCompletion:(void(^)())failCompletion
+{
+    if (!controller) {
+        return;
+    }
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *confirmAction = [UIAlertAction
+                                    actionWithTitle:LOCALIZED(@"Cancel")
+                                    style:UIAlertActionStyleCancel
+                                    handler:^(UIAlertAction *action) {
+                                        if (failCompletion) {
+                                            failCompletion();
+                                        }
+    }];
+    [alertController addAction:confirmAction];
+    
+    UIAlertAction* ok = [UIAlertAction
+                         actionWithTitle:LOCALIZED(@"OK")
+                         style:UIAlertActionStyleDefault
+                         handler:^(UIAlertAction * action)
+                         {
+                             if (successCompletion) {
+                                 successCompletion();
+                             }
+                         }];
+    
+    [alertController addAction:ok];
+    [controller presentViewController:alertController animated:YES completion:nil];
+}
+
 @end
