@@ -35,13 +35,11 @@ static CGFloat kLeftViewWidth = 10.f;
 - (void)commonInit
 {
     [self addLeftView];
+    [self addRightView];
     
+    self.textAlignment = NSTextAlignmentNatural;
+    self.backgroundColor = [UIColor whiteColor];
     self.layer.cornerRadius  = 5.0f;
-    self.layer.masksToBounds = YES;
-    self.layer.borderColor   = UIColorFromRGB(0x14BBF2).CGColor;
-    self.layer.borderWidth   = 0.5f;
-    self.layer.cornerRadius  = 5.f;
-    
 }
 
 - (void)addLeftView
@@ -49,5 +47,12 @@ static CGFloat kLeftViewWidth = 10.f;
     self.leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kLeftViewWidth, CGRectGetHeight(self.frame))];
     self.leftViewMode = UITextFieldViewModeAlways;
 }
+
+- (void)addRightView
+{
+    self.rightView = [[UIView alloc] initWithFrame:CGRectMake(CGRectGetWidth(self.frame) - kLeftViewWidth , 0, kLeftViewWidth, CGRectGetHeight(self.frame))];
+    self.rightViewMode = UITextFieldViewModeAlways;
+}
+
 
 @end
