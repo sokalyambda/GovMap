@@ -43,9 +43,7 @@
                     <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                     <color key="backgroundColor" red="0.078431372550000003" green="0.73386323689999999" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="61" id="t7F-RO-WSz">
-                            <variation key="heightClass=regular-widthClass=compact" constant="55"/>
-                        </constraint>
+                        <constraint firstAttribute="height" constant="55" id="t7F-RO-WSz"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                     <state key="normal" title="Geo numbers using current placing ">
@@ -91,59 +89,31 @@
                         <action selector="findAddressByGeoNumberPress:" destination="-1" eventType="touchUpInside" id="02B-My-XHR"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What do you want to find?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oaq-jK-ERs">
-                    <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="44" id="rzc-fw-cdc"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="20"/>
-                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                    <nil key="highlightedColor"/>
-                    <variation key="default">
-                        <mask key="constraints">
-                            <exclude reference="rzc-fw-cdc"/>
-                        </mask>
-                    </variation>
-                    <variation key="heightClass=regular-widthClass=compact">
-                        <mask key="constraints">
-                            <include reference="rzc-fw-cdc"/>
-                        </mask>
-                    </variation>
-                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="Kd5-ta-RxF" secondAttribute="trailing" constant="10" id="0gx-dT-5VV"/>
+                <constraint firstAttribute="trailing" secondItem="Kd5-ta-RxF" secondAttribute="trailing" constant="30" id="0gx-dT-5VV"/>
                 <constraint firstItem="Kd5-ta-RxF" firstAttribute="trailing" secondItem="FQ2-gj-dWA" secondAttribute="trailing" constant="30" id="4H6-SW-RgN">
                     <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
                 </constraint>
-                <constraint firstItem="J38-mN-ZT8" firstAttribute="top" secondItem="Kd5-ta-RxF" secondAttribute="bottom" constant="50" id="8CH-Vr-Wrs"/>
-                <constraint firstItem="Kd5-ta-RxF" firstAttribute="top" secondItem="FQ2-gj-dWA" secondAttribute="bottom" constant="50" id="AU8-Ml-GZN"/>
+                <constraint firstItem="J38-mN-ZT8" firstAttribute="top" secondItem="Kd5-ta-RxF" secondAttribute="bottom" constant="20" id="8CH-Vr-Wrs"/>
+                <constraint firstItem="Kd5-ta-RxF" firstAttribute="top" secondItem="FQ2-gj-dWA" secondAttribute="bottom" constant="20" id="AU8-Ml-GZN"/>
                 <constraint firstItem="Kd5-ta-RxF" firstAttribute="leading" secondItem="FQ2-gj-dWA" secondAttribute="leading" constant="-18" id="H8J-Lv-qUE">
                     <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
                 </constraint>
                 <constraint firstAttribute="centerX" secondItem="Kd5-ta-RxF" secondAttribute="centerX" id="L5a-1T-aqn"/>
-                <constraint firstItem="FQ2-gj-dWA" firstAttribute="centerX" secondItem="oaq-jK-ERs" secondAttribute="centerX" id="TY6-1a-Z9O"/>
-                <constraint firstItem="Kd5-ta-RxF" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="UPw-sH-hpV"/>
-                <constraint firstItem="FQ2-gj-dWA" firstAttribute="trailing" secondItem="oaq-jK-ERs" secondAttribute="trailing" id="eNe-lA-9HJ"/>
-                <constraint firstItem="FQ2-gj-dWA" firstAttribute="top" secondItem="oaq-jK-ERs" secondAttribute="bottom" constant="8" id="goL-pZ-QFf"/>
+                <constraint firstItem="Kd5-ta-RxF" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="30" id="UPw-sH-hpV"/>
                 <constraint firstItem="J38-mN-ZT8" firstAttribute="trailing" secondItem="Kd5-ta-RxF" secondAttribute="trailing" id="h6C-1P-TtP"/>
-                <constraint firstItem="FQ2-gj-dWA" firstAttribute="leading" secondItem="oaq-jK-ERs" secondAttribute="leading" id="s1p-tB-Wnm"/>
                 <constraint firstItem="J38-mN-ZT8" firstAttribute="leading" secondItem="Kd5-ta-RxF" secondAttribute="leading" id="xjS-mf-251"/>
-                <constraint firstAttribute="centerY" secondItem="Kd5-ta-RxF" secondAttribute="centerY" id="zKR-NL-oDo"/>
+                <constraint firstAttribute="centerY" secondItem="Kd5-ta-RxF" secondAttribute="centerY" constant="-100" id="zKR-NL-oDo"/>
             </constraints>
             <variation key="default">
                 <mask key="subviews">
                     <exclude reference="FQ2-gj-dWA"/>
                     <exclude reference="Kd5-ta-RxF"/>
                     <exclude reference="J38-mN-ZT8"/>
-                    <exclude reference="oaq-jK-ERs"/>
                 </mask>
                 <mask key="constraints">
-                    <exclude reference="TY6-1a-Z9O"/>
-                    <exclude reference="eNe-lA-9HJ"/>
-                    <exclude reference="goL-pZ-QFf"/>
-                    <exclude reference="s1p-tB-Wnm"/>
                     <exclude reference="8CH-Vr-Wrs"/>
                     <exclude reference="h6C-1P-TtP"/>
                     <exclude reference="xjS-mf-251"/>
@@ -161,13 +131,8 @@
                     <include reference="FQ2-gj-dWA"/>
                     <include reference="Kd5-ta-RxF"/>
                     <include reference="J38-mN-ZT8"/>
-                    <include reference="oaq-jK-ERs"/>
                 </mask>
                 <mask key="constraints">
-                    <include reference="TY6-1a-Z9O"/>
-                    <include reference="eNe-lA-9HJ"/>
-                    <include reference="goL-pZ-QFf"/>
-                    <include reference="s1p-tB-Wnm"/>
                     <include reference="8CH-Vr-Wrs"/>
                     <include reference="h6C-1P-TtP"/>
                     <include reference="xjS-mf-251"/>

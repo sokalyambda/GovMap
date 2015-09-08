@@ -44,31 +44,6 @@
                                         <outlet property="delegate" destination="-1" id="oql-dw-dxk"/>
                                     </connections>
                                 </textField>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1my-8B-ggS" userLabel="Search Button" customClass="GMPRoundedCornersButton">
-                                    <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                    <color key="backgroundColor" red="0.10250745044572566" green="0.6791208371247266" blue="0.93486064672470093" alpha="1" colorSpace="calibratedRGB"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="100" id="XjF-fW-I9U"/>
-                                    </constraints>
-                                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
-                                    <state key="normal" title="Search">
-                                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                    </state>
-                                    <variation key="default">
-                                        <mask key="constraints">
-                                            <exclude reference="XjF-fW-I9U"/>
-                                        </mask>
-                                    </variation>
-                                    <variation key="heightClass=regular-widthClass=compact">
-                                        <mask key="constraints">
-                                            <include reference="XjF-fW-I9U"/>
-                                        </mask>
-                                    </variation>
-                                    <connections>
-                                        <action selector="searchButtonPress:" destination="-1" eventType="touchUpInside" id="4kG-OB-jaF"/>
-                                    </connections>
-                                </button>
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Subblock" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gwC-Aa-lCC" userLabel="Subblock Text Field" customClass="GMPBorderedTextField">
                                     <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
                                     <constraints>
@@ -90,50 +65,78 @@
                                         <outlet property="delegate" destination="-1" id="6Df-VN-17I"/>
                                     </connections>
                                 </textField>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1my-8B-ggS" userLabel="Search Button" customClass="GMPRoundedCornersButton">
+                                    <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                    <color key="backgroundColor" red="0.10250745044572566" green="0.6791208371247266" blue="0.93486064672470093" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="150" id="XjF-fW-I9U"/>
+                                        <constraint firstAttribute="height" constant="40" id="cFK-HD-Nd8"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
+                                    <state key="normal" title="Search">
+                                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="XjF-fW-I9U"/>
+                                            <exclude reference="cFK-HD-Nd8"/>
+                                        </mask>
+                                    </variation>
+                                    <variation key="heightClass=regular-widthClass=compact">
+                                        <mask key="constraints">
+                                            <include reference="XjF-fW-I9U"/>
+                                            <include reference="cFK-HD-Nd8"/>
+                                        </mask>
+                                    </variation>
+                                    <connections>
+                                        <action selector="searchButtonPress:" destination="-1" eventType="touchUpInside" id="4kG-OB-jaF"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstItem="gwC-Aa-lCC" firstAttribute="top" secondItem="HUc-CP-dgb" secondAttribute="bottom" constant="59" id="Fty-Es-vcw"/>
-                                <constraint firstAttribute="centerY" secondItem="HUc-CP-dgb" secondAttribute="centerY" constant="75" id="Hy1-sh-PMd"/>
-                                <constraint firstItem="1my-8B-ggS" firstAttribute="top" secondItem="gwC-Aa-lCC" secondAttribute="bottom" constant="65" id="O5i-rR-Dyh"/>
+                                <constraint firstItem="gwC-Aa-lCC" firstAttribute="top" secondItem="HUc-CP-dgb" secondAttribute="bottom" constant="20" id="Fty-Es-vcw"/>
+                                <constraint firstItem="1my-8B-ggS" firstAttribute="top" secondItem="gwC-Aa-lCC" secondAttribute="bottom" constant="50" id="O5i-rR-Dyh"/>
+                                <constraint firstItem="HUc-CP-dgb" firstAttribute="top" secondItem="KXL-B7-BSD" secondAttribute="top" constant="60" id="SHj-5u-dsl"/>
                                 <constraint firstItem="gwC-Aa-lCC" firstAttribute="leading" secondItem="HUc-CP-dgb" secondAttribute="leading" id="Sjd-As-hof"/>
-                                <constraint firstAttribute="trailing" secondItem="HUc-CP-dgb" secondAttribute="trailing" constant="20" id="dCC-8h-sOT"/>
-                                <constraint firstItem="HUc-CP-dgb" firstAttribute="leading" secondItem="KXL-B7-BSD" secondAttribute="leading" constant="20" id="g2h-IF-5lV"/>
-                                <constraint firstItem="1my-8B-ggS" firstAttribute="trailing" secondItem="gwC-Aa-lCC" secondAttribute="trailing" id="tPS-VC-7ro"/>
+                                <constraint firstAttribute="trailing" secondItem="HUc-CP-dgb" secondAttribute="trailing" constant="30" id="dCC-8h-sOT"/>
+                                <constraint firstItem="HUc-CP-dgb" firstAttribute="leading" secondItem="KXL-B7-BSD" secondAttribute="leading" constant="30" id="g2h-IF-5lV"/>
                                 <constraint firstItem="gwC-Aa-lCC" firstAttribute="trailing" secondItem="HUc-CP-dgb" secondAttribute="trailing" id="vBI-ih-qEw"/>
+                                <constraint firstAttribute="centerX" secondItem="1my-8B-ggS" secondAttribute="centerX" id="zVX-C8-6kQ"/>
                             </constraints>
                             <variation key="default">
                                 <mask key="subviews">
                                     <exclude reference="HUc-CP-dgb"/>
-                                    <exclude reference="1my-8B-ggS"/>
                                     <exclude reference="gwC-Aa-lCC"/>
+                                    <exclude reference="1my-8B-ggS"/>
                                 </mask>
                                 <mask key="constraints">
-                                    <exclude reference="Hy1-sh-PMd"/>
+                                    <exclude reference="SHj-5u-dsl"/>
                                     <exclude reference="dCC-8h-sOT"/>
                                     <exclude reference="g2h-IF-5lV"/>
                                     <exclude reference="Fty-Es-vcw"/>
                                     <exclude reference="Sjd-As-hof"/>
                                     <exclude reference="vBI-ih-qEw"/>
                                     <exclude reference="O5i-rR-Dyh"/>
-                                    <exclude reference="tPS-VC-7ro"/>
+                                    <exclude reference="zVX-C8-6kQ"/>
                                 </mask>
                             </variation>
                             <variation key="heightClass=regular-widthClass=compact">
                                 <mask key="subviews">
                                     <include reference="HUc-CP-dgb"/>
-                                    <include reference="1my-8B-ggS"/>
                                     <include reference="gwC-Aa-lCC"/>
+                                    <include reference="1my-8B-ggS"/>
                                 </mask>
                                 <mask key="constraints">
-                                    <include reference="Hy1-sh-PMd"/>
+                                    <include reference="SHj-5u-dsl"/>
                                     <include reference="dCC-8h-sOT"/>
                                     <include reference="g2h-IF-5lV"/>
                                     <include reference="Fty-Es-vcw"/>
                                     <include reference="Sjd-As-hof"/>
                                     <include reference="vBI-ih-qEw"/>
                                     <include reference="O5i-rR-Dyh"/>
-                                    <include reference="tPS-VC-7ro"/>
+                                    <include reference="zVX-C8-6kQ"/>
                                 </mask>
                             </variation>
                         </view>

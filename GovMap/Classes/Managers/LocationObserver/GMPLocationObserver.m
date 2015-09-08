@@ -13,9 +13,6 @@
 
 @import GoogleMaps;
 
-static NSString *const kCountryKey = @"IL";
-static NSString *const kAddressDictionaryKey = @"FormattedAddressLines";
-
 @interface GMPLocationObserver ()<CLLocationManagerDelegate>
 
 @property (strong, nonatomic) CLLocationManager *locationManager;

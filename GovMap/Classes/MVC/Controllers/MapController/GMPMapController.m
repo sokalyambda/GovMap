@@ -108,7 +108,6 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
     switch (newState) {
         case MKAnnotationViewDragStateDragging: {
             WEAK_SELF;
-            [annotation setSubtitle:@""];
             
             [[GMPGoogleGeocoder sharedInstance] geocodeLocation:[[CLLocation alloc]initWithLatitude:annotation.coordinate.latitude longitude:annotation.coordinate.longitude]
                                               completionHandler:^(GMPLocationAddress *address, NSError *error) {
@@ -120,10 +119,10 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
             break;
         }
         case MKAnnotationViewDragStateEnding: {
+            [annotation setSubtitle:@""];
             [self searchCurrentGeodata];
             break;
         }
-            
         default:
             break;
     }
