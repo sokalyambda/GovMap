@@ -38,13 +38,8 @@ static CGFloat kLeftViewWidth = 10.f;
     [self addRightView];
     
     self.textAlignment = NSTextAlignmentNatural;
-    
+    self.backgroundColor = [UIColor whiteColor];
     self.layer.cornerRadius  = 5.0f;
-    self.layer.masksToBounds = YES;
-    self.layer.borderColor   = UIColorFromRGB(0x14BBF2).CGColor;
-    self.layer.borderWidth   = 0.5f;
-    self.layer.cornerRadius  = 5.f;
-    
 }
 
 - (void)addLeftView

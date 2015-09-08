@@ -67,7 +67,7 @@
                                 </textField>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1my-8B-ggS" userLabel="Search Button" customClass="GMPRoundedCornersButton">
                                     <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                    <color key="backgroundColor" red="0.10250745044572566" green="0.6791208371247266" blue="0.93486064672470093" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" red="0.011764705882352941" green="0.66274509803921566" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="150" id="XjF-fW-I9U"/>
                                         <constraint firstAttribute="height" constant="40" id="cFK-HD-Nd8"/>
@@ -94,7 +94,7 @@
                                     </connections>
                                 </button>
                             </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstItem="gwC-Aa-lCC" firstAttribute="top" secondItem="HUc-CP-dgb" secondAttribute="bottom" constant="20" id="Fty-Es-vcw"/>
                                 <constraint firstItem="1my-8B-ggS" firstAttribute="top" secondItem="gwC-Aa-lCC" secondAttribute="bottom" constant="50" id="O5i-rR-Dyh"/>

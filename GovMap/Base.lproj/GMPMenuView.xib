@@ -89,6 +89,15 @@
                         <action selector="findAddressByGeoNumberPress:" destination="-1" eventType="touchUpInside" id="02B-My-XHR"/>
                     </connections>
                 </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="lar-1D-ffg">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Relocate" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u37-2h-wnn">
+                    <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="24"/>
+                    <color key="textColor" red="0.01176470588" green="0.66274509800000003" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
@@ -98,32 +107,42 @@
                 </constraint>
                 <constraint firstItem="J38-mN-ZT8" firstAttribute="top" secondItem="Kd5-ta-RxF" secondAttribute="bottom" constant="20" id="8CH-Vr-Wrs"/>
                 <constraint firstItem="Kd5-ta-RxF" firstAttribute="top" secondItem="FQ2-gj-dWA" secondAttribute="bottom" constant="20" id="AU8-Ml-GZN"/>
+                <constraint firstItem="FQ2-gj-dWA" firstAttribute="top" secondItem="u37-2h-wnn" secondAttribute="bottom" constant="60" id="BkZ-FZ-geU"/>
                 <constraint firstItem="Kd5-ta-RxF" firstAttribute="leading" secondItem="FQ2-gj-dWA" secondAttribute="leading" constant="-18" id="H8J-Lv-qUE">
                     <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
                 </constraint>
                 <constraint firstAttribute="centerX" secondItem="Kd5-ta-RxF" secondAttribute="centerX" id="L5a-1T-aqn"/>
+                <constraint firstAttribute="centerX" secondItem="u37-2h-wnn" secondAttribute="centerX" id="OWe-vP-OzV"/>
+                <constraint firstAttribute="centerX" secondItem="lar-1D-ffg" secondAttribute="centerX" id="Oxw-Wl-kTv"/>
+                <constraint firstItem="lar-1D-ffg" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="40" id="QPA-eX-o9V"/>
                 <constraint firstItem="Kd5-ta-RxF" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="30" id="UPw-sH-hpV"/>
+                <constraint firstItem="u37-2h-wnn" firstAttribute="top" secondItem="lar-1D-ffg" secondAttribute="bottom" constant="20" id="d9h-WP-FZ2"/>
                 <constraint firstItem="J38-mN-ZT8" firstAttribute="trailing" secondItem="Kd5-ta-RxF" secondAttribute="trailing" id="h6C-1P-TtP"/>
                 <constraint firstItem="J38-mN-ZT8" firstAttribute="leading" secondItem="Kd5-ta-RxF" secondAttribute="leading" id="xjS-mf-251"/>
-                <constraint firstAttribute="centerY" secondItem="Kd5-ta-RxF" secondAttribute="centerY" constant="-100" id="zKR-NL-oDo"/>
             </constraints>
             <variation key="default">
                 <mask key="subviews">
                     <exclude reference="FQ2-gj-dWA"/>
                     <exclude reference="Kd5-ta-RxF"/>
                     <exclude reference="J38-mN-ZT8"/>
+                    <exclude reference="lar-1D-ffg"/>
+                    <exclude reference="u37-2h-wnn"/>
                 </mask>
                 <mask key="constraints">
-                    <exclude reference="8CH-Vr-Wrs"/>
-                    <exclude reference="h6C-1P-TtP"/>
-                    <exclude reference="xjS-mf-251"/>
+                    <exclude reference="Oxw-Wl-kTv"/>
+                    <exclude reference="QPA-eX-o9V"/>
+                    <exclude reference="OWe-vP-OzV"/>
+                    <exclude reference="d9h-WP-FZ2"/>
+                    <exclude reference="BkZ-FZ-geU"/>
                     <exclude reference="0gx-dT-5VV"/>
                     <exclude reference="4H6-SW-RgN"/>
                     <exclude reference="AU8-Ml-GZN"/>
                     <exclude reference="H8J-Lv-qUE"/>
                     <exclude reference="L5a-1T-aqn"/>
                     <exclude reference="UPw-sH-hpV"/>
-                    <exclude reference="zKR-NL-oDo"/>
+                    <exclude reference="8CH-Vr-Wrs"/>
+                    <exclude reference="h6C-1P-TtP"/>
+                    <exclude reference="xjS-mf-251"/>
                 </mask>
             </variation>
             <variation key="heightClass=regular-widthClass=compact">
@@ -131,20 +150,29 @@
                     <include reference="FQ2-gj-dWA"/>
                     <include reference="Kd5-ta-RxF"/>
                     <include reference="J38-mN-ZT8"/>
+                    <include reference="lar-1D-ffg"/>
+                    <include reference="u37-2h-wnn"/>
                 </mask>
                 <mask key="constraints">
-                    <include reference="8CH-Vr-Wrs"/>
-                    <include reference="h6C-1P-TtP"/>
-                    <include reference="xjS-mf-251"/>
+                    <include reference="Oxw-Wl-kTv"/>
+                    <include reference="QPA-eX-o9V"/>
+                    <include reference="OWe-vP-OzV"/>
+                    <include reference="d9h-WP-FZ2"/>
+                    <include reference="BkZ-FZ-geU"/>
                     <include reference="0gx-dT-5VV"/>
                     <include reference="4H6-SW-RgN"/>
                     <include reference="AU8-Ml-GZN"/>
                     <include reference="H8J-Lv-qUE"/>
                     <include reference="L5a-1T-aqn"/>
                     <include reference="UPw-sH-hpV"/>
-                    <include reference="zKR-NL-oDo"/>
+                    <include reference="8CH-Vr-Wrs"/>
+                    <include reference="h6C-1P-TtP"/>
+                    <include reference="xjS-mf-251"/>
                 </mask>
             </variation>
         </view>
     </objects>
+    <resources>
+        <image name="logo" width="190" height="200"/>
+    </resources>
 </document>
