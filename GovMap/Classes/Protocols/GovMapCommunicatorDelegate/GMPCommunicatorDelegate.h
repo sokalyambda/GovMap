@@ -30,6 +30,13 @@
 - (void)communicatorDidFinishLoadingContent:(GMPCommunicator *)communicator;
 
 /**
+ *  Tells the delegate the communicator started loading all necessary content.
+ *
+ *  @param communicator Communiactor object informing the delegate
+ */
+- (void)communicatorDidStartLoadingContent:(GMPCommunicator *)communicator;
+
+/**
  *  Tells the delegate the communicator was not ready to process request
  *
  *  @param communicator Communiactor object informing the delegate
