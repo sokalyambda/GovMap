@@ -305,7 +305,7 @@ static NSInteger const kAttemtsAmountForDataRetrieving = 30;
     UIViewController *currentController = baseNavController.viewControllers.lastObject;
 
     [GMPAlertService showInfoAlertControllerWithTitle:error.localizedDescription
-                                           andMessage:LOCALIZED([NSString stringWithFormat:@"Error occured while trying to connect to govmap. Trying again"])
+                                           andMessage:LOCALIZED([NSString stringWithFormat:@"Error occurred while trying to connect to govmap. Trying again..."])
                                         forController:currentController
                                        withCompletion:^{
                                            [[GMPCommunicator sharedInstance] loadContent];

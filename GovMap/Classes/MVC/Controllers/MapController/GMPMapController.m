@@ -114,7 +114,7 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
                 
                 view.dragState = MKAnnotationViewDragStateCanceling;
                 [GMPAlertService showDialogAlertWithTitle:LOCALIZED(@"")
-                                               andMessage:LOCALIZED(@"No internet connection. Try again?")
+                                               andMessage:LOCALIZED(@"No internet connection. Do you want to try again?")
                                             forController:self
                                     withSuccessCompletion:^{
                                         
@@ -252,7 +252,7 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
         // Internet check FAILED
     } failure:^(NSError *error) {
         [GMPAlertService showDialogAlertWithTitle:LOCALIZED(@"")
-                                       andMessage:LOCALIZED(@"No internet connection. Try again?")
+                                       andMessage:LOCALIZED(@"No internet connection. Do you want to try again?")
                                     forController:self
                             withSuccessCompletion:^{
                                 [weakSelf setupMapAppearing];
