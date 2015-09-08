@@ -289,48 +289,48 @@ static NSInteger const kAttemtsAmountForDataRetrieving = 30;
 
 #pragma mark - GMPCommunicatorDelegate methods
 
-//- (void)communicatorDidStartLoadingContent:(GMPCommunicator *)communicator
-//{
-//    NSLog(@"Communicator did start loading content...");
-//    [MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].keyWindow animated:YES];
-//}
-//
-//- (void)communicator:(GMPCommunicator *)communicator didFailLoadingContentWithFrameNumber:(NSInteger)frameNumber error:(NSError *)error
-//{
-//    NSLog(@"Communicator did fail loading content");
-//    
-//    [MBProgressHUD hideAllHUDsForView:[UIApplication sharedApplication].keyWindow animated:YES];
-//    
-////    GMPBaseNavigationController *baseNavController = (GMPBaseNavigationController *)[UIApplication sharedApplication].keyWindow.rootViewController;
-////    UIViewController *currentController = baseNavController.viewControllers.lastObject;
-////    
-////    [GMPAlertService showInfoAlertControllerWithTitle:error.localizedDescription
-////                                           andMessage:LOCALIZED([NSString stringWithFormat:@"Error occured while trying to connect to govmap. Trying again"])
-////                                        forController:currentController
-////                                       withCompletion:^{
-////                                           [[GMPCommunicator sharedInstance] loadContent];
-////                                       }];
-//}
-//
-//- (void)communicator:(GMPCommunicator *)communicator didFailToRetrieveAddressWithCadastre:(GMPCadastre *)cadastre
-//{
-//    NSLog(@"Failed to retrieve address");
-//}
-//
-//- (void)communicator:(GMPCommunicator *)communicator didFailToRetrieveCadastralNumbersWithAddress:(NSString *)address
-//{
-//    NSLog(@"Failed to retrive cadastral numbers");
-//}
-//
-//- (void)communicatorDidFinishLoadingContent:(GMPCommunicator *)communicator
-//{
-//    [MBProgressHUD hideAllHUDsForView:[UIApplication sharedApplication].keyWindow animated:YES];
-//    NSLog(@"Finished loading valuable data");
-//}
-//
-//- (void)communicatorWasNotReadyForRequest:(GMPCommunicator *)communicator
-//{
-//    NSLog(@"Communicator was not ready for requests");
-//}
+- (void)communicatorDidStartLoadingContent:(GMPCommunicator *)communicator
+{
+    NSLog(@"Communicator did start loading content...");
+    [MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].keyWindow animated:YES];
+}
+
+- (void)communicator:(GMPCommunicator *)communicator didFailLoadingContentWithFrameNumber:(NSInteger)frameNumber error:(NSError *)error
+{
+    NSLog(@"Communicator did fail loading content");
+    
+    [MBProgressHUD hideAllHUDsForView:[UIApplication sharedApplication].keyWindow animated:YES];
+    
+    GMPBaseNavigationController *baseNavController = (GMPBaseNavigationController *)[UIApplication sharedApplication].keyWindow.rootViewController;
+    UIViewController *currentController = baseNavController.viewControllers.lastObject;
+
+    [GMPAlertService showInfoAlertControllerWithTitle:error.localizedDescription
+                                           andMessage:LOCALIZED([NSString stringWithFormat:@"Error occured while trying to connect to govmap. Trying again"])
+                                        forController:currentController
+                                       withCompletion:^{
+                                           [[GMPCommunicator sharedInstance] loadContent];
+                                       }];
+}
+
+- (void)communicator:(GMPCommunicator *)communicator didFailToRetrieveAddressWithCadastre:(GMPCadastre *)cadastre
+{
+    NSLog(@"Failed to retrieve address");
+}
+
+- (void)communicator:(GMPCommunicator *)communicator didFailToRetrieveCadastralNumbersWithAddress:(NSString *)address
+{
+    NSLog(@"Failed to retrive cadastral numbers");
+}
+
+- (void)communicatorDidFinishLoadingContent:(GMPCommunicator *)communicator
+{
+    [MBProgressHUD hideAllHUDsForView:[UIApplication sharedApplication].keyWindow animated:YES];
+    NSLog(@"Finished loading valuable data");
+}
+
+- (void)communicatorWasNotReadyForRequest:(GMPCommunicator *)communicator
+{
+    NSLog(@"Communicator was not ready for requests");
+}
 
 @end

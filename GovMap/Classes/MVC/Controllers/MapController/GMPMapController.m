@@ -111,10 +111,8 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
             
             // Check for connection
             [GMPReachabilityService checkConnectionOnSuccess:^{ } failure:^(NSError *error) {
-                view.dragState = MKAnnotationViewDragStateCanceling;
-                [annotation setTitle:@""];
-                [annotation setSubtitle:@""];
                 
+                view.dragState = MKAnnotationViewDragStateCanceling;
                 [GMPAlertService showDialogAlertWithTitle:LOCALIZED(@"")
                                                andMessage:LOCALIZED(@"No internet connection. Try again?")
                                             forController:self
@@ -125,6 +123,7 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
                                             [weakSelf.navigationController popViewControllerAnimated:YES];
                                         }];
             }];
+            break;
         }
             
         case MKAnnotationViewDragStateDragging: {

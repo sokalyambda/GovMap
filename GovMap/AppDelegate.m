@@ -28,7 +28,6 @@ static NSString *const kGoogleMapsAPIKey = @"AIzaSyCe5NsemBVFbuMYSUoxzi0qao7cKqi
     
     [GMPReachabilityService setupReachabilityObserver];
     
-    [[GMPCommunicator sharedInstance] loadContent];
     [GMSServices provideAPIKey:kGoogleMapsAPIKey];
     
     return YES;
