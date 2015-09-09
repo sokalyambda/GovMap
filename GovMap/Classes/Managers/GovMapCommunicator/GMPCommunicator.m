@@ -6,11 +6,16 @@
 //  Copyright (c) 2015 Pavlo. All rights reserved.
 //
 
+#import "GMPBaseNavigationController.h"
+
 #import "GMPCommunicator.h"
 
 #import "GMPCadastre.h"
 
 #import "GMPCommunicatorDelegate.h"
+
+#import "GMPAlertService.h"
+#import "GMPReachabilityService.h"
 
 static NSString *const kURLString = @"http://www.govmap.gov.il";
 static NSInteger const kSearchHTMLFrameIndex = 13;
@@ -53,7 +58,9 @@ static NSInteger const kAttemtsAmountForDataRetrieving = 30;
         _address = @"";
         
         NSURL *url = [NSURL URLWithString:kURLString];
-        _loadGovMapRequest = [NSURLRequest requestWithURL:url];
+        _loadGovMapRequest = [NSURLRequest requestWithURL:url
+                                              cachePolicy:NSURLRequestUseProtocolCachePolicy
+                                          timeoutInterval:10];
         
         _webView = [[UIWebView alloc] init];
         _webView.delegate = self;
@@ -70,6 +77,10 @@ static NSInteger const kAttemtsAmountForDataRetrieving = 30;
  */
 - (void)loadContent
 {
+    if ([self.delegate respondsToSelector:@selector(communicatorDidStartLoadingContent:)]) {
+        [self.delegate communicatorDidStartLoadingContent:self];
+    }
+    
     self.loadedHTMLFramesCounter = 0;
     _isReadyForRequests = NO;
     [self.webView loadRequest:self.loadGovMapRequest];
@@ -252,14 +263,8 @@ static NSInteger const kAttemtsAmountForDataRetrieving = 30;
 
 #pragma mark - UIWebViewDelegate methods
 
-- (void)webViewDidStartLoad:(UIWebView *)webView
-{
-    [MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].keyWindow animated:YES];
-}
-
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
-    [MBProgressHUD hideAllHUDsForView:[UIApplication sharedApplication].keyWindow animated:YES];
     if (self.loadedHTMLFramesCounter++ == kSearchHTMLFrameIndex) {
         _isReadyForRequests = YES;
         
@@ -284,10 +289,27 @@ static NSInteger const kAttemtsAmountForDataRetrieving = 30;
 
 #pragma mark - GMPCommunicatorDelegate methods
 
+- (void)communicatorDidStartLoadingContent:(GMPCommunicator *)communicator
+{
+    NSLog(@"Communicator did start loading content...");
+    [MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].keyWindow animated:YES];
+}
+
 - (void)communicator:(GMPCommunicator *)communicator didFailLoadingContentWithFrameNumber:(NSInteger)frameNumber error:(NSError *)error
 {
-    NSLog(@"Failed to load data. Trying again...");
-    [self loadContent];
+    NSLog(@"Communicator did fail loading content");
+    
+    [MBProgressHUD hideAllHUDsForView:[UIApplication sharedApplication].keyWindow animated:YES];
+    
+    GMPBaseNavigationController *baseNavController = (GMPBaseNavigationController *)[UIApplication sharedApplication].keyWindow.rootViewController;
+    UIViewController *currentController = baseNavController.viewControllers.lastObject;
+
+    [GMPAlertService showInfoAlertControllerWithTitle:error.localizedDescription
+                                           andMessage:LOCALIZED([NSString stringWithFormat:@"Error occurred while trying to connect to govmap. Trying again..."])
+                                        forController:currentController
+                                       withCompletion:^{
+                                           [[GMPCommunicator sharedInstance] loadContent];
+                                       }];
 }
 
 - (void)communicator:(GMPCommunicator *)communicator didFailToRetrieveAddressWithCadastre:(GMPCadastre *)cadastre
@@ -302,6 +324,7 @@ static NSInteger const kAttemtsAmountForDataRetrieving = 30;
 
 - (void)communicatorDidFinishLoadingContent:(GMPCommunicator *)communicator
 {
+    [MBProgressHUD hideAllHUDsForView:[UIApplication sharedApplication].keyWindow animated:YES];
     NSLog(@"Finished loading valuable data");
 }
 

@@ -8,6 +8,8 @@
 
 #import "GMPSplashScreenController.h"
 
+#import "GMPCommunicator.h"
+
 static NSString *const kMainMenuSegueIdentifier = @"mainMenuSegueIdentifier";
 
 @interface GMPSplashScreenController ()
@@ -21,6 +23,7 @@ static NSString *const kMainMenuSegueIdentifier = @"mainMenuSegueIdentifier";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [[GMPCommunicator sharedInstance] loadContent];
     [self moveToMainMenu];
 }
 

@@ -19,3 +19,6 @@
 "Search By Geonumbers" = "חפש לפי מספרי גיא";
 "Search By Address" = "חפש לפי כתובת";
 "Can't find Block & Smooth" = "לא יכול למצוא גוש ו חלקה";
+
+"No internet connection. Do you want to try again?" = "אין חיבור לאינטרנט. האם אתה רוצה לנסות שוב?";
+"Error occurred while trying to connect to govmap. Trying again..." = "אירעה שגיאה בעת הניסיון להתחבר לgovmap. מנסה שוב ...";

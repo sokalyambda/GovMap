@@ -18,3 +18,7 @@
 "Search By Geonumbers" = "Search By Geonumbers";
 "Search By Address" = "Search By Address";
 "Can't find Block & Smooth" = "Can't find Block & Smooth";
+
+// Alert messages
+"No internet connection. Do you want to try again?" = "No internet connection. Do you want to try again?";
+"Error occurred while trying to connect to govmap. Trying again..." = "Error occurred while trying to connect to govmap. Trying again...";

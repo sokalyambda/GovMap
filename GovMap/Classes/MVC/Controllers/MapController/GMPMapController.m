@@ -106,6 +106,26 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
 {
     GMPUserAnnotation *annotation = (GMPUserAnnotation *)view.annotation;
     switch (newState) {
+        case MKAnnotationViewDragStateStarting: {
+            WEAK_SELF;
+            
+            // Check for connection
+            [GMPReachabilityService checkConnectionOnSuccess:^{ } failure:^(NSError *error) {
+                
+                view.dragState = MKAnnotationViewDragStateCanceling;
+                [GMPAlertService showDialogAlertWithTitle:LOCALIZED(@"")
+                                               andMessage:LOCALIZED(@"No internet connection. Do you want to try again?")
+                                            forController:self
+                                    withSuccessCompletion:^{
+                                        
+                                    }
+                                        andFailCompletion:^{
+                                            [weakSelf.navigationController popViewControllerAnimated:YES];
+                                        }];
+            }];
+            break;
+        }
+            
         case MKAnnotationViewDragStateDragging: {
             WEAK_SELF;
             
@@ -160,70 +180,87 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
  */
 - (void)setupMapAppearing
 {
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    
     WEAK_SELF;
-    switch (self.currentSearchType) {
-        case GMPSearchTypeAddress: {
-            
-            // GOOGLE Manager
-            [[GMPGoogleGeocoder sharedInstance] reverseGeocodeAddress:self.currentAddress completionHandler:^(CLLocation *location, NSError *error) {
+    
+    // Internet check SUCCESS
+    [GMPReachabilityService checkConnectionOnSuccess:^{
+        
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        
+        switch (self.currentSearchType) {
+            case GMPSearchTypeAddress: {
                 
-                if (!error) {
-                    [weakSelf setupMapAttributesForCoordinate:location.coordinate];
-                } else {
+                // GOOGLE Manager
+                [[GMPGoogleGeocoder sharedInstance] reverseGeocodeAddress:self.currentAddress completionHandler:^(CLLocation *location, NSError *error) {
                     
-                    [GMPAlertService showDialogAlertWithTitle:LOCALIZED(@"")
-                                                   andMessage:LOCALIZED(@"Address not found")
-                                                forController:self
-                                        withSuccessCompletion:^{
-                                            [weakSelf setupMapAppearing];
-                                        }
-                                            andFailCompletion:^{
-                                                [weakSelf.navigationController popViewControllerAnimated:YES];
-                                            }];
-                }
-            }];
-            
-            break;
-        }
-            
-        case GMPSearchTypeCurrentPlacing: {
-            [self setupMapAttributesForCoordinate:self.locationObserver.currentLocation.coordinate];
-            break;
-        }
-            
-        case GMPSearchTypeGeonumbers: {
-            [self.communicator requestAddressWithCadastralNumbers:self.currentCadastre completionBlock:^(NSString *address) {
+                    if (!error) {
+                        [weakSelf setupMapAttributesForCoordinate:location.coordinate];
+                    } else {
+                        
+                        [GMPAlertService showDialogAlertWithTitle:LOCALIZED(@"")
+                                                       andMessage:LOCALIZED(@"Address not found")
+                                                    forController:self
+                                            withSuccessCompletion:^{
+                                                [weakSelf setupMapAppearing];
+                                            }
+                                                andFailCompletion:^{
+                                                    [weakSelf.navigationController popViewControllerAnimated:YES];
+                                                }];
+                    }
+                }];
                 
-                NSString *addressData = [address stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+                break;
+            }
                 
-                if (addressData && ![addressData isEqualToString:kAddressNotFound]) {
+            case GMPSearchTypeCurrentPlacing: {
+                [self setupMapAttributesForCoordinate:self.locationObserver.currentLocation.coordinate];
+                break;
+            }
+                
+            case GMPSearchTypeGeonumbers: {
+                [self.communicator requestAddressWithCadastralNumbers:self.currentCadastre completionBlock:^(NSString *address) {
                     
-                    // GOOGLE Manager
-                    GMPLocationAddress *locAddress = [GMPLocationAddressParser locationAddressWithGovMapAddress:address];
-                    [[GMPGoogleGeocoder sharedInstance] reverseGeocodeAddress:locAddress completionHandler:^(CLLocation *location, NSError *error) {
-                        if (!error) {
-                            [weakSelf setupMapAttributesForCoordinate:location.coordinate];
-                        }
-                    }];
+                    NSString *addressData = [address stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
                     
-                } else {
-                    WEAK_SELF;
-                    [GMPAlertService showDialogAlertWithTitle:LOCALIZED(@"")
-                                                   andMessage:LOCALIZED(@"Address not found")
-                                                forController:self
-                                        withSuccessCompletion:^{
-                                            [weakSelf setupMapAppearing];
-                                        }
-                                            andFailCompletion:^{
-                                                [weakSelf.navigationController popViewControllerAnimated:YES];
-                                            }];
-                }
-            }];
-            break;
+                    if (addressData && ![addressData isEqualToString:kAddressNotFound]) {
+                        
+                        // GOOGLE Manager
+                        GMPLocationAddress *locAddress = [GMPLocationAddressParser locationAddressWithGovMapAddress:address];
+                        [[GMPGoogleGeocoder sharedInstance] reverseGeocodeAddress:locAddress completionHandler:^(CLLocation *location, NSError *error) {
+                            if (!error) {
+                                [weakSelf setupMapAttributesForCoordinate:location.coordinate];
+                            }
+                        }];
+                        
+                    } else {
+                        WEAK_SELF;
+                        [GMPAlertService showDialogAlertWithTitle:LOCALIZED(@"")
+                                                       andMessage:LOCALIZED(@"Address not found")
+                                                    forController:self
+                                            withSuccessCompletion:^{
+                                                [weakSelf setupMapAppearing];
+                                            }
+                                                andFailCompletion:^{
+                                                    [weakSelf.navigationController popViewControllerAnimated:YES];
+                                                }];
+                    }
+                }];
+                break;
+            }
         }
-    }
+        
+        // Internet check FAILED
+    } failure:^(NSError *error) {
+        [GMPAlertService showDialogAlertWithTitle:LOCALIZED(@"")
+                                       andMessage:LOCALIZED(@"No internet connection. Do you want to try again?")
+                                    forController:self
+                            withSuccessCompletion:^{
+                                [weakSelf setupMapAppearing];
+                            }
+                                andFailCompletion:^{
+                                    [weakSelf.navigationController popViewControllerAnimated:YES];
+                                }];
+    }];
 }
 
 - (void)searchCurrentGeodata
