@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Gu8-cS-c9G">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Gu8-cS-c9G">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <scenes>
         <!--Search With Address View Controller-->
@@ -39,34 +38,37 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Relocate" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="idO-v7-KTd">
-                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="42"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SplashImage" translatesAutoresizingMaskIntoConstraints="NO" id="Iri-aK-tS0">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="idO-v7-KTd" firstAttribute="top" secondItem="27w-g6-27k" secondAttribute="topMargin" constant="100" id="Th9-HS-qvd"/>
-                            <constraint firstAttribute="centerX" secondItem="idO-v7-KTd" secondAttribute="centerX" id="Wxq-j4-0kO"/>
+                            <constraint firstItem="Iri-aK-tS0" firstAttribute="leading" secondItem="27w-g6-27k" secondAttribute="leading" id="Frp-lP-4yF"/>
+                            <constraint firstItem="Iri-aK-tS0" firstAttribute="top" secondItem="27w-g6-27k" secondAttribute="top" id="WnM-tF-f7Q"/>
+                            <constraint firstItem="kh3-hK-9uS" firstAttribute="top" secondItem="Iri-aK-tS0" secondAttribute="bottom" id="iCZ-p6-F5k"/>
+                            <constraint firstAttribute="trailing" secondItem="Iri-aK-tS0" secondAttribute="trailing" id="kVq-VU-Npp"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
-                                <exclude reference="idO-v7-KTd"/>
+                                <exclude reference="Iri-aK-tS0"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="Th9-HS-qvd"/>
-                                <exclude reference="Wxq-j4-0kO"/>
+                                <exclude reference="Frp-lP-4yF"/>
+                                <exclude reference="WnM-tF-f7Q"/>
+                                <exclude reference="kVq-VU-Npp"/>
+                                <exclude reference="iCZ-p6-F5k"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
-                                <include reference="idO-v7-KTd"/>
+                                <include reference="Iri-aK-tS0"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="Th9-HS-qvd"/>
-                                <include reference="Wxq-j4-0kO"/>
+                                <include reference="Frp-lP-4yF"/>
+                                <include reference="WnM-tF-f7Q"/>
+                                <include reference="kVq-VU-Npp"/>
+                                <include reference="iCZ-p6-F5k"/>
                             </mask>
                         </variation>
                     </view>
@@ -208,6 +210,9 @@
             <point key="canvasLocation" x="-292.5" y="398.25"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="SplashImage" width="375" height="667"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="w6O-0n-4cq"/>
     </inferredMetricsTieBreakers>
