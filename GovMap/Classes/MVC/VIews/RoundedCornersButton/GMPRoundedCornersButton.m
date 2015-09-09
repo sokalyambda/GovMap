@@ -40,6 +40,7 @@
 - (void)commonInit
 {
     self.layer.cornerRadius = 5.f;
+    self.titleLabel.textAlignment = NSTextAlignmentNatural;
 }
 
 @end
