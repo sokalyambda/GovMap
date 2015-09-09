@@ -140,6 +140,7 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
         }
         case MKAnnotationViewDragStateEnding: {
             [annotation setSubtitle:@""];
+            [MBProgressHUD showHUDAddedTo:self.view animated:YES];
             [self searchCurrentGeodata];
             break;
         }
