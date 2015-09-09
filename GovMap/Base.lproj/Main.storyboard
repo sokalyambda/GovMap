@@ -38,26 +38,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SplashImage" translatesAutoresizingMaskIntoConstraints="NO" id="Iri-aK-tS0">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash_screen" translatesAutoresizingMaskIntoConstraints="NO" id="Iri-aK-tS0">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Iri-aK-tS0" firstAttribute="leading" secondItem="27w-g6-27k" secondAttribute="leading" id="Frp-lP-4yF"/>
-                            <constraint firstItem="Iri-aK-tS0" firstAttribute="top" secondItem="27w-g6-27k" secondAttribute="top" id="WnM-tF-f7Q"/>
-                            <constraint firstItem="kh3-hK-9uS" firstAttribute="top" secondItem="Iri-aK-tS0" secondAttribute="bottom" id="iCZ-p6-F5k"/>
-                            <constraint firstAttribute="trailing" secondItem="Iri-aK-tS0" secondAttribute="trailing" id="kVq-VU-Npp"/>
+                            <constraint firstAttribute="centerY" secondItem="Iri-aK-tS0" secondAttribute="centerY" id="pHD-fT-eiO"/>
+                            <constraint firstAttribute="centerX" secondItem="Iri-aK-tS0" secondAttribute="centerX" id="sMP-2g-cbb"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="Iri-aK-tS0"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="Frp-lP-4yF"/>
-                                <exclude reference="WnM-tF-f7Q"/>
-                                <exclude reference="kVq-VU-Npp"/>
-                                <exclude reference="iCZ-p6-F5k"/>
+                                <exclude reference="pHD-fT-eiO"/>
+                                <exclude reference="sMP-2g-cbb"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -65,10 +61,8 @@
                                 <include reference="Iri-aK-tS0"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="Frp-lP-4yF"/>
-                                <include reference="WnM-tF-f7Q"/>
-                                <include reference="kVq-VU-Npp"/>
-                                <include reference="iCZ-p6-F5k"/>
+                                <include reference="pHD-fT-eiO"/>
+                                <include reference="sMP-2g-cbb"/>
                             </mask>
                         </variation>
                     </view>
@@ -211,7 +205,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="SplashImage" width="375" height="667"/>
+        <image name="splash_screen" width="320" height="480"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="w6O-0n-4cq"/>
