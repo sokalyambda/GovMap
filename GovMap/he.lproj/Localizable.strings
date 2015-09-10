@@ -9,14 +9,13 @@
 //navigation item titles
 "Main Menu" = "תפריט ראשי";
 "Open Waze" = "Waze הפתוח";
-"Search Geo Data" = "חיפוש גיאוגרפי נתונים";
 "OK" = "אוקיי";
 "Cancel" = "לבטל";
 "Address not found" = "כתובת לא נמצא";
 "Block " = " גוש";
 "Smooth " = " חלקה";
 
-"Search By Geo numbers" = "חפש לפי מספרי גיא";
+"Search By Block & Smooth" = "חפש לפי מספרי גיא";
 "Search By Address" = "חפש לפי כתובת";
 "Can't find Block & Smooth" = "לא יכול למצוא גוש ו חלקה";
 

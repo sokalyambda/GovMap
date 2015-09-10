@@ -8,14 +8,13 @@
 
 "Open Waze" = "Open Waze";
 "Main Menu" = "Main Menu";
-"Search Geo Data" = "Search Geo Data";
 "OK" = "OK";
 "Cancel" = "Cancel";
 "Address not found" = "Address not found";
 "Block " = "Block ";
 "Smooth " = "Smooth ";
 
-"Search By Geo numbers" = "Search By Geo numbers";
+"Search By Block & Smooth" = "Search By Block & Smooth";
 "Search By Address" = "Search By Address";
 "Can't find Block & Smooth" = "Can't find Block & Smooth";
 

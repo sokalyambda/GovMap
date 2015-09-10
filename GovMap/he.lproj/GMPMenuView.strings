@@ -1,9 +1,9 @@
 /* Class = "UIButton"; normalTitle = "Find the geo number using address "; ObjectID = "FQ2-gj-dWA"; */
-"FQ2-gj-dWA.normalTitle" = "למצוא מספרים גיאוגרפיים באמצעות כתובת ";
+"FQ2-gj-dWA.normalTitle" = "איתור גוש וחלקה ע\"ב כתובת";
 
 /* Class = "UIButton"; normalTitle = "Find the address using geo number "; ObjectID = "J38-mN-ZT8"; */
-"J38-mN-ZT8.normalTitle" = "למצוא כתובת באמצעות מספרים הגיאו";
+"J38-mN-ZT8.normalTitle" = "איתור כתובת ע\"ב גוש וחלקה";
 
 /* Class = "UIButton"; normalTitle = "Find the geo number using current placing "; ObjectID = "Kd5-ta-RxF"; */
-"Kd5-ta-RxF.normalTitle" = "למצוא מספרים גיאוגרפיים באמצעות הצבה נוכחית";
+"Kd5-ta-RxF.normalTitle" = "איתור גוש וחלקה ע\"ב מיקום נוכחי";
 

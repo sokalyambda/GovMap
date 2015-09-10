@@ -271,7 +271,7 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
         [MBProgressHUD hideAllHUDsForView:weakSelf.view animated:YES];
         [weakSelf.mapView selectAnnotation:weakSelf.annotation animated:YES];
         if (cadastralInfo) {
-            [weakSelf.annotation setSubtitle:[NSString localizedStringWithFormat:@"%@ %ld, %@ %ld", LOCALIZED(@"Block "), (long)cadastralInfo.major, LOCALIZED(@"Smooth "), (long)cadastralInfo.minor]];
+            [weakSelf.annotation setSubtitle:[NSString localizedStringWithFormat:@"%@ %ld %@ %ld", LOCALIZED(@"Block "), (long)cadastralInfo.major, LOCALIZED(@"Smooth "), (long)cadastralInfo.minor]];
         } else {
             [weakSelf.annotation setSubtitle:[NSString localizedStringWithFormat:@"%@", LOCALIZED(@"Can't find Block & Smooth")]];
         }
