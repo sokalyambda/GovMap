@@ -12,7 +12,7 @@
 @protocol GMPCommunicatorDelegate;
 
 typedef void(^RequestCadasterCompletionBlock)(GMPCadastre *cadastralInfo);
-typedef void(^RequestAddressCompletionBlock)(NSString *address);
+typedef void(^RequestAddressCompletionBlock)(NSArray *address);
 
 @interface GMPCommunicator : NSObject
 

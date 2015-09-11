@@ -34,6 +34,7 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
 @property (strong, nonatomic) GMPLocationObserver *locationObserver;
 @property (strong, nonatomic) GMPUserAnnotation *annotation;
 @property (strong, nonatomic) GMPCommunicator *communicator;
+@property (strong, nonatomic) NSArray *adressesArray;
 
 @property (assign, nonatomic) CLLocationCoordinate2D previousCoordinate;
 
@@ -86,14 +87,16 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
     }
     if ([annotation isKindOfClass:[GMPUserAnnotation class]]) {
         MKPinAnnotationView* pinView = (MKPinAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:NSStringFromClass([GMPUserAnnotation class])];
-        
         if (!pinView) {
-            pinView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation
+            pinView = [[MKPinAnnotationView
+                        alloc] initWithAnnotation:annotation
                                                       reuseIdentifier:NSStringFromClass([GMPUserAnnotation class])];
+            
             pinView.pinColor = MKPinAnnotationColorRed;
             pinView.animatesDrop = YES;
             pinView.draggable = YES;
             pinView.canShowCallout = YES;
+            
         } else {
             pinView.annotation = annotation;
         }
@@ -165,12 +168,21 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
     [[GMPGoogleGeocoder sharedInstance] geocodeLocation:location
                                       completionHandler:^(GMPLocationAddress *address, NSError *error) {
         if (!error) {
-            weakSelf.annotation = [[GMPUserAnnotation alloc] initWithLocation:coordinate title:address.fullAddress];
-            [weakSelf.mapView addAnnotation:weakSelf.annotation];
-            
+
             if (!weakSelf.currentAddress) {
                 weakSelf.currentAddress = address;
             }
+            weakSelf.annotation = [[GMPUserAnnotation alloc] initWithLocation:coordinate title:weakSelf.currentAddress.fullAddress];
+            
+            if (weakSelf.adressesArray) {
+                NSString *collautAddress = [NSString string];
+                for (NSString *locAddress in weakSelf.adressesArray) {
+                    collautAddress = [collautAddress stringByAppendingString:[NSString stringWithFormat:@"%@\n", locAddress]];
+                }
+                weakSelf.annotation = [[GMPUserAnnotation alloc] initWithLocation:coordinate title:collautAddress];
+            }
+            [weakSelf.mapView addAnnotation:weakSelf.annotation];
+            
             [weakSelf searchCurrentGeodata];
         }
     }];
@@ -219,16 +231,17 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
             }
                 
             case GMPSearchTypeGeonumbers: {
-                [self.communicator requestAddressWithCadastralNumbers:self.currentCadastre completionBlock:^(NSString *address) {
+                [self.communicator requestAddressWithCadastralNumbers:self.currentCadastre completionBlock:^(NSArray *address) {
                     
-                    NSString *addressData = [address stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+                    NSString *addressData = [address.firstObject stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
                     
                     if (addressData && ![addressData isEqualToString:kAddressNotFound]) {
                         
                         // GOOGLE Manager
-                        GMPLocationAddress *locAddress = [GMPLocationAddressParser locationAddressWithGovMapAddress:address];
+                        GMPLocationAddress *locAddress = [GMPLocationAddressParser locationAddressWithGovMapAddress:address.firstObject];
                         [[GMPGoogleGeocoder sharedInstance] reverseGeocodeAddress:locAddress completionHandler:^(CLLocation *location, NSError *error) {
                             if (!error) {
+                                weakSelf.adressesArray = [NSArray arrayWithArray:address];
                                 [weakSelf setupMapAttributesForCoordinate:location.coordinate];
                             }
                         }];

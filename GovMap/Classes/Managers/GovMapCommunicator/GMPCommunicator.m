@@ -242,7 +242,7 @@ static NSInteger const kAttemtsAmountForDataRetrieving = 30;
         timerFireCounter = 0;
         [timer invalidate];
         
-        self.requestAddressCompletionBlock(addresses.firstObject);
+        self.requestAddressCompletionBlock(addresses);
     }
     else {
         NSLog(@"Unsuccessful attempt to retrieve address :( Trying again...");
