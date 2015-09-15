@@ -17,7 +17,8 @@
 "Search By Block & Smooth" = "Search By Block & Smooth";
 "Search By Address" = "Search By Address";
 "Can't find Block & Smooth" = "Can't find Block & Smooth";
-
+"Satellite Map" = "Satellite Map";
+"Standart Map" = "Standart Map";
 // Alert messages
 "No internet connection. Do you want to try again?" = "No internet connection. Do you want to try again?";
 "Error occurred while trying to connect to govmap. Trying again..." = "Error occurred while trying to connect to govmap. Trying again...";

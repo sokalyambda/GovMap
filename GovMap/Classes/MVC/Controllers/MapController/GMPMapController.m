@@ -30,6 +30,8 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *goToWazeButton;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *mapTypeSegmentControl;
+
 
 @property (strong, nonatomic) GMPLocationObserver *locationObserver;
 @property (strong, nonatomic) GMPUserAnnotation *annotation;
@@ -65,6 +67,8 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self.mapTypeSegmentControl setTitle:LOCALIZED(@"Standart Map") forSegmentAtIndex:0];
+    [self.mapTypeSegmentControl setTitle:LOCALIZED(@"Satellite Map") forSegmentAtIndex:1];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -284,7 +288,7 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
         [MBProgressHUD hideAllHUDsForView:weakSelf.view animated:YES];
         [weakSelf.mapView selectAnnotation:weakSelf.annotation animated:YES];
         if (cadastralInfo) {
-            [weakSelf.annotation setSubtitle:[NSString localizedStringWithFormat:@"%@ %ld %@ %ld", LOCALIZED(@"Block "), (long)cadastralInfo.major, LOCALIZED(@"Smooth "), (long)cadastralInfo.minor]];
+            [weakSelf.annotation setSubtitle:[NSString stringWithFormat:@"%@ %ld %@ %ld", LOCALIZED(@"Block "), cadastralInfo.major, LOCALIZED(@"Smooth "), cadastralInfo.minor]];
         } else {
             [weakSelf.annotation setSubtitle:[NSString localizedStringWithFormat:@"%@", LOCALIZED(@"Can't find Block & Smooth")]];
         }
@@ -292,6 +296,15 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
 }
 
 #pragma mark - Actions
+
+- (IBAction)mapViewTypeChanged:(id)sender
+{
+    if (self.mapTypeSegmentControl.selectedSegmentIndex == 0) {
+        self.mapView.mapType = MKMapTypeStandard;
+    } else {
+        self.mapView.mapType = MKMapTypeSatellite;
+    }
+}
 
 - (IBAction)goToWazeClick:(id)sender
 {

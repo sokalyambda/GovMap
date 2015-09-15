@@ -134,45 +134,73 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="satellite" translatesAutoresizingMaskIntoConstraints="NO" id="4Cv-NS-JWU">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="4Cv-NS-JWU">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <connections>
                                     <outlet property="delegate" destination="hbg-PG-zFK" id="hN9-e1-0Z3"/>
                                 </connections>
                             </mapView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bordered" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="uML-dR-e47">
+                                <rect key="frame" x="-61" y="-14" width="123" height="29"/>
+                                <segments>
+                                    <segment title="Standart Map"/>
+                                    <segment title="Satellite Map"/>
+                                </segments>
+                                <connections>
+                                    <action selector="mapViewTypeChanged:" destination="hbg-PG-zFK" eventType="valueChanged" id="qtH-k5-Gep"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="g93-CV-VaB" firstAttribute="top" secondItem="4Cv-NS-JWU" secondAttribute="bottom" id="A0X-hT-c0w"/>
+                            <constraint firstItem="uML-dR-e47" firstAttribute="leading" secondItem="qod-Hu-Sj4" secondAttribute="leading" id="GPa-Mc-txa">
+                                <variation key="heightClass=regular-widthClass=compact" constant="-2"/>
+                            </constraint>
+                            <constraint firstAttribute="trailing" secondItem="uML-dR-e47" secondAttribute="trailing" id="Klf-Dh-6yj">
+                                <variation key="heightClass=regular-widthClass=compact" constant="-2"/>
+                            </constraint>
+                            <constraint firstItem="uML-dR-e47" firstAttribute="top" secondItem="4Cv-NS-JWU" secondAttribute="bottom" id="Olq-gG-ieX"/>
                             <constraint firstItem="4Cv-NS-JWU" firstAttribute="top" secondItem="qod-Hu-Sj4" secondAttribute="top" id="XQR-aY-M0K"/>
+                            <constraint firstItem="g93-CV-VaB" firstAttribute="top" secondItem="uML-dR-e47" secondAttribute="bottom" id="siO-of-p3d">
+                                <variation key="heightClass=regular-widthClass=compact" constant="1"/>
+                            </constraint>
                             <constraint firstItem="4Cv-NS-JWU" firstAttribute="leading" secondItem="qod-Hu-Sj4" secondAttribute="leading" id="uAP-O2-Qhw"/>
                             <constraint firstAttribute="trailing" secondItem="4Cv-NS-JWU" secondAttribute="trailing" id="xg2-Zn-3Vo"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="4Cv-NS-JWU"/>
+                                <exclude reference="uML-dR-e47"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="A0X-hT-c0w"/>
                                 <exclude reference="XQR-aY-M0K"/>
                                 <exclude reference="uAP-O2-Qhw"/>
                                 <exclude reference="xg2-Zn-3Vo"/>
+                                <exclude reference="GPa-Mc-txa"/>
+                                <exclude reference="Klf-Dh-6yj"/>
+                                <exclude reference="Olq-gG-ieX"/>
+                                <exclude reference="siO-of-p3d"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
                                 <include reference="4Cv-NS-JWU"/>
+                                <include reference="uML-dR-e47"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="A0X-hT-c0w"/>
                                 <include reference="XQR-aY-M0K"/>
                                 <include reference="uAP-O2-Qhw"/>
                                 <include reference="xg2-Zn-3Vo"/>
+                                <include reference="GPa-Mc-txa"/>
+                                <include reference="Klf-Dh-6yj"/>
+                                <include reference="Olq-gG-ieX"/>
+                                <include reference="siO-of-p3d"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
                         <outlet property="goToWazeButton" destination="FGc-lM-jsg" id="LjI-NE-Hyu"/>
+                        <outlet property="mapTypeSegmentControl" destination="uML-dR-e47" id="hYa-wq-Nx2"/>
                         <outlet property="mapView" destination="4Cv-NS-JWU" id="bKt-cb-Wy3"/>
                     </connections>
                 </viewController>
