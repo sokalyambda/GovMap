@@ -12,12 +12,12 @@
 "OK" = "אוקיי";
 "Cancel" = "לבטל";
 "Address not found" = "כתובת לא נמצא";
-"Block " = " גוש";
-"Smooth " = " חלקה";
+"Lot " = " גוש";
+"Parcel " = " חלקה";
 
-"Search By Block & Smooth" = "חפש לפי מספרי גיא";
+"Search By Lot & Parcel" = "חפש לפי מספרי גיא";
 "Search By Address" = "חפש לפי כתובת";
-"Can't find Block & Smooth" = "לא ניתן למצוא גוש וחלקה";
+"Can't find Lot & Parcel" = "לא ניתן למצוא גוש וחלקה";
 "Standart Map" = "רחובות ומבנים";
 "Satellite Map" = "תצלום אויר";
 "No internet connection. Do you want to try again?" = "אין חיבור לאינטרנט. האם אתה רוצה לנסות שוב?";

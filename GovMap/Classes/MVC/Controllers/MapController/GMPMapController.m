@@ -32,13 +32,9 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *goToWazeButton;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *mapTypeSegmentControl;
 
-
 @property (strong, nonatomic) GMPLocationObserver *locationObserver;
 @property (strong, nonatomic) GMPUserAnnotation *annotation;
 @property (strong, nonatomic) GMPCommunicator *communicator;
-@property (strong, nonatomic) NSArray *adressesArray;
-
-@property (assign, nonatomic) CLLocationCoordinate2D previousCoordinate;
 
 @end
 
@@ -67,13 +63,14 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.mapTypeSegmentControl setTitle:LOCALIZED(@"Standart Map") forSegmentAtIndex:0];
-    [self.mapTypeSegmentControl setTitle:LOCALIZED(@"Satellite Map") forSegmentAtIndex:1];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    
+    [self.mapTypeSegmentControl setTitle:LOCALIZED(@"Standart Map") forSegmentAtIndex:0];
+    [self.mapTypeSegmentControl setTitle:LOCALIZED(@"Satellite Map") forSegmentAtIndex:1];
     [self setupMapAppearing];
 }
 
@@ -96,7 +93,6 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
                         alloc] initWithAnnotation:annotation
                                                       reuseIdentifier:NSStringFromClass([GMPUserAnnotation class])];
             
-            pinView.pinColor = MKPinAnnotationColorRed;
             pinView.animatesDrop = YES;
             pinView.draggable = YES;
             pinView.canShowCallout = YES;
@@ -141,6 +137,8 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
                                                   if (!error) {
                                                       [annotation setTitle:LOCALIZED(address.fullAddress)];
                                                       weakSelf.currentAddress = address;
+                                                  } else {
+#warning Handle error
                                                   }
                                               }];
             break;
@@ -161,7 +159,6 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
 - (void)setupMapAttributesForCoordinate:(CLLocationCoordinate2D)coordinate
 {
     WEAK_SELF;
-    self.previousCoordinate = coordinate;
     
     MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(coordinate, 800, 800);
     [self.mapView setRegion:[self.mapView regionThatFits:region] animated:YES];
@@ -177,17 +174,11 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
                 weakSelf.currentAddress = address;
             }
             weakSelf.annotation = [[GMPUserAnnotation alloc] initWithLocation:coordinate title:weakSelf.currentAddress.fullAddress];
-            
-            if (weakSelf.adressesArray) {
-                NSString *collautAddress = [NSString string];
-                for (NSString *locAddress in weakSelf.adressesArray) {
-                    collautAddress = [collautAddress stringByAppendingString:[NSString stringWithFormat:@"%@\n", locAddress]];
-                }
-                weakSelf.annotation = [[GMPUserAnnotation alloc] initWithLocation:coordinate title:collautAddress];
-            }
             [weakSelf.mapView addAnnotation:weakSelf.annotation];
             
             [weakSelf searchCurrentGeodata];
+        } else {
+#warning Handle error
         }
     }];
 }
@@ -235,18 +226,19 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
             }
                 
             case GMPSearchTypeGeonumbers: {
-                [self.communicator requestAddressWithCadastralNumbers:self.currentCadastre completionBlock:^(NSArray *address) {
+                [self.communicator requestAddressWithCadastralNumbers:self.currentCadastre completionBlock:^(NSString *address) {
                     
-                    NSString *addressData = [address.firstObject stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+                    NSString *addressData = [address stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
                     
                     if (addressData && ![addressData isEqualToString:kAddressNotFound]) {
                         
                         // GOOGLE Manager
-                        GMPLocationAddress *locAddress = [GMPLocationAddressParser locationAddressWithGovMapAddress:address.firstObject];
+                        GMPLocationAddress *locAddress = [GMPLocationAddressParser locationAddressWithGovMapAddress:address];
                         [[GMPGoogleGeocoder sharedInstance] reverseGeocodeAddress:locAddress completionHandler:^(CLLocation *location, NSError *error) {
                             if (!error) {
-                                weakSelf.adressesArray = [NSArray arrayWithArray:address];
                                 [weakSelf setupMapAttributesForCoordinate:location.coordinate];
+                            } else {
+#warning Handle error
                             }
                         }];
                         
@@ -288,9 +280,9 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
         [MBProgressHUD hideAllHUDsForView:weakSelf.view animated:YES];
         [weakSelf.mapView selectAnnotation:weakSelf.annotation animated:YES];
         if (cadastralInfo) {
-            [weakSelf.annotation setSubtitle:[NSString stringWithFormat:@"%@ %ld %@ %ld", LOCALIZED(@"Block "), cadastralInfo.major, LOCALIZED(@"Smooth "), cadastralInfo.minor]];
+            [weakSelf.annotation setSubtitle:[NSString stringWithFormat:@"%@ %ld %@ %ld", LOCALIZED(@"Lot "), cadastralInfo.major, LOCALIZED(@"Parcel "), cadastralInfo.minor]];
         } else {
-            [weakSelf.annotation setSubtitle:[NSString localizedStringWithFormat:@"%@", LOCALIZED(@"Can't find Block & Smooth")]];
+            [weakSelf.annotation setSubtitle:[NSString localizedStringWithFormat:@"%@", LOCALIZED(@"Can't find Lot & Parcel")]];
         }
     }];
 }

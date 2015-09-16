@@ -40,38 +40,6 @@
 
 #pragma mark - Lifecycle
 
-- (instancetype)initWithGMSAddress:(GMSAddress *)address
-{
-    self = [super init];
-    if (self) {
-        _cityName = address.locality;
-        _streetName = address.thoroughfare;
-        
-        NSString *digitsRegex = @".*[\\d]";
-        NSError *error = NULL;
-        NSRegularExpression *regex = [NSRegularExpression
-                                      regularExpressionWithPattern:digitsRegex
-                                      options:NSRegularExpressionCaseInsensitive
-                                      error:&error];
-        [regex enumerateMatchesInString:self.streetName options:0 range:NSMakeRange(0, [self.streetName length]) usingBlock:^(NSTextCheckingResult *match, NSMatchingFlags flags, BOOL *stop) {
-            
-            NSString *digitsString = [self.streetName substringWithRange:match.range];
-            
-            self.streetName = [self.streetName stringByReplacingOccurrencesOfString:digitsString withString:@""];
-            
-            if ([digitsString containsString:@"-"]) {
-                NSArray *homeNumbers = [digitsString componentsSeparatedByString:@"-"];
-                if (homeNumbers.count) {
-                    _homeName = homeNumbers.firstObject;
-                }
-            } else {
-                _homeName = digitsString;
-            }
-        }];
-    }
-    return self;
-}
-
 - (instancetype)initWithCityName:(NSString *)cityName andFullSreetName:(NSString *)fullStreetName
 {
     self = [super init];
@@ -86,11 +54,6 @@
 {
     NSString *fullStreetName = [NSString stringWithFormat:@"%@ %@", homeName, streetName];
     return [[self alloc] initWithCityName:cityName andFullSreetName:fullStreetName];
-}
-
-+ (instancetype)locationAddressWithGMSAddress:(GMSAddress *)address
-{
-    return [[self alloc] initWithGMSAddress:address];
 }
 
 @end

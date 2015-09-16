@@ -11,12 +11,12 @@
 "OK" = "OK";
 "Cancel" = "Cancel";
 "Address not found" = "Address not found";
-"Block " = "Block ";
-"Smooth " = "Smooth ";
+"Lot " = "Lot ";
+"Parcel " = "Parcel ";
 
-"Search By Block & Smooth" = "Search By Block & Smooth";
+"Search By Lot & Parcel" = "Search By Lot & Parcel";
 "Search By Address" = "Search By Address";
-"Can't find Block & Smooth" = "Can't find Block & Smooth";
+"Can't find Lot & Parcel" = "Can't find Lot & Parcel";
 "Satellite Map" = "Satellite Map";
 "Standart Map" = "Standart Map";
 // Alert messages

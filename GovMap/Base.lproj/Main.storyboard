@@ -173,13 +173,13 @@
                                 <exclude reference="uML-dR-e47"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="XQR-aY-M0K"/>
-                                <exclude reference="uAP-O2-Qhw"/>
-                                <exclude reference="xg2-Zn-3Vo"/>
+                                <exclude reference="siO-of-p3d"/>
                                 <exclude reference="GPa-Mc-txa"/>
                                 <exclude reference="Klf-Dh-6yj"/>
                                 <exclude reference="Olq-gG-ieX"/>
-                                <exclude reference="siO-of-p3d"/>
+                                <exclude reference="XQR-aY-M0K"/>
+                                <exclude reference="uAP-O2-Qhw"/>
+                                <exclude reference="xg2-Zn-3Vo"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -188,13 +188,13 @@
                                 <include reference="uML-dR-e47"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="XQR-aY-M0K"/>
-                                <include reference="uAP-O2-Qhw"/>
-                                <include reference="xg2-Zn-3Vo"/>
+                                <include reference="siO-of-p3d"/>
                                 <include reference="GPa-Mc-txa"/>
                                 <include reference="Klf-Dh-6yj"/>
                                 <include reference="Olq-gG-ieX"/>
-                                <include reference="siO-of-p3d"/>
+                                <include reference="XQR-aY-M0K"/>
+                                <include reference="uAP-O2-Qhw"/>
+                                <include reference="xg2-Zn-3Vo"/>
                             </mask>
                         </variation>
                     </view>

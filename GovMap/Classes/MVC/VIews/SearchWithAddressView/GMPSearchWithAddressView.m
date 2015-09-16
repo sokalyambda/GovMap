@@ -7,7 +7,6 @@
 //
 
 #import "GMPSearchWithAddressView.h"
-#import "GMPSearchTextField.h"
 
 #import "GMPLocationAddress.h"
 

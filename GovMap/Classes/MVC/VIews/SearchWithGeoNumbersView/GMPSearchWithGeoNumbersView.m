@@ -7,7 +7,6 @@
 //
 
 #import "GMPSearchWithGeoNumbersView.h"
-#import "GMPSearchTextField.h"
 
 #import "GMPCadastre.h"
 

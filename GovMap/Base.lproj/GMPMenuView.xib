@@ -22,7 +22,7 @@
                         <constraint firstAttribute="width" secondItem="FQ2-gj-dWA" secondAttribute="height" multiplier="345:56" id="6zC-Zc-zKw"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
-                    <state key="normal" title="Find Block &amp; Smooth using address ">
+                    <state key="normal" title="Find Lot &amp; Parcel using address ">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <variation key="default">
@@ -46,7 +46,7 @@
                         <constraint firstAttribute="width" secondItem="Kd5-ta-RxF" secondAttribute="height" multiplier="345:56" id="vmQ-Ij-gUL"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                    <state key="normal" title="Find Block &amp; Smooth using current placing ">
+                    <state key="normal" title="Find Lot &amp; Parcel using current placing ">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <variation key="default">
@@ -70,7 +70,7 @@
                         <constraint firstAttribute="width" secondItem="J38-mN-ZT8" secondAttribute="height" multiplier="69:11" id="dfw-j8-QgS"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                    <state key="normal" title="Find the address using Block &amp; Smooth ">
+                    <state key="normal" title="Find the address using Lot &amp; Parcel ">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <variation key="default">
