@@ -318,6 +318,7 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
 
 - (void)showCadastralInfo:(GMPCadastre *)cadastralInfo
 {
+    dispatch_async(dispatch_get_main_queue(), ^{
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
     if (cadastralInfo) {
         [self.annotation setSubtitle:[NSString stringWithFormat:@"%@ %ld %@ %ld", LOCALIZED(@"Lot "), cadastralInfo.major, LOCALIZED(@"Parcel "), cadastralInfo.minor]];
@@ -325,6 +326,7 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
         [self.annotation setSubtitle:[NSString localizedStringWithFormat:@"%@", LOCALIZED(@"Can't find Lot & Parcel")]];
     }
     [self.mapView selectAnnotation:self.annotation animated:YES];
+});
     
 }
 
