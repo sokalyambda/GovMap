@@ -91,7 +91,7 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
         if (!pinView) {
             pinView = [[MKPinAnnotationView
                         alloc] initWithAnnotation:annotation
-                                                      reuseIdentifier:NSStringFromClass([GMPUserAnnotation class])];
+                       reuseIdentifier:NSStringFromClass([GMPUserAnnotation class])];
             
             pinView.animatesDrop = YES;
             pinView.draggable = YES;
@@ -138,7 +138,16 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
                                                       [annotation setTitle:LOCALIZED(address.fullAddress)];
                                                       weakSelf.currentAddress = address;
                                                   } else {
-#warning Handle error
+                                                      // Google geocoding error
+                                                      [GMPAlertService showDialogAlertWithTitle:LOCALIZED(@"")
+                                                                                     andMessage:LOCALIZED(@"Address not found")
+                                                                                  forController:self
+                                                                          withSuccessCompletion:^{
+                                                                              [weakSelf setupMapAppearing];
+                                                                          }
+                                                                              andFailCompletion:^{
+                                                                                  [weakSelf.navigationController popViewControllerAnimated:YES];
+                                                                              }];
                                                   }
                                               }];
             break;
@@ -168,19 +177,28 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
     // GOOGLE Manager
     [[GMPGoogleGeocoder sharedInstance] geocodeLocation:location
                                       completionHandler:^(GMPLocationAddress *address, NSError *error) {
-        if (!error) {
-
-            if (!weakSelf.currentAddress) {
-                weakSelf.currentAddress = address;
-            }
-            weakSelf.annotation = [[GMPUserAnnotation alloc] initWithLocation:coordinate title:weakSelf.currentAddress.fullAddress];
-            [weakSelf.mapView addAnnotation:weakSelf.annotation];
-            
-            [weakSelf searchCurrentGeodata];
-        } else {
-#warning Handle error
-        }
-    }];
+                                          if (!error) {
+                                              
+                                              if (!weakSelf.currentAddress) {
+                                                  weakSelf.currentAddress = address;
+                                              }
+                                              weakSelf.annotation = [[GMPUserAnnotation alloc] initWithLocation:coordinate title:weakSelf.currentAddress.fullAddress];
+                                              [weakSelf.mapView addAnnotation:weakSelf.annotation];
+                                              
+                                              [weakSelf searchCurrentGeodata];
+                                          } else {
+                                              // Google geocoding error
+                                              [GMPAlertService showDialogAlertWithTitle:LOCALIZED(@"")
+                                                                             andMessage:LOCALIZED(@"Address not found")
+                                                                          forController:self
+                                                                  withSuccessCompletion:^{
+                                                                      [weakSelf setupMapAppearing];
+                                                                  }
+                                                                      andFailCompletion:^{
+                                                                          [weakSelf.navigationController popViewControllerAnimated:YES];
+                                                                      }];
+                                          }
+                                      }];
 }
 
 /**
@@ -238,7 +256,16 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
                             if (!error) {
                                 [weakSelf setupMapAttributesForCoordinate:location.coordinate];
                             } else {
-#warning Handle error
+                                // Google geocoding error
+                                [GMPAlertService showDialogAlertWithTitle:LOCALIZED(@"")
+                                                               andMessage:LOCALIZED(@"Address not found")
+                                                            forController:self
+                                                    withSuccessCompletion:^{
+                                                        [weakSelf setupMapAppearing];
+                                                    }
+                                                        andFailCompletion:^{
+                                                            [weakSelf.navigationController popViewControllerAnimated:YES];
+                                                        }];
                             }
                         }];
                         

@@ -68,7 +68,7 @@ static NSString *const kMapControllerSegueIdentifier = @"mapControllerSegue";
 
 - (void)customizeNavigationItem
 {
-    self.navigationItem.title = LOCALIZED(@"Search By Block & Smooth");
+    self.navigationItem.title = LOCALIZED(@"Search By Lot & Parcel");
 }
 
 @end
