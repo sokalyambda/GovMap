@@ -63,14 +63,14 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self.mapTypeSegmentControl setTitle:LOCALIZED(@"Standart Map") forSegmentAtIndex:0];
+    [self.mapTypeSegmentControl setTitle:LOCALIZED(@"Satellite Map") forSegmentAtIndex:1];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    
-    [self.mapTypeSegmentControl setTitle:LOCALIZED(@"Standart Map") forSegmentAtIndex:0];
-    [self.mapTypeSegmentControl setTitle:LOCALIZED(@"Satellite Map") forSegmentAtIndex:1];
     [self setupMapAppearing];
 }
 
