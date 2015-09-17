@@ -184,8 +184,14 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
                                               }
                                               weakSelf.annotation = [[GMPUserAnnotation alloc] initWithLocation:coordinate title:weakSelf.currentAddress.fullAddress];
                                               [weakSelf.mapView addAnnotation:weakSelf.annotation];
+
+                                              if (!weakSelf.currentCadastre) {
+                                                  [weakSelf searchCurrentGeodata];
+                                              } else {
+                                                 
+                                                  [weakSelf showCadastralInfo:weakSelf.currentCadastre];
                                               
-                                              [weakSelf searchCurrentGeodata];
+                                              }
                                           } else {
                                               // Google geocoding error
                                               [GMPAlertService showDialogAlertWithTitle:LOCALIZED(@"")
@@ -304,14 +310,22 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
 {
     WEAK_SELF;
     [self.communicator requestCadastralNumbersWithAddress:self.currentAddress.fullAddress completionBlock:^(GMPCadastre *cadastralInfo) {
-        [MBProgressHUD hideAllHUDsForView:weakSelf.view animated:YES];
-        [weakSelf.mapView selectAnnotation:weakSelf.annotation animated:YES];
-        if (cadastralInfo) {
-            [weakSelf.annotation setSubtitle:[NSString stringWithFormat:@"%@ %ld %@ %ld", LOCALIZED(@"Lot "), cadastralInfo.major, LOCALIZED(@"Parcel "), cadastralInfo.minor]];
-        } else {
-            [weakSelf.annotation setSubtitle:[NSString localizedStringWithFormat:@"%@", LOCALIZED(@"Can't find Lot & Parcel")]];
-        }
+
+        [weakSelf showCadastralInfo:cadastralInfo];
+
     }];
+}
+
+- (void)showCadastralInfo:(GMPCadastre *)cadastralInfo
+{
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    if (cadastralInfo) {
+        [self.annotation setSubtitle:[NSString stringWithFormat:@"%@ %ld %@ %ld", LOCALIZED(@"Lot "), cadastralInfo.major, LOCALIZED(@"Parcel "), cadastralInfo.minor]];
+    } else {
+        [self.annotation setSubtitle:[NSString localizedStringWithFormat:@"%@", LOCALIZED(@"Can't find Lot & Parcel")]];
+    }
+    [self.mapView selectAnnotation:self.annotation animated:YES];
+    
 }
 
 #pragma mark - Actions
