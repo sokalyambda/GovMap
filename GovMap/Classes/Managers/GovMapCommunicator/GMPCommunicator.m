@@ -164,9 +164,7 @@ static NSInteger const kAttemtsAmountForDataRetrieving = 30;
         self.requestCadasterCompletionBlock([GMPCadastre cadastreWithMajor:majorNumber.integerValue minor:minorNumber.integerValue]);
     }
     else {
-        NSLog(@"Unsuccessful attempt to retrieve cadastral numbers :( Trying again...");
-        
-        if (timerFireCounter++ == kAttemtsAmountForDataRetrieving) {
+            if (timerFireCounter++ == kAttemtsAmountForDataRetrieving) {
             [timer invalidate];
             _isReadyForRequests = YES;
             timerFireCounter = 0;
@@ -245,7 +243,6 @@ static NSInteger const kAttemtsAmountForDataRetrieving = 30;
         self.requestAddressCompletionBlock(addresses.firstObject);
     }
     else {
-        NSLog(@"Unsuccessful attempt to retrieve address :( Trying again...");
         
         if (timerFireCounter++ == kAttemtsAmountForDataRetrieving) {
             [timer invalidate];

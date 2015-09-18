@@ -15,7 +15,7 @@
 "Lot " = " גוש";
 "Parcel " = " חלקה";
 
-"Search By Lot & Parcel" = "חפש לפי מספרי גיא";
+"Search By Lot & Parcel" = "איתור כתובת ע\"ב גוש וחלקה";
 "Search By Address" = "חפש לפי כתובת";
 "Can't find Lot & Parcel" = "לא ניתן למצוא גוש וחלקה";
 "Standart Map" = "רחובות ומבנים";

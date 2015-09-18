@@ -128,15 +128,17 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
             }];
             break;
         }
-            
-        case MKAnnotationViewDragStateDragging: {
+        case MKAnnotationViewDragStateEnding: {
             WEAK_SELF;
-            
+            [MBProgressHUD showHUDAddedTo:self.view animated:YES];
             [[GMPGoogleGeocoder sharedInstance] geocodeLocation:[[CLLocation alloc]initWithLatitude:annotation.coordinate.latitude longitude:annotation.coordinate.longitude]
                                               completionHandler:^(GMPLocationAddress *address, NSError *error) {
                                                   if (!error) {
                                                       [annotation setTitle:LOCALIZED(address.fullAddress)];
                                                       weakSelf.currentAddress = address;
+                                                      [annotation setSubtitle:@""];
+
+                                                      [weakSelf searchCurrentGeodata];
                                                   } else {
                                                       // Google geocoding error
                                                       [GMPAlertService showDialogAlertWithTitle:LOCALIZED(@"")
@@ -150,12 +152,6 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
                                                                               }];
                                                   }
                                               }];
-            break;
-        }
-        case MKAnnotationViewDragStateEnding: {
-            [annotation setSubtitle:@""];
-            [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-            [self searchCurrentGeodata];
             break;
         }
         default:
@@ -311,6 +307,7 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
     WEAK_SELF;
     [self.communicator requestCadastralNumbersWithAddress:self.currentAddress.fullAddress completionBlock:^(GMPCadastre *cadastralInfo) {
 
+        NSLog(@"%@", self.currentAddress.fullAddress);
         [weakSelf showCadastralInfo:cadastralInfo];
 
     }];
