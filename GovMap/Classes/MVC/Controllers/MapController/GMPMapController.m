@@ -9,6 +9,7 @@
 #import <MapKit/MapKit.h>
 
 #import "GMPMapController.h"
+#import "GMPBaseNavigationController.h"
 
 #import "GMPLocationObserver.h"
 #import "GMPCommunicator.h"
@@ -107,6 +108,9 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view didChangeDragState:(MKAnnotationViewDragState)newState fromOldState:(MKAnnotationViewDragState)oldState
 {
+    GMPBaseNavigationController *baseNavControoler = (GMPBaseNavigationController *)self.navigationController;
+    baseNavControoler.pinDragging = YES;
+
     GMPUserAnnotation *annotation = (GMPUserAnnotation *)view.annotation;
     switch (newState) {
         case MKAnnotationViewDragStateStarting: {
@@ -149,6 +153,10 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
                                                       }];
                                                   }
                                               }];
+            break;
+        }
+        case MKAnnotationViewDragStateNone:{
+            baseNavControoler.pinDragging = NO;
             break;
         }
         default:

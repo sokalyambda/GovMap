@@ -80,10 +80,10 @@ static NSString *const kLongName = @"long_name";
         
         NSArray *results = JSONObject[kResults];
         NSArray *addressComponents = results[0][kAddressComponents];
-        
-        NSString *home = addressComponents[0][kLongName];
-        NSString *street = addressComponents[1][kLongName];
-        NSString *city = addressComponents[2][kLongName];
+
+        NSString *home   = 0 < addressComponents.count? addressComponents[0][kLongName]: @"";
+        NSString *street = 1 < addressComponents.count? addressComponents[1][kLongName]: @"";
+        NSString *city   = 2 < addressComponents.count? addressComponents[2][kLongName]: @"";
         
         NSArray *homes = [home componentsSeparatedByString:@"-"];
         

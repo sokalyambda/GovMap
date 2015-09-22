@@ -9,5 +9,6 @@
 @interface GMPBaseNavigationController : UINavigationController
 
 @property (strong, nonatomic) UIBarButtonItem *customBackButton;
+@property (assign, nonatomic, getter = isPinDragging) BOOL pinDragging;
 
 @end

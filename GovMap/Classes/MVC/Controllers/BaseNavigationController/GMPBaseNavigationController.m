@@ -60,9 +60,9 @@
  */
 - (void)backClick:(UIBarButtonItem *)sender
 {
-//    if ([BZRProjectFacade isOperationInProcess]) {
-//        return;
-//    }
+    if(self.isPinDragging) {
+        return;
+    }
     [self popViewControllerAnimated:YES];
 }
 
