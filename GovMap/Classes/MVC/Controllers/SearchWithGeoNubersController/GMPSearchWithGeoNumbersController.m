@@ -61,6 +61,7 @@ static NSString *const kMapControllerSegueIdentifier = @"mapControllerSegue";
         GMPMapController *controller = (GMPMapController *)segue.destinationViewController;
         controller.currentSearchType = GMPSearchTypeGeonumbers;
         controller.currentCadastre = self.currentCadastre;
+        [self.view.window endEditing:YES];
     }
 }
 

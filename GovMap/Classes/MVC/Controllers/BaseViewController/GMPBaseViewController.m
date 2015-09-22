@@ -32,6 +32,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.view.multipleTouchEnabled = NO;
+    self.view.exclusiveTouch = YES;
 }
 
 - (void)viewWillAppear:(BOOL)animated

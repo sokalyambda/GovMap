@@ -18,7 +18,7 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H5j-Ib-rPv">
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H5j-Ib-rPv">
                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KXL-B7-BSD" userLabel="Container View">
@@ -30,7 +30,7 @@
                                         <constraint firstAttribute="width" secondItem="HUc-CP-dgb" secondAttribute="height" multiplier="350:51" id="8Qw-Pv-JRN"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" returnKeyType="next"/>
+                                    <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
                                     <variation key="default">
                                         <mask key="constraints">
                                             <exclude reference="8Qw-Pv-JRN"/>
@@ -51,7 +51,7 @@
                                         <constraint firstAttribute="width" secondItem="gwC-Aa-lCC" secondAttribute="height" multiplier="34:5" id="DVt-Ki-Orl"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" returnKeyType="done"/>
+                                    <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                     <variation key="default">
                                         <mask key="constraints">
                                             <exclude reference="DVt-Ki-Orl"/>

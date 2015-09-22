@@ -17,6 +17,11 @@
     return [NSString stringWithFormat:@"%@ %@ %@", self.cityName, self.homeName, self.streetName];
 }
 
+- (NSString *)calloutTitleAddress
+{
+    return [NSString stringWithFormat:@"%@ %@ %@", self.cityName, self.streetName, self.homeName];
+}
+
 - (NSString *)cityName {
     if (!_cityName) {
         _cityName = @"";

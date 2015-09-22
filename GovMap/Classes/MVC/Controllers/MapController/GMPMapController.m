@@ -133,23 +133,20 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
             [MBProgressHUD showHUDAddedTo:self.view animated:YES];
             [[GMPGoogleGeocoder sharedInstance] geocodeLocation:[[CLLocation alloc]initWithLatitude:annotation.coordinate.latitude longitude:annotation.coordinate.longitude]
                                               completionHandler:^(GMPLocationAddress *address, NSError *error) {
-                                                  if (!error) {
-                                                      [annotation setTitle:LOCALIZED(address.fullAddress)];
+                                                  if (!error && address) {
+                                                      
                                                       weakSelf.currentAddress = address;
                                                       [annotation setSubtitle:@""];
-
+                                                      [annotation setTitle:LOCALIZED(weakSelf.currentAddress.calloutTitleAddress)];
                                                       [weakSelf searchCurrentGeodata];
                                                   } else {
                                                       // Google geocoding error
-                                                      [GMPAlertService showDialogAlertWithTitle:LOCALIZED(@"")
-                                                                                     andMessage:LOCALIZED(@"Address not found")
-                                                                                  forController:self
-                                                                          withSuccessCompletion:^{
-                                                                              [weakSelf setupMapAppearing];
-                                                                          }
-                                                                              andFailCompletion:^{
-                                                                                  [weakSelf.navigationController popViewControllerAnimated:YES];
-                                                                              }];
+                                                      [weakSelf.mapView deselectAnnotation:weakSelf.annotation animated:YES];
+                                                      [weakSelf.annotation setTitle:@""];
+                                                      [GMPAlertService
+                                                       showInfoAlertControllerWithTitle:LOCALIZED(@"") andMessage:LOCALIZED(@"Address not found") forController:weakSelf withCompletion:^{
+                                                          [weakSelf.navigationController popViewControllerAnimated:YES];
+                                                      }];
                                                   }
                                               }];
             break;
@@ -173,34 +170,31 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
     // GOOGLE Manager
     [[GMPGoogleGeocoder sharedInstance] geocodeLocation:location
                                       completionHandler:^(GMPLocationAddress *address, NSError *error) {
-                                          if (!error) {
+                                          if (!error && address) {
                                               
                                               if (!weakSelf.currentAddress) {
                                                   weakSelf.currentAddress = address;
                                               }
                                               weakSelf.annotation = [[GMPUserAnnotation alloc] initWithLocation:coordinate title:weakSelf.currentAddress.fullAddress];
                                               [weakSelf.mapView addAnnotation:weakSelf.annotation];
-
+                                              
                                               if (!weakSelf.currentCadastre) {
                                                   [weakSelf searchCurrentGeodata];
                                               } else {
-                                                 
+                                                  
                                                   [weakSelf showCadastralInfo:weakSelf.currentCadastre];
-                                              
+                                                  
                                               }
                                           } else {
                                               // Google geocoding error
-                                              [GMPAlertService showDialogAlertWithTitle:LOCALIZED(@"")
-                                                                             andMessage:LOCALIZED(@"Address not found")
-                                                                          forController:self
-                                                                  withSuccessCompletion:^{
-                                                                      [weakSelf setupMapAppearing];
-                                                                  }
-                                                                      andFailCompletion:^{
-                                                                          [weakSelf.navigationController popViewControllerAnimated:YES];
-                                                                      }];
+                                              [weakSelf.mapView deselectAnnotation:weakSelf.annotation animated:YES];
+                                              [weakSelf.annotation setTitle:@""];
+                                              [GMPAlertService showInfoAlertControllerWithTitle:LOCALIZED(@"") andMessage:LOCALIZED(@"Address not found") forController:weakSelf withCompletion:^{
+                                                  [weakSelf.navigationController popViewControllerAnimated:YES];
+                                              }];
                                           }
                                       }];
+    
 }
 
 /**
@@ -255,20 +249,17 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
                         // GOOGLE Manager
                         GMPLocationAddress *locAddress = [GMPLocationAddressParser locationAddressWithGovMapAddress:address];
                         [[GMPGoogleGeocoder sharedInstance] reverseGeocodeAddress:locAddress completionHandler:^(CLLocation *location, NSError *error) {
-                            if (!error) {
+                            if (!error && location) {
                                 [weakSelf setupMapAttributesForCoordinate:location.coordinate];
                             } else {
                                 // Google geocoding error
-                                [GMPAlertService showDialogAlertWithTitle:LOCALIZED(@"")
-                                                               andMessage:LOCALIZED(@"Address not found")
-                                                            forController:self
-                                                    withSuccessCompletion:^{
-                                                        [weakSelf setupMapAppearing];
-                                                    }
-                                                        andFailCompletion:^{
-                                                            [weakSelf.navigationController popViewControllerAnimated:YES];
-                                                        }];
+                               // [weakSelf.mapView deselectAnnotation:weakSelf.annotation animated:YES];
+                                [weakSelf.annotation setTitle:@""];
+                                [GMPAlertService showInfoAlertControllerWithTitle:LOCALIZED(@"") andMessage:LOCALIZED(@"Address not found") forController:weakSelf withCompletion:^{
+                                    [weakSelf.navigationController popViewControllerAnimated:YES];
+                                }];
                             }
+
                         }];
                         
                     } else {
@@ -306,24 +297,23 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
 {
     WEAK_SELF;
     [self.communicator requestCadastralNumbersWithAddress:self.currentAddress.fullAddress completionBlock:^(GMPCadastre *cadastralInfo) {
-
-        NSLog(@"%@", self.currentAddress.fullAddress);
+        
         [weakSelf showCadastralInfo:cadastralInfo];
-
+        
     }];
 }
 
 - (void)showCadastralInfo:(GMPCadastre *)cadastralInfo
 {
     dispatch_async(dispatch_get_main_queue(), ^{
-    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-    if (cadastralInfo) {
-        [self.annotation setSubtitle:[NSString stringWithFormat:@"%@ %ld %@ %ld", LOCALIZED(@"Lot "), cadastralInfo.major, LOCALIZED(@"Parcel "), cadastralInfo.minor]];
-    } else {
-        [self.annotation setSubtitle:[NSString localizedStringWithFormat:@"%@", LOCALIZED(@"Can't find Lot & Parcel")]];
-    }
-    [self.mapView selectAnnotation:self.annotation animated:YES];
-});
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        if (cadastralInfo) {
+            [self.annotation setSubtitle:[NSString stringWithFormat:@"%@ %ld %@ %ld", LOCALIZED(@"Lot "), cadastralInfo.major, LOCALIZED(@"Parcel "), cadastralInfo.minor]];
+        } else {
+            [self.annotation setSubtitle:[NSString localizedStringWithFormat:@"%@", LOCALIZED(@"Can't find Lot & Parcel")]];
+        }
+        [self.mapView selectAnnotation:self.annotation animated:YES];
+    });
     
 }
 

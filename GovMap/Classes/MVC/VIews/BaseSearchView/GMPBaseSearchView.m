@@ -61,7 +61,7 @@ static NSInteger const kAdditionalOffset = 15.f;
 #pragma mark - Notificaion handlers
 
 - (void)keyboardWillShow:(NSNotification*)notification
-{    
+{
     NSDictionary* info = [notification userInfo];
     CGRect keyBoardFrame = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
     

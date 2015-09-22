@@ -12,7 +12,7 @@
 @property (strong, nonatomic) NSString *streetName;
 @property (strong, nonatomic) NSString *homeName;
 @property (strong, nonatomic) NSString *fullAddress;
-
+@property (strong, nonatomic) NSString *calloutTitleAddress;
 @property (assign, nonatomic) CLLocationCoordinate2D coordinate;
 
 - (instancetype)initWithCityName:(NSString *)cityName andFullSreetName:(NSString *)fullStreetName;
