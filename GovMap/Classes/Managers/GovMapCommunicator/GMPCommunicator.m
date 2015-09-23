@@ -17,6 +17,7 @@
 #import "GMPAlertService.h"
 #import "GMPReachabilityService.h"
 
+static NSString *const kSearchButtonStyleNotVisible = @"none";
 static NSString *const kURLString = @"http://www.govmap.gov.il";
 static NSInteger const kSearchHTMLFrameIndex = 13;
 static NSInteger const kAttemtsAmountForDataRetrieving = 30;
@@ -137,9 +138,17 @@ static NSInteger const kAttemtsAmountForDataRetrieving = 30;
 
 - (void)fillTextFieldWithAddress
 {
-    //[self.webView stringByEvaluatingJavaScriptFromString:@"document.getElementById('lnkFindBlockByAddress').click()"];
-    [self.webView stringByEvaluatingJavaScriptFromString:@"FSS_FindBlockForAddress()"];
-    [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(checkInnerTextForCadastre:) userInfo:@0 repeats:YES];
+    NSString *searchButtonStyle = [self.webView stringByEvaluatingJavaScriptFromString:@"document.getElementById('trFSFindGushUrl').getAttribute('style')"];
+    searchButtonStyle = [searchButtonStyle componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@" ;"]].lastObject;
+        
+    // In some cases we don't want to proceed even if address is kind of correct
+    if ([searchButtonStyle isEqualToString:kSearchButtonStyleNotVisible]) {
+        _isReadyForRequests = YES;
+        self.requestCadasterCompletionBlock(nil);
+    } else {
+        [self.webView stringByEvaluatingJavaScriptFromString:@"FSS_FindBlockForAddress()"];
+        [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(checkInnerTextForCadastre:) userInfo:@0 repeats:YES];
+    }
 }
 
 - (void)checkInnerTextForCadastre:(NSTimer *)timer
