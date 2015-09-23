@@ -17,6 +17,8 @@ NSString *const kCity = @"City";
 NSString *const kStreet = @"Street";
 NSString *const kHome = @"Home";
 
+static NSString *const kAcceptableCharacters = @"0123456789";
+
 @interface GMPSearchWithAddressView () <UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *containerView;
@@ -41,6 +43,8 @@ NSString *const kHome = @"Home";
     return self;
 }
 
+
+
 #pragma mark - UITextFieldDelegate methods
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -51,6 +55,18 @@ NSString *const kHome = @"Home";
         [self.homeTextField becomeFirstResponder];
     } else if ([self.homeTextField isFirstResponder]) {
         [self.homeTextField resignFirstResponder];
+    }
+    return YES;
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    if ([textField isEqual:self.homeTextField]) {
+        NSCharacterSet *cs = [[NSCharacterSet characterSetWithCharactersInString:kAcceptableCharacters] invertedSet];
+        NSString *filtered = [[string componentsSeparatedByCharactersInSet:cs] componentsJoinedByString:@""];
+        
+        BOOL isEqual = [string isEqualToString:filtered];
+        return isEqual;
     }
     return YES;
 }
