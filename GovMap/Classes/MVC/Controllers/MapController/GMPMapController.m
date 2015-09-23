@@ -138,10 +138,10 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
             [[GMPGoogleGeocoder sharedInstance] geocodeLocation:[[CLLocation alloc]initWithLatitude:annotation.coordinate.latitude longitude:annotation.coordinate.longitude]
                                               completionHandler:^(GMPLocationAddress *address, NSError *error) {
                                                   if (!error && address) {
-                                                      
                                                       weakSelf.currentAddress = address;
-                                                      [annotation setSubtitle:@""];
+                                                      
                                                       [annotation setTitle:LOCALIZED(weakSelf.currentAddress.calloutTitleAddress)];
+                                                      [annotation setSubtitle:@""];
                                                       [weakSelf searchCurrentGeodata];
                                                   } else {
                                                       // Google geocoding error
@@ -183,7 +183,7 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
                                               if (!weakSelf.currentAddress) {
                                                   weakSelf.currentAddress = address;
                                               }
-                                              weakSelf.annotation = [[GMPUserAnnotation alloc] initWithLocation:coordinate title:weakSelf.currentAddress.fullAddress];
+                                              weakSelf.annotation = [[GMPUserAnnotation alloc] initWithLocation:coordinate title:weakSelf.currentAddress.calloutTitleAddress];
                                               [weakSelf.mapView addAnnotation:weakSelf.annotation];
                                               
                                               if (!weakSelf.currentCadastre) {
@@ -195,8 +195,7 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
                                               }
                                           } else {
                                               // Google geocoding error
-                                              [weakSelf.mapView deselectAnnotation:weakSelf.annotation animated:YES];
-                                              [weakSelf.annotation setTitle:@""];
+
                                               [GMPAlertService showInfoAlertControllerWithTitle:LOCALIZED(@"") andMessage:LOCALIZED(@"Address not found") forController:weakSelf withCompletion:^{
                                                   [weakSelf.navigationController popViewControllerAnimated:YES];
                                               }];
@@ -261,7 +260,7 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
                                 [weakSelf setupMapAttributesForCoordinate:location.coordinate];
                             } else {
                                 // Google geocoding error
-                               // [weakSelf.mapView deselectAnnotation:weakSelf.annotation animated:YES];
+                                [weakSelf.mapView deselectAnnotation:weakSelf.annotation animated:YES];
                                 [weakSelf.annotation setTitle:@""];
                                 [GMPAlertService showInfoAlertControllerWithTitle:LOCALIZED(@"") andMessage:LOCALIZED(@"Address not found") forController:weakSelf withCompletion:^{
                                     [weakSelf.navigationController popViewControllerAnimated:YES];
