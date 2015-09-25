@@ -127,20 +127,20 @@
                     <exclude reference="u37-2h-wnn"/>
                 </mask>
                 <mask key="constraints">
+                    <exclude reference="Oxw-Wl-kTv"/>
+                    <exclude reference="QPA-eX-o9V"/>
                     <exclude reference="OWe-vP-OzV"/>
                     <exclude reference="d9h-WP-FZ2"/>
                     <exclude reference="BkZ-FZ-geU"/>
-                    <exclude reference="8CH-Vr-Wrs"/>
-                    <exclude reference="h6C-1P-TtP"/>
-                    <exclude reference="xjS-mf-251"/>
                     <exclude reference="0gx-dT-5VV"/>
                     <exclude reference="4H6-SW-RgN"/>
                     <exclude reference="AU8-Ml-GZN"/>
                     <exclude reference="H8J-Lv-qUE"/>
                     <exclude reference="L5a-1T-aqn"/>
                     <exclude reference="UPw-sH-hpV"/>
-                    <exclude reference="Oxw-Wl-kTv"/>
-                    <exclude reference="QPA-eX-o9V"/>
+                    <exclude reference="8CH-Vr-Wrs"/>
+                    <exclude reference="h6C-1P-TtP"/>
+                    <exclude reference="xjS-mf-251"/>
                 </mask>
             </variation>
             <variation key="heightClass=regular-widthClass=compact">
@@ -152,20 +152,20 @@
                     <include reference="u37-2h-wnn"/>
                 </mask>
                 <mask key="constraints">
+                    <include reference="Oxw-Wl-kTv"/>
+                    <include reference="QPA-eX-o9V"/>
                     <include reference="OWe-vP-OzV"/>
                     <include reference="d9h-WP-FZ2"/>
                     <include reference="BkZ-FZ-geU"/>
-                    <include reference="8CH-Vr-Wrs"/>
-                    <include reference="h6C-1P-TtP"/>
-                    <include reference="xjS-mf-251"/>
                     <include reference="0gx-dT-5VV"/>
                     <include reference="4H6-SW-RgN"/>
                     <include reference="AU8-Ml-GZN"/>
                     <include reference="H8J-Lv-qUE"/>
                     <include reference="L5a-1T-aqn"/>
                     <include reference="UPw-sH-hpV"/>
-                    <include reference="Oxw-Wl-kTv"/>
-                    <include reference="QPA-eX-o9V"/>
+                    <include reference="8CH-Vr-Wrs"/>
+                    <include reference="h6C-1P-TtP"/>
+                    <include reference="xjS-mf-251"/>
                 </mask>
             </variation>
         </view>

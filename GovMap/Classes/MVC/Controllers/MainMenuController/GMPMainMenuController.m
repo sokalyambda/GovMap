@@ -8,6 +8,7 @@
 
 #import "GMPMainMenuController.h"
 #import "GMPMapController.h"
+#import "GMPAppLanguageSwitchController.h"
 
 #import "GMPLocationObserver.h"
 
@@ -20,6 +21,7 @@ static NSString *const kSearchWithGeoNumbersControllerSegueIdentifier = @"search
 @interface GMPMainMenuController() <GMPMenuViewDelegate>
 
 @property (weak, nonatomic) IBOutlet GMPMenuView *menuView;
+@property (strong, nonatomic) GMPAppLanguageSwitchController *appLanguageSwitchController;
 
 @end
 
@@ -31,6 +33,12 @@ static NSString *const kSearchWithGeoNumbersControllerSegueIdentifier = @"search
 {
     [super viewDidLoad];
     self.menuView.delegate = self;
+    
+    self.appLanguageSwitchController = [[GMPAppLanguageSwitchController alloc] initWithNibName:NSStringFromClass([GMPAppLanguageSwitchController class]) bundle:nil];
+    //[self.appLanguageSwitchController.view setFrame:self.appLanguageSwitchController.appLanguageSegmentControl.frame];
+    
+    [self.navigationController addChildViewController:self.appLanguageSwitchController];
+    [self.appLanguageSwitchController didMoveToParentViewController:self.navigationController];
 }
 
 #pragma mark - GMPMenuViewDelegate methods
@@ -67,6 +75,7 @@ static NSString *const kSearchWithGeoNumbersControllerSegueIdentifier = @"search
     [self.navigationController setNavigationBarHidden:NO animated:YES];
     
     self.navigationItem.title = LOCALIZED(@"Main Menu");
+    [self.navigationItem setTitleView:self.appLanguageSwitchController.view];
     
     //remove back button (custom and system)
     self.navigationItem.leftBarButtonItem = nil;

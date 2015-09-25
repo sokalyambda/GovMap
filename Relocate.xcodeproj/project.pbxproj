@@ -62,6 +62,8 @@
 		D3E2897F1B96E9B600F7C177 /* GMPLocationAddressParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E2897E1B96E9B600F7C177 /* GMPLocationAddressParser.m */; };
 		D3E5347B1B8F39FA00C9D87B /* GMPMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E5347A1B8F39FA00C9D87B /* GMPMenuView.m */; };
 		D3E7D2F91B9D91A700609406 /* GMPBorderedTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E7D2F81B9D91A700609406 /* GMPBorderedTextField.m */; };
+		D3EEAAED1BB5749A00E1B192 /* GMPAppLanguageSwitchController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3EEAAEB1BB5749A00E1B192 /* GMPAppLanguageSwitchController.m */; };
+		D3EEAAEE1BB5749A00E1B192 /* GMPAppLanguageSwitchController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3EEAAEC1BB5749A00E1B192 /* GMPAppLanguageSwitchController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -188,6 +190,9 @@
 		D3E5347A1B8F39FA00C9D87B /* GMPMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GMPMenuView.m; path = Classes/MVC/Views/MenuView/GMPMenuView.m; sourceTree = "<group>"; };
 		D3E7D2F71B9D91A700609406 /* GMPBorderedTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMPBorderedTextField.h; sourceTree = "<group>"; };
 		D3E7D2F81B9D91A700609406 /* GMPBorderedTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMPBorderedTextField.m; sourceTree = "<group>"; };
+		D3EEAAEA1BB5749A00E1B192 /* GMPAppLanguageSwitchController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GMPAppLanguageSwitchController.h; path = Classes/MVC/Controllers/AppLanguageSwitch/GMPAppLanguageSwitchController.h; sourceTree = "<group>"; };
+		D3EEAAEB1BB5749A00E1B192 /* GMPAppLanguageSwitchController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GMPAppLanguageSwitchController.m; path = Classes/MVC/Controllers/AppLanguageSwitch/GMPAppLanguageSwitchController.m; sourceTree = "<group>"; };
+		D3EEAAEC1BB5749A00E1B192 /* GMPAppLanguageSwitchController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GMPAppLanguageSwitchController.xib; path = Classes/MVC/Controllers/AppLanguageSwitch/GMPAppLanguageSwitchController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -529,6 +534,7 @@
 		58C131491B8EF7C60095045A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				D3EEAAE91BB573F900E1B192 /* AppLanguageSwitch */,
 				3E820AC11B903F4000EDEEA4 /* SearchWithGeoNumbersController */,
 				3E820AB71B90358A00EDEEA4 /* SearchWithAddressController */,
 				D39029A91B90504D0097C4B6 /* MapViewController */,
@@ -868,6 +874,16 @@
 			name = BorderdTextField;
 			sourceTree = "<group>";
 		};
+		D3EEAAE91BB573F900E1B192 /* AppLanguageSwitch */ = {
+			isa = PBXGroup;
+			children = (
+				D3EEAAEA1BB5749A00E1B192 /* GMPAppLanguageSwitchController.h */,
+				D3EEAAEB1BB5749A00E1B192 /* GMPAppLanguageSwitchController.m */,
+				D3EEAAEC1BB5749A00E1B192 /* GMPAppLanguageSwitchController.xib */,
+			);
+			name = AppLanguageSwitch;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -961,6 +977,7 @@
 				58C131281B8EF5A60095045A /* LaunchScreen.xib in Resources */,
 				58A8419F1B94792D0032AEF0 /* GMPSearchWithAddressView.xib in Resources */,
 				58C131251B8EF5A60095045A /* Images.xcassets in Resources */,
+				D3EEAAEE1BB5749A00E1B192 /* GMPAppLanguageSwitchController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1015,6 +1032,7 @@
 				58C1317D1B8F03920095045A /* NSString+JSONRepresentation.m in Sources */,
 				3E820AB51B8F3D6400EDEEA4 /* GMPSearchWithAddressView.m in Sources */,
 				58C131641B8F02CE0095045A /* UIView+Shaking.m in Sources */,
+				D3EEAAED1BB5749A00E1B192 /* GMPAppLanguageSwitchController.m in Sources */,
 				58A841B61B949E0D0032AEF0 /* GMPWazeNavigationService.m in Sources */,
 				58C1311D1B8EF5A60095045A /* AppDelegate.m in Sources */,
 				58C1318F1B8F043B0095045A /* GMPLocationObserver.m in Sources */,
