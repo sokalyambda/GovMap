@@ -22,3 +22,4 @@
 // Alert messages
 "No internet connection. Do you want to try again?" = "No internet connection. Do you want to try again?";
 "Error occurred while trying to connect to govmap. Trying again..." = "Error occurred while trying to connect to govmap. Trying again...";
+"Setting will take effect after restarting application" = "Setting will take effect after restarting application";

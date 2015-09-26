@@ -35,10 +35,15 @@ static NSString *const kSearchWithGeoNumbersControllerSegueIdentifier = @"search
     self.menuView.delegate = self;
     
     self.appLanguageSwitchController = [[GMPAppLanguageSwitchController alloc] initWithNibName:NSStringFromClass([GMPAppLanguageSwitchController class]) bundle:nil];
-    //[self.appLanguageSwitchController.view setFrame:self.appLanguageSwitchController.appLanguageSegmentControl.frame];
     
     [self.navigationController addChildViewController:self.appLanguageSwitchController];
     [self.appLanguageSwitchController didMoveToParentViewController:self.navigationController];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [self.appLanguageSwitchController removeFromParentViewController];
 }
 
 #pragma mark - GMPMenuViewDelegate methods
@@ -73,11 +78,8 @@ static NSString *const kSearchWithGeoNumbersControllerSegueIdentifier = @"search
 - (void)customizeNavigationItem
 {
     [self.navigationController setNavigationBarHidden:NO animated:YES];
-    
-    self.navigationItem.title = LOCALIZED(@"Main Menu");
     [self.navigationItem setTitleView:self.appLanguageSwitchController.view];
-    
-    //remove back button (custom and system)
+
     self.navigationItem.leftBarButtonItem = nil;
     self.navigationItem.hidesBackButton = YES;
 }

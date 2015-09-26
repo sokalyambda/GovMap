@@ -15,17 +15,22 @@ static NSString *const kSelectedIndex = @"SelectedIndex";
 
 @implementation GMPAppLanguageSwitchController
 
+#pragma mark - View Lifecycle
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     NSArray *ar = [[NSUserDefaults standardUserDefaults]valueForKey:kAppleLanguages];
     if ([ar.firstObject isEqualToString:@"en"]) {
         self.appLanguageSegmentControl.selectedSegmentIndex = 0;
     } else {
         self.appLanguageSegmentControl.selectedSegmentIndex = 1;
     }
-
 }
+
+
+#pragma mark - Actions
 
 - (IBAction)appLanguageChanged:(id)sender
 {
@@ -36,10 +41,7 @@ static NSString *const kSelectedIndex = @"SelectedIndex";
         [[NSUserDefaults standardUserDefaults] setObject:[NSArray arrayWithObjects:@"he", nil] forKey: kAppleLanguages];
         [[NSUserDefaults standardUserDefaults] setObject:@1 forKey:kSelectedIndex];
     }
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:LOCALIZED(@"") message:LOCALIZED(@"Please, restart application") delegate:self cancelButtonTitle:nil otherButtonTitles:LOCALIZED(@"OK"), nil];
-    [alert show];
-    
+    [GMPAlertService showInfoAlertControllerWithTitle:LOCALIZED(@"") andMessage:LOCALIZED(@"Setting will take effect after restarting application") forController:self withCompletion:nil];
 }
-
 
 @end

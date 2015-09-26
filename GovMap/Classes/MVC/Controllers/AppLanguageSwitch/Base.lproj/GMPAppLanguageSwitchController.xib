@@ -7,7 +7,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GMPAppLanguageSwitchController">
             <connections>
                 <outlet property="appLanguageSegmentControl" destination="ub8-dz-yhz" id="HNq-KD-fdt"/>
-                <outlet property="view" destination="ub8-dz-yhz" id="GJQ-At-6rl"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="CvK-g3-slS"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -26,7 +26,7 @@
                     </connections>
                 </segmentedControl>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="centerX" secondItem="ub8-dz-yhz" secondAttribute="centerX" id="BBe-Vp-Cli"/>
                 <constraint firstAttribute="centerY" secondItem="ub8-dz-yhz" secondAttribute="centerY" id="rRC-Ma-5aX"/>
@@ -51,7 +51,7 @@
                     <include reference="rRC-Ma-5aX"/>
                 </mask>
             </variation>
-            <point key="canvasLocation" x="229.5" y="240"/>
+            <point key="canvasLocation" x="327.5" y="-45"/>
         </view>
     </objects>
 </document>

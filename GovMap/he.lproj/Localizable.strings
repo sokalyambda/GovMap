@@ -22,3 +22,4 @@
 "Satellite Map" = "תצלום אויר";
 "No internet connection. Do you want to try again?" = "אין חיבור לאינטרנט. האם אתה רוצה לנסות שוב?";
 "Error occurred while trying to connect to govmap. Trying again..." = "אירעה שגיאה בעת הניסיון להתחבר לgovmap. מנסה שוב ...";
+"Setting will take effect after restarting application" = "הגדרה תיכנס לתוקף לאחר ההפעלה מחדש של יישום";
