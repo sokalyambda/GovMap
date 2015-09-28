@@ -11,7 +11,6 @@
 #import "GMPAlertService.h"
 
 static NSString *const kAppleLanguages = @"AppleLanguages";
-static NSString *const kSelectedIndex = @"SelectedIndex";
 
 @implementation GMPAppLanguageSwitchController
 
@@ -36,10 +35,8 @@ static NSString *const kSelectedIndex = @"SelectedIndex";
 {
     if (self.appLanguageSegmentControl.selectedSegmentIndex == 0) {
         [[NSUserDefaults standardUserDefaults] setObject:[NSArray arrayWithObjects:@"en", nil] forKey: kAppleLanguages];
-        [[NSUserDefaults standardUserDefaults] setObject:@0 forKey:kSelectedIndex];
     } else {
         [[NSUserDefaults standardUserDefaults] setObject:[NSArray arrayWithObjects:@"he", nil] forKey: kAppleLanguages];
-        [[NSUserDefaults standardUserDefaults] setObject:@1 forKey:kSelectedIndex];
     }
     [GMPAlertService showInfoAlertControllerWithTitle:LOCALIZED(@"") andMessage:LOCALIZED(@"Setting will take effect after restarting application") forController:self withCompletion:nil];
 }
