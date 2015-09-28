@@ -42,7 +42,7 @@ static NSString *const kLongName = @"long_name";
 
 - (void)geocodeLocation:(CLLocation *)location completionHandler:(GMSGeocodeLocationCallback)handler
 {
-    NSString *fullURLString = [NSString stringWithFormat:@"%@%f,%f%@",
+    NSString *fullURLString = [NSString stringWithFormat:@"%@%f,%f%@&language=iw",
                                kLocationBaseURLString,
                                location.coordinate.latitude,
                                location.coordinate.longitude,
