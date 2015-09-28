@@ -40,26 +40,23 @@ static NSString *const kSearchWithGeoNumbersControllerSegueIdentifier = @"search
     [self.appLanguageSwitchController didMoveToParentViewController:self.navigationController];
 }
 
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-    [self.appLanguageSwitchController removeFromParentViewController];
-}
-
 #pragma mark - GMPMenuViewDelegate methods
 
 - (void)menuViewDidPressFirstButton:(GMPMenuView *)menuView
 {
+    [self.appLanguageSwitchController removeFromParentViewController];
     [self performSegueWithIdentifier:kSearchWithAddressControllerSegueIdentifier sender:self];
 }
 
 - (void)menuViewDidPressSecondButton:(GMPMenuView *)menuView
 {
+    [self.appLanguageSwitchController removeFromParentViewController];
     [self performSegueWithIdentifier:kMapControllerSegueIdentifier sender:self];
 }
 
 - (void)menuViewDidPressThirdButton:(GMPMenuView *)menuView
 {
+    [self.appLanguageSwitchController removeFromParentViewController];
     [self performSegueWithIdentifier:kSearchWithGeoNumbersControllerSegueIdentifier sender:self];
 }
 
@@ -68,6 +65,7 @@ static NSString *const kSearchWithGeoNumbersControllerSegueIdentifier = @"search
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:kMapControllerSegueIdentifier]) {
+        
         GMPMapController *controller = (GMPMapController *)segue.destinationViewController;
         controller.currentSearchType = GMPSearchTypeCurrentPlacing;
     }
