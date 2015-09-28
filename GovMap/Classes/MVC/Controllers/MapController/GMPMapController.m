@@ -255,6 +255,9 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
                         
                         // GOOGLE Manager
                         GMPLocationAddress *locAddress = [GMPLocationAddressParser locationAddressWithGovMapAddress:address];
+                        //setup current address for callout title
+                        weakSelf.currentAddress = locAddress;
+                        
                         [[GMPGoogleGeocoder sharedInstance] reverseGeocodeAddress:locAddress completionHandler:^(CLLocation *location, NSError *error) {
                             if (!error && location) {
                                 [weakSelf setupMapAttributesForCoordinate:location.coordinate];
