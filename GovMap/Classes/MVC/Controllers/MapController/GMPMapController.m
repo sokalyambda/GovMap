@@ -51,19 +51,13 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
     return _communicator;
 }
 
-- (GMPLocationObserver *)locationObserver
-{
-    if (!_locationObserver) {
-        _locationObserver = [GMPLocationObserver sharedInstance];
-    }
-    return _locationObserver;
-}
-
 #pragma mark - View Lifecycle
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.locationObserver = [GMPLocationObserver sharedInstance];
     
     [self.mapTypeSegmentControl setTitle:LOCALIZED(@"Standart Map") forSegmentAtIndex:0];
     [self.mapTypeSegmentControl setTitle:LOCALIZED(@"Satellite Map") forSegmentAtIndex:1];
