@@ -135,7 +135,7 @@ static NSInteger const kAttemtsAmountForDataRetrieving = 30;
         
         [self.webView stringByEvaluatingJavaScriptFromString:jsSetTextFieldValue];
         [self.webView stringByEvaluatingJavaScriptFromString:@"FS_Search()"];
-        [self performSelector:@selector(fillTextFieldWithAddress) withObject:self afterDelay:0.5];
+        [self performSelector:@selector(fillTextFieldWithAddress) withObject:self afterDelay:1.0];
     });
 }
 
@@ -226,7 +226,7 @@ static NSInteger const kAttemtsAmountForDataRetrieving = 30;
                                          @"document.getElementById('tbSearchWord').value = '%@'", cadastralString];
         [self.webView stringByEvaluatingJavaScriptFromString:jsSetTextFieldValue];
         [self.webView stringByEvaluatingJavaScriptFromString:@"FS_Search()"];
-        [self performSelector:@selector(fillTextFieldWithCadastralString) withObject:self afterDelay:0.5];
+        [self performSelector:@selector(fillTextFieldWithCadastralString) withObject:self afterDelay:1.0];
     });
 }
 

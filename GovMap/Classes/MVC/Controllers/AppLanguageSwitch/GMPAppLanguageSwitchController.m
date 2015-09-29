@@ -23,8 +23,10 @@ static NSString *const kAppleLanguages = @"AppleLanguages";
     NSArray *ar = [[NSUserDefaults standardUserDefaults]valueForKey:kAppleLanguages];
     if ([ar.firstObject isEqualToString:@"en"]) {
         self.appLanguageSegmentControl.selectedSegmentIndex = 0;
-    } else {
+    } else if ([ar.firstObject isEqualToString:@"he"]){
         self.appLanguageSegmentControl.selectedSegmentIndex = 1;
+    } else {
+        self.appLanguageSegmentControl.selectedSegmentIndex = -1;
     }
 }
 

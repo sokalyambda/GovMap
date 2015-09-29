@@ -52,7 +52,10 @@
                          }];
     
     [alertController addAction:ok];
-    [controller presentViewController:alertController animated:YES completion:nil];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [controller presentViewController:alertController animated:YES completion:nil];
+    });
+
 }
 
 @end

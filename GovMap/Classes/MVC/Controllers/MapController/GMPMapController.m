@@ -134,8 +134,11 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
                                                   if (!error && address) {
                                                       weakSelf.currentAddress = address;
                                                       
-                                                      [annotation setTitle:LOCALIZED(weakSelf.currentAddress.calloutTitleAddress)];
-                                                      [annotation setSubtitle:@""];
+                                                      dispatch_async(dispatch_get_main_queue(), ^{
+                                                          [annotation setTitle:LOCALIZED(weakSelf.currentAddress.calloutTitleAddress)];
+                                                          [annotation setSubtitle:@""];
+                                                      });
+                                                      
                                                       [weakSelf searchCurrentGeodata];
                                                   } else {
                                                       // Google geocoding error
@@ -300,8 +303,9 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
 - (void)searchCurrentGeodata
 {
     WEAK_SELF;
+    NSLog(@"%@",self.currentAddress.fullAddress);
     [self.communicator requestCadastralNumbersWithAddress:self.currentAddress.fullAddress completionBlock:^(GMPCadastre *cadastralInfo) {
-        
+        NSLog(@"%ld %ld",(long)cadastralInfo.minor, (long)cadastralInfo.major);
         [weakSelf showCadastralInfo:cadastralInfo];
         
     }];

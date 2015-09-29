@@ -14,7 +14,8 @@
 
 - (NSString *)fullAddress
 {
-    return [NSString stringWithFormat:@"%@ %@ %@", self.cityName, self.homeName, self.streetName];
+    //change <->
+    return [NSString stringWithFormat:@"%@ %@ %@", self.streetName, self.homeName, self.cityName];
 }
 
 - (NSString *)calloutTitleAddress
