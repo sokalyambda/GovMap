@@ -942,6 +942,7 @@
 					};
 					58C1312C1B8EF5A60095045A = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = 7JSQETKKF7;
 						TestTargetID = 58C131131B8EF5A60095045A;
 					};
 				};
@@ -1258,13 +1259,14 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GovMap/Relocate-Prefix.pch";
 				INFOPLIST_FILE = GovMap/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = Relocate;
-				PROVISIONING_PROFILE = "881ebf32-c829-42a2-a214-001fd3ad6888";
+				PROVISIONING_PROFILE = "6c90efa1-41c6-4f35-b5c9-c7446c9cc4b5";
 			};
 			name = Debug;
 		};
@@ -1276,13 +1278,14 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GovMap/Relocate-Prefix.pch";
 				INFOPLIST_FILE = GovMap/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = Relocate;
-				PROVISIONING_PROFILE = "881ebf32-c829-42a2-a214-001fd3ad6888";
+				PROVISIONING_PROFILE = "6c90efa1-41c6-4f35-b5c9-c7446c9cc4b5";
 			};
 			name = Release;
 		};
@@ -1290,6 +1293,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -1301,6 +1306,7 @@
 				INFOPLIST_FILE = GovMapTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = RelocateTests;
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GovMap.app/GovMap";
 			};
 			name = Debug;
@@ -1309,6 +1315,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -1316,6 +1324,7 @@
 				INFOPLIST_FILE = GovMapTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = RelocateTests;
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GovMap.app/GovMap";
 			};
 			name = Release;

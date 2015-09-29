@@ -98,6 +98,9 @@ static NSInteger const kAttemtsAmountForDataRetrieving = 30;
      @"document.getElementById('divTableResultsFromLink').innerText = ''"];
     [self.webView stringByEvaluatingJavaScriptFromString:
      @"document.getElementById('tdFSTableResultsFromLink').innerText = ''"];
+    
+    self.address = @"";
+    self.cadastralInfo = nil;
 }
 
 #pragma mark - Requesting data with address
@@ -110,8 +113,10 @@ static NSInteger const kAttemtsAmountForDataRetrieving = 30;
         return;
     }
     
-    if (!self.isReadyForRequests && [self.delegate respondsToSelector:@selector(communicatorWasNotReadyForRequest:)]) {
-        [self.delegate communicatorWasNotReadyForRequest:self];
+    if (!self.isReadyForRequests) {
+        if ([self.delegate respondsToSelector:@selector(communicatorWasNotReadyForRequest:)]) {
+            [self.delegate communicatorWasNotReadyForRequest:self];
+        }
         return;
     }
     
@@ -200,19 +205,20 @@ static NSInteger const kAttemtsAmountForDataRetrieving = 30;
     }
     
     if (!self.isReadyForRequests) {
-        [self.delegate communicatorWasNotReadyForRequest:self];
+        if ([self.delegate respondsToSelector:@selector(communicatorWasNotReadyForRequest:)]) {
+            [self.delegate communicatorWasNotReadyForRequest:self];
+        }
         return;
     }
     
     // Asynch dispatch to prevent crash when making this request from block (not a main thread)
     dispatch_async(dispatch_get_main_queue(), ^{
         
-        self.cadastralInfo = cadastralInfo;
-        
         [self clearTableResultsFromLink];
         
-        NSString *cadastralString = [NSString stringWithFormat:@"גוש %ld, חלקה %ld", cadastralInfo.major, cadastralInfo.minor];
+        self.cadastralInfo = cadastralInfo;
         
+        NSString *cadastralString = [NSString stringWithFormat:@"גוש %ld, חלקה %ld", cadastralInfo.major, cadastralInfo.minor];
         _isReadyForRequests = NO;
         self.requestAddressCompletionBlock = completionBlock;
         
