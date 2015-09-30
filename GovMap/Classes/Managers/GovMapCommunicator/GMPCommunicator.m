@@ -17,7 +17,7 @@
 #import "GMPAlertService.h"
 #import "GMPReachabilityService.h"
 
-static NSString *const kSearchButtonStyleNotVisible = @"none";
+static NSString *const kStyleNotVisible = @"none";
 static NSString *const kURLString = @"http://www.govmap.gov.il";
 static NSInteger const kSearchHTMLFrameIndex = 13;
 static NSInteger const kAttemtsAmountForDataRetrieving = 30;
@@ -143,11 +143,25 @@ static NSInteger const kAttemtsAmountForDataRetrieving = 30;
 
 - (void)fillTextFieldWithAddress
 {
+    NSArray *parsedStrings;
+    
     NSString *searchButtonStyle = [self.webView stringByEvaluatingJavaScriptFromString:@"document.getElementById('trFSFindGushUrl').getAttribute('style')"];
-    searchButtonStyle = [searchButtonStyle componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@" ;"]].lastObject;
-        
+    
+    parsedStrings = [searchButtonStyle componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@" "]];
+    searchButtonStyle = [parsedStrings.lastObject componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@";"]].firstObject;
+    
+    NSLog(@"Search button style: %@", searchButtonStyle);
+    
+    NSString *sugjestionsTableStyle = [self.webView stringByEvaluatingJavaScriptFromString:@"document.getElementById('trFSSearchParams').getAttribute('style')"];
+    
+    parsedStrings = [sugjestionsTableStyle componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@" "]];
+    sugjestionsTableStyle = [parsedStrings.lastObject componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@";"]].firstObject;
+    
+    NSLog(@"Table view style: %@", sugjestionsTableStyle);
+    
     // In some cases we don't want to proceed even if address is kind of correct
-    if ([searchButtonStyle isEqualToString:kSearchButtonStyleNotVisible]) {
+    if ([searchButtonStyle isEqualToString:kStyleNotVisible] ||
+        ![sugjestionsTableStyle isEqualToString:kStyleNotVisible]) {
         _isReadyForRequests = YES;
         self.requestCadasterCompletionBlock(nil);
     } else {
@@ -169,6 +183,8 @@ static NSInteger const kAttemtsAmountForDataRetrieving = 30;
         _isReadyForRequests = YES;
         timerFireCounter = 0;
         
+        [self.webView stringByEvaluatingJavaScriptFromString:@"FSS_ShowNewSearch(true)"];
+        
         NSArray *cadastalNumbersWithText = [cadastralData componentsSeparatedByString:@","];
         NSString *majorNumber = [[((NSString *)cadastalNumbersWithText[0]) componentsSeparatedByCharactersInSet:
                                   [[NSCharacterSet decimalDigitCharacterSet] invertedSet]] componentsJoinedByString:@""];
@@ -178,7 +194,9 @@ static NSInteger const kAttemtsAmountForDataRetrieving = 30;
         self.requestCadasterCompletionBlock([GMPCadastre cadastreWithMajor:majorNumber.integerValue minor:minorNumber.integerValue]);
     }
     else {
-            if (timerFireCounter++ == kAttemtsAmountForDataRetrieving) {
+        if (timerFireCounter++ == kAttemtsAmountForDataRetrieving) {
+            [self.webView stringByEvaluatingJavaScriptFromString:@"FSS_ShowNewSearch(true)"];
+            
             [timer invalidate];
             _isReadyForRequests = YES;
             timerFireCounter = 0;
@@ -235,6 +253,7 @@ static NSInteger const kAttemtsAmountForDataRetrieving = 30;
 - (void)fillTextFieldWithCadastralString
 {
     //[self.webView stringByEvaluatingJavaScriptFromString:@"document.getElementById('lnkFindAddressByBlock').click()"];
+    
     [self.webView stringByEvaluatingJavaScriptFromString:@"FSS_FindAddressForBlock()"];
     [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(checkInnerTextForAddress:) userInfo:@0 repeats:YES];
 }
