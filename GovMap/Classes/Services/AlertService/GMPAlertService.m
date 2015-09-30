@@ -22,7 +22,9 @@
         }
     }];
     [alertController addAction:confirmAction];
-    [controller presentViewController:alertController animated:YES completion:nil];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [controller presentViewController:alertController animated:YES completion:nil];
+    });
 }
 
 + (void)showDialogAlertWithTitle:(NSString *)title andMessage:(NSString *)message forController:(UIViewController *)controller withSuccessCompletion:(void(^)())successCompletion andFailCompletion:(void(^)())failCompletion
