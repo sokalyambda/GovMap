@@ -135,7 +135,7 @@ static NSInteger const kAttemtsAmountForDataRetrieving = 30;
         
         [self.webView stringByEvaluatingJavaScriptFromString:jsSetTextFieldValue];
         [self.webView stringByEvaluatingJavaScriptFromString:@"FS_Search()"];
-        [self performSelector:@selector(fillTextFieldWithAddress) withObject:self afterDelay:1.0];
+        [self performSelector:@selector(fillTextFieldWithAddress) withObject:self afterDelay:2.0];
     });
 }
 
@@ -146,6 +146,7 @@ static NSInteger const kAttemtsAmountForDataRetrieving = 30;
     NSArray *parsedStrings;
     
     NSString *searchButtonStyle = [self.webView stringByEvaluatingJavaScriptFromString:@"document.getElementById('trFSFindGushUrl').getAttribute('style')"];
+    NSLog(@"Search button style: %@", searchButtonStyle);
     
     parsedStrings = [searchButtonStyle componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@" "]];
     searchButtonStyle = [parsedStrings.lastObject componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@";"]].firstObject;
