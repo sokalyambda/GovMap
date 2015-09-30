@@ -41,8 +41,10 @@ static CGFloat kLeftViewWidth = 10.f;
     
     if ([NSLocale characterDirectionForLanguage:[NSLocale preferredLanguages].firstObject] == NSLocaleLanguageDirectionRightToLeft) {
         self.textAlignment = NSTextAlignmentRight;
+    } else {
+        self.textAlignment = NSTextAlignmentLeft;
     }
-
+    
     self.layer.cornerRadius  = 5.0f;
     self.layer.masksToBounds = YES;
     self.layer.borderColor   = UIColorFromRGB(0x03a9f4).CGColor;
