@@ -69,11 +69,6 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
     [self setupMapAppearing];
 }
 
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [self.communicator disruptCurrentRequest];
-}
-
 #pragma mark - MKMapViewDelegate
 
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation

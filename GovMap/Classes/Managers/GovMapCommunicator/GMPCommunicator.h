@@ -22,7 +22,6 @@ typedef void(^RequestAddressCompletionBlock)(NSString *address);
 + (instancetype)sharedInstance;
 
 - (void)loadContent;
-- (void)disruptCurrentRequest;
 
 - (void)requestCadastralNumbersWithAddress:(NSString *)address
                            completionBlock:(RequestCadasterCompletionBlock)completionBlock;
