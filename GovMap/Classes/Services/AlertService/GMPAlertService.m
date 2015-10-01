@@ -23,7 +23,7 @@
     }];
     [alertController addAction:confirmAction];
     dispatch_async(dispatch_get_main_queue(), ^{
-        [controller presentViewController:alertController animated:YES completion:nil];
+        [controller.navigationController.visibleViewController presentViewController:alertController animated:YES completion:nil];
     });
 }
 
@@ -55,7 +55,7 @@
     
     [alertController addAction:ok];
     dispatch_async(dispatch_get_main_queue(), ^{
-        [controller presentViewController:alertController animated:YES completion:nil];
+        [controller.navigationController.visibleViewController presentViewController:alertController animated:YES completion:nil];
     });
 
 }
