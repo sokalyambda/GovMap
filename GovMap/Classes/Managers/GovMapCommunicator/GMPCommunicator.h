@@ -20,7 +20,10 @@ typedef void(^RequestAddressCompletionBlock)(NSString *address);
 @property (assign, readonly, nonatomic) BOOL isReadyForRequests;
 
 + (instancetype)sharedInstance;
+
 - (void)loadContent;
+- (void)disruptCurrentRequest;
+
 - (void)requestCadastralNumbersWithAddress:(NSString *)address
                            completionBlock:(RequestCadasterCompletionBlock)completionBlock;
 - (void)requestAddressWithCadastralNumbers:(GMPCadastre *)cadastralInfo
