@@ -14,9 +14,12 @@
 + (GMPLocationAddress *)locationAddressWithGovMapAddress:(NSString *)address
 {
     NSArray *addressObjects = [address componentsSeparatedByString:@", "];
-    NSString *street = [[addressObjects[0] componentsSeparatedByString:@": "] lastObject];
-    NSString *home   = [[addressObjects[1] componentsSeparatedByString:@": "] lastObject];
-    NSString *city   = [[addressObjects[2] componentsSeparatedByString:@": "] lastObject];
+    NSString *street = 0 < addressObjects.count ? [[addressObjects[0]
+                                                    componentsSeparatedByString:@": "] lastObject] : @"";
+    NSString *home   = 1 < addressObjects.count ? [[addressObjects[1]
+                                                    componentsSeparatedByString:@": "] lastObject] : @"";
+    NSString *city   = 2 < addressObjects.count ? [[addressObjects[2]
+                                                    componentsSeparatedByString:@": "] lastObject] : @"";
     
     GMPLocationAddress *locationAddress = [GMPLocationAddress locationAddressWithCityName:city
                                                                             andStreetName:street
