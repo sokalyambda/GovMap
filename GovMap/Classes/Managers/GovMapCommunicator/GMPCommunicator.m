@@ -26,6 +26,7 @@ static NSInteger const kAttemtsAmountForDataRetrieving = 30;
 
 @property (strong, nonatomic) UIWebView *webView;
 @property (strong, nonatomic) NSURLRequest *loadGovMapRequest;
+
 @property (copy, nonatomic) RequestCadasterCompletionBlock requestCadasterCompletionBlock;
 @property (copy, nonatomic) RequestAddressCompletionBlock requestAddressCompletionBlock;
 
@@ -34,9 +35,13 @@ static NSInteger const kAttemtsAmountForDataRetrieving = 30;
 @property (copy, nonatomic) NSString *address;
 @property (strong, nonatomic) GMPCadastre *cadastralInfo;
 
+@property (assign, nonatomic) BOOL isDisrupted;
+
 @end
 
 @implementation GMPCommunicator
+
+#pragma mark - Accessors
 
 #pragma mark - Lifecycle
 
@@ -87,6 +92,12 @@ static NSInteger const kAttemtsAmountForDataRetrieving = 30;
     [self.webView loadRequest:self.loadGovMapRequest];
 }
 
+- (void)disruptCurrentRequest
+{
+    self.isDisrupted = YES;
+    [self clearTableResultsFromLink];
+}
+
 #pragma mark - Private
 
 /**
@@ -135,7 +146,13 @@ static NSInteger const kAttemtsAmountForDataRetrieving = 30;
         
         [self.webView stringByEvaluatingJavaScriptFromString:jsSetTextFieldValue];
         [self.webView stringByEvaluatingJavaScriptFromString:@"FS_Search()"];
-        [self performSelector:@selector(fillTextFieldWithAddress) withObject:self afterDelay:2.0];
+        
+        if (!self.isDisrupted) {
+            [self performSelector:@selector(fillTextFieldWithAddress) withObject:self afterDelay:2.0];
+        } else {
+            _isReadyForRequests = YES;
+            self.isDisrupted = NO;
+        }
     });
 }
 
@@ -143,6 +160,12 @@ static NSInteger const kAttemtsAmountForDataRetrieving = 30;
 
 - (void)fillTextFieldWithAddress
 {
+    if (self.isDisrupted) {
+        self.isDisrupted = NO;
+        _isReadyForRequests = YES;
+        return;
+    }
+    
     NSArray *parsedStrings;
     
     NSString *searchButtonStyle = [self.webView stringByEvaluatingJavaScriptFromString:@"document.getElementById('trFSFindGushUrl').getAttribute('style')"];
@@ -174,6 +197,13 @@ static NSInteger const kAttemtsAmountForDataRetrieving = 30;
 - (void)checkInnerTextForCadastre:(NSTimer *)timer
 {
     static NSInteger timerFireCounter = 0;
+    
+    if (self.isDisrupted) {
+        [timer invalidate];
+        self.isDisrupted = NO;
+        _isReadyForRequests = YES;
+        return;
+    }
     
     NSString *cadastralData = [self.webView stringByEvaluatingJavaScriptFromString:
                                @"document.getElementById('divTableResultsFromLink').innerText"];
@@ -245,7 +275,13 @@ static NSInteger const kAttemtsAmountForDataRetrieving = 30;
                                          @"document.getElementById('tbSearchWord').value = '%@'", cadastralString];
         [self.webView stringByEvaluatingJavaScriptFromString:jsSetTextFieldValue];
         [self.webView stringByEvaluatingJavaScriptFromString:@"FS_Search()"];
-        [self performSelector:@selector(fillTextFieldWithCadastralString) withObject:self afterDelay:1.0];
+        
+        if (!self.isDisrupted) {
+            [self performSelector:@selector(fillTextFieldWithCadastralString) withObject:self afterDelay:1.0];
+        } else {
+            _isReadyForRequests = YES;
+            self.isDisrupted = NO;
+        }
     });
 }
 
@@ -263,6 +299,13 @@ static NSInteger const kAttemtsAmountForDataRetrieving = 30;
 {
     static NSInteger timerFireCounter = 0;
 
+    if (self.isDisrupted) {
+        [timer invalidate];
+        _isReadyForRequests = YES;
+        self.isDisrupted = NO;
+        return;
+    }
+    
     // We can get more than 1 address. If we do then return only first one.
     NSString *response = [self.webView stringByEvaluatingJavaScriptFromString:
                                @"document.getElementById('tdFSTableResultsFromLink').innerText"];
