@@ -94,8 +94,10 @@ static NSInteger const kAttemtsAmountForDataRetrieving = 30;
 
 - (void)disruptCurrentRequest
 {
-    self.isDisrupted = YES;
-    [self clearTableResultsFromLink];
+    if (!self.isReadyForRequests) {
+        self.isDisrupted = YES;
+        [self clearTableResultsFromLink];
+    }
 }
 
 #pragma mark - Private
@@ -147,11 +149,12 @@ static NSInteger const kAttemtsAmountForDataRetrieving = 30;
         [self.webView stringByEvaluatingJavaScriptFromString:jsSetTextFieldValue];
         [self.webView stringByEvaluatingJavaScriptFromString:@"FS_Search()"];
         
-        if (!self.isDisrupted) {
-            [self performSelector:@selector(fillTextFieldWithAddress) withObject:self afterDelay:2.0];
-        } else {
+        [self performSelector:@selector(fillTextFieldWithAddress) withObject:self afterDelay:2.0];
+        
+        if (self.isDisrupted) {
             _isReadyForRequests = YES;
             self.isDisrupted = NO;
+            [NSObject cancelPreviousPerformRequestsWithTarget:self];
         }
     });
 }
@@ -224,23 +227,19 @@ static NSInteger const kAttemtsAmountForDataRetrieving = 30;
         
         self.requestCadasterCompletionBlock([GMPCadastre cadastreWithMajor:majorNumber.integerValue minor:minorNumber.integerValue]);
     }
-    else {
-        if (timerFireCounter++ == kAttemtsAmountForDataRetrieving) {
-            [self.webView stringByEvaluatingJavaScriptFromString:@"FSS_ShowNewSearch(true)"];
-            
-            [timer invalidate];
-            _isReadyForRequests = YES;
-            timerFireCounter = 0;
-            
-            if ([self.delegate respondsToSelector:@selector(communicator:didFailToRetrieveCadastralNumbersWithAddress:)]) {
-                [self.delegate communicator:self didFailToRetrieveCadastralNumbersWithAddress:self.address];
-            }
-            
-            self.requestCadasterCompletionBlock(nil);
+    else if (timerFireCounter++ == kAttemtsAmountForDataRetrieving) {
+        [self.webView stringByEvaluatingJavaScriptFromString:@"FSS_ShowNewSearch(true)"];
+        
+        [timer invalidate];
+        _isReadyForRequests = YES;
+        timerFireCounter = 0;
+        
+        if ([self.delegate respondsToSelector:@selector(communicator:didFailToRetrieveCadastralNumbersWithAddress:)]) {
+            [self.delegate communicator:self didFailToRetrieveCadastralNumbersWithAddress:self.address];
         }
+        
+        self.requestCadasterCompletionBlock(nil);
     }
-    
-    _isReadyForRequests = YES;
 }
 
 #pragma mark - Requesting data with Cadastral Numbers
@@ -276,11 +275,12 @@ static NSInteger const kAttemtsAmountForDataRetrieving = 30;
         [self.webView stringByEvaluatingJavaScriptFromString:jsSetTextFieldValue];
         [self.webView stringByEvaluatingJavaScriptFromString:@"FS_Search()"];
         
-        if (!self.isDisrupted) {
-            [self performSelector:@selector(fillTextFieldWithCadastralString) withObject:self afterDelay:1.0];
-        } else {
+        [self performSelector:@selector(fillTextFieldWithCadastralString) withObject:self afterDelay:1.0];
+        
+        if (self.isDisrupted) {
             _isReadyForRequests = YES;
             self.isDisrupted = NO;
+            [NSObject cancelPreviousPerformRequestsWithTarget:self];
         }
     });
 }
@@ -320,19 +320,16 @@ static NSInteger const kAttemtsAmountForDataRetrieving = 30;
         
         self.requestAddressCompletionBlock(addresses.firstObject);
     }
-    else {
+    else if (timerFireCounter++ == kAttemtsAmountForDataRetrieving) {
+        [timer invalidate];
+        _isReadyForRequests = YES;
+        timerFireCounter = 0;
         
-        if (timerFireCounter++ == kAttemtsAmountForDataRetrieving) {
-            [timer invalidate];
-            _isReadyForRequests = YES;
-            timerFireCounter = 0;
-            
-            if ([self.delegate respondsToSelector:@selector(communicator:didFailToRetrieveAddressWithCadastre:)]) {
-                [self.delegate communicator:self didFailToRetrieveAddressWithCadastre:self.cadastralInfo];
-            }
-            
-            self.requestAddressCompletionBlock(nil);
+        if ([self.delegate respondsToSelector:@selector(communicator:didFailToRetrieveAddressWithCadastre:)]) {
+            [self.delegate communicator:self didFailToRetrieveAddressWithCadastre:self.cadastralInfo];
         }
+        
+        self.requestAddressCompletionBlock(nil);
     }
 }
 
