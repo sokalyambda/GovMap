@@ -66,7 +66,14 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [self setupMapAppearing];
+    
+    if (self.communicator.isReadyForRequests) {
+        [self setupMapAppearing];
+    }else {
+        [GMPAlertService showInfoAlertControllerWithTitle:LOCALIZED(@"") andMessage:LOCALIZED(@"Address not found") forController:self withCompletion:^{
+            [self.navigationController popViewControllerAnimated:YES];
+        }];
+    }
 }
 
 #pragma mark - MKMapViewDelegate
@@ -104,7 +111,7 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
 {
     GMPBaseNavigationController *baseNavControoler = (GMPBaseNavigationController *)self.navigationController;
     baseNavControoler.pinDragging = YES;
-
+    
     GMPUserAnnotation *annotation = (GMPUserAnnotation *)view.annotation;
     switch (newState) {
         case MKAnnotationViewDragStateStarting: {
@@ -146,8 +153,8 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
                                                       [weakSelf.annotation setTitle:@""];
                                                       [GMPAlertService
                                                        showInfoAlertControllerWithTitle:LOCALIZED(@"") andMessage:LOCALIZED(@"Address not found") forController:weakSelf withCompletion:^{
-                                                          [weakSelf.navigationController popViewControllerAnimated:YES];
-                                                      }];
+                                                           [weakSelf.navigationController popViewControllerAnimated:YES];
+                                                       }];
                                                   }
                                               }];
             break;
@@ -192,7 +199,7 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
                                               }
                                           } else {
                                               // Google geocoding error
-
+                                              
                                               [GMPAlertService showInfoAlertControllerWithTitle:LOCALIZED(@"") andMessage:LOCALIZED(@"Address not found") forController:weakSelf withCompletion:^{
                                                   [weakSelf.navigationController popViewControllerAnimated:YES];
                                               }];
@@ -266,7 +273,7 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
                                     [weakSelf.navigationController popViewControllerAnimated:YES];
                                 }];
                             }
-
+                            
                         }];
                         
                     } else {
