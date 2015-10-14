@@ -7,12 +7,15 @@
 //
 
 #import "GMPSplashScreenController.h"
+#import "GMPMainMenuController.h"
 
 #import "GMPCommunicator.h"
 
-static NSString *const kMainMenuSegueIdentifier = @"mainMenuSegueIdentifier";
+static NSString *const kTermsAndConditionsSegueIdentifier = @"termsAndConditionsSegueIdentifier";
 
 @interface GMPSplashScreenController ()
+
+@property (assign, nonatomic, getter=isTermsAndConditionsPassed) BOOL termsAndConditionsPassed;
 
 @end
 
@@ -24,15 +27,26 @@ static NSString *const kMainMenuSegueIdentifier = @"mainMenuSegueIdentifier";
 {
     [super viewDidLoad];
     [[GMPCommunicator sharedInstance] loadContent];
-    [self moveToMainMenu];
+    [self moveToNextController];
+}
+
+#pragma mark - Accessors
+
+- (BOOL)isTermsAndConditionsPassed
+{
+    return [[NSUserDefaults standardUserDefaults]boolForKey:kTermsAndConditionsPassed];
 }
 
 #pragma mark - Actions
 
-- (void)moveToMainMenu
+- (void)moveToNextController
 {
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self performSegueWithIdentifier:kMainMenuSegueIdentifier sender:self];
+        if (self.isTermsAndConditionsPassed) {
+            [self.navigationController pushViewController:[self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([GMPMainMenuController class])] animated:YES];
+        } else {
+            [self performSegueWithIdentifier:kTermsAndConditionsSegueIdentifier sender:self];
+        }
     });
 }
 

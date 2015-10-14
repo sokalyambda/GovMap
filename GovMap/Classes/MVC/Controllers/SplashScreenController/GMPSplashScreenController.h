@@ -7,6 +7,7 @@
 //
 
 #import "GMPBaseViewController.h"
+#import "GMPTermsAndConditionsController.h"
 
 @interface GMPSplashScreenController : GMPBaseViewController
 

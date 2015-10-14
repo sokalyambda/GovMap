@@ -66,7 +66,7 @@ static NSString *const kSearchWithGeoNumbersControllerSegueIdentifier = @"search
 {
     if ([segue.identifier isEqualToString:kMapControllerSegueIdentifier]) {
         
-        BOOL isGeolocationEnabled = [[[NSUserDefaults standardUserDefaults] valueForKey:kLocationServiceEnabled]boolValue];
+        BOOL isGeolocationEnabled = [[NSUserDefaults standardUserDefaults] boolForKey:kLocationServiceEnabled];
         if (isGeolocationEnabled) {
             
             GMPMapController *controller = (GMPMapController *)segue.destinationViewController;

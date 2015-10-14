@@ -13,7 +13,7 @@
 
 @import GoogleMaps;
 
-NSString *const kLocationServiceEnabled = @"Location Service Enabled";
+NSString *const kLocationServiceEnabled = @"locationServiceEnabled";
 
 @interface GMPLocationObserver ()<CLLocationManagerDelegate>
 
@@ -49,6 +49,7 @@ NSString *const kLocationServiceEnabled = @"Location Service Enabled";
         _currentLocation = nil;
         
         [_locationManager requestWhenInUseAuthorization];
+
         [self startUpdatingLocation];
     }
     return self;
@@ -77,10 +78,8 @@ NSString *const kLocationServiceEnabled = @"Location Service Enabled";
     if (isGeolocationStatusDetermine) {
         [self startUpdatingLocation];
     }
-    
-    [[NSUserDefaults standardUserDefaults]setValue:@(isGeolocationEnable)
-                                            forKey: kLocationServiceEnabled];
-    [[NSUserDefaults standardUserDefaults] synchronize];
+     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setBool:isGeolocationEnable forKey:kLocationServiceEnabled];
 }
 
 #pragma mark - Private methods
