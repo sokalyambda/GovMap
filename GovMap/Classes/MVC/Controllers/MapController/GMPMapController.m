@@ -26,6 +26,13 @@
 
 #import "GMPCommunicatorDelegate.h"
 
+typedef NS_ENUM(NSInteger, GMPSegmentedControlIndex)
+{
+    GMPSegmentedControlIndexForStandatr,
+    GMPSegmentedControlIndexForSatellite,
+    GMPSegmentedControlIndexForGovMap
+};
+
 static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתאימות";
 
 @interface GMPMapController () <MKMapViewDelegate, GMPCommunicatorDelegate>
@@ -68,6 +75,10 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
     [self.mapTypeSegmentControl setTitle:LOCALIZED(@"Standart Map") forSegmentAtIndex:0];
     [self.mapTypeSegmentControl setTitle:LOCALIZED(@"Satellite Map") forSegmentAtIndex:1];
     [self.mapTypeSegmentControl setTitle:LOCALIZED(@"Gov Map") forSegmentAtIndex:2];
+    
+    if (self.currentSearchType != GMPSearchTypeCurrentPlacing) {
+        [self removeGovMapButtonFromSegmentedControl];
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -343,20 +354,21 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
 
 - (IBAction)mapViewTypeChanged:(id)sender
 {
-    switch (self.mapTypeSegmentControl.selectedSegmentIndex) {
-        case 0: {
+    GMPSegmentedControlIndex index = self.mapTypeSegmentControl.selectedSegmentIndex;
+    switch (index) {
+        case GMPSegmentedControlIndexForStandatr: {
             self.mapView.mapType = MKMapTypeStandard;
             [self removeGovMapWebView];
             break;
         }
            
-        case 1: {
+        case GMPSegmentedControlIndexForSatellite: {
             self.mapView.mapType = MKMapTypeSatellite;
             [self removeGovMapWebView];
             break;
         }
         
-        case 2: {
+        case GMPSegmentedControlIndexForGovMap: {
             [self showGovMapWebView];
             break;
         }
@@ -376,6 +388,11 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
 {
     self.goToWazeButton.title = LOCALIZED(@"Open Waze");
     self.navigationItem.rightBarButtonItems = @[self.goToWazeButton];
+}
+
+- (void)removeGovMapButtonFromSegmentedControl
+{
+    [self.mapTypeSegmentControl removeSegmentAtIndex:GMPSegmentedControlIndexForGovMap animated:NO];
 }
 
 - (void)showGovMapWebView
