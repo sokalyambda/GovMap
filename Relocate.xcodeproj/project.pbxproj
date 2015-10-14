@@ -62,7 +62,7 @@
 		D3855A331BCE4F4D00FB2946 /* GMPTermsAndConditionsController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3855A321BCE4F4D00FB2946 /* GMPTermsAndConditionsController.m */; settings = {ASSET_TAGS = (); }; };
 		D39029AC1B9050A30097C4B6 /* GMPMapController.m in Sources */ = {isa = PBXBuildFile; fileRef = D39029AB1B9050A30097C4B6 /* GMPMapController.m */; };
 		D39029B41B9060B80097C4B6 /* GMPUserAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = D39029B31B9060B80097C4B6 /* GMPUserAnnotation.m */; };
-		D3C8594D1BCE73A300C82814 /* GMPCheckBoxButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D3C8594C1BCE73A300C82814 /* GMPCheckBoxButton.m */; settings = {ASSET_TAGS = (); }; };
+		D3C859581BCE9D7C00C82814 /* GMPCheckBoxButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D3C859571BCE9D7C00C82814 /* GMPCheckBoxButton.m */; settings = {ASSET_TAGS = (); }; };
 		D3E2897F1B96E9B600F7C177 /* GMPLocationAddressParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E2897E1B96E9B600F7C177 /* GMPLocationAddressParser.m */; };
 		D3E5347B1B8F39FA00C9D87B /* GMPMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E5347A1B8F39FA00C9D87B /* GMPMenuView.m */; };
 		D3E7D2F91B9D91A700609406 /* GMPBorderedTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E7D2F81B9D91A700609406 /* GMPBorderedTextField.m */; };
@@ -194,8 +194,8 @@
 		D39029AB1B9050A30097C4B6 /* GMPMapController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GMPMapController.m; path = Classes/MVC/Controllers/MapController/GMPMapController.m; sourceTree = "<group>"; };
 		D39029B21B9060B80097C4B6 /* GMPUserAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GMPUserAnnotation.h; path = Classes/Services/UserAnnotationServise/GMPUserAnnotation.h; sourceTree = "<group>"; };
 		D39029B31B9060B80097C4B6 /* GMPUserAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GMPUserAnnotation.m; path = Classes/Services/UserAnnotationServise/GMPUserAnnotation.m; sourceTree = "<group>"; };
-		D3C8594B1BCE73A300C82814 /* GMPCheckBoxButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GMPCheckBoxButton.h; path = Classes/MVC/Views/CheckBoxButton/GMPCheckBoxButton.h; sourceTree = "<group>"; };
-		D3C8594C1BCE73A300C82814 /* GMPCheckBoxButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GMPCheckBoxButton.m; path = Classes/MVC/Views/CheckBoxButton/GMPCheckBoxButton.m; sourceTree = "<group>"; };
+		D3C859561BCE9D7C00C82814 /* GMPCheckBoxButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GMPCheckBoxButton.h; path = Classes/MVC/Views/CheckBoxButton/GMPCheckBoxButton.h; sourceTree = "<group>"; };
+		D3C859571BCE9D7C00C82814 /* GMPCheckBoxButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GMPCheckBoxButton.m; path = Classes/MVC/Views/CheckBoxButton/GMPCheckBoxButton.m; sourceTree = "<group>"; };
 		D3E2897D1B96E9B600F7C177 /* GMPLocationAddressParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GMPLocationAddressParser.h; path = Classes/Services/LocationAddressParser/GMPLocationAddressParser.h; sourceTree = "<group>"; };
 		D3E2897E1B96E9B600F7C177 /* GMPLocationAddressParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GMPLocationAddressParser.m; path = Classes/Services/LocationAddressParser/GMPLocationAddressParser.m; sourceTree = "<group>"; };
 		D3E534791B8F39FA00C9D87B /* GMPMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GMPMenuView.h; path = Classes/MVC/Views/MenuView/GMPMenuView.h; sourceTree = "<group>"; };
@@ -873,8 +873,8 @@
 		D3C8594A1BCE730B00C82814 /* CheckBoxButton */ = {
 			isa = PBXGroup;
 			children = (
-				D3C8594B1BCE73A300C82814 /* GMPCheckBoxButton.h */,
-				D3C8594C1BCE73A300C82814 /* GMPCheckBoxButton.m */,
+				D3C859561BCE9D7C00C82814 /* GMPCheckBoxButton.h */,
+				D3C859571BCE9D7C00C82814 /* GMPCheckBoxButton.m */,
 			);
 			name = CheckBoxButton;
 			sourceTree = "<group>";
@@ -1095,7 +1095,7 @@
 				58C8E8291B95A3A7002F8F61 /* GMPLocationAddress.m in Sources */,
 				D3855A331BCE4F4D00FB2946 /* GMPTermsAndConditionsController.m in Sources */,
 				58D7C82F1B997B3C00965EF2 /* GMPRoundedCornersButton.m in Sources */,
-				D3C8594D1BCE73A300C82814 /* GMPCheckBoxButton.m in Sources */,
+				D3C859581BCE9D7C00C82814 /* GMPCheckBoxButton.m in Sources */,
 				3E820AC41B903FF700EDEEA4 /* GMPSearchWithGeoNumbersController.m in Sources */,
 				3E820ABA1B9035DB00EDEEA4 /* GMPSearchWithAddressViewController.m in Sources */,
 				58C1316D1B8F03030095045A /* UIImage+Base64Encoding.m in Sources */,
@@ -1308,7 +1308,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = Relocate;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "881ebf32-c829-42a2-a214-001fd3ad6888";
 			};
 			name = Debug;
 		};
@@ -1327,7 +1327,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = Relocate;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "881ebf32-c829-42a2-a214-001fd3ad6888";
 			};
 			name = Release;
 		};

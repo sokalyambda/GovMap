@@ -38,7 +38,7 @@ NSString * const kTermsAndConditionsPassed       = @"termsAndConditionsPassed";
         [self setTermsAndConditionsPassed];
         [self performSegueWithIdentifier:kMainMenuSegueIdentifier sender:self];
     } else {
-        [self setCheckBoxButtonAnimation];
+        [self.checkBoxButton animate];
     }
 }
 
@@ -54,14 +54,6 @@ NSString * const kTermsAndConditionsPassed       = @"termsAndConditionsPassed";
         [defaults setBool:YES forKey:kTermsAndConditionsPassed];
         [defaults synchronize];
     }
-}
-- (void)setCheckBoxButtonAnimation
-{
-    [self.checkBoxButton setTransform:CGAffineTransformMakeScale(0.1f, 0.1f)];
-    [UIView animateWithDuration:0.2f animations:^{
-        [self.checkBoxButton setTransform:CGAffineTransformMakeScale(1.f, 1.f)];
-        self.checkBoxButton.alpha = 1.f;
-    }];
 }
 
 @end

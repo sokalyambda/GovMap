@@ -1,9 +1,9 @@
 //
-//  CSTCheckBoxButton.m
-//  CarusselSalesTool
+//  GMPCheckBoxButton.m
+//  Relocate
 //
-//  Created by Eugenity on 05.06.15.
-//  Copyright (c) 2015 Connexity. All rights reserved.
+//  Created by Myroslava Polovka on 10/14/15.
+//  Copyright © 2015 ThinkMobiles. All rights reserved.
 //
 
 #import "GMPCheckBoxButton.h"
@@ -79,6 +79,17 @@
         self.selected = !self.selected;
         [self sendActionsForControlEvents:UIControlEventValueChanged];
     }
+}
+
+#pragma mark - Public Methods
+
+- (void)animate
+{
+    [self setTransform:CGAffineTransformMakeScale(0.1f, 0.1f)];
+    [UIView animateWithDuration:0.2f animations:^{
+        [self setTransform:CGAffineTransformMakeScale(1.f, 1.f)];
+        self.alpha = 1.f;
+    }];
 }
 
 @end
