@@ -12,4 +12,6 @@
 
 + (void)showDialogAlertWithTitle:(NSString *)title andMessage:(NSString *)message forController:(UIViewController *)controller withSuccessCompletion:(void(^)())successCompletion andFailCompletion:(void(^)())failCompletion;
 
++ (void)showChangeLocationPermissionsAlertForController:(UIViewController *)controller andCompletion:(void(^)(UIAlertAction *action, BOOL isCanceled))completion;
+
 @end

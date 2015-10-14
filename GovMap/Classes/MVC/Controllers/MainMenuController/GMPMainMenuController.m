@@ -66,8 +66,16 @@ static NSString *const kSearchWithGeoNumbersControllerSegueIdentifier = @"search
 {
     if ([segue.identifier isEqualToString:kMapControllerSegueIdentifier]) {
         
-        GMPMapController *controller = (GMPMapController *)segue.destinationViewController;
-        controller.currentSearchType = GMPSearchTypeCurrentPlacing;
+        BOOL isGeolocationEnabled = [[[NSUserDefaults standardUserDefaults] valueForKey:kLocationServiceEnabled]boolValue];
+        if (isGeolocationEnabled) {
+            
+            GMPMapController *controller = (GMPMapController *)segue.destinationViewController;
+            controller.currentSearchType = GMPSearchTypeCurrentPlacing;
+            
+        } else {
+            [GMPAlertService showChangeLocationPermissionsAlertForController:self
+                                                               andCompletion:nil];
+        }
     }
 }
 
