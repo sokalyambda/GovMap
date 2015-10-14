@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		041F851FE71D0E3A7C11613A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A3EC1D9E43C52520F2972EB0 /* libPods.a */; };
 		3E2C55801B99765F00702866 /* GMPGoogleGeocoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E2C557F1B99765F00702866 /* GMPGoogleGeocoder.m */; };
+		3E5B6ECA1BCD6C8000C24821 /* GMPGovMapWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E5B6EC91BCD6C8000C24821 /* GMPGovMapWebViewController.m */; settings = {ASSET_TAGS = (); }; };
 		3E820AB51B8F3D6400EDEEA4 /* GMPSearchWithAddressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E820AB31B8F3D6400EDEEA4 /* GMPSearchWithAddressView.m */; };
 		3E820ABA1B9035DB00EDEEA4 /* GMPSearchWithAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E820AB91B9035DB00EDEEA4 /* GMPSearchWithAddressViewController.m */; };
 		3E820ABE1B90379600EDEEA4 /* GMPSearchWithGeoNumbersView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E820ABD1B90379600EDEEA4 /* GMPSearchWithGeoNumbersView.m */; };
@@ -81,6 +82,8 @@
 		1B6EBDB5D3D66E278DA2A0BA /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		3E2C557E1B99765F00702866 /* GMPGoogleGeocoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GMPGoogleGeocoder.h; path = Classes/Managers/GoogleGeocoder/GMPGoogleGeocoder.h; sourceTree = "<group>"; };
 		3E2C557F1B99765F00702866 /* GMPGoogleGeocoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GMPGoogleGeocoder.m; path = Classes/Managers/GoogleGeocoder/GMPGoogleGeocoder.m; sourceTree = "<group>"; };
+		3E5B6EC81BCD6C8000C24821 /* GMPGovMapWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GMPGovMapWebViewController.h; path = Classes/MVC/Controllers/GovMapWebViewController/GMPGovMapWebViewController.h; sourceTree = "<group>"; };
+		3E5B6EC91BCD6C8000C24821 /* GMPGovMapWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GMPGovMapWebViewController.m; path = Classes/MVC/Controllers/GovMapWebViewController/GMPGovMapWebViewController.m; sourceTree = "<group>"; };
 		3E820AB21B8F3D6400EDEEA4 /* GMPSearchWithAddressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GMPSearchWithAddressView.h; path = Classes/MVC/VIews/SearchWithAddressView/GMPSearchWithAddressView.h; sourceTree = "<group>"; };
 		3E820AB31B8F3D6400EDEEA4 /* GMPSearchWithAddressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GMPSearchWithAddressView.m; path = Classes/MVC/VIews/SearchWithAddressView/GMPSearchWithAddressView.m; sourceTree = "<group>"; };
 		3E820AB81B9035DB00EDEEA4 /* GMPSearchWithAddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GMPSearchWithAddressViewController.h; path = Classes/MVC/Controllers/SearchWithAddressController/GMPSearchWithAddressViewController.h; sourceTree = "<group>"; };
@@ -245,6 +248,15 @@
 				3E2C557F1B99765F00702866 /* GMPGoogleGeocoder.m */,
 			);
 			name = GoogleGeocoder;
+			sourceTree = "<group>";
+		};
+		3E5B6EC71BCD6C2900C24821 /* GovMapWebViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3E5B6EC81BCD6C8000C24821 /* GMPGovMapWebViewController.h */,
+				3E5B6EC91BCD6C8000C24821 /* GMPGovMapWebViewController.m */,
+			);
+			name = GovMapWebViewController;
 			sourceTree = "<group>";
 		};
 		3E820AB11B8F3D3400EDEEA4 /* SearchWithAddressView */ = {
@@ -536,6 +548,7 @@
 		58C131491B8EF7C60095045A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				3E5B6EC71BCD6C2900C24821 /* GovMapWebViewController */,
 				D3EEAAE91BB573F900E1B192 /* AppLanguageSwitch */,
 				3E820AC11B903F4000EDEEA4 /* SearchWithGeoNumbersController */,
 				3E820AB71B90358A00EDEEA4 /* SearchWithAddressController */,
@@ -1065,6 +1078,7 @@
 				3EC10CAF1B94444000EF2DF6 /* GMPCadastre.m in Sources */,
 				58C131831B8F03B00095045A /* NSString+ContainsString.m in Sources */,
 				3EFC40CC1B942FE700EEBC65 /* GMPCommunicator.m in Sources */,
+				3E5B6ECA1BCD6C8000C24821 /* GMPGovMapWebViewController.m in Sources */,
 				58C1318C1B8F041F0095045A /* GMPAlertService.m in Sources */,
 				58C131971B8F04FB0095045A /* GMPBaseNavigationController.m in Sources */,
 				3E8F917C1B95AA8A00CDBF6F /* GMPBaseSearchView.m in Sources */,
