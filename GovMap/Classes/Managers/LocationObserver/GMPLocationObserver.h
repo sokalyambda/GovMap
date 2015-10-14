@@ -10,6 +10,8 @@
 
 #import "GMPLocationAddress.h"
 
+extern NSString *const kLocationServiceEnabled;
+
 typedef void(^ReverseGeocodingResult)(BOOL success, GMPLocationAddress *address);
 typedef void(^GeocodingResult)(BOOL success, CLLocation *location);
 

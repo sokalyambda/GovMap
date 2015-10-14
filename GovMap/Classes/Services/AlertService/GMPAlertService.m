@@ -8,6 +8,10 @@
 
 #import "GMPAlertService.h"
 
+#import "GMPBaseNavigationController.h"
+
+#import "AppDelegate.h"
+
 @implementation GMPAlertService
 
 + (void)showInfoAlertControllerWithTitle:(NSString *)title andMessage:(NSString *)message forController:(UIViewController *)controller withCompletion:(void(^)())completion
@@ -22,9 +26,8 @@
         }
     }];
     [alertController addAction:confirmAction];
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [controller.navigationController.visibleViewController presentViewController:alertController animated:YES completion:nil];
-    });
+    [self showCurrentAlertController:alertController forController:controller];
+    
 }
 
 + (void)showDialogAlertWithTitle:(NSString *)title andMessage:(NSString *)message forController:(UIViewController *)controller withSuccessCompletion:(void(^)())successCompletion andFailCompletion:(void(^)())failCompletion
@@ -40,7 +43,7 @@
                                         if (failCompletion) {
                                             failCompletion();
                                         }
-    }];
+                                    }];
     [alertController addAction:confirmAction];
     
     UIAlertAction* ok = [UIAlertAction
@@ -54,10 +57,49 @@
                          }];
     
     [alertController addAction:ok];
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [controller.navigationController.visibleViewController presentViewController:alertController animated:YES completion:nil];
-    });
+    [self showCurrentAlertController:alertController forController:controller];
+    
+}
 
++ (void)showChangeLocationPermissionsAlertForController:(UIViewController *)controller andCompletion:(void(^)(UIAlertAction *action, BOOL isCanceled))completion
+{
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:LOCALIZED(@"Location services are off") message:LOCALIZED(@"To found your current location you must turn on While Using in the Location Services Settings") preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:LOCALIZED(@"NO") style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+        if (completion) {
+            completion(action, YES);
+        }
+    }];
+    
+    UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:LOCALIZED(@"YES") style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+        if (completion) {
+            completion(action, NO);
+        }
+    }];
+    
+    [alertController addAction:cancelAction];
+    [alertController addAction:confirmAction];
+    
+    [self showCurrentAlertController:alertController forController:controller];
+}
+
++ (void)showCurrentAlertController:(UIAlertController *)alertController forController:(UIViewController *)currentController
+{
+    if (!currentController) {
+        AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+        GMPBaseNavigationController *navigationController = (GMPBaseNavigationController *)appDelegate.window.rootViewController;
+        UIViewController *lastPresentedViewController = ((UIViewController *)navigationController.viewControllers.lastObject).presentedViewController;
+        
+        if (lastPresentedViewController) {
+            [lastPresentedViewController presentViewController:alertController animated:YES completion:nil];
+        } else {
+            [navigationController presentViewController:alertController animated:YES completion:nil];
+        }
+    } else {
+        [currentController presentViewController:alertController animated:YES completion:nil];
+    }
 }
 
 @end

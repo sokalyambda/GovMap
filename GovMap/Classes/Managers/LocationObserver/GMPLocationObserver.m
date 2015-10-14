@@ -13,6 +13,8 @@
 
 @import GoogleMaps;
 
+NSString *const kLocationServiceEnabled = @"Location Service Enabled";
+
 @interface GMPLocationObserver ()<CLLocationManagerDelegate>
 
 @property (strong, nonatomic) CLLocationManager *locationManager;
@@ -62,20 +64,23 @@
 
 - (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status
 {
-    BOOL isGeolocationEnable = NO;
     BOOL isGeolocationStatusDetermine = YES;
+    BOOL isGeolocationEnable = NO;
     
-    if (status == kCLAuthorizationStatusAuthorizedAlways) {
+    if (status == kCLAuthorizationStatusAuthorizedWhenInUse) {
         isGeolocationEnable = YES;
     } else if (status == kCLAuthorizationStatusDenied) {
         isGeolocationEnable = NO;
     } else if (status == kCLAuthorizationStatusNotDetermined) {
         isGeolocationStatusDetermine = NO;
     }
-    
     if (isGeolocationStatusDetermine) {
         [self startUpdatingLocation];
     }
+    
+    [[NSUserDefaults standardUserDefaults]setValue:@(isGeolocationEnable)
+                                            forKey: kLocationServiceEnabled];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 #pragma mark - Private methods
