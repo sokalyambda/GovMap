@@ -75,10 +75,6 @@ static NSString *const kAddressNotFound = @"לא נמצאו תוצאות מתא�
     [self.mapTypeSegmentControl setTitle:LOCALIZED(@"Standart Map") forSegmentAtIndex:0];
     [self.mapTypeSegmentControl setTitle:LOCALIZED(@"Satellite Map") forSegmentAtIndex:1];
     [self.mapTypeSegmentControl setTitle:LOCALIZED(@"Gov Map") forSegmentAtIndex:2];
-    
-    if (self.currentSearchType != GMPSearchTypeCurrentPlacing) {
-        [self removeGovMapButtonFromSegmentedControl];
-    }
 }
 
 - (void)viewDidAppear:(BOOL)animated

@@ -13,6 +13,7 @@
 "Address not found" = "Address not found";
 "Lot " = "Lot ";
 "Parcel " = "Parcel ";
+"Go to Settings" = "Go to Settings";
 
 "Search By Lot & Parcel" = "Search By Lot & Parcel";
 "Search By Address" = "Search By Address";
@@ -24,4 +25,4 @@
 "Error occurred while trying to connect to govmap. Trying again..." = "Error occurred while trying to connect to govmap. Trying again...";
 "Setting will take effect after restarting application" = "Setting will take effect after restarting application";
 "Location services are off" = "Location services are off";
-"To find your current location you must turn on While Using in the Location Services Settings" =  "To find your current location you must turn on While Using in the Location Services Settings";
+"Location services are disabled, to use all functionality of application, please enable them in Settings menu." = "Location services are disabled, to use all functionality of application, please enable them in Settings menu.";

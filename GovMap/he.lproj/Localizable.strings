@@ -10,10 +10,11 @@
 "Main Menu" = "תפריט ראשי";
 "Open Waze" = "waze נווט באמצעות";
 "OK" = "אישור";
-"Cancel" = "לבטל";
+"Cancel" = "בטל";
 "Address not found" = "כתובת לא נמצא";
 "Lot " = " גוש";
 "Parcel " = " חלקה";
+"Go to Settings" = "עבור להגדרות";
 
 "Search By Lot & Parcel" = "איתור כתובת ע\"ב גוש וחלקה";
 "Search By Address" = "חפש לפי כתובת";
@@ -24,4 +25,4 @@
 "Error occurred while trying to connect to govmap. Trying again..." = "אירעה שגיאה בעת הניסיון להתחבר לgovmap. מנסה שוב ...";
 "Setting will take effect after restarting application" = "הגדרה תיכנס לתוקף לאחר ההפעלה מחדש של יישום";
 "Location services are off" = "שירותי מיקום כבויים";
-"To find your current location you must turn on While Using in the Location Services Settings" = "כדי למצוא את המיקום הנוכחי שלך אתה חייב להפעיל בעת השימוש בהגדרות שירותי מיקום";
+"Location services are disabled, to use all functionality of application, please enable them in Settings menu." = "שירותי איתור מיקום מבוטלים, כדי להשתמש באפליקציה אנא הפעל";

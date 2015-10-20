@@ -58,12 +58,11 @@
     
     [alertController addAction:ok];
     [self showCurrentAlertController:alertController forController:controller];
-    
 }
 
 + (void)showChangeLocationPermissionsAlertForController:(UIViewController *)controller andCompletion:(void(^)(UIAlertAction *action, BOOL isCanceled))completion
 {
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:LOCALIZED(@"Location services are off") message:LOCALIZED(@"To find your current location you must turn on While Using in the Location Services Settings") preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:LOCALIZED(@"Location services are off") message:LOCALIZED(@"Location services are disabled, to use all functionality of application, please enable them in Settings menu.") preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:LOCALIZED(@"Cancel") style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
         if (completion) {
@@ -71,7 +70,7 @@
         }
     }];
     
-    UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:LOCALIZED(@"OK") style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+    UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:LOCALIZED(@"Go to Settings") style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
         if (completion) {

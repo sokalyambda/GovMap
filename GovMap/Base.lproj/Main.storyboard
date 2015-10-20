@@ -147,12 +147,9 @@
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="1000" scrollEnabled="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="arY-6g-jx7">
                                         <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                         <animations/>
-                                        <mutableString key="text">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te cExcepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.onscient to factor tum poen legum odioque civiuda.Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                        <string key="text">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te cExcepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.onscient to factor tum poen legum odioque civiuda.Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                            <rect key="frame" x="15" y="95" width="370" height="518"/>
-                                        </variation>
                                     </textView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Terms &amp; Conditions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="amI-QH-Wse">
                                         <rect key="frame" x="-42" y="-21" width="42" height="21"/>
@@ -181,15 +178,15 @@
                                         <exclude reference="amI-QH-Wse"/>
                                     </mask>
                                     <mask key="constraints">
+                                        <exclude reference="bX9-pG-YXt"/>
+                                        <exclude reference="rNd-br-VTA"/>
+                                        <exclude reference="sDC-Ob-SPN"/>
+                                        <exclude reference="z51-Mv-e4A"/>
                                         <exclude reference="CtK-xR-dgs"/>
                                         <exclude reference="MOi-BG-XJC"/>
                                         <exclude reference="fLK-oZ-bKK"/>
                                         <exclude reference="mjZ-uT-vpx"/>
                                         <exclude reference="oqY-pj-1oR"/>
-                                        <exclude reference="sDC-Ob-SPN"/>
-                                        <exclude reference="z51-Mv-e4A"/>
-                                        <exclude reference="bX9-pG-YXt"/>
-                                        <exclude reference="rNd-br-VTA"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
@@ -199,15 +196,15 @@
                                         <include reference="amI-QH-Wse"/>
                                     </mask>
                                     <mask key="constraints">
+                                        <include reference="bX9-pG-YXt"/>
+                                        <include reference="rNd-br-VTA"/>
+                                        <include reference="sDC-Ob-SPN"/>
+                                        <include reference="z51-Mv-e4A"/>
                                         <include reference="CtK-xR-dgs"/>
                                         <include reference="MOi-BG-XJC"/>
                                         <include reference="fLK-oZ-bKK"/>
                                         <include reference="mjZ-uT-vpx"/>
                                         <include reference="oqY-pj-1oR"/>
-                                        <include reference="sDC-Ob-SPN"/>
-                                        <include reference="z51-Mv-e4A"/>
-                                        <include reference="bX9-pG-YXt"/>
-                                        <include reference="rNd-br-VTA"/>
                                     </mask>
                                 </variation>
                             </scrollView>
@@ -234,16 +231,16 @@
                                 <exclude reference="wq8-Pg-57f"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="1Ih-MJ-TO8"/>
-                                <exclude reference="Gpf-bn-lx7"/>
-                                <exclude reference="ex8-Sb-SJy"/>
+                                <exclude reference="qS1-MP-Kau"/>
                                 <exclude reference="WFn-zx-QYX"/>
+                                <exclude reference="VS8-KQ-cfJ"/>
+                                <exclude reference="hQW-QP-TIU"/>
                                 <exclude reference="VCd-dG-iPE"/>
                                 <exclude reference="Vae-1A-aBF"/>
                                 <exclude reference="nrC-AC-fyM"/>
-                                <exclude reference="VS8-KQ-cfJ"/>
-                                <exclude reference="hQW-QP-TIU"/>
-                                <exclude reference="qS1-MP-Kau"/>
+                                <exclude reference="1Ih-MJ-TO8"/>
+                                <exclude reference="Gpf-bn-lx7"/>
+                                <exclude reference="ex8-Sb-SJy"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -254,16 +251,16 @@
                                 <include reference="wq8-Pg-57f"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="1Ih-MJ-TO8"/>
-                                <include reference="Gpf-bn-lx7"/>
-                                <include reference="ex8-Sb-SJy"/>
+                                <include reference="qS1-MP-Kau"/>
                                 <include reference="WFn-zx-QYX"/>
+                                <include reference="VS8-KQ-cfJ"/>
+                                <include reference="hQW-QP-TIU"/>
                                 <include reference="VCd-dG-iPE"/>
                                 <include reference="Vae-1A-aBF"/>
                                 <include reference="nrC-AC-fyM"/>
-                                <include reference="VS8-KQ-cfJ"/>
-                                <include reference="hQW-QP-TIU"/>
-                                <include reference="qS1-MP-Kau"/>
+                                <include reference="1Ih-MJ-TO8"/>
+                                <include reference="Gpf-bn-lx7"/>
+                                <include reference="ex8-Sb-SJy"/>
                             </mask>
                         </variation>
                     </view>
