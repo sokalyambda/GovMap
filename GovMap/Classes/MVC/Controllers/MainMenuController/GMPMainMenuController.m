@@ -9,14 +9,19 @@
 #import "GMPMainMenuController.h"
 #import "GMPMapController.h"
 #import "GMPAppLanguageSwitchController.h"
+#import "GMPAboutController.h"
 
 #import "GMPLocationObserver.h"
 
 #import "GMPMenuView.h"
 
+#import "GMPSerialViewsConstructor.h"
+
 static NSString *const kMapControllerSegueIdentifier = @"mapControllerSegue";
 static NSString *const kSearchWithAddressControllerSegueIdentifier = @"searchWithAddressControllerSegue";
 static NSString *const kSearchWithGeoNumbersControllerSegueIdentifier = @"searchWithGeoNumbersControllerSegue";
+static NSString *const kAboutControllerSegueIdentifier = @"aboutControllerSegue";
+static NSString *const kAboutImageName = @"about";
 
 @interface GMPMainMenuController() <GMPMenuViewDelegate>
 
@@ -86,8 +91,21 @@ static NSString *const kSearchWithGeoNumbersControllerSegueIdentifier = @"search
     [self.navigationController setNavigationBarHidden:NO animated:YES];
     [self.navigationItem setTitleView:self.appLanguageSwitchController.view];
 
-    self.navigationItem.leftBarButtonItem = nil;
+    self.navigationItem.leftBarButtonItem = [GMPSerialViewsConstructor customBarButtonWithImage:[UIImage imageNamed:kAboutImageName]
+                                                                                  forController:self
+                                                                                     withAction:@selector(aboutClick)];
+    
+    // Set transparent UIView to right bar button so the title view will be centered horizontally
+    CGRect leftButtonRect = CGRectMake(0, 0, self.navigationItem.leftBarButtonItem.image.size.width, self.navigationItem.leftBarButtonItem.image.size.height);
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:[[UIView alloc] initWithFrame:leftButtonRect]];
+    
     self.navigationItem.hidesBackButton = YES;
+}
+
+- (void)aboutClick
+{
+    [self.appLanguageSwitchController removeFromParentViewController];
+    [self performSegueWithIdentifier:kAboutControllerSegueIdentifier sender:self];
 }
 
 @end

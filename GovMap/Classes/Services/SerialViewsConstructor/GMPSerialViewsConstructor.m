@@ -25,4 +25,19 @@ static NSString *const kBackArrowImageName = @"back_arrow";
     return backButton;
 }
 
+/**
+ *  Create custom bar button item
+ *
+ *  @param image      Image for bar button
+ *  @param controller Controller
+ *  @param action     Selector
+ *
+ *  @return Custom bar button
+ */
++ (UIBarButtonItem *)customBarButtonWithImage:(UIImage *)image forController:(UIViewController *)controller withAction:(SEL)action
+{
+    UIBarButtonItem *customBarButton = [[UIBarButtonItem alloc] initWithImage:[image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStylePlain target:controller action:action];
+    return customBarButton;
+}
+
 @end

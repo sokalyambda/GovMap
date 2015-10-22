@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		041F851FE71D0E3A7C11613A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A3EC1D9E43C52520F2972EB0 /* libPods.a */; };
+		3E073B2A1BD8F6C60039B037 /* GMPAboutController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E073B291BD8F6C60039B037 /* GMPAboutController.m */; settings = {ASSET_TAGS = (); }; };
+		3E073B2E1BD8F8390039B037 /* GMPTermsAndAgreementsTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E073B2D1BD8F8390039B037 /* GMPTermsAndAgreementsTextView.m */; settings = {ASSET_TAGS = (); }; };
 		3E2C55801B99765F00702866 /* GMPGoogleGeocoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E2C557F1B99765F00702866 /* GMPGoogleGeocoder.m */; };
 		3E5B6ECA1BCD6C8000C24821 /* GMPGovMapWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E5B6EC91BCD6C8000C24821 /* GMPGovMapWebViewController.m */; settings = {ASSET_TAGS = (); }; };
 		3E820AB51B8F3D6400EDEEA4 /* GMPSearchWithAddressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E820AB31B8F3D6400EDEEA4 /* GMPSearchWithAddressView.m */; };
@@ -82,6 +84,10 @@
 /* Begin PBXFileReference section */
 		0062777DAD5A5BC2F5C8A757 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		1B6EBDB5D3D66E278DA2A0BA /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		3E073B281BD8F6C60039B037 /* GMPAboutController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GMPAboutController.h; path = Classes/MVC/Controllers/AboutController/GMPAboutController.h; sourceTree = "<group>"; };
+		3E073B291BD8F6C60039B037 /* GMPAboutController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GMPAboutController.m; path = Classes/MVC/Controllers/AboutController/GMPAboutController.m; sourceTree = "<group>"; };
+		3E073B2C1BD8F8390039B037 /* GMPTermsAndAgreementsTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GMPTermsAndAgreementsTextView.h; path = Classes/MVC/VIews/TermsAndAgreementsTextView/GMPTermsAndAgreementsTextView.h; sourceTree = "<group>"; };
+		3E073B2D1BD8F8390039B037 /* GMPTermsAndAgreementsTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GMPTermsAndAgreementsTextView.m; path = Classes/MVC/VIews/TermsAndAgreementsTextView/GMPTermsAndAgreementsTextView.m; sourceTree = "<group>"; };
 		3E2C557E1B99765F00702866 /* GMPGoogleGeocoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GMPGoogleGeocoder.h; path = Classes/Managers/GoogleGeocoder/GMPGoogleGeocoder.h; sourceTree = "<group>"; };
 		3E2C557F1B99765F00702866 /* GMPGoogleGeocoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GMPGoogleGeocoder.m; path = Classes/Managers/GoogleGeocoder/GMPGoogleGeocoder.m; sourceTree = "<group>"; };
 		3E5B6EC81BCD6C8000C24821 /* GMPGovMapWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GMPGovMapWebViewController.h; path = Classes/MVC/Controllers/GovMapWebViewController/GMPGovMapWebViewController.h; sourceTree = "<group>"; };
@@ -245,6 +251,24 @@
 				A3EC1D9E43C52520F2972EB0 /* libPods.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3E073B271BD8F69B0039B037 /* AboutController */ = {
+			isa = PBXGroup;
+			children = (
+				3E073B281BD8F6C60039B037 /* GMPAboutController.h */,
+				3E073B291BD8F6C60039B037 /* GMPAboutController.m */,
+			);
+			name = AboutController;
+			sourceTree = "<group>";
+		};
+		3E073B2B1BD8F8080039B037 /* TermsAndAgreementsTextView */ = {
+			isa = PBXGroup;
+			children = (
+				3E073B2C1BD8F8390039B037 /* GMPTermsAndAgreementsTextView.h */,
+				3E073B2D1BD8F8390039B037 /* GMPTermsAndAgreementsTextView.m */,
+			);
+			name = TermsAndAgreementsTextView;
 			sourceTree = "<group>";
 		};
 		3E2C557D1B99763800702866 /* GoogleGeocoder */ = {
@@ -541,6 +565,7 @@
 		58C131481B8EF7C20095045A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				3E073B2B1BD8F8080039B037 /* TermsAndAgreementsTextView */,
 				D3C8594A1BCE730B00C82814 /* CheckBoxButton */,
 				D3E7D2EF1B9D796500609406 /* BorderdTextField */,
 				58D7C82C1B997B1200965EF2 /* RoundedCornersButton */,
@@ -555,6 +580,7 @@
 		58C131491B8EF7C60095045A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				3E073B271BD8F69B0039B037 /* AboutController */,
 				D3855A301BCE4EFD00FB2946 /* TermsAndConditionsController */,
 				3E5B6EC71BCD6C2900C24821 /* GovMapWebViewController */,
 				D3EEAAE91BB573F900E1B192 /* AppLanguageSwitch */,
@@ -1089,6 +1115,7 @@
 				3E2C55801B99765F00702866 /* GMPGoogleGeocoder.m in Sources */,
 				3E820ABE1B90379600EDEEA4 /* GMPSearchWithGeoNumbersView.m in Sources */,
 				58C131891B8F04030095045A /* GMPSerialViewsConstructor.m in Sources */,
+				3E073B2E1BD8F8390039B037 /* GMPTermsAndAgreementsTextView.m in Sources */,
 				58C131671B8F02E10095045A /* UIView+ConfigureAnchorPoint.m in Sources */,
 				D3E7D2F91B9D91A700609406 /* GMPBorderedTextField.m in Sources */,
 				D3E5347B1B8F39FA00C9D87B /* GMPMenuView.m in Sources */,
@@ -1098,6 +1125,7 @@
 				D3C859581BCE9D7C00C82814 /* GMPCheckBoxButton.m in Sources */,
 				3E820AC41B903FF700EDEEA4 /* GMPSearchWithGeoNumbersController.m in Sources */,
 				3E820ABA1B9035DB00EDEEA4 /* GMPSearchWithAddressViewController.m in Sources */,
+				3E073B2A1BD8F6C60039B037 /* GMPAboutController.m in Sources */,
 				58C1316D1B8F03030095045A /* UIImage+Base64Encoding.m in Sources */,
 				58C131801B8F03A10095045A /* NSString+Base64Decoding.m in Sources */,
 				58C131701B8F03130095045A /* UIFont+Styles.m in Sources */,

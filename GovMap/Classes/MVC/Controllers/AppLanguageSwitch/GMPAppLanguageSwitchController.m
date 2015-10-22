@@ -30,7 +30,6 @@ static NSString *const kAppleLanguages = @"AppleLanguages";
     }
 }
 
-
 #pragma mark - Actions
 
 - (IBAction)appLanguageChanged:(id)sender

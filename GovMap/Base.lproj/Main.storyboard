@@ -5,6 +5,109 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
     </dependencies>
     <scenes>
+        <!--About Controller-->
+        <scene sceneID="XPF-v7-ZGM">
+            <objects>
+                <viewController storyboardIdentifier="GMPAboutController" id="L5c-Da-Fa1" customClass="GMPAboutController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="01f-TQ-dD7"/>
+                        <viewControllerLayoutGuide type="bottom" id="EC3-zi-OAb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="WKu-oP-YUs">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Version" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ymi-6j-94U">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.011764705882352941" green="0.66274509803921566" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6i2-B9-AON">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.61586782094594594" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dcv-1g-cDl" customClass="GMPTermsAndAgreementsTextView">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <animations/>
+                                <mutableString key="text">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te cExcepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.onscient to factor tum poen legum odioque civiuda.Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Terms and Agreements" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mih-9s-FfF">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.01176470588" green="0.66274509800000003" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Ymi-6j-94U" firstAttribute="top" secondItem="01f-TQ-dD7" secondAttribute="bottom" constant="10" id="85o-Yq-JiE"/>
+                            <constraint firstItem="mih-9s-FfF" firstAttribute="top" secondItem="Ymi-6j-94U" secondAttribute="bottom" constant="15" id="JDg-al-RNB"/>
+                            <constraint firstItem="EC3-zi-OAb" firstAttribute="top" secondItem="dcv-1g-cDl" secondAttribute="bottom" constant="3" id="K1L-Jx-7vR"/>
+                            <constraint firstAttribute="trailing" secondItem="dcv-1g-cDl" secondAttribute="trailing" constant="15" id="LPz-uA-bdt"/>
+                            <constraint firstItem="dcv-1g-cDl" firstAttribute="leading" secondItem="WKu-oP-YUs" secondAttribute="leading" constant="15" id="Net-8y-qjk"/>
+                            <constraint firstItem="6i2-B9-AON" firstAttribute="leading" secondItem="Ymi-6j-94U" secondAttribute="trailing" constant="10" id="VcD-bT-yiQ"/>
+                            <constraint firstItem="dcv-1g-cDl" firstAttribute="top" secondItem="mih-9s-FfF" secondAttribute="bottom" constant="15" id="WJO-wr-4jX"/>
+                            <constraint firstItem="6i2-B9-AON" firstAttribute="centerY" secondItem="Ymi-6j-94U" secondAttribute="centerY" id="a9m-xp-Vrp"/>
+                            <constraint firstItem="mih-9s-FfF" firstAttribute="centerX" secondItem="WKu-oP-YUs" secondAttribute="centerX" id="iKj-oA-QAS"/>
+                            <constraint firstItem="Ymi-6j-94U" firstAttribute="centerX" secondItem="WKu-oP-YUs" secondAttribute="centerX" constant="-15" id="t98-lC-4Lj"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="Ymi-6j-94U"/>
+                                <exclude reference="6i2-B9-AON"/>
+                                <exclude reference="dcv-1g-cDl"/>
+                                <exclude reference="mih-9s-FfF"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="LPz-uA-bdt"/>
+                                <exclude reference="Net-8y-qjk"/>
+                                <exclude reference="WJO-wr-4jX"/>
+                                <exclude reference="JDg-al-RNB"/>
+                                <exclude reference="iKj-oA-QAS"/>
+                                <exclude reference="85o-Yq-JiE"/>
+                                <exclude reference="t98-lC-4Lj"/>
+                                <exclude reference="VcD-bT-yiQ"/>
+                                <exclude reference="a9m-xp-Vrp"/>
+                                <exclude reference="K1L-Jx-7vR"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="Ymi-6j-94U"/>
+                                <include reference="6i2-B9-AON"/>
+                                <include reference="dcv-1g-cDl"/>
+                                <include reference="mih-9s-FfF"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="LPz-uA-bdt"/>
+                                <include reference="Net-8y-qjk"/>
+                                <include reference="WJO-wr-4jX"/>
+                                <include reference="JDg-al-RNB"/>
+                                <include reference="iKj-oA-QAS"/>
+                                <include reference="85o-Yq-JiE"/>
+                                <include reference="t98-lC-4Lj"/>
+                                <include reference="VcD-bT-yiQ"/>
+                                <include reference="a9m-xp-Vrp"/>
+                                <include reference="K1L-Jx-7vR"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="versionLabel" destination="6i2-B9-AON" id="HkB-9X-Tla"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lg3-2a-hop" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1069.5" y="-284.25"/>
+        </scene>
         <!--Search With Address View Controller-->
         <scene sceneID="F92-df-dwT">
             <objects>
@@ -43,9 +146,6 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash_screen" translatesAutoresizingMaskIntoConstraints="NO" id="Iri-aK-tS0">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <animations/>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="133" y="340" width="134" height="120"/>
-                                </variation>
                             </imageView>
                         </subviews>
                         <animations/>
@@ -144,7 +244,7 @@
                                         <color key="textColor" red="0.011764705882352941" green="0.66274509803921566" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="1000" scrollEnabled="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="arY-6g-jx7">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="1000" scrollEnabled="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="arY-6g-jx7" customClass="GMPTermsAndAgreementsTextView">
                                         <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                         <animations/>
                                         <string key="text">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te cExcepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.onscient to factor tum poen legum odioque civiuda.Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
@@ -294,6 +394,7 @@
                         <segue destination="hbg-PG-zFK" kind="show" identifier="mapControllerSegue" id="w6O-0n-4cq"/>
                         <segue destination="e0K-Ie-V5C" kind="show" identifier="searchWithAddressControllerSegue" id="rMh-l7-5HL"/>
                         <segue destination="Gjx-M7-NZI" kind="show" identifier="searchWithGeoNumbersControllerSegue" id="Ve4-Gi-4yh"/>
+                        <segue destination="L5c-Da-Fa1" kind="show" identifier="aboutControllerSegue" id="THa-7e-Y2X"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="udd-9X-EZe" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -484,6 +585,6 @@
         <image name="splash_screen" width="320" height="480"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="aK4-SJ-f31"/>
+        <segue reference="yq1-bE-LZA"/>
     </inferredMetricsTieBreakers>
 </document>
