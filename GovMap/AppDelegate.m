@@ -30,6 +30,12 @@ static NSString *const kGoogleMapsAPIKey = @"AIzaSyCe5NsemBVFbuMYSUoxzi0qao7cKqi
     
     [GMSServices provideAPIKey:kGoogleMapsAPIKey];
     
+    // Disable RTL for navigation bars and segment controls in iOS 9
+    if ([NSProcessInfo processInfo].operatingSystemVersion.majorVersion >= 9) {
+        [[UINavigationBar appearance] setSemanticContentAttribute:UISemanticContentAttributeForceLeftToRight];
+        [[UISegmentedControl appearance] setSemanticContentAttribute:UISemanticContentAttributeForceLeftToRight];
+    }
+    
     return YES;
 }
 

@@ -31,7 +31,7 @@
             <animations/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="centerX" secondItem="ub8-dz-yhz" secondAttribute="centerX" id="BBe-Vp-Cli"/>
+                <constraint firstItem="ub8-dz-yhz" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="buv-Wh-mQu"/>
                 <constraint firstAttribute="centerY" secondItem="ub8-dz-yhz" secondAttribute="centerY" id="rRC-Ma-5aX"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
@@ -41,7 +41,7 @@
                     <exclude reference="ub8-dz-yhz"/>
                 </mask>
                 <mask key="constraints">
-                    <exclude reference="BBe-Vp-Cli"/>
+                    <exclude reference="buv-Wh-mQu"/>
                     <exclude reference="rRC-Ma-5aX"/>
                 </mask>
             </variation>
@@ -50,7 +50,7 @@
                     <include reference="ub8-dz-yhz"/>
                 </mask>
                 <mask key="constraints">
-                    <include reference="BBe-Vp-Cli"/>
+                    <include reference="buv-Wh-mQu"/>
                     <include reference="rRC-Ma-5aX"/>
                 </mask>
             </variation>

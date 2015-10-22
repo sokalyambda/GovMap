@@ -91,13 +91,13 @@ static NSString *const kAboutImageName = @"about";
     [self.navigationController setNavigationBarHidden:NO animated:YES];
     [self.navigationItem setTitleView:self.appLanguageSwitchController.view];
 
-    self.navigationItem.leftBarButtonItem = [GMPSerialViewsConstructor customBarButtonWithImage:[UIImage imageNamed:kAboutImageName]
+    self.navigationItem.rightBarButtonItem = [GMPSerialViewsConstructor customBarButtonWithImage:[UIImage imageNamed:kAboutImageName]
                                                                                   forController:self
                                                                                      withAction:@selector(aboutClick)];
     
     // Set transparent UIView to right bar button so the title view will be centered horizontally
-    CGRect leftButtonRect = CGRectMake(0, 0, self.navigationItem.leftBarButtonItem.image.size.width, self.navigationItem.leftBarButtonItem.image.size.height);
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:[[UIView alloc] initWithFrame:leftButtonRect]];
+    CGRect rightButtonRect = CGRectMake(0, 0, self.navigationItem.rightBarButtonItem.image.size.width, self.navigationItem.rightBarButtonItem.image.size.height);
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:[[UIView alloc] initWithFrame:rightButtonRect]];
     
     self.navigationItem.hidesBackButton = YES;
 }
