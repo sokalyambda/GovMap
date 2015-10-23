@@ -38,9 +38,4 @@
     self.navigationItem.title = LOCALIZED(@"About");
 }
 
-- (void)backClick
-{
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
 @end

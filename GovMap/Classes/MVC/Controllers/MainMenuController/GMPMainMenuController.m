@@ -100,6 +100,8 @@ static NSString *const kAboutImageName = @"about";
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:[[UIView alloc] initWithFrame:rightButtonRect]];
     
     self.navigationItem.hidesBackButton = YES;
+    
+    self.navigationController.navigationBar.barStyle = UIBarStyleBlackTranslucent;
 }
 
 - (void)aboutClick
