@@ -19,7 +19,7 @@
 
 static NSString *const kStyleNotVisible = @"none";
 static NSString *const kURLString = @"http://www.govmap.gov.il";
-static NSInteger const kSearchHTMLFrameIndex = 13;
+static NSInteger const kSearchHTMLFrameIndex = 18;
 static NSInteger const kAttemtsAmountForDataRetrieving = 30;
 
 @interface GMPCommunicator () <UIWebViewDelegate, GMPCommunicatorDelegate>
@@ -300,7 +300,7 @@ static NSInteger const kAttemtsAmountForDataRetrieving = 30;
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
-    if (self.loadedHTMLFramesCounter++ == kSearchHTMLFrameIndex) {
+    if (++self.loadedHTMLFramesCounter == kSearchHTMLFrameIndex) {
         _isReadyForRequests = YES;
         
         if ([self.delegate respondsToSelector:@selector(communicatorDidFinishLoadingContent:)]) {
