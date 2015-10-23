@@ -31,108 +31,58 @@
                                 <color key="textColor" red="0.01176470588" green="0.66274509800000003" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yZn-zT-F29" userLabel="Version Container View">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Version" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ymi-6j-94U">
-                                        <rect key="frame" x="-42" y="-21" width="42" height="21"/>
-                                        <animations/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.011764705882352941" green="0.66274509803921566" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6i2-B9-AON">
-                                        <rect key="frame" x="-42" y="-21" width="42" height="21"/>
-                                        <animations/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.61586782094594594" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6i2-B9-AON">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                 <animations/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstItem="6i2-B9-AON" firstAttribute="centerY" secondItem="Ymi-6j-94U" secondAttribute="centerY" id="7AT-6L-ojo"/>
-                                    <constraint firstAttribute="bottom" secondItem="6i2-B9-AON" secondAttribute="bottom" id="Anz-Ea-44D"/>
-                                    <constraint firstAttribute="trailing" secondItem="6i2-B9-AON" secondAttribute="trailing" id="f3k-Ef-E2e"/>
-                                    <constraint firstItem="Ymi-6j-94U" firstAttribute="leading" secondItem="yZn-zT-F29" secondAttribute="leading" id="g8R-DW-uNz"/>
-                                    <constraint firstItem="6i2-B9-AON" firstAttribute="top" secondItem="yZn-zT-F29" secondAttribute="top" id="ioH-y2-9C2"/>
-                                    <constraint firstItem="6i2-B9-AON" firstAttribute="leading" secondItem="Ymi-6j-94U" secondAttribute="trailing" constant="10" id="tqr-Qc-4YR"/>
-                                </constraints>
-                                <variation key="default">
-                                    <mask key="subviews">
-                                        <exclude reference="Ymi-6j-94U"/>
-                                        <exclude reference="6i2-B9-AON"/>
-                                    </mask>
-                                    <mask key="constraints">
-                                        <exclude reference="7AT-6L-ojo"/>
-                                        <exclude reference="Anz-Ea-44D"/>
-                                        <exclude reference="f3k-Ef-E2e"/>
-                                        <exclude reference="ioH-y2-9C2"/>
-                                        <exclude reference="tqr-Qc-4YR"/>
-                                        <exclude reference="g8R-DW-uNz"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
-                                    <mask key="subviews">
-                                        <include reference="Ymi-6j-94U"/>
-                                        <include reference="6i2-B9-AON"/>
-                                    </mask>
-                                    <mask key="constraints">
-                                        <include reference="7AT-6L-ojo"/>
-                                        <include reference="Anz-Ea-44D"/>
-                                        <include reference="f3k-Ef-E2e"/>
-                                        <include reference="ioH-y2-9C2"/>
-                                        <include reference="tqr-Qc-4YR"/>
-                                        <include reference="g8R-DW-uNz"/>
-                                    </mask>
-                                </variation>
-                            </view>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.61586782094594594" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="yZn-zT-F29" firstAttribute="top" secondItem="01f-TQ-dD7" secondAttribute="bottom" constant="15" id="CbM-zf-M6d"/>
+                            <constraint firstItem="mih-9s-FfF" firstAttribute="top" secondItem="6i2-B9-AON" secondAttribute="bottom" constant="15" id="HIq-Xu-mWe"/>
                             <constraint firstItem="EC3-zi-OAb" firstAttribute="top" secondItem="dcv-1g-cDl" secondAttribute="bottom" constant="3" id="K1L-Jx-7vR"/>
                             <constraint firstAttribute="trailing" secondItem="dcv-1g-cDl" secondAttribute="trailing" constant="15" id="LPz-uA-bdt"/>
                             <constraint firstItem="dcv-1g-cDl" firstAttribute="leading" secondItem="WKu-oP-YUs" secondAttribute="leading" constant="15" id="Net-8y-qjk"/>
                             <constraint firstItem="dcv-1g-cDl" firstAttribute="top" secondItem="mih-9s-FfF" secondAttribute="bottom" constant="15" id="WJO-wr-4jX"/>
-                            <constraint firstItem="yZn-zT-F29" firstAttribute="centerX" secondItem="WKu-oP-YUs" secondAttribute="centerX" id="WeE-8Q-Bi7"/>
+                            <constraint firstItem="6i2-B9-AON" firstAttribute="top" secondItem="01f-TQ-dD7" secondAttribute="bottom" constant="15" id="ZrM-L2-0TR"/>
+                            <constraint firstItem="6i2-B9-AON" firstAttribute="centerX" secondItem="WKu-oP-YUs" secondAttribute="centerX" id="f77-zw-Tjr"/>
                             <constraint firstItem="mih-9s-FfF" firstAttribute="centerX" secondItem="WKu-oP-YUs" secondAttribute="centerX" id="iKj-oA-QAS"/>
-                            <constraint firstItem="mih-9s-FfF" firstAttribute="top" secondItem="yZn-zT-F29" secondAttribute="bottom" constant="15" id="wcR-OZ-09P"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="dcv-1g-cDl"/>
                                 <exclude reference="mih-9s-FfF"/>
-                                <exclude reference="yZn-zT-F29"/>
+                                <exclude reference="6i2-B9-AON"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="K1L-Jx-7vR"/>
-                                <exclude reference="iKj-oA-QAS"/>
-                                <exclude reference="wcR-OZ-09P"/>
                                 <exclude reference="LPz-uA-bdt"/>
                                 <exclude reference="Net-8y-qjk"/>
                                 <exclude reference="WJO-wr-4jX"/>
-                                <exclude reference="CbM-zf-M6d"/>
-                                <exclude reference="WeE-8Q-Bi7"/>
+                                <exclude reference="HIq-Xu-mWe"/>
+                                <exclude reference="iKj-oA-QAS"/>
+                                <exclude reference="ZrM-L2-0TR"/>
+                                <exclude reference="f77-zw-Tjr"/>
+                                <exclude reference="K1L-Jx-7vR"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
                                 <include reference="dcv-1g-cDl"/>
                                 <include reference="mih-9s-FfF"/>
-                                <include reference="yZn-zT-F29"/>
+                                <include reference="6i2-B9-AON"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="K1L-Jx-7vR"/>
-                                <include reference="iKj-oA-QAS"/>
-                                <include reference="wcR-OZ-09P"/>
                                 <include reference="LPz-uA-bdt"/>
                                 <include reference="Net-8y-qjk"/>
                                 <include reference="WJO-wr-4jX"/>
-                                <include reference="CbM-zf-M6d"/>
-                                <include reference="WeE-8Q-Bi7"/>
+                                <include reference="HIq-Xu-mWe"/>
+                                <include reference="iKj-oA-QAS"/>
+                                <include reference="ZrM-L2-0TR"/>
+                                <include reference="f77-zw-Tjr"/>
+                                <include reference="K1L-Jx-7vR"/>
                             </mask>
                         </variation>
                     </view>

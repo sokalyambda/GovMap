@@ -30,7 +30,9 @@
 
 - (void)updateVersionLabel
 {
-    self.versionLabel.text = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+    NSString *versionString = @"v. ";
+    versionString = [versionString stringByAppendingString:[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]];
+    self.versionLabel.text = versionString;
 }
 
 - (void)customizeNavigationItem

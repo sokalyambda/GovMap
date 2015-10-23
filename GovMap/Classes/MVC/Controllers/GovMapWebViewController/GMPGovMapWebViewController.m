@@ -26,7 +26,9 @@ static NSString * const kGovMapURLString = @"http://govmap.gov.il";
     NSURL *URL = [NSURL URLWithString:kGovMapURLString];
     NSURLRequest *request = [NSURLRequest requestWithURL:URL];
     
-    [self.webView loadRequest:request];    
+    [self.webView loadRequest:request];
+    
+    self.webView.scalesPageToFit = YES;
 }
 
 #pragma mark - UIWebViewDelegate
